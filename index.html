@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Navigation Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .header {
+            text-align: center;
+            background-color: #2e86ab;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .department {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .department:hover {
+            background-color: #e6f7ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏥 Welcome to Our Hospital</h1>
+        <p>Select your destination below</p>
+    </div>
+
+    <div class="department" onclick="showDirections('pharmacy')">
+        <h3>💊 Pharmacy</h3>
+        <p>Get your medicines here</p>
+    </div>
+
+    <div class="department" onclick="showDirections('billing')">
+        <h3>💰 Billing Counter</h3>
+        <p>Payment and billing services</p>
+    </div>
+
+    <div class="department" onclick="showDirections('emergency')">
+        <h3>🚑 Emergency Department</h3>
+        <p>Immediate medical care</p>
+    </div>
+
+    <div class="department" onclick="showDirections('opd')">
+        <h3>👨‍⚕️ OPD Section</h3>
+        <p>Outpatient Department</p>
+    </div>
+
+    <script>
+    function showDirections(department) {
+        if (department === 'pharmacy') {
+            window.location.href = 'pharmacy.html';
+        } else if (department === 'billing') {
+            window.location.href = 'billing.html';
+        } else {
+            alert('Directions for ' + department + ' coming soon!');
+        }
+    }
+</script>
+</body>
+</html>
