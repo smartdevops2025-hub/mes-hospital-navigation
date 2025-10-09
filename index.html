@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>🏥 Welcome to Our Hospital</h1>
+        <h1>🏥 Welcome to MES Medical College</h1>
         <p>Select your destination below</p>
     </div>
 
@@ -41,31 +41,30 @@
         <p>Get your medicines here</p>
     </div>
 
-    <div class="department" onclick="showDirections('billing')">
-        <h3>💰 Billing Counter</h3>
-        <p>Payment and billing services</p>
-    </div>
+    <div class="department" onclick="showDirections('radiology')">
+    <h3>🔬 Radiology</h3>
+    <p>Xray & Scans</p>
+	</div>
 
-    <div class="department" onclick="showDirections('emergency')">
-        <h3>🚑 Emergency Department</h3>
-        <p>Immediate medical care</p>
+<div class="department" onclick="showDirections('opd')">
+        <h3>👨‍⚕️ Radiology</h3>
+        <p>For Xray & Scans</p>
     </div>
-
-    <div class="department" onclick="showDirections('opd')">
-        <h3>👨‍⚕️ OPD Section</h3>
+<div class="department" onclick="showDirections('opd')">
+        <h3>👨‍⚕️ Cardiology</h3>
         <p>Outpatient Department</p>
     </div>
 
     <script>
     function showDirections(department) {
-        if (department === 'pharmacy') {
-            window.location.href = 'pharmacy.html';
-        } else if (department === 'billing') {
-            window.location.href = 'billing.html';
-        } else {
-            alert('Directions for ' + department + ' coming soon!');
-        }
+    if (department === 'pharmacy') {
+        window.location.href = 'pharmacy.html';
+        } else if (department === 'radiology') {
+        window.location.href = 'radiology.html';
+    } else {
+        alert('Directions for ' + department + ' coming soon!');
     }
+}
 </script>
 </body>
 </html>
