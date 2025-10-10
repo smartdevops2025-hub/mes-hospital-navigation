@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Navigation Guide</title>
     <style>
-        /* Mobile-first responsive design with grid */
+        /* Your CSS code here */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -40,7 +40,6 @@
             opacity: 0.9;
         }
         
-        /* Grid Layout */
         .departments-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -88,7 +87,6 @@
             line-height: 1.3;
         }
         
-        /* Responsive adjustments */
         @media (max-width: 480px) {
             .departments-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -132,15 +130,15 @@
         </div>
 
         <div class="department-box" onclick="showDirections('radiology')">
-            <div class="department-icon">🔬</div>
+            <div class="department-icon">📋</div>
             <h3>Radiology</h3>
-            <p>Xray & Scans</p>
+            <p>Xray & Scanning</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('cardiology')">
-            <div class="department-icon">👨‍⚕️</div>
-            <h3>Cardiology</h3>
-            <p>Outpatient Department</p>
+        <div class="department-box" onclick="showDirections('emergency')">
+            <div class="department-icon">🚑</div>
+            <h3>Emergency</h3>
+            <p>Immediate care</p>
         </div>
 
         <div class="department-box" onclick="showDirections('opd')">
@@ -155,16 +153,15 @@
             <p>Tests & Reports</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('radiology')">
+        <div class="department-box" onclick="showDirections('opd')">
             <div class="department-icon">📋</div>
-            <h3>Radiology</h3>
+            <h3>OPD</h3>
             <p>X-Ray & Scans</p>
         </div>
     </div>
 
     <script>
         function showDirections(department) {
-            // Simple version without loading effects
             if (department === 'pharmacy') {
                 window.location.href = 'pharmacy.html';
             } else if (department === 'radiology') {
