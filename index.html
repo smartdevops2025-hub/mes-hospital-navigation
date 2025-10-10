@@ -4,33 +4,101 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Navigation Guide</title>
 
-    <style>
+   <style>
+    /* Mobile-first responsive design */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+    }
+    
+    .header {
+        text-align: center;
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 25px 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    
+    .department {
+        background-color: white;
+        margin: 12px 0;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        border-left: 5px solid #2e86ab;
+        transition: all 0.3s ease;
+        touch-action: manipulation; /* Better touch response */
+    }
+    
+    .department:active {
+        transform: scale(0.98);
+        background-color: #e6f7ff;
+    }
+    
+    .department h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+        color: #2e86ab;
+    }
+    
+    .department p {
+        font-size: 1rem;
+        color: #666;
+    }
+    
+    /* Larger touch targets for mobile */
+    .department {
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* Responsive font sizes */
+    @media (max-width: 480px) {
+        .header h1 {
+            font-size: 1.5rem;
+        }
+        
+        .department h3 {
+            font-size: 1.2rem;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f8ff;
+            padding: 10px;
         }
-        .header {
-            text-align: center;
-            background-color: #2e86ab;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
+    }
+    
+    /* Prevent zoom on input for iOS */
+    @media screen and (max-width: 768px) {
+        input, select, textarea {
+            font-size: 16px;
         }
-        .department {
-            background-color: white;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
-        .department:hover {
-            background-color: #e6f7ff;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <div class="header">
@@ -71,4 +139,5 @@
 </body>
 
 </html>
+
 
