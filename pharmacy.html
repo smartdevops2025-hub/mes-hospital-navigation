@@ -17,55 +17,61 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
+        font-size: 18px; /* Larger base font size */
     }
     
     h1 {
         color: #2e86ab;
         text-align: center;
-        font-size: 1.8rem;
-        margin: 15px 0 25px 0;
+        font-size: 2.2rem; /* Much larger heading */
+        margin: 20px 0 30px 0;
+        font-weight: bold;
     }
     
     .step {
         background-color: white;
-        margin: 20px 0;
-        padding: 20px;
-        border-radius: 12px;
+        margin: 25px 0;
+        padding: 25px 20px;
+        border-radius: 15px;
         text-align: center;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.3rem;
-        margin-bottom: 15px;
+        font-size: 1.8rem; /* Larger step headings */
+        margin-bottom: 20px;
+        font-weight: bold;
     }
     
     .step p {
-        font-size: 1.1rem;
-        color: #555;
-        margin-top: 12px;
+        font-size: 1.4rem; /* Much larger description text */
+        color: #333;
+        margin-top: 15px;
+        line-height: 1.5;
+        font-weight: 500;
     }
     
     img {
         max-width: 100%;
         height: auto;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 3px solid #2e86ab;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin: 10px 0;
     }
     
     .nav-button {
         background: linear-gradient(135deg, #2e86ab, #1a536b);
         color: white;
-        padding: 15px 30px;
+        padding: 18px 35px;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
-        margin: 10px;
-        font-size: 1.1rem;
+        margin: 15px;
+        font-size: 1.3rem; /* Larger button text */
         font-weight: bold;
-        width: 200px;
+        width: 250px;
         max-width: 100%;
         touch-action: manipulation;
         transition: all 0.3s ease;
@@ -77,26 +83,43 @@
     
     .button-container {
         text-align: center;
-        margin-top: 30px;
-        padding: 20px 0;
+        margin-top: 40px;
+        padding: 25px 0;
     }
     
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
+    /* Responsive adjustments for very small screens */
+    @media (max-width: 380px) {
+        body {
+            font-size: 16px;
+            padding: 12px;
+        }
+        
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
         .step h2 {
+            font-size: 1.5rem;
+        }
+        
+        .step p {
             font-size: 1.2rem;
         }
         
-        .step {
-            padding: 15px;
+        .nav-button {
+            font-size: 1.2rem;
+            padding: 16px 30px;
+        }
+    }
+    
+    /* Larger screens */
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
         }
         
-        body {
-            padding: 10px;
+        .step {
+            padding: 30px 25px;
         }
     }
 </style>
@@ -142,6 +165,7 @@
 </body>
 
 </html>
+
 
 
 
