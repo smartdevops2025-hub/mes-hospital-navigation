@@ -260,7 +260,7 @@
             <p>Xray & Scanning</p>
         </div>
 
-        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology" onclick="showDirections('lab')">
+        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology" onclick="showDirections('Lab')">
             <div class="department-icon">🔬</div>
             <h3>Laboratory</h3>
             <p>Blood tests & reports</p>
@@ -284,7 +284,7 @@
             <p>Child care OPD</p>
         </div>
 
-        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical" onclick="showDirections('ophthalmology')">
+        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical" onclick="showDirections('ophthal')">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
             <p>Eye care OPD</p>
@@ -359,20 +359,12 @@
                 window.location.href = 'radiology.html';
             } else if (department === 'cardiology') {
                 window.location.href = 'cardiology.html';
-            } else if (department === 'lab') {
-                window.location.href = 'lab.html';
+            } else if (department === 'Lab') {
+                window.location.href = 'Lab.html';
             } else if (department === 'ortho') {
                 window.location.href = 'ortho.html';
-            } else if (department === 'pediatrics') {
-                window.location.href = 'pediatrics.html';
-            } else if (department === 'ophthalmology') {
-                window.location.href = 'ophthalmology.html';
-            } else if (department === 'dental') {
-                window.location.href = 'dental.html';
-            } else if (department === 'neurology') {
-                window.location.href = 'neurology.html';
-            } else if (department === 'cafeteria') {
-                window.location.href = 'cafeteria.html';
+            } else if (department === 'ophthal') {
+                window.location.href = 'ophthal.html';
             } else {
                 alert('Directions for ' + department + ' coming soon!');
             }
