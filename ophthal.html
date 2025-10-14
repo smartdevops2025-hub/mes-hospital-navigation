@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directions to Orthopaedics</title>
+    <style>
+    /* Mobile-first responsive design */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+        font-size: 18px; /* Larger base font size */
+    }
+    
+    h1 {
+        color: #2e86ab;
+        text-align: center;
+        font-size: 2.2rem; /* Much larger heading */
+        margin: 20px 0 30px 0;
+        font-weight: bold;
+    }
+    
+    .step {
+        background-color: white;
+        margin: 25px 0;
+        padding: 25px 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .step h2 {
+        color: #2e86ab;
+        font-size: 1.8rem; /* Larger step headings */
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    
+    .step p {
+        font-size: 1.4rem; /* Much larger description text */
+        color: #333;
+        margin-top: 15px;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 3px solid #2e86ab;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin: 10px 0;
+    }
+    
+    .nav-button {
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 18px 35px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 15px;
+        font-size: 1.3rem; /* Larger button text */
+        font-weight: bold;
+        width: 250px;
+        max-width: 100%;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-button:active {
+        transform: scale(0.95);
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 40px;
+        padding: 25px 0;
+    }
+    
+    /* Responsive adjustments for very small screens */
+    @media (max-width: 380px) {
+        body {
+            font-size: 16px;
+            padding: 12px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        .step h2 {
+            font-size: 1.5rem;
+        }
+        
+        .step p {
+            font-size: 1.2rem;
+        }
+        
+        .nav-button {
+            font-size: 1.2rem;
+            padding: 16px 30px;
+        }
+    }
+    
+    /* Larger screens */
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
+        }
+        
+        .step {
+            padding: 30px 25px;
+        }
+    }
+</style>
+</head>
+<body>
+    <h1>🦴 Directions to Orthopaedics</h1>
+    
+    <div class="step">
+        <h2>Step 1: From Main Entrance</h2>
+        <img src="ortho1.png" alt="Main entrance view">
+        <p>Enter through the main reception, keep right and walk straight</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Take Few steps ahead</h2>
+        <img src="ortho2.png" alt="Soon after Opthal, Lab will be on your right">
+        <p>Walk a little further to see Opthal, Orthopaedics will be on your right </p>
+    </div>
+
+    <div class="step">
+        <h2>Step 3: Orthopaedics OPD</h2>
+        <img src="ortho3.png" alt="Laboratory Counter">
+        <p>Your destination is on your Front </p>
+    </div>
+
+   <div class="button-container">
+    <button class="nav-button" onclick="window.location.href='index.html'">
+        ← Back to Main Menu
+    </button>
+</div>
+</body>
+
+</html>
