@@ -162,7 +162,7 @@
             <h3>Pediatrics</h3>
             <p>OPD</p>
         </div>
-                <div class="department-box" onclick="showDirections('Ophthalmology')">
+                <div class="department-box" onclick="showDirections('ophthal')">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
             <p>OPD</p>
@@ -194,6 +194,8 @@
         window.location.href = 'Lab.html';
     } else if (department === 'ortho') {
         window.location.href = 'ortho.html';
+    } else if (department === 'ophthal') {
+        window.location.href = 'ophthal.html';
     } else {
         alert('Directions for ' + department + ' coming soon!');
     }
@@ -201,6 +203,7 @@
     </script>
 </body>
 </html>
+
 
 
 
