@@ -4,215 +4,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Navigation Guide</title>
     <style>
-        /* Your CSS code here */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* Your existing CSS remains the same, just add these new styles */
         
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 15px;
-            background-color: #f0f8ff;
-            line-height: 1.6;
-        }
-        
-        .header {
+        .search-container {
+            margin: 20px 0;
             text-align: center;
-            background: linear-gradient(135deg, #2e86ab, #1a536b);
-            color: white;
-            padding: 25px 15px;
-            border-radius: 15px;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 2px solid #2e86ab;
+            border-radius: 25px;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .search-box:focus {
+            border-color: #1a536b;
+            box-shadow: 0 2px 15px rgba(42, 134, 171, 0.3);
+        }
+        
+        .search-hint {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 10px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .header h1 {
-           font-size: 2.2rem; /* Larger main title */
-    margin-bottom: 15px;
-        }
-        
-        .header p {
-            font-size: 1.3rem; /* Larger subtitle */
-    opacity: 0.9;
-        }
-        
-        .departments-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
         }
         
         .department-box {
-            background: white;
-            padding: 20px 15px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            border: 2px solid #e0f0f7;
+            /* Your existing department box styles remain */
             transition: all 0.3s ease;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            touch-action: manipulation;
         }
         
-        .department-box:active {
-            transform: scale(0.95);
-            background-color: #e6f7ff;
-            border-color: #2e86ab;
+        .department-box.hidden {
+            display: none;
         }
         
-        .department-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .department-box h3 {
-            font-size: 1.3rem; /* Larger department names */
-    margin-bottom: 8px;
-    color: #2e86ab;
-    font-weight: bold;
-        }
-        
-        .department-box p {
-           font-size: 1rem; /* Larger descriptions */
-    color: #666;
-    line-height: 1.4;
-        }
-        
-        @media (max-width: 480px) {
-            .departments-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .department-box {
-                padding: 15px 10px;
-                min-height: 110px;
-            }
-            
-            .department-icon {
-            font-size: 2.5rem; /* Larger icons */
-    margin-bottom: 12px;
-            }
-            
-            .department-box h3 {
-                font-size: 0.9rem;
-            }
-            
-            .department-box p {
-               font-size: 1rem; /* Larger descriptions */
-    color: #666;
-    line-height: 1.4;
-            }
-            
-            .header h1 {
-                font-size: 1.5rem;
-            }
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin: 40px 0;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>🏥 Welcome to MES Medical College Hospital</h1>
-        <p>Select your destination below</p>
+        <p>Type your destination below or scroll for all departments</p>
     </div>
 
-    <div class="departments-grid">
-        <div class="department-box" onclick="showDirections('pharmacy')">
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchInput" placeholder="🔍 Type department name (e.g., OPD, ICU, Lab)...">
+        <div class="search-hint">Type to filter departments. Examples: "OPD", "ICU", "Lab", "Cardio"</div>
+    </div>
+
+    <div id="noResults" class="no-results">
+        No departments found. Try different keywords.
+    </div>
+
+    <div class="departments-grid" id="departmentsGrid">
+        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store">
             <div class="department-icon">💊</div>
             <h3>Pharmacy</h3>
             <p>Get your medicines here</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('radiology')">
+        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
             <div class="department-icon">📋</div>
             <h3>Radiology</h3>
             <p>Xray & Scanning</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('Lab')">
+        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
             <div class="department-icon">🔬</div>
             <h3>Laboratory</h3>
-            <p>Blood Tests & Diagnosis</p>
+            <p>Blood tests & reports</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('cardiology')">
+        <div class="department-box" data-name="cardiology" data-keywords="cardiology heart cardio cardiac">
             <div class="department-icon">❤️</div>
             <h3>Cardiology</h3>
-            <p>Outpatient Dept</p>
+            <p>Heart care & OPD</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('ortho')">
+        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
             <div class="department-icon">🦴</div>
-            <h3>Orthopaedics</h3>
-            <p>Tests & Reports</p>
+            <h3>Orthopedics</h3>
+            <p>Bone & joint care</p>
         </div>
 
-        <div class="department-box" onclick="showDirections('Pediatrics')">
+        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children baby infant">
             <div class="department-icon">👶</div>
             <h3>Pediatrics</h3>
-            <p>OPD</p>
+            <p>Child care OPD</p>
         </div>
-                <div class="department-box" onclick="showDirections('ophthal')">
+
+        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
-            <p>OPD</p>
+            <p>Eye care OPD</p>
         </div>
-            <div class="department-box" onclick="showDirections('Dental')">
+
+        <div class="department-box" data-name="dental" data-keywords="dental dentist teeth tooth oral">
             <div class="department-icon">🦷</div>
             <h3>Dental</h3>
-            <p>OPD</p>
+            <p>Dental care OPD</p>
         </div>
-          <div class="department-box" onclick="showDirections('Neurology')">
+
+        <div class="department-box" data-name="neurology" data-keywords="neurology brain nerve neuro">
             <div class="department-icon">🧠</div>
             <h3>Neurology</h3>
-            <p>OPD</p>
+            <p>Brain & nerve care</p>
         </div>
-                <div class="department-box" onclick="showDirections('Cafeteria')">
+
+        <div class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea">
             <div class="department-icon">☕</div>
             <h3>Cafeteria</h3>
-            <p>Refreshment</p>
+            <p>Food & refreshments</p>
         </div>
-        <script>
+
+        <!-- Add more departments with keywords as needed -->
+    </div>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const departmentsGrid = document.getElementById('departmentsGrid');
+        const noResults = document.getElementById('noResults');
+        const departmentBoxes = document.querySelectorAll('.department-box');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            departmentBoxes.forEach(box => {
+                const departmentName = box.getAttribute('data-name').toLowerCase();
+                const keywords = box.getAttribute('data-keywords').toLowerCase();
+                
+                if (searchTerm === '' || 
+                    departmentName.includes(searchTerm) || 
+                    keywords.includes(searchTerm)) {
+                    box.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    box.classList.add('hidden');
+                }
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0 && searchTerm !== '') {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        });
+
+        // Clear search when clicking on a department (optional)
+        departmentBoxes.forEach(box => {
+            box.addEventListener('click', function() {
+                searchInput.value = '';
+                departmentBoxes.forEach(b => b.classList.remove('hidden'));
+                noResults.style.display = 'none';
+            });
+        });
+
+        // Your existing navigation function
         function showDirections(department) {
-    if (department === 'pharmacy') {
-        window.location.href = 'pharmacy.html';
-    } else if (department === 'radiology') {
-        window.location.href = 'radiology.html';
-    } else if (department === 'cardiology') {
-        window.location.href = 'cardiology.html';
-    } else if (department === 'Lab') {
-        window.location.href = 'Lab.html';
-    } else if (department === 'ortho') {
-        window.location.href = 'ortho.html';
-    } else if (department === 'ophthal') {
-        window.location.href = 'ophthal.html';
-    } else {
-        alert('Directions for ' + department + ' coming soon!');
-    }
-}
+            if (department === 'pharmacy') {
+                window.location.href = 'pharmacy.html';
+            } else if (department === 'radiology') {
+                window.location.href = 'radiology.html';
+            } else if (department === 'cardiology') {
+                window.location.href = 'cardiology.html';
+            } else if (department === 'lab') {
+                window.location.href = 'lab.html';
+            } else if (department === 'ortho') {
+                window.location.href = 'ortho.html';
+            } else if (department === 'pediatrics') {
+                window.location.href = 'pediatrics.html';
+            } else if (department === 'ophthalmology') {
+                window.location.href = 'ophthalmology.html';
+            } else if (department === 'dental') {
+                window.location.href = 'dental.html';
+            } else if (department === 'neurology') {
+                window.location.href = 'neurology.html';
+            } else if (department === 'cafeteria') {
+                window.location.href = 'cafeteria.html';
+            } else {
+                alert('Directions for ' + department + ' coming soon!');
+            }
+        }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
