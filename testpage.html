@@ -11,27 +11,6 @@
             padding: 0;
         }
         
-        :root {
-            --primary-color: #dc3545;
-            --secondary-color: #0056b3;
-            --background-color: #ffffff;
-            --text-color: #333333;
-            --border-color: #e9ecef;
-            --success-color: #28a745;
-        }
-        
-        .high-contrast {
-            --primary-color: #ff0000;
-            --secondary-color: #0000ff;
-            --background-color: #000000;
-            --text-color: #ffffff;
-            --border-color: #ffffff;
-        }
-        
-        .large-text {
-            font-size: 1.2em;
-        }
-        
         body {
             font-family: Arial, sans-serif;
             max-width: 100%;
@@ -39,9 +18,7 @@
             padding: 15px;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            transition: all 0.3s ease;
+            color: #333333;
         }
         
         /* Header with logo and title */
@@ -52,8 +29,7 @@
             border-radius: 15px;
             margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
-            border: 2px solid var(--primary-color);
-            background-color: var(--background-color);
+            border: 2px solid #dc3545;
         }
         
         .logo-container {
@@ -75,7 +51,7 @@
         .hospital-info h1 {
             font-size: 2rem;
             margin-bottom: 10px;
-            color: var(--primary-color);
+            color: #dc3545;
             font-weight: bold;
         }
         
@@ -83,30 +59,6 @@
             font-size: 1.2rem;
             color: #666;
             font-weight: 500;
-        }
-        
-        /* Accessibility Controls */
-        .accessibility-controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .accessibility-btn {
-            padding: 8px 15px;
-            background: white;
-            border: 1px solid var(--primary-color);
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .accessibility-btn.active {
-            background: var(--primary-color);
-            color: white;
         }
         
         /* Language Selector */
@@ -119,14 +71,56 @@
             padding: 8px 15px;
             margin: 0 5px;
             background: white;
-            border: 1px solid var(--primary-color);
+            border: 1px solid #dc3545;
             border-radius: 20px;
             cursor: pointer;
         }
         
         .language-btn.active {
-            background: var(--primary-color);
+            background: #dc3545;
             color: white;
+        }
+        
+        /* Emergency Info Section */
+        .emergency-info {
+            background: #fff5f5;
+            border: 2px solid #dc3545;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .emergency-info h2 {
+            color: #dc3545;
+            margin-bottom: 15px;
+        }
+        
+        .emergency-contacts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .emergency-contact {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .emergency-contact h4 {
+            color: #dc3545;
+            margin-bottom: 8px;
+        }
+        
+        .emergency-location {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
         }
         
         /* Search Section */
@@ -143,13 +137,11 @@
             max-width: 400px;
             padding: 15px 20px;
             font-size: 1.2rem;
-            border: 2px solid var(--primary-color);
+            border: 2px solid #dc3545;
             border-radius: 25px;
             outline: none;
             box-shadow: 0 2px 10px rgba(220, 53, 69, 0.1);
             text-align: center;
-            background-color: var(--background-color);
-            color: var(--text-color);
         }
         
         .search-box:focus {
@@ -180,7 +172,7 @@
             text-align: center;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             cursor: pointer;
-            border: 2px solid var(--border-color);
+            border: 2px solid #e9ecef;
             transition: all 0.3s ease;
             min-height: 120px;
             display: flex;
@@ -188,13 +180,12 @@
             justify-content: center;
             align-items: center;
             touch-action: manipulation;
-            background-color: var(--background-color);
         }
         
         .department-box:active {
             transform: scale(0.95);
             background-color: #fff5f5;
-            border-color: var(--primary-color);
+            border-color: #dc3545;
         }
         
         .department-icon {
@@ -205,7 +196,7 @@
         .department-box h3 {
             font-size: 1rem;
             margin-bottom: 5px;
-            color: var(--primary-color);
+            color: #dc3545;
             font-weight: bold;
         }
         
@@ -228,41 +219,12 @@
             display: none;
         }
         
-        /* Emergency Contacts */
-        .emergency-section {
-            background: #fff5f5;
-            border: 2px solid var(--primary-color);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: center;
-        }
-        
-        .emergency-section h2 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .emergency-contacts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .emergency-contact {
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--primary-color);
+            background: #dc3545;
             color: white;
             width: 50px;
             height: 50px;
@@ -274,32 +236,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             font-size: 1.5rem;
-        }
-        
-        /* Quick Actions */
-        .quick-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .quick-action-btn {
-            padding: 12px 20px;
-            background: white;
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .quick-action-btn:hover {
-            background: var(--primary-color);
-            color: white;
         }
         
         /* Responsive adjustments */
@@ -394,12 +330,6 @@
         </div>
     </div>
 
-    <!-- Accessibility Controls -->
-    <div class="accessibility-controls">
-        <button class="accessibility-btn" id="highContrastBtn">High Contrast</button>
-        <button class="accessibility-btn" id="largeTextBtn">Large Text</button>
-    </div>
-
     <!-- Language Selector -->
     <div class="language-selector">
         <button class="language-btn active" data-lang="en">English</button>
@@ -408,14 +338,34 @@
         <button class="language-btn" data-lang="ar">Arabic</button>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <button class="quick-action-btn" onclick="showEmergencyContacts()">
-            <span>🚑</span> Emergency
-        </button>
-        <button class="quick-action-btn" onclick="showHospitalInfo()">
-            <span>🏥</span> Hospital Info
-        </button>
+    <!-- Emergency Information Section -->
+    <div class="emergency-info">
+        <h2>🚨 Emergency Department</h2>
+        <p><strong>24/7 Emergency Services Available</strong></p>
+        
+        <div class="emergency-contacts">
+            <div class="emergency-contact">
+                <h4>Emergency Desk</h4>
+                <p>📞 +91-123-4567890</p>
+            </div>
+            <div class="emergency-contact">
+                <h4>Ambulance</h4>
+                <p>📞 108 / +91-123-4567891</p>
+            </div>
+            <div class="emergency-contact">
+                <h4>Emergency Doctor</h4>
+                <p>📞 +91-123-4567892</p>
+            </div>
+        </div>
+        
+        <div class="emergency-location">
+            <h4>📍 Location</h4>
+            <p><strong>Ground Floor, Main Building</strong></p>
+            <p>Follow the red emergency signs from main entrance</p>
+            <button onclick="showDirections('emergency')" style="margin-top: 10px; padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 20px; cursor: pointer;">
+                Get Directions to Emergency
+            </button>
+        </div>
     </div>
 
     <!-- Search Section -->
@@ -526,46 +476,8 @@
             <p>Payment & Finance</p>
         </div>
 
-        <div class="department-box" data-name="emergency" data-keywords="emergency urgent trauma accident emergency room er" onclick="showDirections('emergency')">
-            <div class="department-icon">🚑</div>
-            <h3>Emergency</h3>
-            <p>Emergency Care</p>
-        </div>
-
-        <!-- Continue with all other departments from your original list -->
-        <!-- Make sure each has data-name and data-keywords attributes -->
-
-    </div>
-
-    <!-- Emergency Contacts Section -->
-    <div class="emergency-section" id="emergencySection" style="display: none;">
-        <h2>🚨 Emergency Contacts</h2>
-        <div class="emergency-contacts">
-            <div class="emergency-contact">
-                <h4>Emergency Department</h4>
-                <p>📞 +91-XXX-XXXXXXX</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Ambulance</h4>
-                <p>📞 108 / +91-XXX-XXXXXXX</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Police</h4>
-                <p>📞 100</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Fire Department</h4>
-                <p>📞 101</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Blood Bank</h4>
-                <p>📞 +91-XXX-XXXXXXX</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Poison Control</h4>
-                <p>📞 +91-XXX-XXXXXXX</p>
-            </div>
-        </div>
+        <!-- Add all other departments from your original list here -->
+        
     </div>
 
     <!-- Back to Top Button -->
@@ -580,9 +492,15 @@
                 searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
                 searchHint: "Type to filter departments",
                 noResults: "No departments found. Try different keywords.",
-                emergency: "Emergency",
-                hospitalInfo: "Hospital Info",
-                emergencyContacts: "🚨 Emergency Contacts"
+                emergencyTitle: "🚨 Emergency Department",
+                emergencyAvailable: "24/7 Emergency Services Available",
+                emergencyDesk: "Emergency Desk",
+                ambulance: "Ambulance",
+                emergencyDoctor: "Emergency Doctor",
+                location: "📍 Location",
+                groundFloor: "Ground Floor, Main Building",
+                followSigns: "Follow the red emergency signs from main entrance",
+                getDirections: "Get Directions to Emergency"
             },
             hi: {
                 title: "वे फाइंडर नेविगेशन सिस्टम",
@@ -590,9 +508,15 @@
                 searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
                 searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
                 noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
-                emergency: "आपातकाल",
-                hospitalInfo: "अस्पताल की जानकारी",
-                emergencyContacts: "🚨 आपातकालीन संपर्क"
+                emergencyTitle: "🚨 आपातकालीन विभाग",
+                emergencyAvailable: "24/7 आपातकालीन सेवाएं उपलब्ध",
+                emergencyDesk: "आपातकालीन डेस्क",
+                ambulance: "एम्बुलेंस",
+                emergencyDoctor: "आपातकालीन डॉक्टर",
+                location: "📍 स्थान",
+                groundFloor: "ग्राउंड फ्लोर, मुख्य भवन",
+                followSigns: "मुख्य प्रवेश द्वार से लाल आपातकालीन संकेतों का पालन करें",
+                getDirections: "आपातकालीन विभाग का रास्ता देखें"
             },
             ml: {
                 title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
@@ -600,9 +524,15 @@
                 searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
                 searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
                 noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
-                emergency: "അടിയന്തിര",
-                hospitalInfo: "ആശുപത്രി വിവരം",
-                emergencyContacts: "🚨 അടിയന്തിര കോൺ‌ടാക്റ്റുകൾ"
+                emergencyTitle: "🚨 അടിയന്തര വിഭാഗം",
+                emergencyAvailable: "24/7 അടിയന്തര സേവനങ്ങൾ ലഭ്യമാണ്",
+                emergencyDesk: "അടിയന്തര ഡെസ്ക്",
+                ambulance: "ആംബുലൻസ്",
+                emergencyDoctor: "അടിയന്തര ഡോക്ടർ",
+                location: "📍 സ്ഥാനം",
+                groundFloor: "ഗ്രൗണ്ട് ഫ്ലോർ, പ്രധാന കെട്ടിടം",
+                followSigns: "പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന് ചുവന്ന അടിയന്തര അടയാളങ്ങൾ പിന്തുടരുക",
+                getDirections: "അടിയന്തര വിഭാഗത്തിലേക്കുള്ള വഴി കാണിക്കുക"
             },
             ar: {
                 title: "نظام الملاحة للعثور على الطريق",
@@ -610,9 +540,15 @@
                 searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
                 searchHint: "اكتب لتصفية الأقسام",
                 noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
-                emergency: "طوارئ",
-                hospitalInfo: "معلومات المستشفى",
-                emergencyContacts: "🚨 جهات اتصال الطوارئ"
+                emergencyTitle: "🚨 قسم الطوارئ",
+                emergencyAvailable: "خدمات الطوارئ متاحة 24/7",
+                emergencyDesk: "مكتب الطوارئ",
+                ambulance: "سيارة إسعاف",
+                emergencyDoctor: "طبيب الطوارئ",
+                location: "📍 الموقع",
+                groundFloor: "الطابق الأرضي، المبنى الرئيسي",
+                followSigns: "اتبع علامات الطوارئ الحمراء من المدخل الرئيسي",
+                getDirections: "الحصول على اتجاهات إلى الطوارئ"
             }
         };
 
@@ -621,27 +557,10 @@
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
-            initializeAccessibility();
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
         });
-
-        // Accessibility Features
-        function initializeAccessibility() {
-            const highContrastBtn = document.getElementById('highContrastBtn');
-            const largeTextBtn = document.getElementById('largeTextBtn');
-
-            highContrastBtn.addEventListener('click', function() {
-                document.body.classList.toggle('high-contrast');
-                this.classList.toggle('active');
-            });
-
-            largeTextBtn.addEventListener('click', function() {
-                document.body.classList.toggle('large-text');
-                this.classList.toggle('active');
-            });
-        }
 
         // Language Support
         function initializeLanguage() {
@@ -668,11 +587,16 @@
             document.querySelector('.search-hint').textContent = t.searchHint;
             document.getElementById('noResults').textContent = t.noResults;
             
-            // Update quick action buttons
-            document.querySelectorAll('.quick-action-btn')[0].innerHTML = `<span>🚑</span> ${t.emergency}`;
-            document.querySelectorAll('.quick-action-btn')[1].innerHTML = `<span>🏥</span> ${t.hospitalInfo}`;
-            
-            document.querySelector('.emergency-section h2').textContent = t.emergencyContacts;
+            // Update emergency section
+            document.querySelector('.emergency-info h2').textContent = t.emergencyTitle;
+            document.querySelector('.emergency-info p strong').textContent = t.emergencyAvailable;
+            document.querySelectorAll('.emergency-contact h4')[0].textContent = t.emergencyDesk;
+            document.querySelectorAll('.emergency-contact h4')[1].textContent = t.ambulance;
+            document.querySelectorAll('.emergency-contact h4')[2].textContent = t.emergencyDoctor;
+            document.querySelector('.emergency-location h4').textContent = t.location;
+            document.querySelector('.emergency-location p strong').textContent = t.groundFloor;
+            document.querySelector('.emergency-location p:last-child').textContent = t.followSigns;
+            document.querySelector('.emergency-location button').textContent = t.getDirections;
         }
 
         // Back to Top Button
@@ -692,7 +616,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Search Functionality - FIXED
+        // Search Functionality
         function initializeSearch() {
             const searchInput = document.getElementById('searchInput');
             const noResults = document.getElementById('noResults');
@@ -736,17 +660,6 @@
             });
         }
 
-        // Emergency Contacts
-        function showEmergencyContacts() {
-            const emergencySection = document.getElementById('emergencySection');
-            emergencySection.style.display = emergencySection.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Hospital Information
-        function showHospitalInfo() {
-            alert('Hospital Information:\n\nMES Medical College Hospital\n24/7 Emergency Services\nMulti-specialty Healthcare\nAccredited Hospital\nContact: +91-XXX-XXXXXXX');
-        }
-
         // Navigation function
         function showDirections(department) {
             if (department === 'pharmacy') {
@@ -761,6 +674,8 @@
                 window.location.href = 'ortho.html';
             } else if (department === 'ophthal') {
                 window.location.href = 'ophthal.html';
+            } else if (department === 'emergency') {
+                alert('Emergency Department Directions:\n\n📍 Ground Floor, Main Building\n🚨 Follow red emergency signs\n📞 Call: +91-123-4567890\n\nProceed straight from main entrance, turn left at the reception, follow the red line on the floor.');
             } else {
                 alert('Directions for ' + department + ' coming soon!');
             }
