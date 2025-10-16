@@ -81,48 +81,6 @@
             color: white;
         }
         
-        /* Emergency Info Section */
-        .emergency-info {
-            background: #fff5f5;
-            border: 2px solid #dc3545;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .emergency-info h2 {
-            color: #dc3545;
-            margin-bottom: 15px;
-        }
-        
-        .emergency-contacts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .emergency-contact {
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            border-left: 4px solid #dc3545;
-        }
-        
-        .emergency-contact h4 {
-            color: #dc3545;
-            margin-bottom: 8px;
-        }
-        
-        .emergency-location {
-            margin-top: 15px;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            border-left: 4px solid #28a745;
-        }
-        
         /* Search Section */
         .search-container {
             margin: 20px 0;
@@ -273,10 +231,6 @@
             .hospital-logo {
                 max-width: 250px;
             }
-            
-            .emergency-contacts {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (min-width: 768px) {
@@ -299,10 +253,6 @@
             
             .hospital-subtitle {
                 font-size: 1.3rem;
-            }
-            
-            .emergency-contacts {
-                grid-template-columns: repeat(3, 1fr);
             }
         }
         
@@ -336,36 +286,6 @@
         <button class="language-btn" data-lang="hi">Hindi</button>
         <button class="language-btn" data-lang="ml">Malayalam</button>
         <button class="language-btn" data-lang="ar">Arabic</button>
-    </div>
-
-    <!-- Emergency Information Section -->
-    <div class="emergency-info">
-        <h2>🚨 Emergency Department</h2>
-        <p><strong>24/7 Emergency Services Available</strong></p>
-        
-        <div class="emergency-contacts">
-            <div class="emergency-contact">
-                <h4>Emergency Desk</h4>
-                <p>📞 8552</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Ambulance</h4>
-                <p>📞 108 / +91-4933-298300</p>
-            </div>
-            <div class="emergency-contact">
-                <h4>Emergency Doctor</h4>
-                <p>📞 8424</p>
-            </div>
-        </div>
-        
-        <div class="emergency-location">
-            <h4>📍 Location</h4>
-            <p><strong>Ground Floor, Main Building</strong></p>
-            <p>Emergency Department is just right side from Main Entrance</p>
-            <button onclick="showDirections('emergency')" style="margin-top: 10px; padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 20px; cursor: pointer;">
-                Get Directions to Emergency
-            </button>
-        </div>
     </div>
 
     <!-- Search Section -->
@@ -410,13 +330,11 @@
             <p>Bone & joint care</p>
         </div>
 
-             <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical" onclick="showDirections('ophthal')">
+        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical" onclick="showDirections('ophthal')">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
             <p>Eye care OPD</p>
         </div>
-
-    
 
         <!-- Add all other departments from your original list here -->
         
@@ -433,64 +351,28 @@
                 subtitle: "Find your way easily",
                 searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
                 searchHint: "Type to filter departments",
-                noResults: "No departments found. Try different keywords.",
-                emergencyTitle: "🚨 Emergency Department",
-                emergencyAvailable: "24/7 Emergency Services Available",
-                emergencyDesk: "Emergency Desk",
-                ambulance: "Ambulance",
-                emergencyDoctor: "Emergency Doctor",
-                location: "📍 Location",
-                groundFloor: "Ground Floor, Main Building",
-                followSigns: "Emergency Department is just right side from Main Entrance",
-                getDirections: "Get Directions to Emergency"
+                noResults: "No departments found. Try different keywords."
             },
             hi: {
                 title: "वे फाइंडर नेविगेशन सिस्टम",
                 subtitle: "आसानी से अपना रास्ता खोजें",
                 searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
                 searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
-                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
-                emergencyTitle: "🚨 आपातकालीन विभाग",
-                emergencyAvailable: "24/7 आपातकालीन सेवाएं उपलब्ध",
-                emergencyDesk: "आपातकालीन डेस्क",
-                ambulance: "एम्बुलेंस",
-                emergencyDoctor: "आपातकालीन डॉक्टर",
-                location: "📍 स्थान",
-                groundFloor: "ग्राउंड फ्लोर, मुख्य भवन",
-                followSigns: "आपातकालीन विभाग मुख्य द्वार से ठीक दायीं ओर है।।",
-                getDirections: "आपातकालीन विभाग का रास्ता देखें"
+                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।"
             },
             ml: {
                 title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
                 subtitle: "എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക",
                 searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
                 searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
-                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
-                emergencyTitle: "🚨 അടിയന്തര വിഭാഗം",
-                emergencyAvailable: "24/7 അടിയന്തര സേവനങ്ങൾ ലഭ്യമാണ്",
-                emergencyDesk: "അടിയന്തര ഡെസ്ക്",
-                ambulance: "ആംബുലൻസ്",
-                emergencyDoctor: "അടിയന്തര ഡോക്ടർ",
-                location: "📍 സ്ഥാനം",
-                groundFloor: "ഗ്രൗണ്ട് ഫ്ലോർ, പ്രധാന കെട്ടിടം",
-                followSigns: "അടിയന്തിര വിഭാഗം പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന് വലതുവശത്താണ്.",
-                getDirections: "അടിയന്തര വിഭാഗത്തിലേക്കുള്ള വഴി കാണിക്കുക"
+                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക."
             },
             ar: {
                 title: "نظام الملاحة للعثور على الطريق",
                 subtitle: "ابحث عن طريقك بسهولة",
                 searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
                 searchHint: "اكتب لتصفية الأقسام",
-                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
-                emergencyTitle: "🚨 قسم الطوارئ",
-                emergencyAvailable: "خدمات الطوارئ متاحة 24/7",
-                emergencyDesk: "مكتب الطوارئ",
-                ambulance: "سيارة إسعاف",
-                emergencyDoctor: "طبيب الطوارئ",
-                location: "📍 الموقع",
-                groundFloor: "الطابق الأرضي، المبنى الرئيسي",
-                followSigns: "قسم الطوارئ يقع على الجانب الأيمن مباشرة من المدخل الرئيسي",
-                getDirections: "الحصول على اتجاهات إلى الطوارئ"
+                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة."
             }
         };
 
@@ -528,17 +410,6 @@
             document.getElementById('searchInput').placeholder = t.searchPlaceholder;
             document.querySelector('.search-hint').textContent = t.searchHint;
             document.getElementById('noResults').textContent = t.noResults;
-            
-            // Update emergency section
-            document.querySelector('.emergency-info h2').textContent = t.emergencyTitle;
-            document.querySelector('.emergency-info p strong').textContent = t.emergencyAvailable;
-            document.querySelectorAll('.emergency-contact h4')[0].textContent = t.emergencyDesk;
-            document.querySelectorAll('.emergency-contact h4')[1].textContent = t.ambulance;
-            document.querySelectorAll('.emergency-contact h4')[2].textContent = t.emergencyDoctor;
-            document.querySelector('.emergency-location h4').textContent = t.location;
-            document.querySelector('.emergency-location p strong').textContent = t.groundFloor;
-            document.querySelector('.emergency-location p:last-child').textContent = t.followSigns;
-            document.querySelector('.emergency-location button').textContent = t.getDirections;
         }
 
         // Back to Top Button
@@ -616,8 +487,6 @@
                 window.location.href = 'ortho.html';
             } else if (department === 'ophthal') {
                 window.location.href = 'ophthal.html';
-            } else if (department === 'emergency') {
-                alert('Emergency Department Directions:\n\n📍 Ground Floor, Main Building\n🚨 Emergency Department is at the right side of the Main Entrance\n📞 Call: +91-4933-298300 & 350300 \n\nProceed towards right side from the Main Door Entry on Ground Floor.');
             } else {
                 alert('Directions for ' + department + ' coming soon!');
             }
