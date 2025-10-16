@@ -4,8 +4,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     <style>
-        /* Previous CSS styles remain the same */
-        /* Add hit counter styles at the end */
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            line-height: 1.6;
+            color: #333333;
+        }
+        
+        /* Header with logo and title */
+        .header {
+            text-align: center;
+            background: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+            border: 2px solid #dc3545;
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        
+        .hospital-logo {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .hospital-info {
+            text-align: center;
+        }
+        
+        .hospital-info h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .hospital-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .language-btn {
+            padding: 8px 15px;
+            margin: 0 5px;
+            background: white;
+            border: 1px solid #dc3545;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .language-btn.active {
+            background: #dc3545;
+            color: white;
+        }
+        
+        /* Search Section */
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 2px solid #dc3545;
+            border-radius: 25px;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(220, 53, 69, 0.1);
+            text-align: center;
+        }
+        
+        .search-box:focus {
+            border-color: #c82333;
+            box-shadow: 0 2px 15px rgba(220, 53, 69, 0.3);
+        }
+        
+        .search-hint {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        /* Grid Layout */
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .department-box {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            touch-action: manipulation;
+        }
+        
+        .department-box:active {
+            transform: scale(0.95);
+            background-color: #fff5f5;
+            border-color: #dc3545;
+        }
+        
+        .department-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .department-box h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .department-box p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.3;
+        }
+        
+        /* Search functionality styles */
+        .department-box.hidden {
+            display: none;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin: 40px 0;
+            display: none;
+        }
         
         /* Hit Counter Section */
         .hit-counter {
@@ -29,6 +199,7 @@
             font-weight: bold;
             color: #dc3545;
             margin: 10px 0;
+            transition: transform 0.3s ease;
         }
         
         .counter-label {
@@ -37,8 +208,61 @@
             margin-top: 5px;
         }
         
-        /* Responsive adjustments for hit counter */
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #dc3545;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive adjustments */
         @media (max-width: 480px) {
+            .departments-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .department-box {
+                padding: 15px 10px;
+                min-height: 110px;
+            }
+            
+            .department-icon {
+                font-size: 1.8rem;
+            }
+            
+            .department-box h3 {
+                font-size: 0.9rem;
+            }
+            
+            .department-box p {
+                font-size: 0.8rem;
+            }
+            
+            .hospital-info h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hospital-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hospital-logo {
+                max-width: 250px;
+            }
+            
             .counter-number {
                 font-size: 2rem;
             }
@@ -47,12 +271,115 @@
                 font-size: 1.1rem;
             }
         }
+        
+        @media (min-width: 768px) {
+            .departments-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            body {
+                max-width: 1200px;
+            }
+            
+            .hospital-logo {
+                max-width: 350px;
+            }
+            
+            .hospital-info h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hospital-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hospital-logo {
+                max-width: 400px;
+            }
+            
+            .departments-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Your existing header, language selector, search, and departments grid -->
-    
-    <!-- Hit Counter Section - Add this before the back-to-top button -->
+    <!-- Header with Hospital Logo -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        </div>
+        
+        <div class="hospital-info">
+            <h1>Way Finder Navigation System</h1>
+            <div class="hospital-subtitle">Find your way easily</div>
+        </div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="language-btn active" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">Hindi</button>
+        <button class="language-btn" data-lang="ml">Malayalam</button>
+        <button class="language-btn" data-lang="ar">Arabic</button>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" class="search-box" id="searchInput" placeholder="🔍 Type department name (e.g., OPD, ICU, Lab)...">
+        <div class="search-hint">Type to filter departments</div>
+    </div>
+
+    <div id="noResults" class="no-results">
+        No departments found. Try different keywords.
+    </div>
+
+    <!-- Departments Grid -->
+    <div class="departments-grid" id="departmentsGrid">
+        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store">
+            <div class="department-icon">💊</div>
+            <h3>Pharmacy</h3>
+            <p>Get your medicines here</p>
+        </div>
+
+        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
+            <div class="department-icon">📋</div>
+            <h3>Radiology</h3>
+            <p>Xray & Scanning</p>
+        </div>
+
+        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
+            <div class="department-icon">🔬</div>
+            <h3>Laboratory</h3>
+            <p>Blood tests & reports</p>
+        </div>
+
+        <div class="department-box" data-name="cardiology" data-keywords="cardiology heart cardio cardiac">
+            <div class="department-icon">❤️</div>
+            <h3>Cardiology</h3>
+            <p>Heart care & OPD</p>
+        </div>
+
+        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
+            <div class="department-icon">🦴</div>
+            <h3>Orthopedics</h3>
+            <p>Bone & joint care</p>
+        </div>
+
+        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
+            <div class="department-icon">👁️</div>
+            <h3>Ophthalmology</h3>
+            <p>Eye care OPD</p>
+        </div>
+
+        <!-- Add all other departments from your original list here -->
+        
+    </div>
+
+    <!-- Hit Counter Section -->
     <div class="hit-counter">
         <h3>Wayfinder Usage Statistics</h3>
         <div class="counter-number" id="visitCount">0</div>
@@ -63,8 +390,158 @@
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        // Add hit counter functionality to your existing script
-        
+        // Language support with department translations
+        const translations = {
+            en: {
+                title: "Way Finder Navigation System",
+                subtitle: "Find your way easily",
+                searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
+                searchHint: "Type to filter departments",
+                noResults: "No departments found. Try different keywords.",
+                hitCounterTitle: "Wayfinder Usage Statistics",
+                hitCounterLabel: "People helped find their way",
+                departments: {
+                    pharmacy: { name: "Pharmacy", description: "Get your medicines here" },
+                    radiology: { name: "Radiology", description: "Xray & Scanning" },
+                    lab: { name: "Laboratory", description: "Blood tests & reports" },
+                    cardiology: { name: "Cardiology", description: "Heart care & OPD" },
+                    ortho: { name: "Orthopedics", description: "Bone & joint care" },
+                    ophthalmology: { name: "Ophthalmology", description: "Eye care OPD" }
+                    // Add translations for all other departments here
+                }
+            },
+            hi: {
+                title: "वे फाइंडर नेविगेशन सिस्टम",
+                subtitle: "आसानी से अपना रास्ता खोजें",
+                searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
+                searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
+                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
+                hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
+                hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली",
+                departments: {
+                    pharmacy: { name: "फार्मेसी", description: "यहां से दवाएं प्राप्त करें" },
+                    radiology: { name: "रेडियोलॉजी", description: "एक्सरे और स्कैनिंग" },
+                    lab: { name: "प्रयोगशाला", description: "रक्त परीक्षण और रिपोर्ट" },
+                    cardiology: { name: "कार्डियोलॉजी", description: "हृदय देखभाल और ओपीडी" },
+                    ortho: { name: "ऑर्थोपेडिक्स", description: "हड्डी और जोड़ देखभाल" },
+                    ophthalmology: { name: "नेत्र विज्ञान", description: "आंखों की देखभाल ओपीडी" }
+                }
+            },
+            ml: {
+                title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
+                subtitle: "എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക",
+                searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
+                searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
+                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
+                hitCounterTitle: "വേഫൈൻഡർ ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ",
+                hitCounterLabel: "ആളുകൾക്ക് അവരുടെ വഴി കണ്ടെത്താൻ സഹായിക്കപ്പെട്ടു",
+                departments: {
+                    pharmacy: { name: "ഫാർമസി", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
+                    radiology: { name: "റേഡിയോളജി", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
+                    lab: { name: "ലബോറട്ടറി", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
+                    cardiology: { name: "കാർഡിയോളജി", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
+                    ortho: { name: "ഓർത്തോപീഡിക്സ്", description: "അസ്ഥി, സന്ധി പരിചരണം" },
+                    ophthalmology: { name: "ഓഫ്താൽമോളജി", description: "കണ്ണ് പരിചരണം ഓപിഡി" }
+                }
+            },
+            ar: {
+                title: "نظام الملاحة للعثور على الطريق",
+                subtitle: "ابحث عن طريقك بسهولة",
+                searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
+                searchHint: "اكتب لتصفية الأقسام",
+                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
+                hitCounterTitle: "إحصائيات استخدام Wayfinder",
+                hitCounterLabel: "تم مساعدة الأشخاص في العثور على طريقهم",
+                departments: {
+                    pharmacy: { name: "الصيدلية", description: "احصل على أدويتك هنا" },
+                    radiology: { name: "الأشعة", description: "الأشعة السينية والمسح" },
+                    lab: { name: "المختبر", description: "اختبارات الدم والتقارير" },
+                    cardiology: { name: "طب القلب", description: "رعاية القلب والعيادات الخارجية" },
+                    ortho: { name: "العظام", description: "رعاية العظام والمفاصل" },
+                    ophthalmology: { name: "طب العيون", description: "رعاية العيون والعيادات الخارجية" }
+                }
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLanguage();
+            initializeSearch();
+            initializeBackToTop();
+            initializeHitCounter();
+        });
+
+        // Language Support
+        function initializeLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageBtns = document.querySelectorAll('.language-btn');
+            
+            // Set active button
+            languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                    
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Apply saved language
+            changeLanguage(savedLanguage);
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            // Save language to localStorage
+            localStorage.setItem('selectedLanguage', lang);
+            const t = translations[lang];
+            
+            // Update interface text
+            document.querySelector('.hospital-info h1').textContent = t.title;
+            document.querySelector('.hospital-subtitle').textContent = t.subtitle;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.querySelector('.search-hint').textContent = t.searchHint;
+            document.getElementById('noResults').textContent = t.noResults;
+            
+            // Update hit counter text
+            document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
+            document.querySelector('.counter-label').textContent = t.hitCounterLabel;
+            
+            // Update department names and descriptions
+            updateDepartmentTranslations(t.departments);
+        }
+
+        function updateDepartmentTranslations(departmentTranslations) {
+            const departmentBoxes = document.querySelectorAll('.department-box');
+            
+            departmentBoxes.forEach(box => {
+                const departmentName = box.getAttribute('data-name');
+                const translation = departmentTranslations[departmentName];
+                
+                if (translation) {
+                    const titleElement = box.querySelector('h3');
+                    const descriptionElement = box.querySelector('p');
+                    
+                    if (titleElement) {
+                        titleElement.textContent = translation.name;
+                    }
+                    if (descriptionElement) {
+                        descriptionElement.textContent = translation.description;
+                    }
+                }
+            });
+        }
+
         // Hit Counter Function
         function initializeHitCounter() {
             // Get current count from localStorage or initialize to 0
@@ -96,62 +573,90 @@
                 counterElement.style.transform = 'scale(1)';
             }, 300);
         }
-        
-        // Update your existing DOMContentLoaded function to include hit counter
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeLanguage();
-            initializeSearch();
-            initializeBackToTop();
-            initializeHitCounter(); // Add this line
-        });
 
-        // Add hit counter translations
-        const translations = {
-            en: {
-                // ... your existing English translations ...
-                hitCounterTitle: "Wayfinder Usage Statistics",
-                hitCounterLabel: "People helped find their way"
-            },
-            hi: {
-                // ... your existing Hindi translations ...
-                hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
-                hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली"
-            },
-            ml: {
-                // ... your existing Malayalam translations ...
-                hitCounterTitle: "വേഫൈൻഡർ ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ",
-                hitCounterLabel: "ആളുകൾക്ക് അവരുടെ വഴി കണ്ടെത്താൻ സഹായിക്കപ്പെട്ടു"
-            },
-            ar: {
-                // ... your existing Arabic translations ...
-                hitCounterTitle: "إحصائيات استخدام Wayfinder",
-                hitCounterLabel: "تم مساعدة الأشخاص في العثور على طريقهم"
-            }
-        };
-
-        // Update the changeLanguage function to include hit counter translations
-        function changeLanguage(lang) {
-            currentLang = lang;
-            // Save language to localStorage
-            localStorage.setItem('selectedLanguage', lang);
-            const t = translations[lang];
+        // Back to Top Button
+        function initializeBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
             
-            // Update interface text
-            document.querySelector('.hospital-info h1').textContent = t.title;
-            document.querySelector('.hospital-subtitle').textContent = t.subtitle;
-            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
-            document.querySelector('.search-hint').textContent = t.searchHint;
-            document.getElementById('noResults').textContent = t.noResults;
-            
-            // Update hit counter text
-            document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
-            document.querySelector('.counter-label').textContent = t.hitCounterLabel;
-            
-            // Update department names and descriptions
-            updateDepartmentTranslations(t.departments);
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
         }
 
-        // The rest of your existing JavaScript remains the same
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Search Functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            const departmentBoxes = document.querySelectorAll('.department-box');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                departmentBoxes.forEach(box => {
+                    const departmentName = box.getAttribute('data-name').toLowerCase();
+                    const keywords = box.getAttribute('data-keywords').toLowerCase();
+                    
+                    // Check if search term matches department name or any keyword
+                    const nameMatch = departmentName.includes(searchTerm);
+                    const keywordMatch = keywords.includes(searchTerm);
+                    
+                    if (searchTerm === '' || nameMatch || keywordMatch) {
+                        box.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        box.classList.add('hidden');
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+
+            // Clear search when clicking on a department
+            departmentBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    searchInput.value = '';
+                    departmentBoxes.forEach(b => b.classList.remove('hidden'));
+                    noResults.style.display = 'none';
+                    
+                    // Call showDirections with the department name
+                    const departmentName = this.getAttribute('data-name');
+                    showDirections(departmentName);
+                });
+            });
+        }
+
+        // Navigation function
+        function showDirections(department) {
+            if (department === 'pharmacy') {
+                window.location.href = 'pharmacy.html';
+            } else if (department === 'radiology') {
+                window.location.href = 'radiology.html';
+            } else if (department === 'cardiology') {
+                window.location.href = 'cardiology.html';
+            } else if (department === 'lab') {
+                window.location.href = 'Lab.html';
+            } else if (department === 'ortho') {
+                window.location.href = 'ortho.html';
+            } else if (department === 'ophthalmology') {
+                window.location.href = 'ophthal.html';
+            } else {
+                alert('Directions for ' + department + ' coming soon!');
+            }
+        }
     </script>
 </body>
 </html>
