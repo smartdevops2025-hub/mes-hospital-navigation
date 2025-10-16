@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Directions to Cardiology</title>
-   <style>
+    <style>
     /* Mobile-first responsive design */
     * {
         box-sizing: border-box;
@@ -17,13 +17,52 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 18px; /* Larger base font size */
+        font-size: 18px;
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    /* Language Selector */
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .language-btn {
+        padding: 8px 15px;
+        margin: 0 5px;
+        background: white;
+        border: 1px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
     }
     
     h1 {
         color: #2e86ab;
         text-align: center;
-        font-size: 2.2rem; /* Much larger heading */
+        font-size: 2.2rem;
         margin: 20px 0 30px 0;
         font-weight: bold;
     }
@@ -39,13 +78,13 @@
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.8rem; /* Larger step headings */
+        font-size: 1.8rem;
         margin-bottom: 20px;
         font-weight: bold;
     }
     
     .step p {
-        font-size: 1.4rem; /* Much larger description text */
+        font-size: 1.4rem;
         color: #333;
         margin-top: 15px;
         line-height: 1.5;
@@ -69,7 +108,7 @@
         border-radius: 10px;
         cursor: pointer;
         margin: 15px;
-        font-size: 1.3rem; /* Larger button text */
+        font-size: 1.3rem;
         font-weight: bold;
         width: 250px;
         max-width: 100%;
@@ -87,7 +126,7 @@
         padding: 25px 0;
     }
     
-    /* Responsive adjustments for very small screens */
+    /* Responsive adjustments */
     @media (max-width: 380px) {
         body {
             font-size: 16px;
@@ -112,7 +151,6 @@
         }
     }
     
-    /* Larger screens */
     @media (min-width: 768px) {
         body {
             max-width: 700px;
@@ -122,59 +160,204 @@
             padding: 30px 25px;
         }
     }
-</style>
+    </style>
 </head>
 <body>
-    <h1>❤️ Directions to Cardiology</h1>
+    <!-- Header with Hospital Logo -->
+    <div class="header">
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="language-btn" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">Hindi</button>
+        <button class="language-btn" data-lang="ml">Malayalam</button>
+        <button class="language-btn" data-lang="ar">Arabic</button>
+    </div>
+
+    <h1 id="page-title">❤️ Directions to Cardiology</h1>
     
     <div class="step">
-        <h2>Step 1: From Main Entrance</h2>
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
         <img src="cardio_step1.png" alt="Main entrance to Cardiology">
-        <p>Enter through the main reception, keep right and walk straight</p>
+        <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
     <div class="step">
-        <h2>Step 2: From Reception</h2>
+        <h2 id="step2-title">Step 2: From Reception</h2>
         <img src="cardio_step2.png" alt="Reception corridor">
-        <p>Turn Left after the Corridor</p>
+        <p id="step2-desc">Turn Left after the Corridor</p>
     </div>
 
     <div class="step">
-        <h2>Step 3: Stairway down</h2>
+        <h2 id="step3-title">Step 3: Stairway down</h2>
         <img src="cardio_step3.png" alt="Downstairs sign">
-        <p>Take the steps to the basement on the left</p>
+        <p id="step3-desc">Take the steps to the basement on the left</p>
     </div>
 
     <div class="step">
-        <h2>Step 4: In Basement</h2>
+        <h2 id="step4-title">Step 4: In Basement</h2>
         <img src="cardio_step4.png" alt="Basement">
-        <p>Soon after getting down the staires, take a left</p>
+        <p id="step4-desc">Soon after getting down the staires, take a left</p>
     </div>
 
-  <div class="step">
-        <h2>Step 5: After Left , take another left </h2>
+    <div class="step">
+        <h2 id="step5-title">Step 5: After Left , take another left</h2>
         <img src="cardio_step5.png" alt="Basement">
-        <p>Take one more left, where you can see the Lifts </p>
+        <p id="step5-desc">Take one more left, where you can see the Lifts</p>
     </div>
 
-  <div class="step">
-        <h2>Step 6: Cardiology Enterance Reception</h2>
+    <div class="step">
+        <h2 id="step6-title">Step 6: Cardiology Enterance Reception</h2>
         <img src="cardio_step6.png" alt="radiology">
-        <p>Opposite to the Lifts , you can see Cardiology on the Right</p>
+        <p id="step6-desc">Opposite to the Lifts , you can see Cardiology on the Right</p>
     </div>
     
     <div class="step">
-        <h2>Step 7: Cardiology Enterance Reception</h2>
+        <h2 id="step7-title">Step 7: Cardiology Enterance Reception</h2>
         <img src="cardio_step7.png" alt="radiology">
-        <p>Your destination to Cardiology in on your front</p>
+        <p id="step7-desc">Your destination to Cardiology in on your front</p>
     </div>
-    <div style="text-align: center; margin-top: 30px;">
-        <div class="button-container">
-    <button class="nav-button" onclick="window.location.href='index.html'">
-        ← Back to Main Menu
-    </button>
-</div>
-    </div>
-</body>
 
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
+    </div>
+
+    <script>
+        // Language translations for Cardiology page
+        const cardiologyTranslations = {
+            en: {
+                pageTitle: "❤️ Directions to Cardiology",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception, keep right and walk straight",
+                step2Title: "Step 2: From Reception",
+                step2Desc: "Turn Left after the Corridor",
+                step3Title: "Step 3: Stairway down",
+                step3Desc: "Take the steps to the basement on the left",
+                step4Title: "Step 4: In Basement",
+                step4Desc: "Soon after getting down the staires, take a left",
+                step5Title: "Step 5: After Left , take another left",
+                step5Desc: "Take one more left, where you can see the Lifts",
+                step6Title: "Step 6: Cardiology Enterance Reception",
+                step6Desc: "Opposite to the Lifts , you can see Cardiology on the Right",
+                step7Title: "Step 7: Cardiology Enterance Reception",
+                step7Desc: "Your destination to Cardiology in on your front",
+                backButton: "← Back to Main Menu"
+            },
+            hi: {
+                pageTitle: "❤️ कार्डियोलॉजी का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: रिसेप्शन से",
+                step2Desc: "कॉरिडोर के बाद बाएं मुड़ें",
+                step3Title: "चरण 3: सीढ़ियों से नीचे",
+                step3Desc: "बाईं ओर बेसमेंट की सीढ़ियां लें",
+                step4Title: "चरण 4: बेसमेंट में",
+                step4Desc: "सीढ़ियों से नीचे उतरने के तुरंत बाद, बाएं मुड़ें",
+                step5Title: "चरण 5: बाएं मुड़ने के बाद, फिर बाएं मुड़ें",
+                step5Desc: "एक और बाएं मुड़ें, जहां आप लिफ्ट देख सकते हैं",
+                step6Title: "चरण 6: कार्डियोलॉजी प्रवेश रिसेप्शन",
+                step6Desc: "लिफ्टों के सामने, आपको दाईं ओर कार्डियोलॉजी दिखेगी",
+                step7Title: "चरण 7: कार्डियोलॉजी प्रवेश रिसेप्शन",
+                step7Desc: "कार्डियोलॉजी आपके सामने है",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
+            ml: {
+                pageTitle: "❤️ കാർഡിയോളജിയിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാ�ൻ റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് നിരന്തരം നടക്കുക",
+                step2Title: "ഘട്ടം 2: റിസപ്ഷനിൽ നിന്ന്",
+                step2Desc: "കോറിഡോറിന് ശേഷം ഇടതുവശത്ത് തിരിയുക",
+                step3Title: "ഘട്ടം 3: പടികൾ വഴി താഴേക്ക്",
+                step3Desc: "ഇടതുവശത്ത് ബേസ്മെന്റിലേക്ക് പടികൾ എത്തിച്ചേരുക",
+                step4Title: "ഘട്ടം 4: ബേസ്മെന്റിൽ",
+                step4Desc: "പടികൾ ഇറങ്ങിയ ഉടൻ തന്നെ, ഇടതുവശത്ത് തിരിയുക",
+                step5Title: "ഘട്ടം 5: ഇടതുവശത്ത് തിരിഞ്ഞ ശേഷം, മറ്റൊരു ഇടതുവശത്ത് തിരിയുക",
+                step5Desc: "ഒരു ഇടതുവശത്ത് തിരിയുക, അവിടെ നിങ്ങൾക്ക് ലിഫ്റ്റുകൾ കാണാൻ കഴിയും",
+                step6Title: "ഘട്ടം 6: കാർഡിയോളജി പ്രവേശന റിസപ്ഷൻ",
+                step6Desc: "ലിഫ്റ്റുകൾക്ക് എതിർവശത്ത്, നിങ്ങൾക്ക് വലതുവശത്ത് കാർഡിയോളജി കാണാം",
+                step7Title: "ഘട്ടം 7: കാർഡിയോളജി പ്രവേശന റിസപ്ഷൻ",
+                step7Desc: "കാർഡിയോളജി നിങ്ങളുടെ മുന്നിലാണ്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
+            ar: {
+                pageTitle: "❤️ اتجاهات إلى طب القلب",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ прямо",
+                step2Title: "الخطوة 2: من الاستقبال",
+                step2Desc: "انعطف يسارًا بعد الممر",
+                step3Title: "الخطوة 3: الدرج إلى الأسفل",
+                step3Desc: "خذ الدرج إلى الطابق السفلي على اليسار",
+                step4Title: "الخطوة 4: في الطابق السفلي",
+                step4Desc: "بعد النزول على الدرج مباشرة، انعطف يسارًا",
+                step5Title: "الخطوة 5: بعد اليسار، انعطف يسارًا مرة أخرى",
+                step5Desc: "انعطف يسارًا مرة أخرى، حيث يمكنك رؤية المصاعد",
+                step6Title: "الخطوة 6: استقبال مدخل طب القلب",
+                step6Desc: "مقابل المصاعد، يمكنك رؤية طب القلب على اليمين",
+                step7Title: "الخطوة 7: استقبال مدخل طب القلب",
+                step7Desc: "وجهتك إلى طب القلب أمامك",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
+        };
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCardiologyLanguage();
+        });
+
+        function initializeCardiologyLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageBtns = document.querySelectorAll('.language-btn');
+            
+            // Set active button
+            languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeCardiologyLanguage(lang);
+                    
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Apply saved language
+            changeCardiologyLanguage(savedLanguage);
+        }
+
+        function changeCardiologyLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            const t = cardiologyTranslations[lang];
+            
+            // Update all text elements
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            document.getElementById('step4-title').textContent = t.step4Title;
+            document.getElementById('step4-desc').textContent = t.step4Desc;
+            document.getElementById('step5-title').textContent = t.step5Title;
+            document.getElementById('step5-desc').textContent = t.step5Desc;
+            document.getElementById('step6-title').textContent = t.step6Title;
+            document.getElementById('step6-desc').textContent = t.step6Desc;
+            document.getElementById('step7-title').textContent = t.step7Title;
+            document.getElementById('step7-desc').textContent = t.step7Desc;
+            
+            // Update button text
+            document.querySelector('.nav-button').textContent = t.backButton;
+        }
+    </script>
+</body>
 </html>
