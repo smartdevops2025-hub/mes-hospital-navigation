@@ -17,13 +17,52 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 18px; /* Larger base font size */
+        font-size: 18px;
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    /* Language Selector */
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .language-btn {
+        padding: 8px 15px;
+        margin: 0 5px;
+        background: white;
+        border: 1px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
     }
     
     h1 {
         color: #2e86ab;
         text-align: center;
-        font-size: 2.2rem; /* Much larger heading */
+        font-size: 2.2rem;
         margin: 20px 0 30px 0;
         font-weight: bold;
     }
@@ -39,13 +78,13 @@
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.8rem; /* Larger step headings */
+        font-size: 1.8rem;
         margin-bottom: 20px;
         font-weight: bold;
     }
     
     .step p {
-        font-size: 1.4rem; /* Much larger description text */
+        font-size: 1.4rem;
         color: #333;
         margin-top: 15px;
         line-height: 1.5;
@@ -69,7 +108,7 @@
         border-radius: 10px;
         cursor: pointer;
         margin: 15px;
-        font-size: 1.3rem; /* Larger button text */
+        font-size: 1.3rem;
         font-weight: bold;
         width: 250px;
         max-width: 100%;
@@ -87,7 +126,7 @@
         padding: 25px 0;
     }
     
-    /* Responsive adjustments for very small screens */
+    /* Responsive adjustments */
     @media (max-width: 380px) {
         body {
             font-size: 16px;
@@ -112,7 +151,6 @@
         }
     }
     
-    /* Larger screens */
     @media (min-width: 768px) {
         body {
             max-width: 700px;
@@ -122,34 +160,140 @@
             padding: 30px 25px;
         }
     }
-</style>
+    </style>
 </head>
 <body>
-    <h1>🦴 Directions to Orthopaedics</h1>
+    <!-- Header with Hospital Logo -->
+    <div class="header">
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="language-btn" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">Hindi</button>
+        <button class="language-btn" data-lang="ml">Malayalam</button>
+        <button class="language-btn" data-lang="ar">Arabic</button>
+    </div>
+
+    <h1 id="page-title">🦴 Directions to Orthopaedics</h1>
     
     <div class="step">
-        <h2>Step 1: From Main Entrance</h2>
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
         <img src="ortho1.png" alt="Main entrance view">
-        <p>Enter through the main reception, keep right and walk straight</p>
+        <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
     <div class="step">
-        <h2>Step 2: Take Few steps ahead</h2>
+        <h2 id="step2-title">Step 2: Take Few steps ahead</h2>
         <img src="ortho2.png" alt="Soon after Opthal, Lab will be on your right">
-        <p>Walk a little further to see Opthal, Orthopaedics Ophthalmology OPD will be on your right </p>
+        <p id="step2-desc">Walk a little further to see Opthal, Orthopaedics Ophthalmology OPD will be on your right</p>
     </div>
 
     <div class="step">
-        <h2>Step 3: Orthopaedics OPD</h2>
+        <h2 id="step3-title">Step 3: Orthopaedics OPD</h2>
         <img src="ortho3.png" alt="Laboratory Counter">
-        <p>Your destination is on your Front </p>
+        <p id="step3-desc">Your destination is on your Front</p>
     </div>
 
-   <div class="button-container">
-    <button class="nav-button" onclick="window.location.href='index.html'">
-        ← Back to Main Menu
-    </button>
-</div>
-</body>
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
+    </div>
 
+    <script>
+        // Language translations for Orthopedics page
+        const orthoTranslations = {
+            en: {
+                pageTitle: "🦴 Directions to Orthopaedics",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception, keep right and walk straight",
+                step2Title: "Step 2: Take Few steps ahead",
+                step2Desc: "Walk a little further to see Opthal, Orthopaedics Ophthalmology OPD will be on your right",
+                step3Title: "Step 3: Orthopaedics OPD",
+                step3Desc: "Your destination is on your Front",
+                backButton: "← Back to Main Menu"
+            },
+            hi: {
+                pageTitle: "🦴 ऑर्थोपेडिक्स का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: कुछ कदम आगे बढ़ें",
+                step2Desc: "ओप्थल देखने के लिए थोड़ा और आगे चलें, ऑर्थोपेडिक्स ओपीडी आपके दायीं ओर होगी",
+                step3Title: "चरण 3: ऑर्थोपेडिक्स ओपीडी",
+                step3Desc: "आपकी मंजिल आपके सामने है",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
+            ml: {
+                pageTitle: "🦴 ഓർത്തോപീഡിക്സിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് നിരന്തരം നടക്കുക",
+                step2Title: "ഘട്ടം 2: കുറച്ച് ഘട്ടങ്ങൾ മുന്നോട്ട് പോകുക",
+                step2Desc: "ഓഫ്താൽ കാണാൻ കുറച്ച് കൂടി മുന്നോട്ട് നടക്കുക, ഓർത്തോപീഡിക്സ് ഓപിഡി നിങ്ങളുടെ വലതുവശത്തായിരിക്കും",
+                step3Title: "ഘട്ടം 3: ഓർത്തോപീഡിക്സ് ഓപിഡി",
+                step3Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം നിങ്ങളുടെ മുന്നിലാണ്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
+            ar: {
+                pageTitle: "🦴 اتجاهات إلى العظام",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ прямо",
+                step2Title: "الخطوة 2: اتخذ بضع خطوات إلى الأمام",
+                step2Desc: "امشِ قليلاً إلى الأمام لرؤية العيون، سيكون قسم العظام والعيادات الخارجية على يمينك",
+                step3Title: "الخطوة 3: قسم العظام والعيادات الخارجية",
+                step3Desc: "وجهتك أمامك",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
+        };
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeOrthoLanguage();
+        });
+
+        function initializeOrthoLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageBtns = document.querySelectorAll('.language-btn');
+            
+            // Set active button
+            languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeOrthoLanguage(lang);
+                    
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Apply saved language
+            changeOrthoLanguage(savedLanguage);
+        }
+
+        function changeOrthoLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            const t = orthoTranslations[lang];
+            
+            // Update all text elements
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            
+            // Update button text
+            document.querySelector('.nav-button').textContent = t.backButton;
+        }
+    </script>
+</body>
 </html>
