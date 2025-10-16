@@ -300,37 +300,37 @@
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
-        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store" onclick="showDirections('pharmacy')">
+        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store">
             <div class="department-icon">💊</div>
             <h3>Pharmacy</h3>
             <p>Get your medicines here</p>
         </div>
 
-        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning" onclick="showDirections('radiology')">
+        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
             <div class="department-icon">📋</div>
             <h3>Radiology</h3>
             <p>Xray & Scanning</p>
         </div>
 
-        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology" onclick="showDirections('Lab')">
+        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
             <div class="department-icon">🔬</div>
             <h3>Laboratory</h3>
             <p>Blood tests & reports</p>
         </div>
 
-        <div class="department-box" data-name="cardiology" data-keywords="cardiology heart cardio cardiac" onclick="showDirections('cardiology')">
+        <div class="department-box" data-name="cardiology" data-keywords="cardiology heart cardio cardiac">
             <div class="department-icon">❤️</div>
             <h3>Cardiology</h3>
             <p>Heart care & OPD</p>
         </div>
 
-        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture" onclick="showDirections('ortho')">
+        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
             <div class="department-icon">🦴</div>
             <h3>Orthopedics</h3>
             <p>Bone & joint care</p>
         </div>
 
-        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical" onclick="showDirections('ophthal')">
+        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
             <p>Eye care OPD</p>
@@ -344,35 +344,68 @@
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        // Language support
+        // Language support with department translations
         const translations = {
             en: {
                 title: "Way Finder Navigation System",
                 subtitle: "Find your way easily",
                 searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
                 searchHint: "Type to filter departments",
-                noResults: "No departments found. Try different keywords."
+                noResults: "No departments found. Try different keywords.",
+                departments: {
+                    pharmacy: { name: "Pharmacy", description: "Get your medicines here" },
+                    radiology: { name: "Radiology", description: "Xray & Scanning" },
+                    lab: { name: "Laboratory", description: "Blood tests & reports" },
+                    cardiology: { name: "Cardiology", description: "Heart care & OPD" },
+                    ortho: { name: "Orthopedics", description: "Bone & joint care" },
+                    ophthalmology: { name: "Ophthalmology", description: "Eye care OPD" }
+                    // Add translations for all other departments here
+                }
             },
             hi: {
                 title: "वे फाइंडर नेविगेशन सिस्टम",
                 subtitle: "आसानी से अपना रास्ता खोजें",
                 searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
                 searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
-                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।"
+                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
+                departments: {
+                    pharmacy: { name: "फार्मेसी", description: "यहां से दवाएं प्राप्त करें" },
+                    radiology: { name: "रेडियोलॉजी", description: "एक्सरे और स्कैनिंग" },
+                    lab: { name: "प्रयोगशाला", description: "रक्त परीक्षण और रिपोर्ट" },
+                    cardiology: { name: "कार्डियोलॉजी", description: "हृदय देखभाल और ओपीडी" },
+                    ortho: { name: "ऑर्थोपेडिक्स", description: "हड्डी और जोड़ देखभाल" },
+                    ophthalmology: { name: "नेत्र विज्ञान", description: "आंखों की देखभाल ओपीडी" }
+                }
             },
             ml: {
                 title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
                 subtitle: "എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക",
                 searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
                 searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
-                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക."
+                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
+                departments: {
+                    pharmacy: { name: "ഫാർമസി", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
+                    radiology: { name: "റേഡിയോളജി", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
+                    lab: { name: "ലബോറട്ടറി", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
+                    cardiology: { name: "കാർഡിയോളജി", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
+                    ortho: { name: "ഓർത്തോപീഡിക്സ്", description: "അസ്ഥി, സന്ധി പരിചരണം" },
+                    ophthalmology: { name: "ഓഫ്താൽമോളജി", description: "കണ്ണ് പരിചരണം ഓപിഡി" }
+                }
             },
             ar: {
                 title: "نظام الملاحة للعثور على الطريق",
                 subtitle: "ابحث عن طريقك بسهولة",
                 searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
                 searchHint: "اكتب لتصفية الأقسام",
-                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة."
+                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
+                departments: {
+                    pharmacy: { name: "الصيدلية", description: "احصل على أدويتك هنا" },
+                    radiology: { name: "الأشعة", description: "الأشعة السينية والمسح" },
+                    lab: { name: "المختبر", description: "اختبارات الدم والتقارير" },
+                    cardiology: { name: "طب القلب", description: "رعاية القلب والعيادات الخارجية" },
+                    ortho: { name: "العظام", description: "رعاية العظام والمفاصل" },
+                    ophthalmology: { name: "طب العيون", description: "رعاية العيون والعيادات الخارجية" }
+                }
             }
         };
 
@@ -388,9 +421,17 @@
 
         // Language Support
         function initializeLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
+            // Set active button
             languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
                 btn.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
                     changeLanguage(lang);
@@ -399,17 +440,47 @@
                     this.classList.add('active');
                 });
             });
+            
+            // Apply saved language
+            changeLanguage(savedLanguage);
         }
 
         function changeLanguage(lang) {
             currentLang = lang;
+            // Save language to localStorage
+            localStorage.setItem('selectedLanguage', lang);
             const t = translations[lang];
             
+            // Update interface text
             document.querySelector('.hospital-info h1').textContent = t.title;
             document.querySelector('.hospital-subtitle').textContent = t.subtitle;
             document.getElementById('searchInput').placeholder = t.searchPlaceholder;
             document.querySelector('.search-hint').textContent = t.searchHint;
             document.getElementById('noResults').textContent = t.noResults;
+            
+            // Update department names and descriptions
+            updateDepartmentTranslations(t.departments);
+        }
+
+        function updateDepartmentTranslations(departmentTranslations) {
+            const departmentBoxes = document.querySelectorAll('.department-box');
+            
+            departmentBoxes.forEach(box => {
+                const departmentName = box.getAttribute('data-name');
+                const translation = departmentTranslations[departmentName];
+                
+                if (translation) {
+                    const titleElement = box.querySelector('h3');
+                    const descriptionElement = box.querySelector('p');
+                    
+                    if (titleElement) {
+                        titleElement.textContent = translation.name;
+                    }
+                    if (descriptionElement) {
+                        descriptionElement.textContent = translation.description;
+                    }
+                }
+            });
         }
 
         // Back to Top Button
@@ -469,6 +540,10 @@
                     searchInput.value = '';
                     departmentBoxes.forEach(b => b.classList.remove('hidden'));
                     noResults.style.display = 'none';
+                    
+                    // Call showDirections with the department name
+                    const departmentName = this.getAttribute('data-name');
+                    showDirections(departmentName);
                 });
             });
         }
@@ -481,11 +556,11 @@
                 window.location.href = 'radiology.html';
             } else if (department === 'cardiology') {
                 window.location.href = 'cardiology.html';
-            } else if (department === 'Lab') {
+            } else if (department === 'lab') {
                 window.location.href = 'Lab.html';
             } else if (department === 'ortho') {
                 window.location.href = 'ortho.html';
-            } else if (department === 'ophthal') {
+            } else if (department === 'ophthalmology') {
                 window.location.href = 'ophthal.html';
             } else {
                 alert('Directions for ' + department + ' coming soon!');
