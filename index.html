@@ -177,6 +177,37 @@
             display: none;
         }
         
+        /* Hit Counter Section */
+        .hit-counter {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border: 2px solid #e9ecef;
+        }
+        
+        .hit-counter h3 {
+            color: #dc3545;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .counter-label {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
@@ -230,6 +261,14 @@
             
             .hospital-logo {
                 max-width: 250px;
+            }
+            
+            .counter-number {
+                font-size: 2rem;
+            }
+            
+            .hit-counter h3 {
+                font-size: 1.1rem;
             }
         }
         
@@ -340,6 +379,13 @@
         
     </div>
 
+    <!-- Hit Counter Section -->
+    <div class="hit-counter">
+        <h3>Wayfinder Usage Statistics</h3>
+        <div class="counter-number" id="visitCount">0</div>
+        <div class="counter-label">People helped find their way</div>
+    </div>
+
     <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
@@ -352,6 +398,8 @@
                 searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
                 searchHint: "Type to filter departments",
                 noResults: "No departments found. Try different keywords.",
+                hitCounterTitle: "Wayfinder Usage Statistics",
+                hitCounterLabel: "People helped find their way",
                 departments: {
                     pharmacy: { name: "Pharmacy", description: "Get your medicines here" },
                     radiology: { name: "Radiology", description: "Xray & Scanning" },
@@ -368,6 +416,8 @@
                 searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
                 searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
                 noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
+                hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
+                hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली",
                 departments: {
                     pharmacy: { name: "फार्मेसी", description: "यहां से दवाएं प्राप्त करें" },
                     radiology: { name: "रेडियोलॉजी", description: "एक्सरे और स्कैनिंग" },
@@ -383,6 +433,8 @@
                 searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
                 searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
                 noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
+                hitCounterTitle: "വേഫൈൻഡർ ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ",
+                hitCounterLabel: "ആളുകൾക്ക് അവരുടെ വഴി കണ്ടെത്താൻ സഹായിക്കപ്പെട്ടു",
                 departments: {
                     pharmacy: { name: "ഫാർമസി", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
                     radiology: { name: "റേഡിയോളജി", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
@@ -398,6 +450,8 @@
                 searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
                 searchHint: "اكتب لتصفية الأقسام",
                 noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
+                hitCounterTitle: "إحصائيات استخدام Wayfinder",
+                hitCounterLabel: "تم مساعدة الأشخاص في العثور على طريقهم",
                 departments: {
                     pharmacy: { name: "الصيدلية", description: "احصل على أدويتك هنا" },
                     radiology: { name: "الأشعة", description: "الأشعة السينية والمسح" },
@@ -417,6 +471,7 @@
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
+            initializeHitCounter();
         });
 
         // Language Support
@@ -458,6 +513,10 @@
             document.querySelector('.search-hint').textContent = t.searchHint;
             document.getElementById('noResults').textContent = t.noResults;
             
+            // Update hit counter text
+            document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
+            document.querySelector('.counter-label').textContent = t.hitCounterLabel;
+            
             // Update department names and descriptions
             updateDepartmentTranslations(t.departments);
         }
@@ -481,6 +540,38 @@
                     }
                 }
             });
+        }
+
+        // Hit Counter Function
+        function initializeHitCounter() {
+            // Get current count from localStorage or initialize to 0
+            let visitCount = localStorage.getItem('wayfinderVisitCount');
+            
+            if (!visitCount) {
+                visitCount = 0;
+            } else {
+                visitCount = parseInt(visitCount);
+            }
+            
+            // Increment count
+            visitCount++;
+            
+            // Save updated count
+            localStorage.setItem('wayfinderVisitCount', visitCount);
+            
+            // Display count with animation
+            displayCounter(visitCount);
+        }
+        
+        function displayCounter(count) {
+            const counterElement = document.getElementById('visitCount');
+            counterElement.textContent = count.toLocaleString();
+            
+            // Add a subtle animation
+            counterElement.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                counterElement.style.transform = 'scale(1)';
+            }, 300);
         }
 
         // Back to Top Button
