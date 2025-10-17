@@ -424,7 +424,129 @@ document.addEventListener('DOMContentLoaded', function() {
         <button class="language-btn" data-lang="ml">Malayalam</button>
         <button class="language-btn" data-lang="ar">Arabic</button>
     </div>
+<!-- Add this code RIGHT AFTER the floor maps section in your index.html -->
+<!-- QR Code Positioning Section -->
+<div class="qr-positioning-section" style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
+    <h2 style="color: #dc3545; margin-bottom: 20px;">📍 Update Your Location</h2>
+    <p style="color: #666; margin-bottom: 25px; font-size: 1.1rem;">Scan QR codes placed around the hospital to help us guide you better</p>
+    
+    <div class="qr-scanner-simulation" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 600px; margin: 0 auto;">
+        <button onclick="updateUserLocation('main-entrance')" style="padding: 15px; background: white; border: 2px solid #28a745; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+            <div style="font-size: 2rem;">🚪</div>
+            <div style="font-weight: bold; color: #28a745;">Main Entrance</div>
+            <div style="font-size: 0.9rem; color: #666;">Scan QR Code Here</div>
+        </button>
+        
+        <button onclick="updateUserLocation('reception')" style="padding: 15px; background: white; border: 2px solid #007bff; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+            <div style="font-size: 2rem;">💁</div>
+            <div style="font-weight: bold; color: #007bff;">Reception</div>
+            <div style="font-size: 0.9rem; color: #666;">Scan QR Code Here</div>
+        </button>
+        
+        <button onclick="updateUserLocation('elevator-area')" style="padding: 15px; background: white; border: 2px solid #ffc107; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+            <div style="font-size: 2rem;">🛗</div>
+            <div style="font-weight: bold; color: #ffc107;">Elevator Area</div>
+            <div style="font-size: 0.9rem; color: #666;">Scan QR Code Here</div>
+        </button>
+        
+        <button onclick="updateUserLocation('pharmacy-area')" style="padding: 15px; background: white; border: 2px solid #dc3545; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+            <div style="font-size: 2rem;">💊</div>
+            <div style="font-weight: bold; color: #dc3545;">Pharmacy Area</div>
+            <div style="font-size: 0.9rem; color: #666;">Scan QR Code Here</div>
+        </button>
+    </div>
+    
+    <div id="userLocationStatus" style="margin-top: 25px; padding: 15px; background: white; border-radius: 10px; border-left: 4px solid #28a745; display: none;">
+        <h4 style="color: #28a745; margin-bottom: 10px;">📍 Current Location</h4>
+        <p id="currentLocationText" style="font-size: 1.1rem; font-weight: bold;"></p>
+        <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">We'll use this to give you better directions</p>
+    </div>
+    
+    <div style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+        <p>💡 <strong>How it works:</strong> Physical QR codes are placed at key locations around the hospital. When you scan them, the wayfinder updates your position.</p>
+    </div>
+</div>
 
+<script>
+// QR Code Positioning JavaScript - Add this to your existing script in index.html
+let userCurrentLocation = null;
+
+function updateUserLocation(location) {
+    userCurrentLocation = location;
+    
+    const locationNames = {
+        'main-entrance': 'Main Entrance',
+        'reception': 'Reception Area', 
+        'elevator-area': 'Elevator Area',
+        'pharmacy-area': 'Pharmacy Area'
+    };
+    
+    // Show location status
+    const statusDiv = document.getElementById('userLocationStatus');
+    const locationText = document.getElementById('currentLocationText');
+    
+    locationText.textContent = `You are at: ${locationNames[location]}`;
+    statusDiv.style.display = 'block';
+    
+    // Save to localStorage
+    localStorage.setItem('userLocation', location);
+    
+    // Show confirmation
+    alert(`✅ Location updated! You are at ${locationNames[location]}`);
+    
+    // Update map if available
+    updateMapWithUserLocation(location);
+}
+
+function updateMapWithUserLocation(location) {
+    // This would update the interactive map with user's position
+    console.log(`User location updated to: ${location}`);
+    
+    // You can add visual feedback on the map here
+    const userPositionIndicator = document.createElement('div');
+    userPositionIndicator.innerHTML = '📍 You are here';
+    userPositionIndicator.style.cssText = `
+        position: absolute;
+        background: rgba(40, 167, 69, 0.9);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        z-index: 1000;
+    `;
+    
+    // Position the indicator based on location
+    const positions = {
+        'main-entrance': { top: '25%', left: '20%' },
+        'reception': { top: '40%', left: '45%' },
+        'elevator-area': { top: '55%', left: '70%' },
+        'pharmacy-area': { top: '65%', left: '30%' }
+    };
+    
+    if (positions[location]) {
+        userPositionIndicator.style.top = positions[location].top;
+        userPositionIndicator.style.left = positions[location].left;
+        
+        // Remove existing indicator
+        const existingIndicator = document.querySelector('.user-position-indicator');
+        if (existingIndicator) {
+            existingIndicator.remove();
+        }
+        
+        userPositionIndicator.className = 'user-position-indicator';
+        document.querySelector('.map-container').appendChild(userPositionIndicator);
+    }
+}
+
+// Load user location on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const savedLocation = localStorage.getItem('userLocation');
+    if (savedLocation) {
+        updateUserLocation(savedLocation);
+    }
+});
+</script>
+    
     <!-- Search Section -->
     <div class="search-container">
         <input type="text" class="search-box" id="searchInput" placeholder="🔍 Type department name (e.g., OPD, ICU, Lab)...">
