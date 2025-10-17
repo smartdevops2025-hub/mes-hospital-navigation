@@ -429,7 +429,222 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="qr-positioning-section" style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
     <h2 style="color: #dc3545; margin-bottom: 20px;">📍 Update Your Location</h2>
     <p style="color: #666; margin-bottom: 25px; font-size: 1.1rem;">Scan QR codes placed around the hospital to help us guide you better</p>
+   
     
+    <!-- Add this code RIGHT AFTER the QR positioning section in your index.html -->
+<!-- Real-time Queue Information Section -->
+<div class="queue-information-section" style="background: white; padding: 30px; border-radius: 15px; margin: 40px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; color: #dc3545; margin-bottom: 25px;">⏱️ Live Queue Status</h2>
+    
+    <div class="queue-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 25px;">
+        <!-- Pharmacy Queue Card -->
+        <div class="queue-card" data-department="pharmacy" style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #dc3545;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-right: 15px;">💊</div>
+                <div>
+                    <h4 style="margin: 0; color: #333;">Pharmacy</h4>
+                    <div style="font-size: 0.9rem; color: #666;">Medicine Collection</div>
+                </div>
+            </div>
+            
+            <div class="queue-status" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: #666;">Estimated Wait:</span>
+                    <span class="wait-time" style="font-weight: bold; color: #dc3545;">15 minutes</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #666;">Current Number:</span>
+                    <span class="current-ticket" style="font-weight: bold; color: #333;">#42</span>
+                </div>
+            </div>
+            
+            <div class="queue-progress" style="background: #e9ecef; height: 8px; border-radius: 4px; margin-bottom: 15px; overflow: hidden;">
+                <div class="progress-bar" style="height: 100%; background: #dc3545; width: 60%; border-radius: 4px;"></div>
+            </div>
+            
+            <button onclick="refreshQueue('pharmacy')" style="width: 100%; padding: 10px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease;">
+                🔄 Refresh Status
+            </button>
+        </div>
+        
+        <!-- Laboratory Queue Card -->
+        <div class="queue-card" data-department="lab" style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #007bff;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-right: 15px;">🔬</div>
+                <div>
+                    <h4 style="margin: 0; color: #333;">Laboratory</h4>
+                    <div style="font-size: 0.9rem; color: #666;">Blood Tests & Reports</div>
+                </div>
+            </div>
+            
+            <div class="queue-status" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: #666;">Estimated Wait:</span>
+                    <span class="wait-time" style="font-weight: bold; color: #007bff;">25 minutes</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #666;">Current Number:</span>
+                    <span class="current-ticket" style="font-weight: bold; color: #333;">#38</span>
+                </div>
+            </div>
+            
+            <div class="queue-progress" style="background: #e9ecef; height: 8px; border-radius: 4px; margin-bottom: 15px; overflow: hidden;">
+                <div class="progress-bar" style="height: 100%; background: #007bff; width: 40%; border-radius: 4px;"></div>
+            </div>
+            
+            <button onclick="refreshQueue('lab')" style="width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease;">
+                🔄 Refresh Status
+            </button>
+        </div>
+        
+        <!-- Radiology Queue Card -->
+        <div class="queue-card" data-department="radiology" style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-right: 15px;">📋</div>
+                <div>
+                    <h4 style="margin: 0; color: #333;">Radiology</h4>
+                    <div style="font-size: 0.9rem; color: #666;">X-Ray & Scanning</div>
+                </div>
+            </div>
+            
+            <div class="queue-status" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: #666;">Estimated Wait:</span>
+                    <span class="wait-time" style="font-weight: bold; color: #28a745;">20 minutes</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #666;">Current Number:</span>
+                    <span class="current-ticket" style="font-weight: bold; color: #333;">#25</span>
+                </div>
+            </div>
+            
+            <div class="queue-progress" style="background: #e9ecef; height: 8px; border-radius: 4px; margin-bottom: 15px; overflow: hidden;">
+                <div class="progress-bar" style="height: 100%; background: #28a745; width: 50%; border-radius: 4px;"></div>
+            </div>
+            
+            <button onclick="refreshQueue('radiology')" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease;">
+                🔄 Refresh Status
+            </button>
+        </div>
+    </div>
+    
+    <div style="text-align: center; color: #666; font-size: 0.9rem;">
+        <p>🔄 Queue information updates automatically every 2 minutes</p>
+        <p>💡 <strong>Tip:</strong> Check wait times before heading to departments</p>
+    </div>
+</div>
+
+<script>
+// Queue Information JavaScript - Add this to your existing script in index.html
+const queueData = {
+    'pharmacy': { 
+        waitTime: 15, 
+        currentTicket: 42,
+        lastUpdate: Date.now(),
+        color: '#dc3545'
+    },
+    'lab': { 
+        waitTime: 25, 
+        currentTicket: 38,
+        lastUpdate: Date.now(),
+        color: '#007bff'
+    },
+    'radiology': { 
+        waitTime: 20, 
+        currentTicket: 25,
+        lastUpdate: Date.now(),
+        color: '#28a745'
+    },
+    'cardiology': { 
+        waitTime: 10, 
+        currentTicket: 15,
+        lastUpdate: Date.now(),
+        color: '#ffc107'
+    }
+};
+
+function refreshQueue(department) {
+    // Simulate API call to get updated queue data
+    setTimeout(() => {
+        // Simulate realistic queue changes
+        const data = queueData[department];
+        data.waitTime = Math.max(5, data.waitTime - 2 + Math.floor(Math.random() * 5));
+        data.currentTicket += 1 + Math.floor(Math.random() * 3);
+        data.lastUpdate = Date.now();
+        
+        // Update the display
+        updateQueueDisplay(department, data);
+        
+        // Show update confirmation
+        showQueueUpdateNotification(department);
+    }, 800); // Simulate network delay
+}
+
+function updateQueueDisplay(department, data) {
+    const card = document.querySelector(`[data-department="${department}"]`);
+    if (card) {
+        // Update wait time
+        card.querySelector('.wait-time').textContent = data.waitTime + ' minutes';
+        card.querySelector('.wait-time').style.color = data.color;
+        
+        // Update current ticket
+        card.querySelector('.current-ticket').textContent = '#' + data.currentTicket;
+        
+        // Update progress bar (simplified - in real app this would be more complex)
+        const progressPercent = Math.min(100, (data.waitTime / 30) * 100);
+        card.querySelector('.progress-bar').style.width = progressPercent + '%';
+        card.querySelector('.progress-bar').style.background = data.color;
+        
+        // Update button color
+        const button = card.querySelector('button');
+        button.style.background = data.color;
+        button.innerHTML = '✅ Updated just now';
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            button.innerHTML = '🔄 Refresh Status';
+        }, 3000);
+    }
+}
+
+function showQueueUpdateNotification(department) {
+    // Create a temporary notification
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${queueData[department].color};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        z-index: 10000;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    `;
+    notification.textContent = `✅ ${department.charAt(0).toUpperCase() + department.slice(1)} queue updated`;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Auto-refresh queues every 2 minutes
+setInterval(() => {
+    Object.keys(queueData).forEach(dept => {
+        refreshQueue(dept);
+    });
+}, 120000);
+
+// Initialize queue display on page load
+document.addEventListener('DOMContentLoaded', function() {
+    Object.keys(queueData).forEach(dept => {
+        updateQueueDisplay(dept, queueData[dept]);
+    });
+});
+</script>
     <div class="qr-scanner-simulation" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 600px; margin: 0 auto;">
         <button onclick="updateUserLocation('main-entrance')" style="padding: 15px; background: white; border: 2px solid #28a745; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
             <div style="font-size: 2rem;">🚪</div>
