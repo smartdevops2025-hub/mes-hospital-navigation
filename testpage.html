@@ -158,13 +158,7 @@
             font-weight: bold;
         }
         
-        .department-box p {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.3;
-        }
-
-                /* Department Location Style */
+        /* Department Location Style */
         .department-location {
             font-size: 0.8rem;
             color: #dc3545;
@@ -175,6 +169,13 @@
             border-radius: 10px;
             display: inline-block;
         }
+        
+        .department-box p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.3;
+        }
+        
         /* Search functionality styles */
         .department-box.hidden {
             display: none;
@@ -260,6 +261,10 @@
             
             .department-box p {
                 font-size: 0.8rem;
+            }
+            
+            .department-location {
+                font-size: 0.7rem;
             }
             
             .hospital-info h1 {
@@ -348,7 +353,7 @@
         No departments found. Try different keywords.
     </div>
 
-       <!-- Departments Grid -->
+    <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
         <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store">
             <div class="department-icon">💊</div>
@@ -396,8 +401,6 @@
         
     </div>
 
-     
-
     <!-- Hit Counter Section -->
     <div class="hit-counter">
         <h3>Wayfinder Usage Statistics</h3>
@@ -420,12 +423,12 @@
                 hitCounterTitle: "Wayfinder Usage Statistics",
                 hitCounterLabel: "People helped find their way",
                 departments: {
-                    pharmacy: { name: "Pharmacy", description: "Get your medicines here" },
-                    radiology: { name: "Radiology", description: "Xray & Scanning" },
-                    lab: { name: "Laboratory", description: "Blood tests & reports" },
-                    cardiology: { name: "Cardiology", description: "Heart care & OPD" },
-                    ortho: { name: "Orthopedics", description: "Bone & joint care" },
-                    ophthalmology: { name: "Ophthalmology", description: "Eye care OPD" }
+                    pharmacy: { name: "Pharmacy", location: "Ground Floor", description: "Get your medicines here" },
+                    radiology: { name: "Radiology", location: "Basement Floor", description: "Xray & Scanning" },
+                    lab: { name: "Laboratory", location: "Ground Floor", description: "Blood tests & reports" },
+                    cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
+                    ortho: { name: "Orthopedics", location: "Ground Floor", description: "Bone & joint care" },
+                    ophthalmology: { name: "Ophthalmology", location: "Ground Floor", description: "Eye care OPD" }
                     // Add translations for all other departments here
                 }
             },
@@ -438,12 +441,12 @@
                 hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
                 hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली",
                 departments: {
-                    pharmacy: { name: "फार्मेसी", description: "यहां से दवाएं प्राप्त करें" },
-                    radiology: { name: "रेडियोलॉजी", description: "एक्सरे और स्कैनिंग" },
-                    lab: { name: "प्रयोगशाला", description: "रक्त परीक्षण और रिपोर्ट" },
-                    cardiology: { name: "कार्डियोलॉजी", description: "हृदय देखभाल और ओपीडी" },
-                    ortho: { name: "ऑर्थोपेडिक्स", description: "हड्डी और जोड़ देखभाल" },
-                    ophthalmology: { name: "नेत्र विज्ञान", description: "आंखों की देखभाल ओपीडी" }
+                    pharmacy: { name: "फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
+                    radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
+                    lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
+                    cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
+                    ortho: { name: "ऑर्थोपेडिक्स", location: "ग्राउंड फ्लोर", description: "हड्डी और जोड़ देखभाल" },
+                    ophthalmology: { name: "नेत्र विज्ञान", location: "ग्राउंड फ्लोर", description: "आंखों की देखभाल ओपीडी" }
                 }
             },
             ml: {
@@ -452,15 +455,15 @@
                 searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
                 searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
                 noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
-                hitCounterTitle: "വേഫൈൻഡർ ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ",
+                hitCounterTitle: "വേഫൈൻഡർ ഉപയോഗ സ്ഥിതി�വിവരക്കണക്കുകൾ",
                 hitCounterLabel: "ആളുകൾക്ക് അവരുടെ വഴി കണ്ടെത്താൻ സഹായിക്കപ്പെട്ടു",
                 departments: {
-                    pharmacy: { name: "ഫാർമസി", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
-                    radiology: { name: "റേഡിയോളജി", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
-                    lab: { name: "ലബോറട്ടറി", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
-                    cardiology: { name: "കാർഡിയോളജി", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
-                    ortho: { name: "ഓർത്തോപീഡിക്സ്", description: "അസ്ഥി, സന്ധി പരിചരണം" },
-                    ophthalmology: { name: "ഓഫ്താൽമോളജി", description: "കണ്ണ് പരിചരണം ഓപിഡി" }
+                    pharmacy: { name: "ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
+                    radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
+                    lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
+                    cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
+                    ortho: { name: "ഓർത്തോപീഡിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "അസ്ഥി, സന്ധി പരിചരണം" },
+                    ophthalmology: { name: "ഓഫ്താൽമോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കണ്ണ് പരിചരണം ഓപിഡി" }
                 }
             },
             ar: {
@@ -472,12 +475,12 @@
                 hitCounterTitle: "إحصائيات استخدام Wayfinder",
                 hitCounterLabel: "تم مساعدة الأشخاص في العثور على طريقهم",
                 departments: {
-                    pharmacy: { name: "الصيدلية", description: "احصل على أدويتك هنا" },
-                    radiology: { name: "الأشعة", description: "الأشعة السينية والمسح" },
-                    lab: { name: "المختبر", description: "اختبارات الدم والتقارير" },
-                    cardiology: { name: "طب القلب", description: "رعاية القلب والعيادات الخارجية" },
-                    ortho: { name: "العظام", description: "رعاية العظام والمفاصل" },
-                    ophthalmology: { name: "طب العيون", description: "رعاية العيون والعيادات الخارجية" }
+                    pharmacy: { name: "الصيدلية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
+                    radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
+                    lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
+                    cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
+                    ortho: { name: "العظام", location: "الطابق الأرضي", description: "رعاية العظام والمفاصل" },
+                    ophthalmology: { name: "طب العيون", location: "الطابق الأرضي", description: "رعاية العيون والعيادات الخارجية" }
                 }
             }
         };
@@ -549,10 +552,14 @@
                 
                 if (translation) {
                     const titleElement = box.querySelector('h3');
-                    const descriptionElement = box.querySelector('p');
+                    const locationElement = box.querySelector('.department-location');
+                    const descriptionElement = box.querySelector('p:last-child');
                     
                     if (titleElement) {
                         titleElement.textContent = translation.name;
+                    }
+                    if (locationElement) {
+                        locationElement.textContent = translation.location;
                     }
                     if (descriptionElement) {
                         descriptionElement.textContent = translation.description;
