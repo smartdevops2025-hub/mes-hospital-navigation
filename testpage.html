@@ -4,8 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     <style>
-        /* Your existing CSS styles here - keep them exactly as they were */
-        /* Reset and base styles */
+        /* Your existing CSS styles here */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,7 +21,6 @@
             color: #333333;
         }
         
-        /* Header with logo and title */
         .header {
             text-align: center;
             background: white;
@@ -62,7 +60,6 @@
             font-weight: 500;
         }
         
-        /* Language Selector */
         .language-selector {
             text-align: center;
             margin-bottom: 20px;
@@ -82,7 +79,6 @@
             color: white;
         }
         
-        /* Search Section */
         .search-container {
             margin: 20px 0;
             text-align: center;
@@ -116,7 +112,6 @@
             text-align: center;
         }
         
-        /* Grid Layout */
         .departments-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -159,7 +154,6 @@
             font-weight: bold;
         }
         
-        /* Department Location Style */
         .department-location {
             font-size: 0.8rem;
             color: #dc3545;
@@ -177,7 +171,6 @@
             line-height: 1.3;
         }
         
-        /* Search functionality styles */
         .department-box.hidden {
             display: none;
         }
@@ -190,7 +183,6 @@
             display: none;
         }
         
-        /* Hit Counter Section */
         .hit-counter {
             text-align: center;
             margin: 40px 0 20px 0;
@@ -221,7 +213,6 @@
             margin-top: 5px;
         }
         
-        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -240,7 +231,6 @@
             font-size: 1.5rem;
         }
         
-        /* Responsive adjustments */
         @media (max-width: 480px) {
             .departments-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -424,15 +414,32 @@
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        // Simple working version - minimal code
-        console.log('Script loaded');
-        
-        // Basic hit counter - SIMPLE VERSION
+        // PERSISTENT HIT COUNTER - Won't reset with code updates
         function initializeHitCounter() {
-            console.log('Initializing hit counter');
-            let visitCount = localStorage.getItem('wayfinderVisitCount');
+            // Cookie functions for persistence
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
             
-            if (!visitCount) {
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = `expires=${date.toUTCString()}`;
+                document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
+            }
+            
+            let visitCount = getCookie('wayfinderVisitCount');
+            
+            // If no cookie, try localStorage as backup
+            if (visitCount === null || visitCount === 'null') {
+                visitCount = localStorage.getItem('wayfinderVisitCount');
+            }
+            
+            // If still no count, initialize to 0
+            if (!visitCount || visitCount === 'null') {
                 visitCount = 0;
             } else {
                 visitCount = parseInt(visitCount);
@@ -440,45 +447,98 @@
             
             visitCount++;
             
+            // Save to both storage methods for maximum persistence
+            setCookie('wayfinderVisitCount', visitCount, 365); // 1 year expiry
             localStorage.setItem('wayfinderVisitCount', visitCount);
-            document.getElementById('visitCount').textContent = visitCount;
-            console.log('Visit count:', visitCount);
+            
+            document.getElementById('visitCount').textContent = visitCount.toLocaleString();
+            
+            // Optional: Add animation
+            const counterElement = document.getElementById('visitCount');
+            counterElement.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                counterElement.style.transform = 'scale(1)';
+            }, 300);
         }
 
-        // Basic language functionality
+        // Language functionality
+        const translations = {
+            en: {
+                title: "Way Finder Navigation System",
+                subtitle: "Find your way easily",
+                searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
+                searchHint: "Type to filter departments",
+                noResults: "No departments found. Try different keywords.",
+                hitCounterTitle: "Wayfinder Usage Statistics",
+                hitCounterLabel: "People helped find their way"
+            },
+            hi: {
+                title: "वे फाइंडर नेविगेशन सिस्टम",
+                subtitle: "आसानी से अपना रास्ता खोजें",
+                searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
+                searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
+                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
+                hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
+                hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली"
+            },
+            ml: {
+                title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
+                subtitle: "എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക",
+                searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
+                searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
+                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
+                hitCounterTitle: "വേഫൈൻഡർ ഉपയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ",
+                hitCounterLabel: "ആളുകൾക്ക് അവരുടെ വഴി കണ്ടെത്താൻ സഹായിക്കപ്പെട്ടു"
+            },
+            ar: {
+                title: "نظام الملاحة للعثور على الطريق",
+                subtitle: "ابحث عن طريقك بسهولة",
+                searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
+                searchHint: "اكتب لتصفية الأقسام",
+                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
+                hitCounterTitle: "إحصائيات استخدام Wayfinder",
+                hitCounterLabel: "تم مساعدة الأشخاص في العثور على طريقهم"
+            }
+        };
+
         function initializeLanguage() {
-            console.log('Initializing language');
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
             languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
                 btn.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
-                    console.log('Language changed to:', lang);
+                    changeLanguage(lang);
                     
                     languageBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Simple language change - you can expand this later
-                    if (lang === 'hi') {
-                        document.querySelector('.hospital-info h1').textContent = 'वे फाइंडर नेविगेशन सिस्टम';
-                        document.querySelector('.hospital-subtitle').textContent = 'आसानी से अपना रास्ता खोजें';
-                    } else if (lang === 'ml') {
-                        document.querySelector('.hospital-info h1').textContent = 'വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം';
-                        document.querySelector('.hospital-subtitle').textContent = 'എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക';
-                    } else if (lang === 'ar') {
-                        document.querySelector('.hospital-info h1').textContent = 'نظام الملاحة للعثور على الطريق';
-                        document.querySelector('.hospital-subtitle').textContent = 'ابحث عن طريقك بسهولة';
-                    } else {
-                        document.querySelector('.hospital-info h1').textContent = 'Way Finder Navigation System';
-                        document.querySelector('.hospital-subtitle').textContent = 'Find your way easily';
-                    }
                 });
             });
+            
+            changeLanguage(savedLanguage);
         }
 
-        // Basic search functionality
+        function changeLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            const t = translations[lang];
+            
+            document.querySelector('.hospital-info h1').textContent = t.title;
+            document.querySelector('.hospital-subtitle').textContent = t.subtitle;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.querySelector('.search-hint').textContent = t.searchHint;
+            document.getElementById('noResults').textContent = t.noResults;
+            document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
+            document.querySelector('.counter-label').textContent = t.hitCounterLabel;
+        }
+
+        // Search functionality
         function initializeSearch() {
-            console.log('Initializing search');
             const searchInput = document.getElementById('searchInput');
             const noResults = document.getElementById('noResults');
             const departmentBoxes = document.querySelectorAll('.department-box');
@@ -510,13 +570,23 @@
             departmentBoxes.forEach(box => {
                 box.addEventListener('click', function() {
                     const departmentName = this.getAttribute('data-name');
-                    console.log('Department clicked:', departmentName);
                     
-                    // Simple navigation - you can expand this later
-                    if (departmentName === 'pediatrics') {
-                        window.location.href = 'pediatrics.html';
+                    if (departmentName === 'pharmacy') {
+                        window.location.href = 'pharmacy.html';
+                    } else if (departmentName === 'radiology') {
+                        window.location.href = 'radiology.html';
+                    } else if (departmentName === 'cardiology') {
+                        window.location.href = 'cardiology.html';
+                    } else if (departmentName === 'lab') {
+                        window.location.href = 'Lab.html';
+                    } else if (departmentName === 'ortho') {
+                        window.location.href = 'ortho.html';
+                    } else if (departmentName === 'ophthalmology') {
+                        window.location.href = 'ophthal.html';
                     } else if (departmentName === 'cafeteria') {
                         window.location.href = 'westend.html';
+                    } else if (departmentName === 'pediatrics') {
+                        window.location.href = 'pediatrics.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
@@ -541,17 +611,25 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Initialize everything when page loads
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded');
             initializeHitCounter();
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
         });
 
-        // Global function for back to top button
+        // Global function for back to top
         window.scrollToTop = scrollToTop;
+
+        // Optional: Manual reset function (call from browser console if needed)
+        function resetHitCounter() {
+            if (confirm('Are you sure you want to reset the hit counter to 0?')) {
+                localStorage.removeItem('wayfinderVisitCount');
+                document.cookie = 'wayfinderVisitCount=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                document.getElementById('visitCount').textContent = '0';
+            }
+        }
     </script>
 </body>
 </html>
