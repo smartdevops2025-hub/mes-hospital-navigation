@@ -405,6 +405,13 @@
             <p>Food & refreshments</p>
         </div>
 
+        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
+        <div class="department-icon">👶</div>
+        <h3>Pediatrics </h3>
+        <p class="department-location">First Floor</p>
+       <p>Child care & consultation</p>
+       </div>
+        
         <!-- Add all other departments from your original list here with location info -->
         
     </div>
@@ -438,6 +445,7 @@
                     ortho: { name: "Orthopedics", location: "Ground Floor", description: "Bone & joint care" },
                     ophthalmology: { name: "Ophthalmology", location: "Ground Floor", description: "Eye care OPD" },
                     cafeteria: { name: "Cafeteria (West End)", location: "Ground Floor", description: "Food & refreshments" }
+                    pediatrics: { name: "Pediatrics", location: "First Floor", description: "Child care & consultation" }
                     // Add translations for all other departments here
                 }
             },
@@ -457,6 +465,7 @@
                     ortho: { name: "ऑर्थोपेडिक्स", location: "ग्राउंड फ्लोर", description: "हड्डी और जोड़ देखभाल" },
                     ophthalmology: { name: "नेत्र विज्ञान", location: "ग्राउंड फ्लोर", description: "आंखों की देखभाल ओपीडी" },
                     cafeteria: { name: "कैफेटेरिया (वेस्ट एंड)", location: "ग्राउंड फ्लोर", description: "भोजन और ताज़गी" }
+                    pediatrics: { name: "पीडियाट्रिक्स", location: "पहली मंजिल", description: "बच्चों की देखभाल और परामर्श" }
                 }
             },
             ml: {
@@ -475,6 +484,7 @@
                     ortho: { name: "ഓർത്തോപീഡിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "അസ്ഥി, സന്ധി പരിചരണം" },
                     ophthalmology: { name: "ഓഫ്താൽമോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കണ്ണ് പരിചരണം ഓപിഡി" },
                     cafeteria: { name: "കഫേറ്റീരിയ (വെസ്റ്റ് എൻഡ്)", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഭക്ഷണവും ഉന്മേഷവും" }
+                    pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഫസ്റ്റ് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" }
                 }
             },
             ar: {
@@ -493,6 +503,7 @@
                     ortho: { name: "العظام", location: "الطابق الأرضي", description: "رعاية العظام والمفاصل" },
                     ophthalmology: { name: "طب العيون", location: "الطابق الأرضي", description: "رعاية العيون والعيادات الخارجية" },
                     cafeteria: { name: "الكافيتيريا (الطرف الغربي)", location: "الطابق الأرضي", description: "الطعام والمرطبات" }
+                    pediatrics: { name: "طب الأطفال العيادات الخارجية", location: "الطابق الأول", description: "رعاية الأطفال واستشارات" }
                 }
             }
         };
@@ -693,6 +704,8 @@ function showDirections(department) {
         window.location.href = 'ophthal.html';
     } else if (department === 'cafeteria') {
         window.location.href = 'westend.html'; // Updated to point to westend.html
+    } else if (department === 'pediatrics') {
+        window.location.href = 'pediatrics.html';
     } else {
         alert('Directions for ' + department + ' coming soon!');
     }
@@ -700,3 +713,4 @@ function showDirections(department) {
     </script>
 </body>
 </html>
+
