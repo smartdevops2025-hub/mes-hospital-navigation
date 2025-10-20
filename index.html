@@ -624,6 +624,11 @@
                 if (departmentName === 'general medicine') {
                     translationKey = 'general_medicine';
                 }
+
+                   // ADD THIS LINE RIGHT HERE ↓
+        if (departmentName === 'general surgery') {
+            translationKey = 'general_surgery';
+            
                 const translation = departmentTranslations[translationKey];
                 
                 if (translation) {
@@ -746,5 +751,6 @@
     </script>
 </body>
 </html>
+
 
 
