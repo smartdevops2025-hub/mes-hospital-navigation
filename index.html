@@ -407,8 +407,8 @@
 
         <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
         <div class="department-icon">👶</div>
-        <h3>Pediatrics </h3>
-        <p class="department-location">First Floor</p>
+        <h3>Pediatrics</h3>
+        <p class="department-location">Ground Floor</p>
        <p>Child care & consultation</p>
        </div>
         
@@ -592,36 +592,52 @@
         }
 
         // Hit Counter Function
-        function initializeHitCounter() {
-            // Get current count from localStorage or initialize to 0
-            let visitCount = localStorage.getItem('wayfinderVisitCount');
-            
-            if (!visitCount) {
-                visitCount = 0;
-            } else {
-                visitCount = parseInt(visitCount);
-            }
-            
-            // Increment count
-            visitCount++;
-            
-            // Save updated count
-            localStorage.setItem('wayfinderVisitCount', visitCount);
-            
-            // Display count with animation
-            displayCounter(visitCount);
-        }
-        
-        function displayCounter(count) {
-            const counterElement = document.getElementById('visitCount');
-            counterElement.textContent = count.toLocaleString();
-            
-            // Add a subtle animation
-            counterElement.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                counterElement.style.transform = 'scale(1)';
-            }, 300);
-        }
+       function initializeHitCounter() {
+    // Cookie functions
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+    
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
+    }
+    
+    let visitCount = getCookie('wayfinderVisitCount');
+    
+    if (!visitCount) {
+        visitCount = localStorage.getItem('wayfinderVisitCount');
+    }
+    
+    if (!visitCount) {
+        visitCount = 0;
+    } else {
+        visitCount = parseInt(visitCount);
+    }
+    
+    visitCount++;
+    
+    // Save to both storage methods
+    setCookie('wayfinderVisitCount', visitCount, 365);
+    localStorage.setItem('wayfinderVisitCount', visitCount);
+    
+    displayCounter(visitCount);
+}
+
+// Optional: Add reset function
+function resetHitCounter() {
+    if (confirm('Are you sure you want to reset the hit counter to 0?')) {
+        localStorage.removeItem('wayfinderVisitCount');
+        document.cookie = 'wayfinderVisitCount=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.getElementById('visitCount').textContent = '0';
+        alert('Hit counter has been reset to 0');
+    }
+}
 
         // Back to Top Button
         function initializeBackToTop() {
@@ -713,4 +729,5 @@ function showDirections(department) {
     </script>
 </body>
 </html>
+
 
