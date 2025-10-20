@@ -401,6 +401,20 @@
             <p class="department-location">Ground Floor</p>
             <p>Child care & consultation</p>
         </div>
+
+        <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
+    <div class="department-icon">👂</div>
+    <h3>ENT</h3>
+    <p class="department-location">Ground Floor</p>
+    <p>Ear, Nose, Throat</p>
+</div>
+
+<div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
+    <div class="department-icon">🩺</div>
+    <h3>General Medicine</h3>
+    <p class="department-location">Ground Floor</p>
+    <p>Physician consultation & internal medicine</p>
+</div>
     </div>
 
     <!-- Hit Counter Section -->
@@ -587,7 +601,12 @@
                         window.location.href = 'westend.html';
                     } else if (departmentName === 'pediatrics') {
                         window.location.href = 'pediatrics.html';
-                    } else {
+                    } else if (departmentName === 'ent') {
+                        window.location.href = 'ent.html';
+                    } else if (departmentName === 'general medicine') {
+                    window.location.href = 'ent-general-medicine.html';
+                    }
+                    else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
                 });
