@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directions to Pediatrics OPD</title>
+    <style>
+    /* Mobile-first responsive design */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+        font-size: 18px;
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    /* Language Selector */
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .language-btn {
+        padding: 8px 15px;
+        margin: 0 5px;
+        background: white;
+        border: 1px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
+    }
+    
+    h1 {
+        color: #2e86ab;
+        text-align: center;
+        font-size: 2.2rem;
+        margin: 20px 0 30px 0;
+        font-weight: bold;
+    }
+    
+    .step {
+        background-color: white;
+        margin: 25px 0;
+        padding: 25px 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .step h2 {
+        color: #2e86ab;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    
+    .step p {
+        font-size: 1.4rem;
+        color: #333;
+        margin-top: 15px;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 3px solid #2e86ab;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin: 10px 0;
+    }
+    
+    .nav-button {
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 18px 35px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 15px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        width: 250px;
+        max-width: 100%;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-button:active {
+        transform: scale(0.95);
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 40px;
+        padding: 25px 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 380px) {
+        body {
+            font-size: 16px;
+            padding: 12px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        .step h2 {
+            font-size: 1.5rem;
+        }
+        
+        .step p {
+            font-size: 1.2rem;
+        }
+        
+        .nav-button {
+            font-size: 1.2rem;
+            padding: 16px 30px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
+        }
+        
+        .step {
+            padding: 30px 25px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Header with Hospital Logo -->
+    <div class="header">
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="language-btn" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">Hindi</button>
+        <button class="language-btn" data-lang="ml">Malayalam</button>
+        <button class="language-btn" data-lang="ar">Arabic</button>
+    </div>
+
+    <h1 id="page-title">👶 Directions to Pediatrics OPD</h1>
+    
+    <div class="step">
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
+        <img src="pediatrics1.png" alt="Main entrance to Pediatrics OPD">
+        <p id="step1-desc">Enter through the main reception and proceed to the central staircase</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step2-title">Step 2: Ascend to First Floor</h2>
+        <img src="pediatrics2.png" alt="Go to first floor">
+        <p id="step2-desc">Take the staircase or elevator to the first floor</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step3-title">Step 3: Turn Right</h2>
+        <img src="pediatrics3.png" alt="Turn right on first floor">
+        <p id="step3-desc">After reaching first floor, turn right into the main corridor</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step4-title">Step 4: Follow Pediatrics Signs</h2>
+        <img src="pediatrics4.png" alt="Follow Pediatrics signage">
+        <p id="step4-desc">Look for Pediatrics OPD signs and follow the blue colored arrows</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step5-title">Step 5: Welcome to Pediatrics OPD</h2>
+        <img src="pediatrics5.png" alt="Pediatrics OPD entrance">
+        <p id="step5-desc">Your destination - Pediatrics OPD for child healthcare</p>
+    </div>
+    
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
+    </div>
+
+    <script>
+        // Language translations for Pediatrics OPD page
+        const pediatricsTranslations = {
+            en: {
+                pageTitle: "👶 Directions to Pediatrics OPD",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception and proceed to the central staircase",
+                step2Title: "Step 2: Ascend to First Floor",
+                step2Desc: "Take the staircase or elevator to the first floor",
+                step3Title: "Step 3: Turn Right",
+                step3Desc: "After reaching first floor, turn right into the main corridor",
+                step4Title: "Step 4: Follow Pediatrics Signs",
+                step4Desc: "Look for Pediatrics OPD signs and follow the blue colored arrows",
+                step5Title: "Step 5: Welcome to Pediatrics OPD",
+                step5Desc: "Your destination - Pediatrics OPD for child healthcare",
+                backButton: "← Back to Main Menu"
+            },
+            hi: {
+                pageTitle: "👶 पीडियाट्रिक्स ओपीडी का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं और केंद्रीय सीढ़ी की ओर बढ़ें",
+                step2Title: "चरण 2: पहली मंजिल पर चढ़ें",
+                step2Desc: "सीढ़ी या लिफ्ट से पहली मंजिल पर जाएं",
+                step3Title: "चरण 3: दायीं ओर मुड़ें",
+                step3Desc: "पहली मंजिल पर पहुंचने के बाद, मुख्य कॉरिडोर में दायीं ओर मुड़ें",
+                step4Title: "चरण 4: पीडियाट्रिक्स संकेतों का पालन करें",
+                step4Desc: "पीडियाट्रिक्स ओपीडी संकेतों को देखें और नीले रंग के तीरों का पालन करें",
+                step5Title: "चरण 5: पीडियाट्रिक्स ओपीडी में आपका स्वागत है",
+                step5Desc: "आपकी मंजिल - बच्चों के स्वास्थ्य देखभाल के लिए पीडियाट्रिक्स ओपीडी",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
+            ml: {
+                pageTitle: "👶 പീഡിയാട്രിക്സ് ഓപിഡിയിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് സെൻട്രൽ പടികളിലേക്ക് തുടരുക",
+                step2Title: "ഘട്ടം 2: ഫസ്റ്റ് ഫ്ലോറിലേക്ക് കയറുക",
+                step2Desc: "പടികളോ ലിഫ്റ്റോ ഉപയോഗിച്ച് ഫസ്റ്റ് ഫ്ലോറിലേക്ക് പോകുക",
+                step3Title: "ഘട്ടം 3: വലതുവശത്ത് തിരിയുക",
+                step3Desc: "ഫസ്റ്റ് ഫ്ലോറിൽ എത്തിയ ശേഷം, മെയിൻ കോറിഡോറിലേക്ക് വലതുവശത്ത് തിരിയുക",
+                step4Title: "ഘട്ടം 4: പീഡിയാട്രിക്സ് സൈൻ ബോർഡുകൾ പിന്തുടരുക",
+                step4Desc: "പീഡിയാട്രിക്സ് ഓപിഡി സൈൻ ബോർഡുകൾ നോക്കി നീല നിറത്തിലുള്ള അമ്പടയാളങ്ങൾ പിന്തുടരുക",
+                step5Title: "ഘട്ടം 5: പീഡിയാട്രിക്സ് ഓപിഡിയിലേക്ക് സ്വാഗതം",
+                step5Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - കുട്ടികളുടെ ആരോഗ്യ പരിചരണത്തിനുള്ള പീഡിയാട്രിക്സ് ഓപിഡി",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
+            ar: {
+                pageTitle: "👶 اتجاهات إلى عيادات الأطفال الخارجية",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي وتقدم towards الدرج المركزي",
+                step2Title: "الخطوة 2: اصعد إلى الطابق الأول",
+                step2Desc: "خذ الدرج أو المصعد إلى الطابق الأول",
+                step3Title: "الخطوة 3: انعطف يمينًا",
+                step3Desc: "بعد الوصول إلى الطابق الأول، انعطف يمينًا إلى الممر الرئيسي",
+                step4Title: "الخطوة 4: اتبع لافتات طب الأطفال",
+                step4Desc: "ابحث عن لافتات عيادات الأطفال الخارجية واتبع الأسهم الزرقاء",
+                step5Title: "الخطوة 5: مرحبًا بكم في عيادات الأطفال الخارجية",
+                step5Desc: "وجهتك - عيادات الأطفال الخارجية لرعاية صحة الطفل",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
+        };
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePediatricsLanguage();
+        });
+
+        function initializePediatricsLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageBtns = document.querySelectorAll('.language-btn');
+            
+            // Set active button
+            languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changePediatricsLanguage(lang);
+                    
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Apply saved language
+            changePediatricsLanguage(savedLanguage);
+        }
+
+        function changePediatricsLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            const t = pediatricsTranslations[lang];
+            
+            // Update all text elements
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            document.getElementById('step4-title').textContent = t.step4Title;
+            document.getElementById('step4-desc').textContent = t.step4Desc;
+            document.getElementById('step5-title').textContent = t.step5Title;
+            document.getElementById('step5-desc').textContent = t.step5Desc;
+            
+            // Update button text
+            document.querySelector('.nav-button').textContent = t.backButton;
+        }
+    </script>
+</body>
+</html>
