@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     <style>
-        /* Reset and base styles */
+        /* Your existing CSS styles here */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,7 +21,6 @@
             color: #333333;
         }
         
-        /* Header with logo and title */
         .header {
             text-align: center;
             background: white;
@@ -61,7 +60,6 @@
             font-weight: 500;
         }
         
-        /* Language Selector */
         .language-selector {
             text-align: center;
             margin-bottom: 20px;
@@ -81,7 +79,6 @@
             color: white;
         }
         
-        /* Search Section */
         .search-container {
             margin: 20px 0;
             text-align: center;
@@ -115,7 +112,6 @@
             text-align: center;
         }
         
-        /* Grid Layout */
         .departments-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -158,7 +154,6 @@
             font-weight: bold;
         }
         
-        /* Department Location Style */
         .department-location {
             font-size: 0.8rem;
             color: #dc3545;
@@ -176,7 +171,6 @@
             line-height: 1.3;
         }
         
-        /* Search functionality styles */
         .department-box.hidden {
             display: none;
         }
@@ -189,7 +183,6 @@
             display: none;
         }
         
-        /* Hit Counter Section */
         .hit-counter {
             text-align: center;
             margin: 40px 0 20px 0;
@@ -220,7 +213,6 @@
             margin-top: 5px;
         }
         
-        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -239,7 +231,6 @@
             font-size: 1.5rem;
         }
         
-        /* Responsive adjustments */
         @media (max-width: 480px) {
             .departments-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -397,7 +388,6 @@
             <p>Eye care OPD</p>
         </div>
 
-        <!-- New Cafeteria Department -->
         <div class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
             <div class="department-icon">☕</div>
             <h3>Cafeteria (West End)</h3>
@@ -405,8 +395,28 @@
             <p>Food & refreshments</p>
         </div>
 
-        <!-- Add all other departments from your original list here with location info -->
-        
+        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
+            <div class="department-icon">👶</div>
+            <h3>Pediatrics</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Child care & consultation</p>
+        </div>
+
+        <!-- NEW: ENT Department -->
+        <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
+            <div class="department-icon">👂</div>
+            <h3>ENT</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Ear, Nose & Throat</p>
+        </div>
+
+        <!-- NEW: General Medicine Department -->
+        <div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
+            <div class="department-icon">🩺</div>
+            <h3>General Medicine</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Physician consultation</p>
+        </div>
     </div>
 
     <!-- Hit Counter Section -->
@@ -420,7 +430,54 @@
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        // Language support with department translations
+        // PERSISTENT HIT COUNTER - Won't reset with code updates
+        function initializeHitCounter() {
+            // Cookie functions for persistence
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+            
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = `expires=${date.toUTCString()}`;
+                document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
+            }
+            
+            let visitCount = getCookie('wayfinderVisitCount');
+            
+            // If no cookie, try localStorage as backup
+            if (visitCount === null || visitCount === 'null') {
+                visitCount = localStorage.getItem('wayfinderVisitCount');
+            }
+            
+            // If still no count, initialize to 0
+            if (!visitCount || visitCount === 'null') {
+                visitCount = 0;
+            } else {
+                visitCount = parseInt(visitCount);
+            }
+            
+            visitCount++;
+            
+            // Save to both storage methods for maximum persistence
+            setCookie('wayfinderVisitCount', visitCount, 365); // 1 year expiry
+            localStorage.setItem('wayfinderVisitCount', visitCount);
+            
+            document.getElementById('visitCount').textContent = visitCount.toLocaleString();
+            
+            // Optional: Add animation
+            const counterElement = document.getElementById('visitCount');
+            counterElement.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                counterElement.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Language functionality
         const translations = {
             en: {
                 title: "Way Finder Navigation System",
@@ -437,8 +494,10 @@
                     cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
                     ortho: { name: "Orthopedics", location: "Ground Floor", description: "Bone & joint care" },
                     ophthalmology: { name: "Ophthalmology", location: "Ground Floor", description: "Eye care OPD" },
-                    cafeteria: { name: "Cafeteria (West End)", location: "Ground Floor", description: "Food & refreshments" }
-                    // Add translations for all other departments here
+                    cafeteria: { name: "Cafeteria (West End)", location: "Ground Floor", description: "Food & refreshments" },
+                    pediatrics: { name: "Pediatrics", location: "Ground Floor", description: "Child care & consultation" },
+                    ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
+                    general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" }
                 }
             },
             hi: {
@@ -456,7 +515,10 @@
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
                     ortho: { name: "ऑर्थोपेडिक्स", location: "ग्राउंड फ्लोर", description: "हड्डी और जोड़ देखभाल" },
                     ophthalmology: { name: "नेत्र विज्ञान", location: "ग्राउंड फ्लोर", description: "आंखों की देखभाल ओपीडी" },
-                    cafeteria: { name: "कैफेटेरिया (वेस्ट एंड)", location: "ग्राउंड फ्लोर", description: "भोजन और ताज़गी" }
+                    cafeteria: { name: "कैफेटेरिया (वेस्ट एंड)", location: "ग्राउंड फ्लोर", description: "भोजन और ताज़गी" },
+                    pediatrics: { name: "पीडियाट्रिक्स", location: "ग्राउंड फ्लोर", description: "बच्चों की देखभाल और परामर्श" },
+                    ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
+                    general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" }
                 }
             },
             ml: {
@@ -474,7 +536,10 @@
                     cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
                     ortho: { name: "ഓർത്തോപീഡിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "അസ്ഥി, സന്ധി പരിചരണം" },
                     ophthalmology: { name: "ഓഫ്താൽമോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കണ്ണ് പരിചരണം ഓപിഡി" },
-                    cafeteria: { name: "കഫേറ്റീരിയ (വെസ്റ്റ് എൻഡ്)", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഭക്ഷണവും ഉന്മേഷവും" }
+                    cafeteria: { name: "കഫേറ്റീരിയ (വെസ്റ്റ് എൻഡ്)", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഭക്ഷണവും ഉന്മേഷവും" },
+                    pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" },
+                    ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
+                    general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" }
                 }
             },
             ar: {
@@ -492,28 +557,18 @@
                     cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
                     ortho: { name: "العظام", location: "الطابق الأرضي", description: "رعاية العظام والمفاصل" },
                     ophthalmology: { name: "طب العيون", location: "الطابق الأرضي", description: "رعاية العيون والعيادات الخارجية" },
-                    cafeteria: { name: "الكافيتيريا (الطرف الغربي)", location: "الطابق الأرضي", description: "الطعام والمرطبات" }
+                    cafeteria: { name: "الكافيتيريا (الطرف الغربي)", location: "الطابق الأرضي", description: "الطعام والمرطبات" },
+                    pediatrics: { name: "طب الأطفال", location: "الطابق الأرضي", description: "رعاية الأطفال واستشارات" },
+                    ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
+                    general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" }
                 }
             }
         };
 
-        // Current language
-        let currentLang = 'en';
-
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeLanguage();
-            initializeSearch();
-            initializeBackToTop();
-            initializeHitCounter();
-        });
-
-        // Language Support
         function initializeLanguage() {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
-            // Set active button
             languageBtns.forEach(btn => {
                 if (btn.getAttribute('data-lang') === savedLanguage) {
                     btn.classList.add('active');
@@ -530,24 +585,18 @@
                 });
             });
             
-            // Apply saved language
             changeLanguage(savedLanguage);
         }
 
         function changeLanguage(lang) {
-            currentLang = lang;
-            // Save language to localStorage
             localStorage.setItem('selectedLanguage', lang);
             const t = translations[lang];
             
-            // Update interface text
             document.querySelector('.hospital-info h1').textContent = t.title;
             document.querySelector('.hospital-subtitle').textContent = t.subtitle;
             document.getElementById('searchInput').placeholder = t.searchPlaceholder;
             document.querySelector('.search-hint').textContent = t.searchHint;
             document.getElementById('noResults').textContent = t.noResults;
-            
-            // Update hit counter text
             document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
             document.querySelector('.counter-label').textContent = t.hitCounterLabel;
             
@@ -560,7 +609,11 @@
             
             departmentBoxes.forEach(box => {
                 const departmentName = box.getAttribute('data-name');
-                const translation = departmentTranslations[departmentName];
+                let translationKey = departmentName;
+                if (departmentName === 'general medicine') {
+                    translationKey = 'general_medicine';
+                }
+                const translation = departmentTranslations[translationKey];
                 
                 if (translation) {
                     const titleElement = box.querySelector('h3');
@@ -580,39 +633,68 @@
             });
         }
 
-        // Hit Counter Function
-        function initializeHitCounter() {
-            // Get current count from localStorage or initialize to 0
-            let visitCount = localStorage.getItem('wayfinderVisitCount');
-            
-            if (!visitCount) {
-                visitCount = 0;
-            } else {
-                visitCount = parseInt(visitCount);
-            }
-            
-            // Increment count
-            visitCount++;
-            
-            // Save updated count
-            localStorage.setItem('wayfinderVisitCount', visitCount);
-            
-            // Display count with animation
-            displayCounter(visitCount);
-        }
-        
-        function displayCounter(count) {
-            const counterElement = document.getElementById('visitCount');
-            counterElement.textContent = count.toLocaleString();
-            
-            // Add a subtle animation
-            counterElement.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                counterElement.style.transform = 'scale(1)';
-            }, 300);
+        // Search functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            const departmentBoxes = document.querySelectorAll('.department-box');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                departmentBoxes.forEach(box => {
+                    const departmentName = box.getAttribute('data-name').toLowerCase();
+                    const keywords = box.getAttribute('data-keywords').toLowerCase();
+                    
+                    if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
+                        box.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        box.classList.add('hidden');
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+
+            // Department click handlers
+            departmentBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    const departmentName = this.getAttribute('data-name');
+                    
+                    if (departmentName === 'pharmacy') {
+                        window.location.href = 'pharmacy.html';
+                    } else if (departmentName === 'radiology') {
+                        window.location.href = 'radiology.html';
+                    } else if (departmentName === 'cardiology') {
+                        window.location.href = 'cardiology.html';
+                    } else if (departmentName === 'lab') {
+                        window.location.href = 'Lab.html';
+                    } else if (departmentName === 'ortho') {
+                        window.location.href = 'ortho.html';
+                    } else if (departmentName === 'ophthalmology') {
+                        window.location.href = 'ophthal.html';
+                    } else if (departmentName === 'cafeteria') {
+                        window.location.href = 'westend.html';
+                    } else if (departmentName === 'pediatrics') {
+                        window.location.href = 'pediatrics.html';
+                    } else if (departmentName === 'ent') {
+                        window.location.href = 'ent.html';
+                    } else if (departmentName === 'general medicine') {
+                        window.location.href = 'general-medicine.html';
+                    } else {
+                        alert('Directions for ' + departmentName + ' coming soon!');
+                    }
+                });
+            });
         }
 
-        // Back to Top Button
+        // Back to top functionality
         function initializeBackToTop() {
             const backToTopBtn = document.getElementById('backToTop');
             
@@ -629,75 +711,25 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Search Functionality
-        function initializeSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const noResults = document.getElementById('noResults');
-            const departmentBoxes = document.querySelectorAll('.department-box');
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeHitCounter();
+            initializeLanguage();
+            initializeSearch();
+            initializeBackToTop();
+        });
 
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
-                let visibleCount = 0;
+        // Global function for back to top
+        window.scrollToTop = scrollToTop;
 
-                departmentBoxes.forEach(box => {
-                    const departmentName = box.getAttribute('data-name').toLowerCase();
-                    const keywords = box.getAttribute('data-keywords').toLowerCase();
-                    
-                    // Check if search term matches department name or any keyword
-                    const nameMatch = departmentName.includes(searchTerm);
-                    const keywordMatch = keywords.includes(searchTerm);
-                    
-                    if (searchTerm === '' || nameMatch || keywordMatch) {
-                        box.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        box.classList.add('hidden');
-                    }
-                });
-
-                // Show/hide no results message
-                if (visibleCount === 0 && searchTerm !== '') {
-                    noResults.style.display = 'block';
-                } else {
-                    noResults.style.display = 'none';
-                }
-            });
-
-            // Clear search when clicking on a department
-            departmentBoxes.forEach(box => {
-                box.addEventListener('click', function() {
-                    searchInput.value = '';
-                    departmentBoxes.forEach(b => b.classList.remove('hidden'));
-                    noResults.style.display = 'none';
-                    
-                    // Call showDirections with the department name
-                    const departmentName = this.getAttribute('data-name');
-                    showDirections(departmentName);
-                });
-            });
+        // Optional: Manual reset function (call from browser console if needed)
+        function resetHitCounter() {
+            if (confirm('Are you sure you want to reset the hit counter to 0?')) {
+                localStorage.removeItem('wayfinderVisitCount');
+                document.cookie = 'wayfinderVisitCount=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                document.getElementById('visitCount').textContent = '0';
+            }
         }
-
-       // Navigation function
-function showDirections(department) {
-    if (department === 'pharmacy') {
-        window.location.href = 'pharmacy.html';
-    } else if (department === 'radiology') {
-        window.location.href = 'radiology.html';
-    } else if (department === 'cardiology') {
-        window.location.href = 'cardiology.html';
-    } else if (department === 'lab') {
-        window.location.href = 'Lab.html';
-    } else if (department === 'ortho') {
-        window.location.href = 'ortho.html';
-    } else if (department === 'ophthalmology') {
-        window.location.href = 'ophthal.html';
-    } else if (department === 'cafeteria') {
-        window.location.href = 'westend.html'; // Updated to point to westend.html
-    } else {
-        alert('Directions for ' + department + ' coming soon!');
-    }
-}
     </script>
 </body>
 </html>
-
