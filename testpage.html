@@ -163,56 +163,22 @@
     }
 
     // FIXED Hit Counter Function with Cookie Fallback
-    function initializeHitCounter() {
-        // Cookie functions
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-            return null;
-        }
-        
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = `expires=${date.toUTCString()}`;
-            document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
-        }
-        
-        let visitCount = getCookie('wayfinderVisitCount');
-        
-        // If no cookie, try localStorage
-        if (visitCount === null || visitCount === 'null') {
-            visitCount = localStorage.getItem('wayfinderVisitCount');
-        }
-        
-        // If still no count, initialize to 0
-        if (!visitCount || visitCount === 'null') {
-            visitCount = 0;
-        } else {
-            visitCount = parseInt(visitCount);
-        }
-        
-        visitCount++;
-        
-        // Save to both storage methods for redundancy
-        setCookie('wayfinderVisitCount', visitCount, 365); // 1 year expiry
-        localStorage.setItem('wayfinderVisitCount', visitCount);
-        
-        displayCounter(visitCount);
+    // SIMPLIFIED Hit Counter - Use this if still having issues
+function initializeHitCounter() {
+    let visitCount = localStorage.getItem('wayfinderVisitCount');
+    
+    if (!visitCount) {
+        visitCount = 0;
+    } else {
+        visitCount = parseInt(visitCount);
     }
     
-    function displayCounter(count) {
-        const counterElement = document.getElementById('visitCount');
-        counterElement.textContent = count.toLocaleString();
-        
-        // Add a subtle animation
-        counterElement.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-            counterElement.style.transform = 'scale(1)';
-        }, 300);
-    }
-
+    visitCount++;
+    
+    localStorage.setItem('wayfinderVisitCount', visitCount);
+    
+    displayCounter(visitCount);
+}
     // Optional: Add reset function (you can call this from browser console if needed)
     function resetHitCounter() {
         if (confirm('Are you sure you want to reset the hit counter to 0?')) {
