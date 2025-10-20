@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directions to General Medicine</title>
+    <style>
+    /* Same CSS as ENT page */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+        font-size: 18px;
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .language-btn {
+        padding: 8px 15px;
+        margin: 0 5px;
+        background: white;
+        border: 1px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
+    }
+    
+    h1 {
+        color: #2e86ab;
+        text-align: center;
+        font-size: 2.2rem;
+        margin: 20px 0 30px 0;
+        font-weight: bold;
+    }
+    
+    .step {
+        background-color: white;
+        margin: 25px 0;
+        padding: 25px 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .step h2 {
+        color: #2e86ab;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    
+    .step p {
+        font-size: 1.4rem;
+        color: #333;
+        margin-top: 15px;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 3px solid #2e86ab;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin: 10px 0;
+    }
+    
+    .nav-button {
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 18px 35px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 15px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        width: 250px;
+        max-width: 100%;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-button:active {
+        transform: scale(0.95);
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 40px;
+        padding: 25px 0;
+    }
+    
+    @media (max-width: 380px) {
+        body {
+            font-size: 16px;
+            padding: 12px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        .step h2 {
+            font-size: 1.5rem;
+        }
+        
+        .step p {
+            font-size: 1.2rem;
+        }
+        
+        .nav-button {
+            font-size: 1.2rem;
+            padding: 16px 30px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
+        }
+        
+        .step {
+            padding: 30px 25px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
+    </div>
+
+    <div class="language-selector">
+        <button class="language-btn" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">Hindi</button>
+        <button class="language-btn" data-lang="ml">Malayalam</button>
+        <button class="language-btn" data-lang="ar">Arabic</button>
+    </div>
+
+    <h1 id="page-title">🩺 Directions to General Medicine</h1>
+    
+    <div class="step">
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
+        <img src="medicine1.png" alt="Main entrance view">
+        <p id="step1-desc">Enter through the main reception area</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step2-title">Step 2: Walk Straight</h2>
+        <img src="medicine2.png" alt="Walk straight corridor">
+        <p id="step2-desc">Walk straight through the main corridor</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step3-title">Step 3: Look for General Medicine Sign</h2>
+        <img src="medicine3.png" alt="General Medicine department sign">
+        <p id="step3-desc">Look for the General Medicine department signage on your left</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step4-title">Step 4: Welcome to General Medicine</h2>
+        <img src="medicine4.png" alt="General Medicine department entrance">
+        <p id="step4-desc">Your destination - General Medicine department for physician consultation</p>
+    </div>
+    
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
+    </div>
+
+    <script>
+        // Language translations for General Medicine page
+        const medicineTranslations = {
+            en: {
+                pageTitle: "🩺 Directions to General Medicine",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception area",
+                step2Title: "Step 2: Walk Straight",
+                step2Desc: "Walk straight through the main corridor",
+                step3Title: "Step 3: Look for General Medicine Sign",
+                step3Desc: "Look for the General Medicine department signage on your left",
+                step4Title: "Step 4: Welcome to General Medicine",
+                step4Desc: "Your destination - General Medicine department for physician consultation",
+                backButton: "← Back to Main Menu"
+            },
+            hi: {
+                pageTitle: "🩺 जनरल मेडिसिन का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन क्षेत्र से अंदर आएं",
+                step2Title: "चरण 2: सीधे चलें",
+                step2Desc: "मुख्य कॉरिडोर में सीधे चलें",
+                step3Title: "चरण 3: जनरल मेडिसिन संकेत देखें",
+                step3Desc: "अपने बायीं ओर जनरल मेडिसिन विभाग का संकेत देखें",
+                step4Title: "चरण 4: जनरल मेडिसिन में आपका स्वागत है",
+                step4Desc: "आपकी मंजिल - फिजिशियन परामर्श के लिए जनरल मेडिसिन विभाग",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
+            ml: {
+                pageTitle: "🩺 ജനറൽ മെഡിസിനിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ ഏരിയ വഴി അകത്തേക്ക് പ്രവേശിക്കുക",
+                step2Title: "ഘട്ടം 2: നേരെ നടക്കുക",
+                step2Desc: "പ്രധാന കോറിഡോർ വഴി നേരെ നടക്കുക",
+                step3Title: "ഘട്ടം 3: ജനറൽ മെഡിസിൻ സൈൻ നോക്കുക",
+                step3Desc: "നിങ്ങളുടെ ഇടതുവശത്ത് ജനറൽ മെഡിസിൻ വകുപ്പ് സൈൻ ബോർഡ് നോക്കുക",
+                step4Title: "ഘട്ടം 4: ജനറൽ മെഡിസിനിലേക്ക് സ്വാഗതം",
+                step4Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ഫിസിഷ്യൻ കൺസൾട്ടേഷനുള്ള ജനറൽ മെഡിസിൻ വകുപ്പ്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
+            ar: {
+                pageTitle: "🩺 اتجاهات إلى الطب العام",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال منطقة الاستقبال الرئيسية",
+                step2Title: "الخطوة 2: امشِ مباشرة",
+                step2Desc: "امشِ مباشرة عبر الممر الرئيسي",
+                step3Title: "الخطوة 3: ابحث عن لافتة الطب العام",
+                step3Desc: "ابحث عن لافتة قسم الطب العام على يسارك",
+                step4Title: "الخطوة 4: مرحبًا بكم في الطب العام",
+                step4Desc: "وجهتك - قسم الطب العام لاستشارات الطبيب",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
+        };
+
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMedicineLanguage();
+        });
+
+        function initializeMedicineLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageBtns = document.querySelectorAll('.language-btn');
+            
+            languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeMedicineLanguage(lang);
+                    
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            changeMedicineLanguage(savedLanguage);
+        }
+
+        function changeMedicineLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            const t = medicineTranslations[lang];
+            
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            document.getElementById('step4-title').textContent = t.step4Title;
+            document.getElementById('step4-desc').textContent = t.step4Desc;
+            
+            document.querySelector('.nav-button').textContent = t.backButton;
+        }
+    </script>
+</body>
+</html>
