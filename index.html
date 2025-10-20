@@ -417,6 +417,13 @@
             <p class="department-location">Ground Floor</p>
             <p>Physician consultation</p>
         </div>
+
+        <div class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot">
+    <div class="department-icon">🔪</div>
+    <h3>General Surgery</h3>
+    <p class="department-location">Ground Floor</p>
+    <p>Surgical procedures & operations</p>
+</div>
     </div>
 
     <!-- Hit Counter Section -->
@@ -498,6 +505,7 @@
                     pediatrics: { name: "Pediatrics", location: "Ground Floor", description: "Child care & consultation" },
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" }
+                    general_surgery: { name: "General Surgery", location: "First Floor", description: "Surgical procedures & operations" }
                 }
             },
             hi: {
@@ -519,6 +527,7 @@
                     pediatrics: { name: "पीडियाट्रिक्स", location: "ग्राउंड फ्लोर", description: "बच्चों की देखभाल और परामर्श" },
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" }
+                    general_surgery: { name: "जनरल सर्जरी", location: "पहली मंजिल", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
                 }
             },
             ml: {
@@ -540,6 +549,7 @@
                     pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" },
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" }
+                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഫസ്റ്റ് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
                 }
             },
             ar: {
@@ -561,6 +571,7 @@
                     pediatrics: { name: "طب الأطفال", location: "الطابق الأرضي", description: "رعاية الأطفال واستشارات" },
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" }
+                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأول", description: "الإجراءات الجراحية والعمليات" }
                 }
             }
         };
@@ -687,6 +698,8 @@
                         window.location.href = 'ent.html';
                     } else if (departmentName === 'general medicine') {
                         window.location.href = 'general-medicine.html';
+                    else if (departmentName === 'general surgery') {
+                        window.location.href = 'general-surgery.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
@@ -733,4 +746,5 @@
     </script>
 </body>
 </html>
+
 
