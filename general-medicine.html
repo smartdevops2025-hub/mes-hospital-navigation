@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directions to General Medicine</title>
     <style>
+    /* Mobile-first responsive design */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -16,40 +18,51 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 18px;
+        font-size: 16px; /* Better base font size for mobile */
     }
     
     .header {
         text-align: center;
         background: white;
-        padding: 20px;
+        padding: 20px 15px;
         border-radius: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
         border: 2px solid #dc3545;
     }
     
     .hospital-logo {
         width: 100%;
-        max-width: 250px;
+        max-width: 200px; /* Smaller logo for mobile */
         height: auto;
-        margin: 0 auto 15px;
+        margin: 0 auto 10px;
         display: block;
     }
     
+    .header h1 {
+        color: #dc3545;
+        font-size: 1.4rem; /* Smaller header for mobile */
+        margin: 0;
+    }
+    
+    /* Language Selector */
     .language-selector {
         text-align: center;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
     }
     
     .language-btn {
-        padding: 8px 15px;
-        margin: 0 5px;
+        padding: 10px 15px;
         background: white;
-        border: 1px solid #dc3545;
+        border: 2px solid #dc3545;
         border-radius: 20px;
         cursor: pointer;
         font-size: 0.9rem;
+        min-width: 70px;
     }
     
     .language-btn.active {
@@ -57,18 +70,20 @@
         color: white;
     }
     
-    h1 {
+    .page-title {
         color: #2e86ab;
         text-align: center;
-        font-size: 2.2rem;
-        margin: 20px 0 30px 0;
+        font-size: 1.6rem; /* Better mobile size */
+        margin: 20px 0;
         font-weight: bold;
+        line-height: 1.3;
+        padding: 0 10px;
     }
     
     .step {
         background-color: white;
-        margin: 25px 0;
-        padding: 25px 20px;
+        margin: 20px 0;
+        padding: 20px 15px;
         border-radius: 15px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -77,109 +92,218 @@
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.8rem;
-        margin-bottom: 20px;
+        font-size: 1.3rem; /* Better mobile size */
+        margin-bottom: 15px;
         font-weight: bold;
+        line-height: 1.3;
+        padding: 0 5px;
     }
     
     .step p {
-        font-size: 1.4rem;
+        font-size: 1.1rem; /* Better mobile size */
         color: #333;
-        margin-top: 15px;
+        margin-top: 12px;
         line-height: 1.5;
         font-weight: 500;
+        padding: 0 5px;
     }
     
-    .image-container {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-        border-radius: 12px;
-        margin: 10px 0;
-    }
-    
-    img {
+    .step-image {
         max-width: 100%;
         height: auto;
-        display: block;
         border-radius: 12px;
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        object-fit: contain; /* Ensure images maintain aspect ratio */
+        margin: 10px 0;
+        display: block;
     }
     
     .nav-button {
         background: linear-gradient(135deg, #2e86ab, #1a536b);
         color: white;
-        padding: 18px 35px;
+        padding: 16px 30px;
         border: none;
         border-radius: 10px;
         cursor: pointer;
         margin: 15px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         font-weight: bold;
-        width: 250px;
-        max-width: 100%;
+        width: 100%;
+        max-width: 280px;
         touch-action: manipulation;
         transition: all 0.3s ease;
     }
     
     .nav-button:active {
-        transform: scale(0.95);
+        transform: scale(0.98);
+        background: linear-gradient(135deg, #1a536b, #2e86ab);
     }
     
     .button-container {
         text-align: center;
-        margin-top: 40px;
-        padding: 25px 0;
+        margin-top: 30px;
+        padding: 20px 0;
     }
     
-    @media (max-width: 380px) {
+    /* Enhanced mobile adjustments */
+    @media (max-width: 480px) {
         body {
-            font-size: 16px;
+            font-size: 15px;
             padding: 12px;
         }
         
-        h1 {
-            font-size: 1.8rem;
+        .header {
+            padding: 15px 10px;
+            margin-bottom: 15px;
+        }
+        
+        .hospital-logo {
+            max-width: 180px;
+        }
+        
+        .header h1 {
+            font-size: 1.2rem;
+        }
+        
+        .page-title {
+            font-size: 1.4rem;
+            margin: 15px 0;
+        }
+        
+        .step {
+            padding: 15px 12px;
+            margin: 15px 0;
         }
         
         .step h2 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
         }
         
         .step p {
-            font-size: 1.2rem;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .language-btn {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            min-width: 60px;
+        }
+        
+        .nav-button {
+            font-size: 1rem;
+            padding: 14px 25px;
+            max-width: 250px;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        body {
+            font-size: 14px;
+            padding: 10px;
+        }
+        
+        .page-title {
+            font-size: 1.3rem;
+        }
+        
+        .step h2 {
+            font-size: 1.1rem;
+        }
+        
+        .step p {
+            font-size: 0.95rem;
+        }
+        
+        .language-btn {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            min-width: 55px;
+        }
+    }
+    
+    /* Tablet and larger screens */
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
+            font-size: 17px;
+        }
+        
+        .header {
+            padding: 25px 20px;
+            margin-bottom: 25px;
+        }
+        
+        .hospital-logo {
+            max-width: 250px;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            margin: 25px 0;
+        }
+        
+        .step {
+            padding: 25px 20px;
+            margin: 25px 0;
+        }
+        
+        .step h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        
+        .step p {
+            font-size: 1.3rem;
+            margin-top: 15px;
+        }
+        
+        .language-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            min-width: 80px;
         }
         
         .nav-button {
             font-size: 1.2rem;
-            padding: 16px 30px;
+            padding: 18px 35px;
+            max-width: 300px;
         }
     }
     
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
         body {
-            max-width: 700px;
+            max-width: 800px;
+            font-size: 18px;
         }
         
-        .step {
-            padding: 30px 25px;
+        .page-title {
+            font-size: 2.2rem;
         }
         
-        .image-container {
-            max-width: 650px;
-            margin: 10px auto;
+        .step h2 {
+            font-size: 1.8rem;
+        }
+        
+        .step p {
+            font-size: 1.4rem;
         }
     }
     </style>
 </head>
 <body>
+    <!-- Header with Hospital Logo -->
     <div class="header">
         <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
         <h1>Way Finder Navigation System</h1>
     </div>
 
+    <!-- Language Selector -->
     <div class="language-selector">
         <button class="language-btn active" data-lang="en">English</button>
         <button class="language-btn" data-lang="hi">हिंदी </button>
@@ -187,77 +311,59 @@
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
-    <h1 id="page-title">🩺 Directions to General Medicine</h1>
+    <h1 class="page-title" id="page-title">🩺 Directions to General Medicine</h1>
     
     <div class="step">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
-        <div class="image-container">
-            <img src="entgenmed1.png" alt="Main entrance view">
-        </div>
+        <img src="entgenmed1.png" alt="Main entrance view" class="step-image">
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
     <div class="step">
         <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
-        <div class="image-container">
-            <img src="entgenmed2.png" alt="Turn right at central corridor">
-        </div>
+        <img src="entgenmed2.png" alt="Turn right at central corridor" class="step-image">
         <p id="step2-desc">Turn left when you cross the reception counter</p>
     </div>
 
     <div class="step">
         <h2 id="step3-title">Step 3: Keep Right</h2>
-        <div class="image-container">
-            <img src="entgenmed3.png" alt="Walk towards west wing">
-        </div>
+        <img src="entgenmed3.png" alt="Walk towards west wing" class="step-image">
         <p id="step3-desc">Take a Quick Right</p>
     </div>
 
     <div class="step">
         <h2 id="step4-title">Step 4: Entering Pharmacy Lobby</h2>
-        <div class="image-container">
-            <img src="entgenmed4.png" alt="Pharmacy Lobby Area">
-        </div>
+        <img src="entgenmed4.png" alt="Pharmacy Lobby Area" class="step-image">
         <p id="step4-desc">Then take a small left turn near Gynaecology Dept</p>
     </div>
 
     <div class="step">
         <h2 id="step5-title">Step 5: Now you are at Pharmacy Lobby</h2>
-        <div class="image-container">
-            <img src="entgenmed5.png" alt="Pharmacy Lobby">
-        </div>
+        <img src="entgenmed5.png" alt="Pharmacy Lobby" class="step-image">
         <p id="step5-desc">Walk straight towards the Fire Exit following the Arrow mark</p>
     </div>
 
     <div class="step">
         <h2 id="step6-title">Step 6: Left towards Fire Exit</h2>
-        <div class="image-container">
-            <img src="entgenmed6.png" alt="Towards General Medicine">
-        </div>
+        <img src="entgenmed6.png" alt="Towards General Medicine" class="step-image">
         <p id="step6-desc">Take a Left turn before the Fire Exit</p>
     </div>
 
     <div class="step">
         <h2 id="step7-title">Step 7: Walk Straight to General Medicine OPD</h2>
-        <div class="image-container">
-            <img src="entgenmed7.png" alt="ENT department entrance">
-        </div>
+        <img src="entgenmed7.png" alt="ENT department entrance" class="step-image">
         <p id="step7-desc">Take few steps ahead following the Arrow</p>
     </div>
 
     <div class="step">
         <h2 id="step8-title">Step 8: Walk Straight to General Medicine OPD</h2>
-        <div class="image-container">
-            <img src="entgenmed8.png" alt="ENT department entrance">
-        </div>
+        <img src="entgenmed8.png" alt="ENT department entrance" class="step-image">
         <p id="step8-desc">Take few steps ahead crossing Urology following the Arrow</p>
     </div>
     
     <div class="step">
         <h2 id="step9-title">Step 9: Welcome to General Medicine</h2>
-        <div class="image-container">
-            <img src="entgenmed9.png" alt="ENT department entrance">
-        </div>
+        <img src="entgenmed9.png" alt="ENT department entrance" class="step-image">
         <p id="step9-desc">Your destination - General Medicine department for physician consultation</p>
     </div>
    
@@ -286,13 +392,14 @@
                 step6Desc: "Take a Left turn before the Fire Exit",
                 step7Title: "Step 7: Walk Straight to General Medicine OPD",
                 step7Desc: "Take few steps ahead following the Arrow",
-                step8Title: "Step 8: Entering Pharmacy Lobby",
+                step8Title: "Step 8: Walk Straight to General Medicine OPD",
                 step8Desc: "Take few steps ahead crossing Urology following the Arrow",
                 step9Title: "Step 9: Welcome to General Medicine",
                 step9Desc: "Your destination - General Medicine department for physician consultation",
                 backButton: "← Back to Main Menu"
             },
             hi: {
+                pageTitle: "🩺 जनरल मेडिसिन का रास्ता",
                 step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
                 step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
                 step2Title: "चरण 2: रिसेप्शन के बाद बायीं ओर मुड़ें",
@@ -307,12 +414,14 @@
                 step6Desc: "फायर एक्जिट से पहले बायीं ओर मुड़ें",
                 step7Title: "चरण 7: जनरल मेडिसिन ओपीडी की ओर सीधे चलें",
                 step7Desc: "तीर का पालन करते हुए कुछ कदम आगे बढ़ें",
-                step8Title: "चरण 8: फार्मेसी लॉबी में प्रवेश कर रहे हैं",
+                step8Title: "चरण 8: जनरल मेडिसिन ओपीडी की ओर सीधे चलें",
                 step8Desc: "यूरोलॉजी को पार करते हुए तीर का पालन करके कुछ कदम आगे बढ़ें",
                 step9Title: "चरण 9: जनरल मेडिसिन में आपका स्वागत है",
-                step9Desc: "आपकी मंजिल - फिजिशियन परामर्श के लिए जनरल मेडिसिन विभाग"
+                step9Desc: "आपकी मंजिल - फिजिशियन परामर्श के लिए जनरल मेडिसिन विभाग",
+                backButton: "← मुख्य मेनू पर वापस"
             },
             ml: {
+                pageTitle: "🩺 ജനറൽ മെഡിസിനിലേക്കുള്ള വഴി",
                 step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
                 step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് തുടരുക, നേരെ നടക്കുക",
                 step2Title: "ഘട്ടം 2: റിസപ്ഷൻ കടന്ന് ഇടതുവശത്ത് തിരിയുക",
@@ -327,12 +436,14 @@
                 step6Desc: "ഫയർ എക്സിറ്റിന് മുമ്പായി ഇടതുവശത്ത് തിരിയുക",
                 step7Title: "ഘട്ടം 7: ജനറൽ മെഡിസിൻ ഓപിഡിയിലേക്ക് നേരെ നടക്കുക",
                 step7Desc: "അമ്പടയാളം പിന്തുടർന്ന് കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
-                step8Title: "ഘട്ടം 8: ഫാർമസി ലോബിയിലേക്ക് പ്രവേശിക്കുന്നു",
+                step8Title: "ഘട്ടം 8: ജനറൽ മെഡിസിൻ ഓപിഡിയിലേക്ക് നേരെ നടക്കുക",
                 step8Desc: "യൂറോളജി കടന്ന് അമ്പടയാളം പിന്തുടർന്ന് കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
                 step9Title: "ഘട്ടം 9: ജനറൽ മെഡിസിനിലേക്ക് സ്വാഗതം",
-                step9Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ഫിസിഷ്യൻ കൺസൾട്ടേഷനുള്ള ജനറൽ മെഡിസിൻ വകുപ്പ്"
+                step9Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ഫിസിഷ്യൻ കൺസൾട്ടേഷനുള്ള ജനറൽ മെഡിസിൻ വകുപ്പ്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
             },
             ar: {
+                pageTitle: "🩺 اتجاهات إلى الطب العام",
                 step1Title: "الخطوة 1: من المدخل الرئيسي",
                 step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
                 step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
@@ -347,11 +458,12 @@
                 step6Desc: "خذ منعطفًا يسارًا قبل مخرج الطوارئ",
                 step7Title: "الخطوة 7: امشِ مباشرة إلى عيادات الطب العام الخارجية",
                 step7Desc: "خذ بضع خطوات للأمام متبعًا السهم",
-                step8Title: "الخطوة 8: الدخول إلى بهو الصيدلية",
+                step8Title: "الخطوة 8: امشِ مباشرة إلى عيادات الطب العام الخارجية",
                 step8Desc: "خذ بضع خطوات للأمام متجاوزًا قسم المسالك البولية متبعًا السهم",
                 step9Title: "الخطوة 9: مرحبًا بكم في الطب العام",
-                step9Desc: "وجهتك - قسم الطب العام لاستشارات الطبيب"
-            },
+                step9Desc: "وجهتك - قسم الطب العام لاستشارات الطبيب",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
         };
 
         // Initialize language
@@ -363,6 +475,7 @@
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
+            // Set active button
             languageBtns.forEach(btn => {
                 if (btn.getAttribute('data-lang') === savedLanguage) {
                     btn.classList.add('active');
@@ -379,6 +492,7 @@
                 });
             });
             
+            // Apply saved language
             changeMedicineLanguage(savedLanguage);
         }
 
@@ -386,6 +500,7 @@
             localStorage.setItem('selectedLanguage', lang);
             const t = medicineTranslations[lang];
             
+            // Update all text elements
             document.getElementById('page-title').textContent = t.pageTitle;
             document.getElementById('step1-title').textContent = t.step1Title;
             document.getElementById('step1-desc').textContent = t.step1Desc;
@@ -406,6 +521,7 @@
             document.getElementById('step9-title').textContent = t.step9Title;
             document.getElementById('step9-desc').textContent = t.step9Desc;
             
+            // Update button text
             document.querySelector('.nav-button').textContent = t.backButton;
         }
     </script>
