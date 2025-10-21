@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Directions to Laboratory</title>
-       <style>
+    <style>
     /* Copy the same CSS styles from other department pages */
     * {
         box-sizing: border-box;
@@ -73,6 +73,7 @@
         border-radius: 15px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden; /* Added to contain images */
     }
     
     .step h2 {
@@ -90,13 +91,21 @@
         font-weight: 500;
     }
     
-    img {
+    .step img {
         max-width: 100%;
         height: auto;
         border-radius: 12px;
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         margin: 10px 0;
+        display: block; /* Added to fix alignment */
+    }
+    
+    .image-container {
+        width: 100%;
+        overflow: hidden; /* Ensure images don't overflow */
+        border-radius: 10px;
+        margin: 15px 0;
     }
     
     .nav-button {
@@ -147,6 +156,11 @@
             font-size: 1.2rem;
             padding: 16px 30px;
         }
+        
+        .step {
+            padding: 20px 15px;
+            margin: 20px 0;
+        }
     }
     
     @media (min-width: 768px) {
@@ -180,19 +194,25 @@
     
     <div class="step">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
-        <img src="lab1.png" alt="Main entrance view">
+        <div class="image-container">
+            <img src="lab1.png" alt="Main entrance view">
+        </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
     <div class="step">
         <h2 id="step2-title">Step 2: Take Few steps ahead</h2>
-        <img src="lab2.png" alt="Soon after Opthal, Lab will be on your right">
+        <div class="image-container">
+            <img src="lab2.png" alt="Soon after Opthal, Lab will be on your right">
+        </div>
         <p id="step2-desc">Walk a little further to see Opthal, Lab will be on your right</p>
     </div>
 
     <div class="step">
         <h2 id="step3-title">Step 3: Lab Sample Collection Counter</h2>
-        <img src="lab3.png" alt="Laboratory Counter">
+        <div class="image-container">
+            <img src="lab3.png" alt="Laboratory Counter">
+        </div>
         <p id="step3-desc">Your destination is on your Front</p>
     </div>
 
