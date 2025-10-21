@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Directions to West End Cafeteria</title>
-        <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
     /* Mobile-first responsive design */
     * {
         box-sizing: border-box;
@@ -17,7 +18,7 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 16px; /* Better base font size for mobile */
+        font-size: 16px;
     }
     
     .header {
@@ -32,7 +33,7 @@
     
     .hospital-logo {
         width: 100%;
-        max-width: 200px; /* Smaller logo for mobile */
+        max-width: 200px;
         height: auto;
         margin: 0 auto 10px;
         display: block;
@@ -40,7 +41,7 @@
     
     .header h1 {
         color: #dc3545;
-        font-size: 1.4rem; /* Smaller header for mobile */
+        font-size: 1.4rem;
         margin: 0;
     }
     
@@ -72,7 +73,7 @@
     .page-title {
         color: #2e86ab;
         text-align: center;
-        font-size: 1.6rem; /* Better mobile size */
+        font-size: 1.6rem;
         margin: 20px 0;
         font-weight: bold;
         line-height: 1.3;
@@ -90,7 +91,7 @@
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.3rem; /* Better mobile size */
+        font-size: 1.3rem;
         margin-bottom: 15px;
         font-weight: bold;
         line-height: 1.3;
@@ -98,7 +99,7 @@
     }
     
     .step p {
-        font-size: 1.1rem; /* Better mobile size */
+        font-size: 1.1rem;
         color: #333;
         margin-top: 12px;
         line-height: 1.5;
@@ -106,13 +107,23 @@
         padding: 0 5px;
     }
     
-    .step-image {
+    /* FIXED: Image container with proper constraints */
+    .image-container {
+        width: 100%;
+        border-radius: 12px;
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+    }
+    
+    .image-container img {
         max-width: 100%;
         height: auto;
-        border-radius: 12px;
+        border-radius: 10px;
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        margin: 10px 0;
         display: block;
     }
     
@@ -141,6 +152,41 @@
         text-align: center;
         margin-top: 30px;
         padding: 20px 0;
+    }
+    
+    /* Progress indicator for better UX */
+    .progress-container {
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .progress-bar {
+        height: 8px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #2e86ab, #dc3545);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    
+    /* Step counter for better navigation */
+    .step-counter {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #666;
     }
     
     /* Enhanced mobile adjustments */
@@ -309,52 +355,81 @@
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="step-counter">
+            <span>Step <span id="current-step">1</span> of 8</span>
+            <span id="progress-percentage">13%</span>
+        </div>
+    </div>
+
     <h1 id="page-title">☕ Directions to West End Cafeteria</h1>
     
-    <div class="step">
+    <div class="step" id="step1">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
-        <img src="westend1.png" alt="Main entrance to West End Cafeteria">
+        <div class="image-container">
+            <img src="westend1.png" alt="Main entrance to West End Cafeteria">
+        </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step2">
         <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
-        <img src="westend2.png" alt="Turn right at central corridor">
+        <div class="image-container">
+            <img src="westend2.png" alt="Turn left at central corridor">
+        </div>
         <p id="step2-desc">Turn left when you see the reception counter</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step3">
         <h2 id="step3-title">Step 3: Keep Right</h2>
-        <img src="westend3.png" alt="Walk towards west wing">
+        <div class="image-container">
+            <img src="westend3.png" alt="Walk towards west wing">
+        </div>
         <p id="step3-desc">Take a Quick Right</p>
     </div>
 
-    <div class="step">
-        <h2 id="step4-title">Step 4: Can u see Pharmacy Lobby</h2>
-        <img src="westend4.png" alt="West End Cafeteria entrance">
-        <p id="step4-desc">Then take a small left turn near Gynaecology Dept</p>
+    <div class="step" id="step4">
+        <h2 id="step4-title">Step 4: Can you see Pharmacy Lobby</h2>
+        <div class="image-container">
+            <img src="westend4.png" alt="Pharmacy Lobby view">
+        </div>
+        <p id="step4-desc">Then take a small right turn near Gynaecology Dept</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step5">
         <h2 id="step5-title">Step 5: Cross the Lobby to exit outside</h2>
-        <img src="westend5.png" alt="West End Cafeteria interior">
+        <div class="image-container">
+            <img src="westend5.png" alt="Crossing Pharmacy Lobby">
+        </div>
         <p id="step5-desc">Walk Straight following the arrow after taking short left onto the Pharmacy Lobby</p>
     </div>
-     <div class="step">
-        <h2 id="step5-title">Step 6: Straight to outside</h2>
-        <img src="westend6.png" alt="West End Cafeteria interior">
-        <p id="step5-desc">Walk Straight where you see the Fire Exit Board</p>
+     
+    <div class="step" id="step6">
+        <h2 id="step6-title">Step 6: Straight to outside</h2>
+        <div class="image-container">
+            <img src="westend6.png" alt="Walking towards exit">
+        </div>
+        <p id="step6-desc">Walk Straight where you see the Fire Exit Board</p>
     </div>
-      <div class="step">
-        <h2 id="step5-title">Step 7: Take a look at the Rigth side</h2>
-        <img src="westend7.png" alt="West End Cafeteria interior">
-        <p id="step5-desc">Take few steps and a quick right turn you can see Cafeteria</p>
+      
+    <div class="step" id="step7">
+        <h2 id="step7-title">Step 7: Take a look at the Right side</h2>
+        <div class="image-container">
+            <img src="westend7.png" alt="Cafeteria view from outside">
+        </div>
+        <p id="step7-desc">Take few steps and a quick right turn you can see Cafeteria</p>
     </div>
      
-     <div class="step">
-        <h2 id="step5-title">Step 8: Welcome to Cafeteria</h2>
-        <img src="westend8.png" alt="West End Cafeteria interior">
-        <p id="step5-desc">Your destination - West End Cafeteria for food and refreshments</p>
+    <div class="step" id="step8">
+        <h2 id="step8-title">Step 8: Welcome to Cafeteria</h2>
+        <div class="image-container">
+            <img src="westend8.png" alt="West End Cafeteria interior">
+        </div>
+        <p id="step8-desc">Your destination - West End Cafeteria for food and refreshments</p>
     </div>
     
     <div class="button-container">
@@ -366,91 +441,92 @@
     <script>
         // Language translations for West End Cafeteria page
         const westendTranslations = {
-    en: {
-        pageTitle: "☕ Directions to West End Cafeteria",
-        step1Title: "Step 1: From Main Entrance",
-        step1Desc: "Enter through the main reception, keep right and walk straight",
-        step2Title: "Step 2: Turn Left after Reception",
-        step2Desc: "Turn left when you see the reception counter",
-        step3Title: "Step 3: Keep Right",
-        step3Desc: "Take a Quick Right",
-        step4Title: "Step 4: Can u see Pharmacy Lobby",
-        step4Desc: "Then take a small right turn near Gynaecology Dept",
-        step5Title: "Step 5: Cross the Lobby to exit outside",
-        step5Desc: "Walk Straight following the arrow after taking short left onto the Pharmacy Lobby",
-        step6Title: "Step 6: Straight to outside",
-        step6Desc: "Walk Straight where you see the Fire Exit Board",
-        step7Title: "Step 7: Take a look at the Right side",
-        step7Desc: "Take few steps and a quick right turn you can see Cafeteria",
-        step8Title: "Step 8: Welcome to West End Cafeteria",
-        step8Desc: "Your destination - West End Cafeteria for food and refreshments",
-        backButton: "← Back to Main Menu"
-    },
-    hi: {
-        pageTitle: "☕ वेस्ट एंड कैफेटेरिया का रास्ता",
-        step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
-        step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
-        step2Title: "चरण 2: रिसेप्शन के बाद बायीं ओर मुड़ें",
-        step2Desc: "रिसेप्शन काउंटर देखने पर बायीं ओर मुड़ें",
-        step3Title: "चरण 3: दायीं ओर रहें",
-        step3Desc: "जल्दी से दायीं ओर मुड़ें",
-        step4Title: "चरण 4: क्या आप फार्मेसी लॉबी देख सकते हैं",
-        step4Desc: "फिर गायनाकोलॉजी विभाग के पास एक छोटा दायाँ मोड़ लें",
-        step5Title: "चरण 5: लॉबी पार करके बाहर निकलें",
-        step5Desc: "फार्मेसी लॉबी पर छोटा बायाँ मोड़ लेने के बाद तीर का पालन करते हुए सीधे चलें",
-        step6Title: "चरण 6: सीधे बाहर की ओर",
-        step6Desc: "सीधे चलें जहाँ आपको फायर एक्जिट बोर्ड दिखाई दे",
-        step7Title: "चरण 7: दायीं ओर देखें",
-        step7Desc: "कुछ कदम चलें और एक त्वरित दायाँ मोड़ लें, आप कैफेटेरिया देख सकते हैं",
-        step8Title: "चरण 8: वेस्ट एंड कैफेटेरिया में आपका स्वागत है",
-        step8Desc: "आपकी मंजिल - भोजन और ताज़गी के लिए वेस्ट एंड कैफेटेरिया",
-        backButton: "← मुख्य मेनू पर वापस"
-    },
-    ml: {
-        pageTitle: "☕ വെസ്റ്റ് എൻഡ് കഫേറ്റീരിയയിലേക്കുള്ള വഴി",
-        step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
-        step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് തുടരുക, നേരെ നടക്കുക",
-        step2Title: "ഘട്ടം 2: റിസപ്ഷന് ശേഷം ഇടതുവശത്ത് തിരിയുക",
-        step2Desc: "റിസപ്ഷൻ കൗണ്ടർ കണ്ടാൽ ഇടതുവശത്ത് തിരിയുക",
-        step3Title: "ഘട്ടം 3: വലതുവശത്ത് തുടരുക",
-        step3Desc: "വേഗത്തിൽ വലതുവശത്ത് തിരിയുക",
-        step4Title: "ഘട്ടം 4: ഫാർമസി ലോബി നിങ്ങൾക്ക് കാണാമോ",
-        step4Desc: "ഗൈനക്കോളജി വകുപ്പിന് സമീപം ഒരു ചെറിയ വലതുവശത്ത് തിരിയുക",
-        step5Title: "ഘട്ടം 5: ലോബി കടന്ന് പുറത്തേക്ക് പോകുക",
-        step5Desc: "ഫാർമസി ലോബിയിലേക്ക് ചെറിയ ഇടതുവശത്ത് തിരിഞ്ഞ ശേഷം അമ്പടയാളം പിന്തുടർന്ന് നേരെ നടക്കുക",
-        step6Title: "ഘട്ടം 6: നേരെ പുറത്തേക്ക്",
-        step6Desc: "ഫയർ എക്സിറ്റ് ബോർഡ് കാണുന്നിടത്ത് നേരെ നടക്കുക",
-        step7Title: "ഘട്ടം 7: വലതുവശത്ത് നോക്കുക",
-        step7Desc: "കുറച്ച് ചുവടുകൾ നടന്ന് വേഗത്തിൽ വലതുവശത്ത് തിരിയുക, നിങ്ങൾക്ക് കഫേറ്റീരിയ കാണാം",
-        step8Title: "ഘട്ടം 8: വെസ്റ്റ് എൻഡ് കഫേറ്റീരിയയിലേക്ക് സ്വാഗതം",
-        step8Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ഭക്ഷണത്തിനും ഉന്മേഷത്തിനുമുള്ള വെസ്റ്റ് എൻഡ് കഫേറ്റീരിയ",
-        backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
-    },
-    ar: {
-        pageTitle: "☕ اتجاهات إلى كافيتيريا الطرف الغربي",
-        step1Title: "الخطوة 1: من المدخل الرئيسي",
-        step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
-        step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
-        step2Desc: "انعطف يسارًا عندما ترى مكتب الاستقبال",
-        step3Title: "الخطوة 3: حافظ على اليمين",
-        step3Desc: "انعطف يمينًا بسرعة",
-        step4Title: "الخطوة 4: هل يمكنك رؤبة بهو الصيدلية",
-        step4Desc: "ثم خذ منعطفًا يمينًا صغيرًا بالقرب من قسم أمراض النساء",
-        step5Title: "الخطوة 5: اعبر البهو للخروج إلى الخارج",
-        step5Desc: "امشِ مباشرةً متبعًا السهم بعد أخذ منعطف يسار قصير إلى بهو الصيدلية",
-        step6Title: "الخطوة 6: مباشرة إلى الخارج",
-        step6Desc: "امشِ مباشرةً حيث ترى لافتة مخرج الطوارئ",
-        step7Title: "الخطوة 7: ألق نظرة على الجانب الأيمن",
-        step7Desc: "خذ بضع خطوات وانعطف يمينًا سريعًا يمكنك رؤية الكافيتيريا",
-        step8Title: "الخطوة 8: مرحبًا بكم في كافيتيريا الطرف الغربي",
-        step8Desc: "وجهتك - كافيتيريا الطرف الغربي للطعام والمرطبات",
-        backButton: "← العودة إلى القائمة الرئيسية"
-    }
-};
+            en: {
+                pageTitle: "☕ Directions to West End Cafeteria",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception, keep right and walk straight",
+                step2Title: "Step 2: Turn Left after Reception",
+                step2Desc: "Turn left when you see the reception counter",
+                step3Title: "Step 3: Keep Right",
+                step3Desc: "Take a Quick Right",
+                step4Title: "Step 4: Can you see Pharmacy Lobby",
+                step4Desc: "Then take a small right turn near Gynaecology Dept",
+                step5Title: "Step 5: Cross the Lobby to exit outside",
+                step5Desc: "Walk Straight following the arrow after taking short left onto the Pharmacy Lobby",
+                step6Title: "Step 6: Straight to outside",
+                step6Desc: "Walk Straight where you see the Fire Exit Board",
+                step7Title: "Step 7: Take a look at the Right side",
+                step7Desc: "Take few steps and a quick right turn you can see Cafeteria",
+                step8Title: "Step 8: Welcome to West End Cafeteria",
+                step8Desc: "Your destination - West End Cafeteria for food and refreshments",
+                backButton: "← Back to Main Menu"
+            },
+            hi: {
+                pageTitle: "☕ वेस्ट एंड कैफेटेरिया का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: रिसेप्शन के बाद बायीं ओर मुड़ें",
+                step2Desc: "रिसेप्शन काउंटर देखने पर बायीं ओर मुड़ें",
+                step3Title: "चरण 3: दायीं ओर रहें",
+                step3Desc: "जल्दी से दायीं ओर मुड़ें",
+                step4Title: "चरण 4: क्या आप फार्मेसी लॉबी देख सकते हैं",
+                step4Desc: "फिर गायनाकोलॉजी विभाग के पास एक छोटा दायाँ मोड़ लें",
+                step5Title: "चरण 5: लॉबी पार करके बाहर निकलें",
+                step5Desc: "फार्मेसी लॉबी पर छोटा बायाँ मोड़ लेने के बाद तीर का पालन करते हुए सीधे चलें",
+                step6Title: "चरण 6: सीधे बाहर की ओर",
+                step6Desc: "सीधे चलें जहाँ आपको फायर एक्जिट बोर्ड दिखाई दे",
+                step7Title: "चरण 7: दायीं ओर देखें",
+                step7Desc: "कुछ कदम चलें और एक त्वरित दायाँ मोड़ लें, आप कैफेटेरिया देख सकते हैं",
+                step8Title: "चरण 8: वेस्ट एंड कैफेटेरिया में आपका स्वागत है",
+                step8Desc: "आपकी मंजिल - भोजन और ताज़गी के लिए वेस्ट एंड कैफेटेरिया",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
+            ml: {
+                pageTitle: "☕ വെസ്റ്റ് എൻഡ് കഫേറ്റീരിയയിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് തുടരുക, നേരെ നടക്കുക",
+                step2Title: "ഘട്ടം 2: റിസപ്ഷന് ശേഷം ഇടതുവശത്ത് തിരിയുക",
+                step2Desc: "റിസപ്ഷൻ കൗണ്ടർ കണ്ടാൽ ഇടതുവശത്ത് തിരിയുക",
+                step3Title: "ഘട്ടം 3: വലതുവശത്ത് തുടരുക",
+                step3Desc: "വേഗത്തിൽ വലതുവശത്ത് തിരിയുക",
+                step4Title: "ഘട്ടം 4: ഫാർമസി ലോബി നിങ്ങൾക്ക് കാണാമോ",
+                step4Desc: "ഗൈനക്കോളജി വകുപ്പിന് സമീപം ഒരു ചെറിയ വലതുവശത്ത് തിരിയുക",
+                step5Title: "ഘട്ടം 5: ലോബി കടന്ന് പുറത്തേക്ക് പോകുക",
+                step5Desc: "ഫാർമസി ലോബിയിലേക്ക് ചെറിയ ഇടതുവശത്ത് തിരിഞ്ഞ ശേഷം അമ്പടയാളം പിന്തുടർന്ന് നേരെ നടക്കുക",
+                step6Title: "ഘട്ടം 6: നേരെ പുറത്തേക്ക്",
+                step6Desc: "ഫയർ എക്സിറ്റ് ബോർഡ് കാണുന്നിടത്ത് നേരെ നടക്കുക",
+                step7Title: "ഘട്ടം 7: വലതുവശത്ത് നോക്കുക",
+                step7Desc: "കുറച്ച് ചുവടുകൾ നടന്ന് വേഗത്തിൽ വലതുവശത്ത് തിരിയുക, നിങ്ങൾക്ക് കഫേറ്റീരിയ കാണാം",
+                step8Title: "ഘട്ടം 8: വെസ്റ്റ് എൻഡ് കഫേറ്റീരിയയിലേക്ക് സ്വാഗതം",
+                step8Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ഭക്ഷണത്തിനും ഉന്മേഷത്തിനുമുള്ള വെസ്റ്റ് എൻഡ് കഫേറ്റീരിയ",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
+            ar: {
+                pageTitle: "☕ اتجاهات إلى كافيتيريا الطرف الغربي",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
+                step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
+                step2Desc: "انعطف يسارًا عندما ترى مكتب الاستقبال",
+                step3Title: "الخطوة 3: حافظ على اليمين",
+                step3Desc: "انعطف يمينًا بسرعة",
+                step4Title: "الخطوة 4: هل يمكنك رؤية بهو الصيدلية",
+                step4Desc: "ثم خذ منعطفًا يمينًا صغيرًا بالقرب من قسم أمراض النساء",
+                step5Title: "الخطوة 5: اعبر البهو للخروج إلى الخارج",
+                step5Desc: "امشِ مباشرةً متبعًا السهم بعد أخذ منعطف يسار قصير إلى بهو الصيدلية",
+                step6Title: "الخطوة 6: مباشرة إلى الخارج",
+                step6Desc: "امشِ مباشرةً حيث ترى لافتة مخرج الطوارئ",
+                step7Title: "الخطوة 7: ألق نظرة على الجانب الأيمن",
+                step7Desc: "خذ بضع خطوات وانعطف يمينًا سريعًا يمكنك رؤية الكافيتيريا",
+                step8Title: "الخطوة 8: مرحبًا بكم في كافيتيريا الطرف الغربي",
+                step8Desc: "وجهتك - كافيتيريا الطرف الغربي للطعام والمرطبات",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
+        };
 
-        // Initialize language
+        // Initialize language and progress tracking
         document.addEventListener('DOMContentLoaded', function() {
             initializeWestendLanguage();
+            initializeProgressTracker();
         });
 
         function initializeWestendLanguage() {
@@ -494,9 +570,48 @@
             document.getElementById('step4-desc').textContent = t.step4Desc;
             document.getElementById('step5-title').textContent = t.step5Title;
             document.getElementById('step5-desc').textContent = t.step5Desc;
+            document.getElementById('step6-title').textContent = t.step6Title;
+            document.getElementById('step6-desc').textContent = t.step6Desc;
+            document.getElementById('step7-title').textContent = t.step7Title;
+            document.getElementById('step7-desc').textContent = t.step7Desc;
+            document.getElementById('step8-title').textContent = t.step8Title;
+            document.getElementById('step8-desc').textContent = t.step8Desc;
             
             // Update button text
             document.querySelector('.nav-button').textContent = t.backButton;
+        }
+
+        // Progress tracking for the page
+        function initializeProgressTracker() {
+            const progressFill = document.getElementById('progress-fill');
+            const currentStep = document.getElementById('current-step');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const steps = document.querySelectorAll('.step');
+            const totalSteps = steps.length;
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                
+                progressFill.style.width = scrollPercent + '%';
+                progressPercentage.textContent = Math.round(scrollPercent) + '%';
+                
+                // Determine current step based on scroll position
+                let currentStepIndex = 0;
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2) {
+                        currentStepIndex = index + 1;
+                    }
+                });
+                
+                currentStep.textContent = currentStepIndex;
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            window.addEventListener('resize', updateProgress);
+            updateProgress(); // Initial call
         }
     </script>
 </body>
