@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Directions to Cardiology</title>
-        <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
     /* Mobile-first responsive design */
     * {
         box-sizing: border-box;
@@ -17,7 +18,7 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 16px; /* Better base font size for mobile */
+        font-size: 16px;
     }
     
     .header {
@@ -32,7 +33,7 @@
     
     .hospital-logo {
         width: 100%;
-        max-width: 200px; /* Smaller logo for mobile */
+        max-width: 200px;
         height: auto;
         margin: 0 auto 10px;
         display: block;
@@ -40,7 +41,7 @@
     
     .header h1 {
         color: #dc3545;
-        font-size: 1.4rem; /* Smaller header for mobile */
+        font-size: 1.4rem;
         margin: 0;
     }
     
@@ -72,7 +73,7 @@
     .page-title {
         color: #2e86ab;
         text-align: center;
-        font-size: 1.6rem; /* Better mobile size */
+        font-size: 1.6rem;
         margin: 20px 0;
         font-weight: bold;
         line-height: 1.3;
@@ -90,7 +91,7 @@
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.3rem; /* Better mobile size */
+        font-size: 1.3rem;
         margin-bottom: 15px;
         font-weight: bold;
         line-height: 1.3;
@@ -98,7 +99,7 @@
     }
     
     .step p {
-        font-size: 1.1rem; /* Better mobile size */
+        font-size: 1.1rem;
         color: #333;
         margin-top: 12px;
         line-height: 1.5;
@@ -106,13 +107,23 @@
         padding: 0 5px;
     }
     
-    .step-image {
+    /* FIXED: Image container with proper constraints */
+    .image-container {
+        width: 100%;
+        border-radius: 12px;
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+    }
+    
+    .image-container img {
         max-width: 100%;
         height: auto;
-        border-radius: 12px;
+        border-radius: 10px;
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        margin: 10px 0;
         display: block;
     }
     
@@ -141,6 +152,41 @@
         text-align: center;
         margin-top: 30px;
         padding: 20px 0;
+    }
+    
+    /* Progress indicator for better UX on long pages */
+    .progress-container {
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .progress-bar {
+        height: 8px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #2e86ab, #dc3545);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    
+    /* Step counter for better navigation */
+    .step-counter {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #666;
     }
     
     /* Enhanced mobile adjustments */
@@ -309,48 +355,73 @@
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="step-counter">
+            <span>Step <span id="current-step">1</span> of 7</span>
+            <span id="progress-percentage">14%</span>
+        </div>
+    </div>
+
     <h1 id="page-title">❤️ Directions to Cardiology</h1>
     
-    <div class="step">
+    <div class="step" id="step1">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
-        <img src="cardio_step1.png" alt="Main entrance to Cardiology">
+        <div class="image-container">
+            <img src="cardio_step1.png" alt="Main entrance to Cardiology">
+        </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step2">
         <h2 id="step2-title">Step 2: From Reception</h2>
-        <img src="cardio_step2.png" alt="Reception corridor">
+        <div class="image-container">
+            <img src="cardio_step2.png" alt="Reception corridor">
+        </div>
         <p id="step2-desc">Turn Left after the Corridor</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step3">
         <h2 id="step3-title">Step 3: Stairway down</h2>
-        <img src="cardio_step3.png" alt="Downstairs sign">
+        <div class="image-container">
+            <img src="cardio_step3.png" alt="Downstairs sign">
+        </div>
         <p id="step3-desc">Take the steps to the basement on the left</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step4">
         <h2 id="step4-title">Step 4: In Basement</h2>
-        <img src="cardio_step4.png" alt="Basement">
-        <p id="step4-desc">Soon after getting down the staires, take a left</p>
+        <div class="image-container">
+            <img src="cardio_step4.png" alt="Basement">
+        </div>
+        <p id="step4-desc">Soon after getting down the stairs, take a left</p>
     </div>
 
-    <div class="step">
-        <h2 id="step5-title">Step 5: After Left , take another left</h2>
-        <img src="cardio_step5.png" alt="Basement">
+    <div class="step" id="step5">
+        <h2 id="step5-title">Step 5: After Left, take another left</h2>
+        <div class="image-container">
+            <img src="cardio_step5.png" alt="Basement">
+        </div>
         <p id="step5-desc">Take one more left, where you can see the Lifts</p>
     </div>
 
-    <div class="step">
-        <h2 id="step6-title">Step 6: Cardiology Enterance Reception</h2>
-        <img src="cardio_step6.png" alt="radiology">
-        <p id="step6-desc">Opposite to the Lifts , you can see Cardiology on the Right</p>
+    <div class="step" id="step6">
+        <h2 id="step6-title">Step 6: Cardiology Entrance Reception</h2>
+        <div class="image-container">
+            <img src="cardio_step6.png" alt="Cardiology">
+        </div>
+        <p id="step6-desc">Opposite to the Lifts, you can see Cardiology on the Right</p>
     </div>
     
-    <div class="step">
-        <h2 id="step7-title">Step 7: Cardiology Enterance Reception</h2>
-        <img src="cardio_step7.png" alt="radiology">
-        <p id="step7-desc">Your destination to Cardiology in on your front</p>
+    <div class="step" id="step7">
+        <h2 id="step7-title">Step 7: Cardiology Entrance</h2>
+        <div class="image-container">
+            <img src="cardio_step7.png" alt="Cardiology">
+        </div>
+        <p id="step7-desc">Your destination to Cardiology is on your front</p>
     </div>
 
     <div class="button-container">
@@ -371,13 +442,13 @@
                 step3Title: "Step 3: Stairway down",
                 step3Desc: "Take the steps to the basement on the left",
                 step4Title: "Step 4: In Basement",
-                step4Desc: "Soon after getting down the staires, take a left",
-                step5Title: "Step 5: After Left , take another left",
+                step4Desc: "Soon after getting down the stairs, take a left",
+                step5Title: "Step 5: After Left, take another left",
                 step5Desc: "Take one more left, where you can see the Lifts",
-                step6Title: "Step 6: Cardiology Enterance Reception",
-                step6Desc: "Opposite to the Lifts , you can see Cardiology on the Right",
-                step7Title: "Step 7: Cardiology Enterance Reception",
-                step7Desc: "Your destination to Cardiology in on your front",
+                step6Title: "Step 6: Cardiology Entrance Reception",
+                step6Desc: "Opposite to the Lifts, you can see Cardiology on the Right",
+                step7Title: "Step 7: Cardiology Entrance",
+                step7Desc: "Your destination to Cardiology is on your front",
                 backButton: "← Back to Main Menu"
             },
             hi: {
@@ -394,14 +465,14 @@
                 step5Desc: "एक और बाएं मुड़ें, जहां आप लिफ्ट देख सकते हैं",
                 step6Title: "चरण 6: कार्डियोलॉजी प्रवेश रिसेप्शन",
                 step6Desc: "लिफ्टों के सामने, आपको दाईं ओर कार्डियोलॉजी दिखेगी",
-                step7Title: "चरण 7: कार्डियोलॉजी प्रवेश रिसेप्शन",
+                step7Title: "चरण 7: कार्डियोलॉजी प्रवेश",
                 step7Desc: "कार्डियोलॉजी आपके सामने है",
                 backButton: "← मुख्य मेनू पर वापस"
             },
             ml: {
                 pageTitle: "❤️ കാർഡിയോളജിയിലേക്കുള്ള വഴി",
                 step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
-                step1Desc: "പ്രധാ�ൻ റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് നിരന്തരം നടക്കുക",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് നിരന്തരം നടക്കുക",
                 step2Title: "ഘട്ടം 2: റിസപ്ഷനിൽ നിന്ന്",
                 step2Desc: "കോറിഡോറിന് ശേഷം ഇടതുവശത്ത് തിരിയുക",
                 step3Title: "ഘട്ടം 3: പടികൾ വഴി താഴേക്ക്",
@@ -412,14 +483,14 @@
                 step5Desc: "ഒരു ഇടതുവശത്ത് തിരിയുക, അവിടെ നിങ്ങൾക്ക് ലിഫ്റ്റുകൾ കാണാൻ കഴിയും",
                 step6Title: "ഘട്ടം 6: കാർഡിയോളജി പ്രവേശന റിസപ്ഷൻ",
                 step6Desc: "ലിഫ്റ്റുകൾക്ക് എതിർവശത്ത്, നിങ്ങൾക്ക് വലതുവശത്ത് കാർഡിയോളജി കാണാം",
-                step7Title: "ഘട്ടം 7: കാർഡിയോളജി പ്രവേശന റിസപ്ഷൻ",
+                step7Title: "ഘട്ടം 7: കാർഡിയോളജി പ്രവേശനം",
                 step7Desc: "കാർഡിയോളജി നിങ്ങളുടെ മുന്നിലാണ്",
                 backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
             },
             ar: {
                 pageTitle: "❤️ اتجاهات إلى طب القلب",
                 step1Title: "الخطوة 1: من المدخل الرئيسي",
-                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ прямо",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
                 step2Title: "الخطوة 2: من الاستقبال",
                 step2Desc: "انعطف يسارًا بعد الممر",
                 step3Title: "الخطوة 3: الدرج إلى الأسفل",
@@ -430,15 +501,16 @@
                 step5Desc: "انعطف يسارًا مرة أخرى، حيث يمكنك رؤية المصاعد",
                 step6Title: "الخطوة 6: استقبال مدخل طب القلب",
                 step6Desc: "مقابل المصاعد، يمكنك رؤية طب القلب على اليمين",
-                step7Title: "الخطوة 7: استقبال مدخل طب القلب",
+                step7Title: "الخطوة 7: مدخل طب القلب",
                 step7Desc: "وجهتك إلى طب القلب أمامك",
                 backButton: "← العودة إلى القائمة الرئيسية"
             }
         };
 
-        // Initialize language
+        // Initialize language and progress tracking
         document.addEventListener('DOMContentLoaded', function() {
             initializeCardiologyLanguage();
+            initializeProgressTracker();
         });
 
         function initializeCardiologyLanguage() {
@@ -489,6 +561,39 @@
             
             // Update button text
             document.querySelector('.nav-button').textContent = t.backButton;
+        }
+
+        // Progress tracking for long pages
+        function initializeProgressTracker() {
+            const progressFill = document.getElementById('progress-fill');
+            const currentStep = document.getElementById('current-step');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const steps = document.querySelectorAll('.step');
+            const totalSteps = steps.length;
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                
+                progressFill.style.width = scrollPercent + '%';
+                progressPercentage.textContent = Math.round(scrollPercent) + '%';
+                
+                // Determine current step based on scroll position
+                let currentStepIndex = 0;
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2) {
+                        currentStepIndex = index + 1;
+                    }
+                });
+                
+                currentStep.textContent = currentStepIndex;
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            window.addEventListener('resize', updateProgress);
+            updateProgress(); // Initial call
         }
     </script>
 </body>
