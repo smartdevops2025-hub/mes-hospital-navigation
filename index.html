@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     <style>
-        /* Your existing CSS styles here */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -66,12 +65,19 @@
         }
         
         .language-btn {
-            padding: 8px 15px;
+            padding: 10px 20px;
             margin: 0 5px;
             background: white;
-            border: 1px solid #dc3545;
-            border-radius: 20px;
+            border: 2px solid #dc3545;
+            border-radius: 25px;
             cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+        
+        .language-btn:hover {
+            background: #f8f9fa;
         }
         
         .language-btn.active {
@@ -97,6 +103,7 @@
             outline: none;
             box-shadow: 0 2px 10px rgba(220, 53, 69, 0.1);
             text-align: center;
+            transition: all 0.3s ease;
         }
         
         .search-box:focus {
@@ -136,10 +143,14 @@
             touch-action: manipulation;
         }
         
-        .department-box:active {
-            transform: scale(0.95);
-            background-color: #fff5f5;
+        .department-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             border-color: #dc3545;
+        }
+        
+        .department-box:active {
+            transform: scale(0.98);
         }
         
         .department-icon {
@@ -186,21 +197,21 @@
         .hit-counter {
             text-align: center;
             margin: 40px 0 20px 0;
-            padding: 20px;
+            padding: 25px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             border: 2px solid #e9ecef;
         }
         
         .hit-counter h3 {
             color: #dc3545;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
         }
         
         .counter-number {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: bold;
             color: #dc3545;
             margin: 10px 0;
@@ -211,6 +222,12 @@
             color: #666;
             font-size: 1rem;
             margin-top: 5px;
+        }
+        
+        .counter-update {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
         
         .back-to-top {
@@ -229,6 +246,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .back-to-top:hover {
+            background: #c82333;
+            transform: translateY(-2px);
         }
         
         @media (max-width: 480px) {
@@ -271,11 +295,17 @@
             }
             
             .counter-number {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hit-counter h3 {
                 font-size: 1.1rem;
+            }
+            
+            .language-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+                min-width: 70px;
             }
         }
         
@@ -346,7 +376,7 @@
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
-        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store">
+        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
             <div class="department-icon">💊</div>
             <h3>OP Pharmacy</h3>
             <p class="department-location">Ground Floor</p>
@@ -402,7 +432,6 @@
             <p>Child care & consultation</p>
         </div>
 
-        <!-- NEW: ENT Department -->
         <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
             <div class="department-icon">👂</div>
             <h3>ENT</h3>
@@ -410,7 +439,6 @@
             <p>Ear, Nose & Throat</p>
         </div>
 
-        <!-- NEW: General Medicine Department -->
         <div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
             <div class="department-icon">🩺</div>
             <h3>General Medicine</h3>
@@ -426,20 +454,20 @@
         </div>
     </div>
 
-    <!-- Hit Counter Section -->
+    <!-- Enhanced Hit Counter Section -->
     <div class="hit-counter">
         <h3>Wayfinder Usage Statistics</h3>
         <div class="counter-number" id="visitCount">0</div>
         <div class="counter-label">People helped find their way</div>
+        <div class="counter-update">Last updated: <span id="lastUpdated"></span></div>
     </div>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
-        // PERSISTENT HIT COUNTER - Won't reset with code updates
+        // Enhanced Hit Counter
         function initializeHitCounter() {
-            // Cookie functions for persistence
             function getCookie(name) {
                 const value = `; ${document.cookie}`;
                 const parts = value.split(`; ${name}=`);
@@ -456,12 +484,10 @@
             
             let visitCount = getCookie('wayfinderVisitCount');
             
-            // If no cookie, try localStorage as backup
             if (visitCount === null || visitCount === 'null') {
                 visitCount = localStorage.getItem('wayfinderVisitCount');
             }
             
-            // If still no count, initialize to 0
             if (!visitCount || visitCount === 'null') {
                 visitCount = 0;
             } else {
@@ -470,18 +496,20 @@
             
             visitCount++;
             
-            // Save to both storage methods for maximum persistence
-            setCookie('wayfinderVisitCount', visitCount, 365); // 1 year expiry
+            setCookie('wayfinderVisitCount', visitCount, 365);
             localStorage.setItem('wayfinderVisitCount', visitCount);
             
-            document.getElementById('visitCount').textContent = visitCount.toLocaleString();
-            
-            // Optional: Add animation
             const counterElement = document.getElementById('visitCount');
+            counterElement.textContent = visitCount.toLocaleString();
+            
+            // Add animation
             counterElement.style.transform = 'scale(1.1)';
             setTimeout(() => {
                 counterElement.style.transform = 'scale(1)';
             }, 300);
+            
+            // Update timestamp
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
         }
 
         // Language functionality
@@ -505,7 +533,7 @@
                     pediatrics: { name: "Pediatrics", location: "Ground Floor", description: "Child care & consultation" },
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
-                    general_surgery: { name: "General Surgery", location: "First Floor", description: "Surgical procedures & operations" }
+                    general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" }
                 }
             },
             hi: {
@@ -517,7 +545,7 @@
                 hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
                 hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली",
                 departments: {
-                    pharmacy: { name: "ओ पी फार्मेसीी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
+                    pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
                     radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
                     lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
@@ -527,7 +555,7 @@
                     pediatrics: { name: "पीडियाट्रिक्स", location: "ग्राउंड फ्लोर", description: "बच्चों की देखभाल और परामर्श" },
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
-                    general_surgery: { name: "जनरल सर्जरी", location: "पहली मंजिल", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
+                    general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
                 }
             },
             ml: {
@@ -549,7 +577,7 @@
                     pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" },
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
-                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഫസ്റ്റ് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
+                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
                 }
             },
             ar: {
@@ -561,7 +589,7 @@
                 hitCounterTitle: "إحصائيات استخدام Wayfinder",
                 hitCounterLabel: "تم مساعدة الأشخاص في العثور على طريقهم",
                 departments: {
-                    pharmacy: { name: "او صيدليةة", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
+                    pharmacy: { name: "الصيدلية الخارجية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
                     radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
                     lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
                     cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
@@ -571,7 +599,7 @@
                     pediatrics: { name: "طب الأطفال", location: "الطابق الأرضي", description: "رعاية الأطفال واستشارات" },
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
-                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأول", description: "الإجراءات الجراحية والعمليات" }
+                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" }
                 }
             }
         };
@@ -739,15 +767,15 @@
         // Global function for back to top
         window.scrollToTop = scrollToTop;
 
-        // Optional: Manual reset function (call from browser console if needed)
+        // Manual reset function
         function resetHitCounter() {
             if (confirm('Are you sure you want to reset the hit counter to 0?')) {
                 localStorage.removeItem('wayfinderVisitCount');
                 document.cookie = 'wayfinderVisitCount=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
                 document.getElementById('visitCount').textContent = '0';
+                document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
             }
         }
     </script>
 </body>
 </html>
-
