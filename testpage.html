@@ -545,7 +545,7 @@
                 hitCounterTitle: "वेफाइंडर उपयोग आंकड़े",
                 hitCounterLabel: "लोगों को उनका रास्ता खोजने में मदद मिली",
                 departments: {
-                    pharmacy: { name: "ओपी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
+                    pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
                     radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
                     lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
@@ -567,7 +567,7 @@
                 hitCounterTitle: "വേഫൈൻഡർ ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ",
                 hitCounterLabel: "ആളുകൾക്ക് അവരുടെ വഴി കണ്ടെത്താൻ സഹായിക്കപ്പെട്ടു",
                 departments: {
-                    pharmacy: { name: "ഒപി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
+                    pharmacy: { name: "ഒ പി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
                     radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
                     lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
                     cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
@@ -639,6 +639,7 @@
             document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
             document.querySelector('.counter-label').textContent = t.hitCounterLabel;
             
+            // Update department names and descriptions
             updateDepartmentTranslations(t.departments);
         }
 
