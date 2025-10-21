@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     <style>
-        /* Your existing CSS styles + new enhancements */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -66,7 +65,7 @@
         }
         
         .language-btn {
-            padding: 12px 20px;
+            padding: 10px 20px;
             margin: 0 5px;
             background: white;
             border: 2px solid #dc3545;
@@ -79,7 +78,6 @@
         
         .language-btn:hover {
             background: #f8f9fa;
-            transform: translateY(-2px);
         }
         
         .language-btn.active {
@@ -111,7 +109,6 @@
         .search-box:focus {
             border-color: #c82333;
             box-shadow: 0 2px 15px rgba(220, 53, 69, 0.3);
-            transform: scale(1.02);
         }
         
         .search-hint {
@@ -122,37 +119,6 @@
             text-align: center;
         }
         
-        /* Quick Filter Buttons */
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #6c757d;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            min-width: 100px;
-        }
-        
-        .filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .filter-btn.active {
-            background: #dc3545;
-            color: white;
-            border-color: #dc3545;
-        }
-        
         .departments-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -160,7 +126,6 @@
             margin-bottom: 20px;
         }
         
-        /* Enhanced Department Box with Animation */
         .department-box {
             background: white;
             padding: 20px 15px;
@@ -176,44 +141,21 @@
             justify-content: center;
             align-items: center;
             touch-action: manipulation;
-            position: relative;
-            overflow: hidden;
         }
-
-        .department-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .department-box:hover::before {
-            left: 100%;
-        }
-
+        
         .department-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             border-color: #dc3545;
         }
-
+        
         .department-box:active {
             transform: scale(0.98);
-            background-color: #fff5f5;
         }
         
         .department-icon {
             font-size: 2rem;
             margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .department-box:hover .department-icon {
-            transform: scale(1.1);
         }
         
         .department-box h3 {
@@ -244,44 +186,6 @@
             display: none;
         }
         
-        /* Status Indicators */
-        .department-status {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .status-open { background: #28a745; }
-        .status-busy { background: #ffc107; }
-        .status-closed { background: #6c757d; }
-        
-        /* Loading Animation */
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #dc3545;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         .no-results {
             text-align: center;
             color: #666;
@@ -290,21 +194,14 @@
             display: none;
         }
         
-        /* Enhanced Hit Counter */
         .hit-counter {
             text-align: center;
             margin: 40px 0 20px 0;
-            padding: 30px;
+            padding: 25px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
-        }
-
-        .hit-counter:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
         
         .hit-counter h3 {
@@ -314,12 +211,11 @@
         }
         
         .counter-number {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: bold;
             color: #dc3545;
             margin: 10px 0;
             transition: transform 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .counter-label {
@@ -332,66 +228,6 @@
             color: #888;
             font-size: 0.9rem;
             margin-top: 10px;
-        }
-        
-        /* Department Details Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #666;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .close-modal:hover {
-            background: #f8f9fa;
-            color: #dc3545;
         }
         
         .back-to-top {
@@ -416,8 +252,7 @@
         
         .back-to-top:hover {
             background: #c82333;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
         }
         
         @media (max-width: 480px) {
@@ -460,21 +295,15 @@
             }
             
             .counter-number {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hit-counter h3 {
                 font-size: 1.1rem;
             }
             
-            .filter-btn {
-                padding: 8px 15px;
-                font-size: 0.8rem;
-                min-width: 80px;
-            }
-            
             .language-btn {
-                padding: 10px 15px;
+                padding: 8px 15px;
                 font-size: 0.9rem;
                 min-width: 70px;
             }
@@ -541,122 +370,87 @@
         <div class="search-hint">Type to filter departments</div>
     </div>
 
-    <!-- Quick Filter Buttons -->
-    <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">All Departments</button>
-        <button class="filter-btn" data-filter="open">Open Now</button>
-        <button class="filter-btn" data-filter="ground">Ground Floor</button>
-        <button class="filter-btn" data-filter="basement">Basement</button>
-    </div>
-
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-        <div style="margin-top: 10px;">Finding departments...</div>
-    </div>
-
     <div id="noResults" class="no-results">
         No departments found. Try different keywords.
     </div>
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
-        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
             <div class="department-icon">💊</div>
             <h3>OP Pharmacy</h3>
             <p class="department-location">Ground Floor</p>
             <p>Get your medicines here</p>
         </div>
 
-        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning" data-floor="basement" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
             <div class="department-icon">📋</div>
             <h3>Radiology</h3>
             <p class="department-location">Basement Floor</p>
             <p>Xray & Scanning</p>
         </div>
 
-        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
             <div class="department-icon">🔬</div>
             <h3>Laboratory</h3>
             <p class="department-location">Ground Floor</p>
             <p>Blood tests & reports</p>
         </div>
 
-        <div class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac" data-floor="basement" data-status="busy">
-            <div class="department-status status-busy"></div>
+        <div class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac">
             <div class="department-icon">❤️</div>
             <h3>Cardiology</h3>
             <p class="department-location">Basement Floor</p>
             <p>Heart care & OPD</p>
         </div>
 
-        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
             <div class="department-icon">🦴</div>
             <h3>Orthopedics</h3>
             <p class="department-location">Ground Floor</p>
             <p>Bone & joint care</p>
         </div>
 
-        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
             <p class="department-location">Ground Floor</p>
             <p>Eye care OPD</p>
         </div>
 
-        <div class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
             <div class="department-icon">☕</div>
             <h3>Cafeteria (West End)</h3>
             <p class="department-location">Ground Floor</p>
             <p>Food & refreshments</p>
         </div>
 
-        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
             <div class="department-icon">👶</div>
             <h3>Pediatrics</h3>
             <p class="department-location">Ground Floor</p>
             <p>Child care & consultation</p>
         </div>
 
-        <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
             <div class="department-icon">👂</div>
             <h3>ENT</h3>
             <p class="department-location">Ground Floor</p>
             <p>Ear, Nose & Throat</p>
         </div>
 
-        <div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
             <div class="department-icon">🩺</div>
             <h3>General Medicine</h3>
             <p class="department-location">Ground Floor</p>
             <p>Physician consultation</p>
         </div>
 
-        <div class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot" data-floor="ground" data-status="open">
-            <div class="department-status status-open"></div>
+        <div class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot">
             <div class="department-icon">🔪</div>
             <h3>General Surgery</h3>
             <p class="department-location">Ground Floor</p>
             <p>Surgical procedures & operations</p>
-        </div>
-    </div>
-
-    <!-- Department Details Modal -->
-    <div class="modal" id="departmentModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modalContent">
-                <!-- Modal content will be loaded here -->
-            </div>
         </div>
     </div>
 
@@ -672,246 +466,6 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
-        // Enhanced JavaScript with new features
-
-        // Department details data
-        const departmentDetails = {
-            'pharmacy': {
-                name: 'OP Pharmacy',
-                location: 'Ground Floor, Near Main Entrance',
-                hours: '24/7',
-                contact: '0484-1234567 Ext. 101',
-                services: ['Medicine Dispensing', 'Prescription Services', 'Over-the-counter drugs', 'Emergency Medicines'],
-                status: 'open',
-                waitTime: '5-10 minutes'
-            },
-            'radiology': {
-                name: 'Radiology Department',
-                location: 'Basement Floor, East Wing',
-                hours: '7:00 AM - 9:00 PM',
-                contact: '0484-1234567 Ext. 201',
-                services: ['X-Ray', 'CT Scan', 'MRI', 'Ultrasound', 'Digital Imaging'],
-                status: 'open',
-                waitTime: '15-30 minutes'
-            },
-            'lab': {
-                name: 'Laboratory',
-                location: 'Ground Floor, Central Wing',
-                hours: '6:00 AM - 8:00 PM',
-                contact: '0484-1234567 Ext. 301',
-                services: ['Blood Tests', 'Urine Analysis', 'Pathology', 'Biochemistry', 'Microbiology'],
-                status: 'open',
-                waitTime: '10-20 minutes'
-            },
-            'cardiology': {
-                name: 'Cardiology Department',
-                location: 'Basement Floor, West Wing',
-                hours: '8:00 AM - 6:00 PM',
-                contact: '0484-1234567 Ext. 401',
-                services: ['ECG', 'Echo Cardiography', 'Stress Test', 'Cardiac OPD', 'Pacemaker Clinic'],
-                status: 'busy',
-                waitTime: '20-40 minutes'
-            },
-            'ortho': {
-                name: 'Orthopedics Department',
-                location: 'Ground Floor, North Wing',
-                hours: '8:00 AM - 5:00 PM',
-                contact: '0484-1234567 Ext. 501',
-                services: ['Fracture Clinic', 'Joint Replacement', 'Physiotherapy', 'Ortho OPD', 'Cast Room'],
-                status: 'open',
-                waitTime: '15-25 minutes'
-            }
-        };
-
-        // Enhanced Search with Filters
-        function initializeSearchFilters() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    filterDepartmentsByFilter(filter);
-                });
-            });
-        }
-
-        function filterDepartmentsByFilter(filter) {
-            const departmentBoxes = document.querySelectorAll('.department-box');
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            showLoading(true);
-            
-            setTimeout(() => {
-                let visibleCount = 0;
-                
-                departmentBoxes.forEach(box => {
-                    const departmentFloor = box.getAttribute('data-floor');
-                    const departmentStatus = box.getAttribute('data-status');
-                    const departmentName = box.getAttribute('data-name').toLowerCase();
-                    const keywords = box.getAttribute('data-keywords').toLowerCase();
-                    
-                    let matchesFilter = true;
-                    
-                    if (filter === 'open') {
-                        matchesFilter = departmentStatus === 'open';
-                    } else if (filter === 'ground') {
-                        matchesFilter = departmentFloor === 'ground';
-                    } else if (filter === 'basement') {
-                        matchesFilter = departmentFloor === 'basement';
-                    }
-                    
-                    const matchesSearch = searchTerm === '' || 
-                        departmentName.includes(searchTerm) || 
-                        keywords.includes(searchTerm);
-                    
-                    if (matchesFilter && matchesSearch) {
-                        box.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        box.classList.add('hidden');
-                    }
-                });
-                
-                updateVisibleCount(visibleCount);
-                showLoading(false);
-            }, 300);
-        }
-
-        // Enhanced Search Functionality
-        function initializeSearch() {
-            const searchInput = document.getElementById('searchInput');
-            let searchTimeout;
-
-            searchInput.addEventListener('input', function() {
-                clearTimeout(searchTimeout);
-                showLoading(true);
-                
-                searchTimeout = setTimeout(() => {
-                    const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                    filterDepartmentsByFilter(activeFilter);
-                }, 300);
-            });
-
-            // Enhanced department click handlers
-            document.querySelectorAll('.department-box').forEach(box => {
-                box.addEventListener('click', function() {
-                    const departmentName = this.getAttribute('data-name');
-                    showDepartmentDetails(departmentName);
-                });
-            });
-
-            // Keyboard navigation support
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    this.value = '';
-                    filterDepartmentsByFilter('all');
-                }
-            });
-        }
-
-        function showLoading(show) {
-            const spinner = document.getElementById('loadingSpinner');
-            spinner.style.display = show ? 'block' : 'none';
-        }
-
-        function updateVisibleCount(visibleCount) {
-            const noResults = document.getElementById('noResults');
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
-        }
-
-        // Department Details Modal
-        function showDepartmentDetails(departmentName) {
-            const modal = document.getElementById('departmentModal');
-            const modalContent = document.getElementById('modalContent');
-            
-            const dept = departmentDetails[departmentName] || {
-                name: departmentName.charAt(0).toUpperCase() + departmentName.slice(1),
-                location: 'Information will be updated soon',
-                hours: 'To be confirmed',
-                contact: 'Contact main reception',
-                services: ['Service information coming soon'],
-                status: 'open',
-                waitTime: 'Not available'
-            };
-            
-            const statusText = {
-                'open': '🟢 Open',
-                'busy': '🟡 Busy',
-                'closed': '🔴 Closed'
-            };
-
-            modalContent.innerHTML = `
-                <h2 style="color: #dc3545; margin-bottom: 20px; text-align: center;">${dept.name}</h2>
-                
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-                    <p><strong>📍 Location:</strong> ${dept.location}</p>
-                    <p><strong>🕒 Operating Hours:</strong> ${dept.hours}</p>
-                    <p><strong>📞 Contact:</strong> ${dept.contact}</p>
-                    <p><strong>📊 Current Status:</strong> ${statusText[dept.status] || statusText.open}</p>
-                    <p><strong>⏱️ Estimated Wait Time:</strong> ${dept.waitTime}</p>
-                </div>
-                
-                <div style="margin-bottom: 25px;">
-                    <h3 style="color: #333; margin-bottom: 10px;">Services Available:</h3>
-                    <ul style="padding-left: 20px;">
-                        ${dept.services.map(service => `<li style="margin-bottom: 5px;">${service}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div style="display: flex; gap: 10px; justify-content: center;">
-                    <button onclick="navigateToDepartment('${departmentName}')" 
-                            style="padding: 12px 25px; background: #dc3545; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#c82333'; this.style.transform='translateY(-2px)'"
-                            onmouseout="this.style.background='#dc3545'; this.style.transform='translateY(0)'">
-                        Get Directions
-                    </button>
-                    <button onclick="closeModal()" 
-                            style="padding: 12px 25px; background: #6c757d; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#5a6268'; this.style.transform='translateY(-2px)'"
-                            onmouseout="this.style.background='#6c757d'; this.style.transform='translateY(0)'">
-                        Close
-                    </button>
-                </div>
-            `;
-            
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('departmentModal').style.display = 'none';
-        }
-
-        function navigateToDepartment(departmentName) {
-            const pageMap = {
-                'pharmacy': 'pharmacy.html',
-                'radiology': 'radiology.html',
-                'cardiology': 'cardiology.html',
-                'lab': 'Lab.html',
-                'ortho': 'ortho.html',
-                'ophthalmology': 'ophthal.html',
-                'cafeteria': 'westend.html',
-                'pediatrics': 'pediatrics.html',
-                'ent': 'ent.html',
-                'general medicine': 'general-medicine.html',
-                'general surgery': 'general-surgery.html'
-            };
-            
-            const page = pageMap[departmentName];
-            if (page) {
-                window.location.href = page;
-            } else {
-                alert(`Navigation to ${departmentName} will be available soon!`);
-                closeModal();
-            }
-        }
-
         // Enhanced Hit Counter
         function initializeHitCounter() {
             function getCookie(name) {
@@ -949,7 +503,7 @@
             counterElement.textContent = visitCount.toLocaleString();
             
             // Add animation
-            counterElement.style.transform = 'scale(1.2)';
+            counterElement.style.transform = 'scale(1.1)';
             setTimeout(() => {
                 counterElement.style.transform = 'scale(1)';
             }, 300);
@@ -958,7 +512,7 @@
             document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
         }
 
-        // Keep your existing language functionality
+        // Language functionality
         const translations = {
             en: {
                 title: "Way Finder Navigation System",
@@ -1121,6 +675,69 @@
             });
         }
 
+        // Search functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            const departmentBoxes = document.querySelectorAll('.department-box');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                departmentBoxes.forEach(box => {
+                    const departmentName = box.getAttribute('data-name').toLowerCase();
+                    const keywords = box.getAttribute('data-keywords').toLowerCase();
+                    
+                    if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
+                        box.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        box.classList.add('hidden');
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+
+            // Department click handlers
+            departmentBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    const departmentName = this.getAttribute('data-name');
+                    
+                    if (departmentName === 'pharmacy') {
+                        window.location.href = 'pharmacy.html';
+                    } else if (departmentName === 'radiology') {
+                        window.location.href = 'radiology.html';
+                    } else if (departmentName === 'cardiology') {
+                        window.location.href = 'cardiology.html';
+                    } else if (departmentName === 'lab') {
+                        window.location.href = 'Lab.html';
+                    } else if (departmentName === 'ortho') {
+                        window.location.href = 'ortho.html';
+                    } else if (departmentName === 'ophthalmology') {
+                        window.location.href = 'ophthal.html';
+                    } else if (departmentName === 'cafeteria') {
+                        window.location.href = 'westend.html';
+                    } else if (departmentName === 'pediatrics') {
+                        window.location.href = 'pediatrics.html';
+                    } else if (departmentName === 'ent') {
+                        window.location.href = 'ent.html';
+                    } else if (departmentName === 'general medicine') {
+                        window.location.href = 'general-medicine.html';
+                    } else if (departmentName === 'general surgery') {
+                        window.location.href = 'general-surgery.html';
+                    } else {
+                        alert('Directions for ' + departmentName + ' coming soon!');
+                    }
+                });
+            });
+        }
+
         // Back to top functionality
         function initializeBackToTop() {
             const backToTopBtn = document.getElementById('backToTop');
@@ -1138,28 +755,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Enhanced initialization
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
             initializeHitCounter();
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
-            initializeSearchFilters();
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
-                const modal = document.getElementById('departmentModal');
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            // Keyboard support for modal
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
-                    closeModal();
-                }
-            });
         });
 
         // Global function for back to top
