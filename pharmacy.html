@@ -1,342 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OP Pharmacy Directions - MES Medical College Hospital</title>
+    <title>Directions to OP Pharmacy</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
+    /* Mobile-first responsive design */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+        font-size: 18px;
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+    }
+    
+    /* Language Selector */
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .language-btn {
+        padding: 8px 15px;
+        margin: 0 5px;
+        background: white;
+        border: 1px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
+    }
+    
+    h1 {
+        color: #2e86ab;
+        text-align: center;
+        font-size: 2.2rem;
+        margin: 20px 0 30px 0;
+        font-weight: bold;
+    }
+    
+    .step {
+        background-color: white;
+        margin: 25px 0;
+        padding: 25px 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .step h2 {
+        color: #2e86ab;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    
+    .step p {
+        font-size: 1.4rem;
+        color: #333;
+        margin-top: 15px;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 3px solid #2e86ab;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin: 10px 0;
+    }
+    
+    .nav-button {
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 18px 35px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 15px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        width: 250px;
+        max-width: 100%;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-button:active {
+        transform: scale(0.95);
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 40px;
+        padding: 25px 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 380px) {
         body {
-            font-family: Arial, sans-serif;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 15px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            line-height: 1.6;
-            color: #333333;
+            font-size: 16px;
+            padding: 12px;
         }
         
-        .header {
-            text-align: center;
-            background: white;
-            padding: 25px 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
-            border: 2px solid #dc3545;
+        h1 {
+            font-size: 1.8rem;
         }
         
-        .logo-container {
-            margin-bottom: 20px;
-        }
-        
-        .hospital-logo {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-        }
-        
-        .hospital-info {
-            text-align: center;
-        }
-        
-        .hospital-info h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #dc3545;
-            font-weight: bold;
-        }
-        
-        .hospital-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            font-weight: 500;
-        }
-        
-        .language-selector {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .language-btn {
-            padding: 10px 20px;
-            margin: 0 5px;
-            background: white;
-            border: 2px solid #dc3545;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            min-width: 80px;
-        }
-        
-        .language-btn:hover {
-            background: #f8f9fa;
-        }
-        
-        .language-btn.active {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .content-container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            border: 2px solid #e9ecef;
-        }
-        
-        .department-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .department-icon {
-            font-size: 4rem;
-            margin-bottom: 15px;
-        }
-        
-        .department-title {
-            font-size: 2rem;
-            color: #dc3545;
-            margin-bottom: 10px;
-        }
-        
-        .department-location {
-            font-size: 1.2rem;
-            color: #666;
-            background: rgba(220, 53, 69, 0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        
-        .directions-section {
-            margin: 30px 0;
-        }
-        
-        .directions-title {
+        .step h2 {
             font-size: 1.5rem;
-            color: #dc3545;
-            margin-bottom: 20px;
-            text-align: center;
         }
         
-        .steps-list {
-            list-style: none;
-            padding: 0;
+        .step p {
+            font-size: 1.2rem;
         }
         
-        .step-item {
-            background: #f8f9fa;
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #dc3545;
+        .nav-button {
+            font-size: 1.2rem;
+            padding: 16px 30px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
         }
         
-        .step-number {
-            background: #dc3545;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-weight: bold;
+        .step {
+            padding: 30px 25px;
         }
-        
-        .map-placeholder {
-            background: #e9ecef;
-            height: 300px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            color: #666;
-            font-size: 1.1rem;
-        }
-        
-        .back-button {
-            display: block;
-            width: 200px;
-            margin: 30px auto;
-            padding: 12px 25px;
-            background: #dc3545;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .back-button:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 480px) {
-            .department-title {
-                font-size: 1.6rem;
-            }
-            
-            .department-icon {
-                font-size: 3rem;
-            }
-            
-            .content-container {
-                padding: 20px;
-            }
-            
-            .step-item {
-                padding: 15px;
-            }
-        }
+    }
     </style>
 </head>
 <body>
     <!-- Header with Hospital Logo -->
     <div class="header">
-        <div class="logo-container">
-            <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
-        </div>
-        
-        <div class="hospital-info">
-            <h1>Way Finder Navigation System</h1>
-            <div class="hospital-subtitle">Find your way easily</div>
-        </div>
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
     </div>
 
     <!-- Language Selector -->
     <div class="language-selector">
         <button class="language-btn active" data-lang="en">English</button>
-        <button class="language-btn" data-lang="hi">हिंदी </button>
-        <button class="language-btn" data-lang="ml">മലയാളം</button>
-        <button class="language-btn" data-lang="ar">العربية </button>
+        <button class="language-btn" data-lang="hi">Hindi</button>
+        <button class="language-btn" data-lang="ml">Malayalam</button>
+        <button class="language-btn" data-lang="ar">Arabic</button>
     </div>
 
-    <!-- Main Content -->
-    <div class="content-container">
-        <div class="department-header">
-            <div class="department-icon">💊</div>
-            <h1 class="department-title" id="departmentTitle">OP Pharmacy</h1>
-            <div class="department-location" id="departmentLocation">Ground Floor</div>
-        </div>
+    <h1 id="page-title">💊 Directions to OP Pharmacy</h1>
+    
+    <div class="step">
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
+        <img src="pharmacy_step1.jpg" alt="Main entrance view">
+        <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
+    </div>
 
-        <div class="directions-section">
-            <h2 class="directions-title" id="directionsTitle">Directions to OP Pharmacy</h2>
-            
-            <div class="map-placeholder" id="mapPlaceholder">
-                Map & Directions will be displayed here
-            </div>
-            
-            <ul class="steps-list" id="directionsList">
-                <li class="step-item">
-                    <span class="step-number">1</span>
-                    <span id="step1">Enter through the Main Entrance of the hospital</span>
-                </li>
-                <li class="step-item">
-                    <span class="step-number">2</span>
-                    <span id="step2">Walk straight past the reception area</span>
-                </li>
-                <li class="step-item">
-                    <span class="step-number">3</span>
-                    <span id="step3">Turn left at the first corridor after reception</span>
-                </li>
-                <li class="step-item">
-                    <span class="step-number">4</span>
-                    <span id="step4">Look for the green signage pointing to Pharmacy</span>
-                </li>
-                <li class="step-item">
-                    <span class="step-number">5</span>
-                    <span id="step5">OP Pharmacy will be on your right side</span>
-                </li>
-            </ul>
-        </div>
+    <div class="step">
+        <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
+        <img src="pharmacy_step2.jpg" alt="Turn left at reception">
+        <p id="step2-desc">Turn left when you see the reception counter</p>
+    </div>
 
-        <button class="back-button" onclick="goBack()" id="backButton">← Back to Main Menu</button>
+    <div class="step">
+        <h2 id="step3-title">Step 3: Pharmacy Counter</h2>
+        <img src="pharmacy_step3.jpg" alt="Pharmacy counter">
+        <p id="step3-desc">Take a Quick Right</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step4-title">Step 4: Pharmacy Counter</h2>
+        <img src="pharmacy_step4.jpg" alt="Pharmacy counter">
+        <p id="step4-desc">Then take a small right turn near Gynaecology Dept</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step5-title">Step 5: Pharmacy Counter</h2>
+        <img src="pharmacy_step5.jpg" alt="Pharmacy counter">
+        <p id="step5-desc">Your destination is on your front</p>
+    </div>
+
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
     </div>
 
     <script>
-        // Pharmacy page translations
+        // Language translations for Pharmacy page
         const pharmacyTranslations = {
             en: {
-                title: "Way Finder Navigation System",
-                subtitle: "Find your way easily",
-                departmentTitle: "OP Pharmacy",
-                departmentLocation: "Ground Floor",
-                directionsTitle: "Directions to OP Pharmacy",
-                mapPlaceholder: "Map & Directions will be displayed here",
-                step1: "Enter through the Main Entrance of the hospital",
-                step2: "Walk straight past the reception area",
-                step3: "Turn left at the first corridor after reception",
-                step4: "Look for the green signage pointing to Pharmacy",
-                step5: "OP Pharmacy will be on your right side",
+                pageTitle: "💊 Directions to OP Pharmacy",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception, keep right and walk straight",
+                step2Title: "Step 2: Turn Left after Reception",
+                step2Desc: "Turn left when you see the reception counter",
+                step3Title: "Step 3: Pharmacy Counter",
+                step3Desc: "Take a Quick Right",
+                step4Title: "Step 4: Pharmacy Counter",
+                step4Desc: "Then take a small right turn near Gynaecology Dept",
+                step5Title: "Step 5: Pharmacy Counter",
+                step5Desc: "Your destination is on your front",
                 backButton: "← Back to Main Menu"
             },
             hi: {
-                title: "वे फाइंडर नेविगेशन सिस्टम",
-                subtitle: "आसानी से अपना रास्ता खोजें",
-                departmentTitle: "ओ पी फार्मेसी",
-                departmentLocation: "ग्राउंड फ्लोर",
-                directionsTitle: "ओ पी फार्मेसी का रास्ता",
-                mapPlaceholder: "मानचित्र और दिशा-निर्देश यहां दिखाए जाएंगे",
-                step1: "हॉस्पिटल के मुख्य द्वार से अंदर प्रवेश करें",
-                step2: "रिसेप्शन एरिया के आगे सीधे चलें",
-                step3: "रिसेप्शन के बाद पहले कॉरिडोर पर बाएं मुड़ें",
-                step4: "फार्मेसी की ओर इशारा करने वाले हरे संकेतों को देखें",
-                step5: "ओ पी फार्मेसी आपके दाईं ओर होगी",
-                backButton: "← मुख्य मेनू पर वापस जाएं"
+                pageTitle: "💊 ओ पी फार्मेसी का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: रिसेप्शन के बाद बाएं मुड़ें",
+                step2Desc: "रिसेप्शन काउंटर देखने पर बाएं मुड़ें",
+                step3Title: "चरण 3: फार्मेसी काउंटर",
+                step3Desc: "तेजी से दायीं ओर मुड़ें",
+                step4Title: "चरण 4: फार्मेसी काउंटर",
+                step4Desc: "फिर गायनेकोलॉजी विभाग के पास छोटा दायां मोड़ लें",
+                step5Title: "चरण 5: फार्मेसी काउंटर",
+                step5Desc: "आपकी मंजिल आपके सामने है",
+                backButton: "← मुख्य मेनू पर वापस"
             },
             ml: {
-                title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
-                subtitle: "എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക",
-                departmentTitle: "ഒ പി ഫാർമസി",
-                departmentLocation: "ഗ്രൗണ്ട് ഫ്ലോർ",
-                directionsTitle: "ഒ പി ഫാർമസിയിലേക്കുള്ള വഴി",
-                mapPlaceholder: "മാപ്പും ദിശാസൂചനകളും ഇവിടെ പ്രദർശിപ്പിക്കും",
-                step1: "ആശുപത്രിയിലേക്ക് പ്രധാന പ്രവേശന കവാടത്തിലൂടെ നുഴ്ചങ്ങുക",
-                step2: "റിസപ്ഷൻ പ്രദേശം കടന്ന് നേരെ നടക്കുക",
-                step3: "റിസപ്ഷന് ശേഷമുള്ള ആദ്യ കോറിഡോറിൽ ഇടതുഭാഗത്തേക്ക് തിരിയുക",
-                step4: "ഫാർമസിയിലേക്കുള്ള പച്ച നിറത്തിലുള്ള സൈൻ ബോർഡുകൾ നോക്കുക",
-                step5: "ഒ പി ഫാർമസി നിങ്ങളുടെ വലതുഭാഗത്തായിരിക്കും",
+                pageTitle: "💊 ഒ പി ഫാർമസിയിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് നിരന്തരം നടക്കുക",
+                step2Title: "ഘട്ടം 2: റിസപ്ഷന് ശേഷം ഇടതുവശത്ത് തിരിയുക",
+                step2Desc: "റിസപ്ഷൻ ക counter ണ്ടർ കണ്ടാൽ ഇടതുവശത്ത് തിരിയുക",
+                step3Title: "ഘട്ടം 3: ഫാർമസി ക counter ണ്ടർ",
+                step3Desc: "വേഗത്തിൽ വലതുവശത്ത് തിരിയുക",
+                step4Title: "ഘട്ടം 4: ഫാർമസി ക counter ണ്ടർ",
+                step4Desc: "ഗൈനക്കോളജി വകുപ്പിന് സമീപം ഒരു ചെറിയ വലതുവശത്ത് തിരിയുക",
+                step5Title: "ഘട്ടം 5: ഫാർമസി ക counter ണ്ടർ",
+                step5Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം നിങ്ങളുടെ മുന്നിലാണ്",
                 backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
             },
             ar: {
-                title: "نظام الملاحة للعثور على الطريق",
-                subtitle: "ابحث عن طريقك بسهولة",
-                departmentTitle: "الصيدلية الخارجية",
-                departmentLocation: "الطابق الأرضي",
-                directionsTitle: "الاتجاهات إلى الصيدلية الخارجية",
-                mapPlaceholder: "سيتم عرض الخريطة والاتجاهات هنا",
-                step1: "ادخل عبر المدخل الرئيسي للمستشفى",
-                step2: "امشي مباشرة بعد منطقة الاستقبال",
-                step3: "انعطف يساراً عند الممر الأول بعد الاستقبال",
-                step4: "ابحث عن اللافتات الخضراء المشيرة إلى الصيدلية",
-                step5: "ستكون الصيدلية الخارجية على يمينك",
+                pageTitle: "💊 اتجاهات إلى الصيدلية الخارجية",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ прямо",
+                step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
+                step2Desc: "انعطف يسارًا عندما ترى مكتب الاستقبال",
+                step3Title: "الخطوة 3: مكتب الصيدلية",
+                step3Desc: "انعطف يمينًا بسرعة",
+                step4Title: "الخطوة 4: مكتب الصيدلية",
+                step4Desc: "ثم انعطف يمينًا صغيرًا بالقرب من قسم أمراض النساء",
+                step5Title: "الخطوة 5: مكتب الصيدلية",
+                step5Desc: "وجهتك أمامك",
                 backButton: "← العودة إلى القائمة الرئيسية"
             }
         };
 
-        // Language functionality
-        function initializeLanguage() {
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePharmacyLanguage();
+        });
+
+        function initializePharmacyLanguage() {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
+            // Set active button
             languageBtns.forEach(btn => {
                 if (btn.getAttribute('data-lang') === savedLanguage) {
                     btn.classList.add('active');
@@ -346,51 +295,37 @@
                 
                 btn.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
-                    changeLanguage(lang);
+                    changePharmacyLanguage(lang);
                     
                     languageBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
             
-            changeLanguage(savedLanguage);
+            // Apply saved language
+            changePharmacyLanguage(savedLanguage);
         }
 
-        function changeLanguage(lang) {
+        function changePharmacyLanguage(lang) {
             localStorage.setItem('selectedLanguage', lang);
             const t = pharmacyTranslations[lang];
             
-            // Update page content
-            document.querySelector('.hospital-info h1').textContent = t.title;
-            document.querySelector('.hospital-subtitle').textContent = t.subtitle;
-            document.getElementById('departmentTitle').textContent = t.departmentTitle;
-            document.getElementById('departmentLocation').textContent = t.departmentLocation;
-            document.getElementById('directionsTitle').textContent = t.directionsTitle;
-            document.getElementById('mapPlaceholder').textContent = t.mapPlaceholder;
-            document.getElementById('step1').textContent = t.step1;
-            document.getElementById('step2').textContent = t.step2;
-            document.getElementById('step3').textContent = t.step3;
-            document.getElementById('step4').textContent = t.step4;
-            document.getElementById('step5').textContent = t.step5;
-            document.getElementById('backButton').textContent = t.backButton;
+            // Update all text elements
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            document.getElementById('step4-title').textContent = t.step4Title;
+            document.getElementById('step4-desc').textContent = t.step4Desc;
+            document.getElementById('step5-title').textContent = t.step5Title;
+            document.getElementById('step5-desc').textContent = t.step5Desc;
+            
+            // Update button text
+            document.querySelector('.nav-button').textContent = t.backButton;
         }
-
-        // Navigation function
-        function goBack() {
-            window.location.href = 'index.html';
-        }
-
-        // Keyboard navigation support
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                goBack();
-            }
-        });
-
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeLanguage();
-        });
     </script>
 </body>
 </html>
