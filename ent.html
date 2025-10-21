@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Directions to ENT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 /* Mobile-first responsive design */
 * {
@@ -17,7 +18,7 @@ body {
     padding: 15px;
     background-color: #f0f8ff;
     line-height: 1.6;
-    font-size: 16px; /* Better base font size for mobile */
+    font-size: 16px;
 }
 
 .header {
@@ -32,7 +33,7 @@ body {
 
 .hospital-logo {
     width: 100%;
-    max-width: 200px; /* Smaller logo for mobile */
+    max-width: 200px;
     height: auto;
     margin: 0 auto 10px;
     display: block;
@@ -40,7 +41,7 @@ body {
 
 .header h1 {
     color: #dc3545;
-    font-size: 1.4rem; /* Smaller header for mobile */
+    font-size: 1.4rem;
     margin: 0;
 }
 
@@ -72,13 +73,14 @@ body {
 .page-title {
     color: #2e86ab;
     text-align: center;
-    font-size: 1.6rem; /* Better mobile size */
+    font-size: 1.6rem;
     margin: 20px 0;
     font-weight: bold;
     line-height: 1.3;
     padding: 0 10px;
 }
 
+/* Improved step container */
 .step {
     background-color: white;
     margin: 20px 0;
@@ -86,12 +88,12 @@ body {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden; /* Critical for images */
+    /* Removed overflow: hidden to prevent image cropping */
 }
 
 .step h2 {
     color: #2e86ab;
-    font-size: 1.3rem; /* Better mobile size */
+    font-size: 1.3rem;
     margin-bottom: 15px;
     font-weight: bold;
     line-height: 1.3;
@@ -99,7 +101,7 @@ body {
 }
 
 .step p {
-    font-size: 1.1rem; /* Better mobile size */
+    font-size: 1.1rem;
     color: #333;
     margin-top: 12px;
     line-height: 1.5;
@@ -107,10 +109,9 @@ body {
     padding: 0 5px;
 }
 
-/* IMAGE CONTAINER - CRITICAL FIX */
+/* FIXED IMAGE CONTAINER - removed overflow: hidden */
 .image-container {
     width: 100%;
-    overflow: hidden;
     border-radius: 10px;
     margin: 15px 0;
     display: flex;
@@ -153,6 +154,41 @@ body {
     text-align: center;
     margin-top: 30px;
     padding: 20px 0;
+}
+
+/* Progress indicator for better UX on long pages */
+.progress-container {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2e86ab, #dc3545);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Step counter for better navigation */
+.step-counter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 /* Enhanced mobile adjustments */
@@ -319,61 +355,91 @@ body {
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="step-counter">
+            <span>Step <span id="current-step">1</span> of 9</span>
+            <span id="progress-percentage">11%</span>
+        </div>
+    </div>
+
     <h1 id="page-title">👂 Directions to ENT</h1>
     
-    <div class="step">
+    <div class="step" id="step1">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
-        <img src="entgenmed1.png" alt="Main entrance view">
+        <div class="image-container">
+            <img src="entgenmed1.png" alt="Main entrance view">
+        </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step2">
         <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
-        <img src="entgenmed2.png" alt="Turn right at central corridor">
+        <div class="image-container">
+            <img src="entgenmed2.png" alt="Turn right at central corridor">
+        </div>
         <p id="step2-desc">Turn left when you cross the reception counter</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step3">
         <h2 id="step3-title">Step 3: Keep Right</h2>
-        <img src="entgenmed3.png" alt="Walk towards west wing">
+        <div class="image-container">
+            <img src="entgenmed3.png" alt="Walk towards west wing">
+        </div>
         <p id="step3-desc">Take a Quick Right</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step4">
         <h2 id="step4-title">Step 4: Entering Pharmacy Lobby</h2>
-        <img src="entgenmed4.png" alt="Pharmacy Lobby Area">
+        <div class="image-container">
+            <img src="entgenmed4.png" alt="Pharmacy Lobby Area">
+        </div>
         <p id="step4-desc">Then take a small left turn near Gynaecology Dept</p>
     </div>
 
-           <div class="step">
+    <div class="step" id="step5">
         <h2 id="step5-title">Step 5: Now you are at Pharmacy Lobby</h2>
-        <img src="entgenmed5.png" alt="Pharmacy Lobby">
+        <div class="image-container">
+            <img src="entgenmed5.png" alt="Pharmacy Lobby">
+        </div>
         <p id="step5-desc">Walk straight towards the Fire Exit following the Arrow mark</p>
     </div>
 
-        <div class="step">
+    <div class="step" id="step6">
         <h2 id="step6-title">Step 6: Left towards Fire Exit</h2>
-        <img src="entgenmed6.png" alt="Towards ENT">
+        <div class="image-container">
+            <img src="entgenmed6.png" alt="Towards ENT">
+        </div>
         <p id="step6-desc">Take a Left turn before the Fire Exit</p>
     </div>
 
-        <div class="step">
+    <div class="step" id="step7">
         <h2 id="step7-title">Step 7: Walk Straight to ENT OPD</h2>
-        <img src="entgenmed7.png" alt="ENT department entrance">
+        <div class="image-container">
+            <img src="entgenmed7.png" alt="ENT department entrance">
+        </div>
         <p id="step7-desc">Take few steps ahead following the Arrow</p>
     </div>
 
-        <div class="step">
+    <div class="step" id="step8">
         <h2 id="step8-title">Step 8: Walk Straight to ENT OPD</h2>
-        <img src="entgenmed8.png" alt="ENT department entrance">
+        <div class="image-container">
+            <img src="entgenmed8.png" alt="ENT department entrance">
+        </div>
         <p id="step8-desc">Take few steps ahead crossing Urology following the Arrow</p>
     </div>
     
-     <div class="step">
+    <div class="step" id="step9">
         <h2 id="step9-title">Step 9: Welcome to ENT</h2>
-        <img src="entgenmed9.png" alt="ENT department entrance">
+        <div class="image-container">
+            <img src="entgenmed9.png" alt="ENT department entrance">
+        </div>
         <p id="step9-desc">Your destination - ENT department for ear, nose and throat care</p>
     </div>
+    
     <div class="button-container">
         <button class="nav-button" onclick="window.location.href='index.html'">
             ← Back to Main Menu
@@ -399,83 +465,84 @@ body {
                 step6Desc: "Take a Left turn before the Fire Exit",
                 step7Title: "Step 7: Walk Straight to ENT OPD",
                 step7Desc: "Take few steps ahead following the Arrow",
-                step8Title: "Step 8: Entering Pharmacy Lobby",
+                step8Title: "Step 8: Walk Straight to ENT OPD",
                 step8Desc: "Take few steps ahead crossing Urology following the Arrow",
                 step9Title: "Step 9: Welcome to ENT",
                 step9Desc: "Your destination - ENT department for ear, nose and throat care",
                 backButton: "← Back to Main Menu"
             },
             hi: {
-    pageTitle: "👂 ईएनटी का रास्ता",
-    step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
-    step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
-    step2Title: "चरण 2: रिसेप्शन के बाद बायीं ओर मुड़ें",
-    step2Desc: "रिसेप्शन काउंटर पार करते समय बायीं ओर मुड़ें",
-    step3Title: "चरण 3: दायीं ओर रहें",
-    step3Desc: "जल्दी से दायीं ओर मुड़ें",
-    step4Title: "चरण 4: फार्मेसी लॉबी में प्रवेश कर रहे हैं",
-    step4Desc: "फिर गायनाकोलॉजी विभाग के पास एक छोटा बायाँ मोड़ लें",
-    step5Title: "चरण 5: अब आप फार्मेसी लॉबी में हैं",
-    step5Desc: "तीर के निशान का पालन करते हुए फायर एक्जिट की ओर सीधे चलें",
-    step6Title: "चरण 6: फायर एक्जिट की ओर बायीं ओर मुड़ें",
-    step6Desc: "फायर एक्जिट से पहले बायीं ओर मुड़ें",
-    step7Title: "चरण 7: ईएनटी ओपीडी की ओर सीधे चलें",
-    step7Desc: "तीर का पालन करते हुए कुछ कदम आगे बढ़ें",
-    step8Title: "चरण 8: फार्मेसी लॉबी में प्रवेश कर रहे हैं",
-    step8Desc: "यूरोलॉजी को पार करते हुए तीर का पालन करके कुछ कदम आगे बढ़ें",
-    step9Title: "चरण 9: ईएनटी में आपका स्वागत है",
-    step9Desc: "आपकी मंजिल - कान, नाक और गले की देखभाल के लिए ईएनटी विभाग",
-    backButton: "← मुख्य मेनू पर वापस"
-}
+                pageTitle: "👂 ईएनटी का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: रिसेप्शन के बाद बायीं ओर मुड़ें",
+                step2Desc: "रिसेप्शन काउंटर पार करते समय बायीं ओर मुड़ें",
+                step3Title: "चरण 3: दायीं ओर रहें",
+                step3Desc: "जल्दी से दायीं ओर मुड़ें",
+                step4Title: "चरण 4: फार्मेसी लॉबी में प्रवेश कर रहे हैं",
+                step4Desc: "फिर गायनाकोलॉजी विभाग के पास एक छोटा बायाँ मोड़ लें",
+                step5Title: "चरण 5: अब आप फार्मेसी लॉबी में हैं",
+                step5Desc: "तीर के निशान का पालन करते हुए फायर एक्जिट की ओर सीधे चलें",
+                step6Title: "चरण 6: फायर एक्जिट की ओर बायीं ओर मुड़ें",
+                step6Desc: "फायर एक्जिट से पहले बायीं ओर मुड़ें",
+                step7Title: "चरण 7: ईएनटी ओपीडी की ओर सीधे चलें",
+                step7Desc: "तीर का पालन करते हुए कुछ कदम आगे बढ़ें",
+                step8Title: "चरण 8: ईएनटी ओपीडी की ओर सीधे चलें",
+                step8Desc: "यूरोलॉजी को पार करते हुए तीर का पालन करके कुछ कदम आगे बढ़ें",
+                step9Title: "चरण 9: ईएनटी में आपका स्वागत है",
+                step9Desc: "आपकी मंजिल - कान, नाक और गले की देखभाल के लिए ईएनटी विभाग",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
             ml: {
-    pageTitle: "👂 ഇഎൻടിയിലേക്കുള്ള വഴി",
-    step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
-    step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് തുടരുക, നേരെ നടക്കുക",
-    step2Title: "ഘട്ടം 2: റിസപ്ഷൻ കടന്ന് ഇടതുവശത്ത് തിരിയുക",
-    step2Desc: "റിസപ്ഷൻ കൗണ്ടർ കടന്നുപോകുമ്പോൾ ഇടതുവശത്ത് തിരിയുക",
-    step3Title: "ഘട്ടം 3: വലതുവശത്ത് തുടരുക",
-    step3Desc: "വേഗത്തിൽ വലതുവശത്ത് തിരിയുക",
-    step4Title: "ഘട്ടം 4: ഫാർമസി ലോബിയിലേക്ക് പ്രവേശിക്കുന്നു",
-    step4Desc: "ഗൈനക്കോളജി വകുപ്പിന് സമീപം ഒരു ചെറിയ ഇടതുവശത്ത് തിരിയുക",
-    step5Title: "ഘട്ടം 5: ഇപ്പോൾ നിങ്ങൾ ഫാർമസി ലോബിയിലാണ്",
-    step5Desc: "അമ്പടയാളം പിന്തുടർന്ന് ഫയർ എക്സിറ്റ് നേരെ നടക്കുക",
-    step6Title: "ഘട്ടം 6: ഫയർ എക്സിറ്റിലേക്ക് ഇടതുവശത്ത് തിരിയുക",
-    step6Desc: "ഫയർ എക്സിറ്റിന് മുമ്പായി ഇടതുവശത്ത് തിരിയുക",
-    step7Title: "ഘട്ടം 7: ഇഎൻടി ഓപിഡിയിലേക്ക് നേരെ നടക്കുക",
-    step7Desc: "അമ്പടയാളം പിന്തുടർന്ന് കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
-    step8Title: "ഘട്ടം 8: ഫാർമസി ലോബിയിലേക്ക് പ്രവേശിക്കുന്നു",
-    step8Desc: "യൂറോളജി കടന്ന് അമ്പടയാളം പിന്തുടർന്ന് കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
-    step9Title: "ഘട്ടം 9: ഇഎൻടിയിലേക്ക് സ്വാഗതം",
-    step9Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ചെവി, മൂക്ക്, തൊണ്ട പരിചരണത്തിനുള്ള ഇഎൻടി വകുപ്പ്",
-    backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
-}
+                pageTitle: "👂 ഇഎൻടിയിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് തുടരുക, നേരെ നടക്കുക",
+                step2Title: "ഘട്ടം 2: റിസപ്ഷൻ കടന്ന് ഇടതുവശത്ത് തിരിയുക",
+                step2Desc: "റിസപ്ഷൻ കൗണ്ടർ കടന്നുപോകുമ്പോൾ ഇടതുവശത്ത് തിരിയുക",
+                step3Title: "ഘട്ടം 3: വലതുവശത്ത് തുടരുക",
+                step3Desc: "വേഗത്തിൽ വലതുവശത്ത് തിരിയുക",
+                step4Title: "ഘട്ടം 4: ഫാർമസി ലോബിയിലേക്ക് പ്രവേശിക്കുന്നു",
+                step4Desc: "ഗൈനക്കോളജി വകുപ്പിന് സമീപം ഒരു ചെറിയ ഇടതുവശത്ത് തിരിയുക",
+                step5Title: "ഘട്ടം 5: ഇപ്പോൾ നിങ്ങൾ ഫാർമസി ലോബിയിലാണ്",
+                step5Desc: "അമ്പടയാളം പിന്തുടർന്ന് ഫയർ എക്സിറ്റ് നേരെ നടക്കുക",
+                step6Title: "ഘട്ടം 6: ഫയർ എക്സിറ്റിലേക്ക് ഇടതുവശത്ത് തിരിയുക",
+                step6Desc: "ഫയർ എക്സിറ്റിന് മുമ്പായി ഇടതുവശത്ത് തിരിയുക",
+                step7Title: "ഘട്ടം 7: ഇഎൻടി ഓപിഡിയിലേക്ക് നേരെ നടക്കുക",
+                step7Desc: "അമ്പടയാളം പിന്തുടർന്ന് കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
+                step8Title: "ഘട്ടം 8: ഇഎൻടി ഓപിഡിയിലേക്ക് നേരെ നടക്കുക",
+                step8Desc: "യൂറോളജി കടന്ന് അമ്പടയാളം പിന്തുടർന്ന് കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
+                step9Title: "ഘട്ടം 9: ഇഎൻടിയിലേക്ക് സ്വാഗതം",
+                step9Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - ചെവി, മൂക്ക്, തൊണ്ട പരിചരണത്തിനുള്ള ഇഎൻടി വകുപ്പ്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
             ar: {
-    pageTitle: "👂 اتجاهات إلى الأنف والأذن والحنجرة",
-    step1Title: "الخطوة 1: من المدخل الرئيسي",
-    step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
-    step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
-    step2Desc: "انعطف يسارًا عندما تعبر مكتب الاستقبال",
-    step3Title: "الخطوة 3: حافظ على اليمين",
-    step3Desc: "انعطف يمينًا بسرعة",
-    step4Title: "الخطوة 4: الدخول إلى بهو الصيدلية",
-    step4Desc: "ثم خذ منعطفًا يسارًا صغيرًا بالقرب من قسم أمراض النساء",
-    step5Title: "الخطوة 5: أنت الآن في بهو الصيدلية",
-    step5Desc: "امشِ مباشرة نحو مخرج الطوارئ متبعًا سهم الإشارة",
-    step6Title: "الخطوة 6: يسارًا نحو مخرج الطوارئ",
-    step6Desc: "خذ منعطفًا يسارًا قبل مخرج الطوارئ",
-    step7Title: "الخطوة 7: امشِ مباشرة إلى عيادات الأنف والأذن والحنجرة الخارجية",
-    step7Desc: "خذ بضع خطوات للأمام متبعًا السهم",
-    step8Title: "الخطوة 8: الدخول إلى بهو الصيدلية",
-    step8Desc: "خذ بضع خطوات للأمام متجاوزًا قسم المسالك البولية متبعًا السهم",
-    step9Title: "الخطوة 9: مرحبًا بكم في الأنف والأذن والحنجرة",
-    step9Desc: "وجهتك - قسم الأنف والأذن والحنجرة لرعاية الأذن والأنف والحنجرة",
-    backButton: "← العودة إلى القائمة الرئيسية"
-}
+                pageTitle: "👂 اتجاهات إلى الأنف والأذن والحنجرة",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
+                step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
+                step2Desc: "انعطف يسارًا عندما تعبر مكتب الاستقبال",
+                step3Title: "الخطوة 3: حافظ على اليمين",
+                step3Desc: "انعطف يمينًا بسرعة",
+                step4Title: "الخطوة 4: الدخول إلى بهو الصيدلية",
+                step4Desc: "ثم خذ منعطفًا يسارًا صغيرًا بالقرب من قسم أمراض النساء",
+                step5Title: "الخطوة 5: أنت الآن في بهو الصيدلية",
+                step5Desc: "امشِ مباشرة نحو مخرج الطوارئ متبعًا سهم الإشارة",
+                step6Title: "الخطوة 6: يسارًا نحو مخرج الطوارئ",
+                step6Desc: "خذ منعطفًا يسارًا قبل مخرج الطوارئ",
+                step7Title: "الخطوة 7: امشِ مباشرة إلى عيادات الأنف والأذن والحنجرة الخارجية",
+                step7Desc: "خذ بضع خطوات للأمام متبعًا السهم",
+                step8Title: "الخطوة 8: امشِ مباشرة إلى عيادات الأنف والأذن والحنجرة الخارجية",
+                step8Desc: "خذ بضع خطوات للأمام متجاوزًا قسم المسالك البولية متبعًا السهم",
+                step9Title: "الخطوة 9: مرحبًا بكم في الأنف والأذن والحنجرة",
+                step9Desc: "وجهتك - قسم الأنف والأذن والحنجرة لرعاية الأذن والأنف والحنجرة",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
         };
 
-        // Initialize language
+        // Initialize language and progress tracking
         document.addEventListener('DOMContentLoaded', function() {
             initializeENTLanguage();
+            initializeProgressTracker();
         });
 
         function initializeENTLanguage() {
@@ -514,8 +581,51 @@ body {
             document.getElementById('step3-desc').textContent = t.step3Desc;
             document.getElementById('step4-title').textContent = t.step4Title;
             document.getElementById('step4-desc').textContent = t.step4Desc;
+            document.getElementById('step5-title').textContent = t.step5Title;
+            document.getElementById('step5-desc').textContent = t.step5Desc;
+            document.getElementById('step6-title').textContent = t.step6Title;
+            document.getElementById('step6-desc').textContent = t.step6Desc;
+            document.getElementById('step7-title').textContent = t.step7Title;
+            document.getElementById('step7-desc').textContent = t.step7Desc;
+            document.getElementById('step8-title').textContent = t.step8Title;
+            document.getElementById('step8-desc').textContent = t.step8Desc;
+            document.getElementById('step9-title').textContent = t.step9Title;
+            document.getElementById('step9-desc').textContent = t.step9Desc;
             
             document.querySelector('.nav-button').textContent = t.backButton;
+        }
+
+        // Progress tracking for long pages
+        function initializeProgressTracker() {
+            const progressFill = document.getElementById('progress-fill');
+            const currentStep = document.getElementById('current-step');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const steps = document.querySelectorAll('.step');
+            const totalSteps = steps.length;
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                
+                progressFill.style.width = scrollPercent + '%';
+                progressPercentage.textContent = Math.round(scrollPercent) + '%';
+                
+                // Determine current step based on scroll position
+                let currentStepIndex = 0;
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2) {
+                        currentStepIndex = index + 1;
+                    }
+                });
+                
+                currentStep.textContent = currentStepIndex;
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            window.addEventListener('resize', updateProgress);
+            updateProgress(); // Initial call
         }
     </script>
 </body>
