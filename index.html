@@ -151,6 +151,8 @@
             justify-content: center;
             align-items: center;
             touch-action: manipulation;
+            text-decoration: none;
+            color: inherit;
         }
         
         .department-box:hover {
@@ -386,88 +388,89 @@
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
-        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
+        <a href="pharmacy.html" class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
             <div class="department-icon">💊</div>
             <h3>OP Pharmacy</h3>
             <p class="department-location">Ground Floor</p>
             <p>Get your medicines here</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
+        <a href="radiology.html" class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
             <div class="department-icon">📋</div>
             <h3>Radiology</h3>
             <p class="department-location">Basement Floor</p>
             <p>Xray & Scanning</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
+        <a href="Lab.html" class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
             <div class="department-icon">🔬</div>
             <h3>Laboratory</h3>
             <p class="department-location">Ground Floor</p>
             <p>Blood tests & reports</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac">
+        <a href="Dermatology.html" class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment opd">
+            <div class="department-icon">🧴</div>
+            <h3>Dermatology</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Skin care & treatment</p>
+        </a>
+
+        <a href="cardiology.html" class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac">
             <div class="department-icon">❤️</div>
             <h3>Cardiology</h3>
             <p class="department-location">Basement Floor</p>
             <p>Heart care & OPD</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
+        <a href="ortho.html" class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
             <div class="department-icon">🦴</div>
             <h3>Orthopedics</h3>
             <p class="department-location">Ground Floor</p>
             <p>Bone & joint care</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
+        <a href="ophthal.html" class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
             <div class="department-icon">👁️</div>
             <h3>Ophthalmology</h3>
             <p class="department-location">Ground Floor</p>
             <p>Eye care OPD</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
+        <a href="westend.html" class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
             <div class="department-icon">☕</div>
             <h3>Cafeteria (West End)</h3>
             <p class="department-location">Ground Floor</p>
             <p>Food & refreshments</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
+        <a href="pediatrics.html" class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
             <div class="department-icon">👶</div>
             <h3>Pediatrics</h3>
             <p class="department-location">Ground Floor</p>
             <p>Child care & consultation</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
+        <a href="ent.html" class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
             <div class="department-icon">👂</div>
             <h3>ENT</h3>
             <p class="department-location">Ground Floor</p>
             <p>Ear, Nose & Throat</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
+        <a href="general-medicine.html" class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
             <div class="department-icon">🩺</div>
             <h3>General Medicine</h3>
             <p class="department-location">Ground Floor</p>
             <p>Physician consultation</p>
-        </div>
+        </a>
 
-        <div class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot">
+        <a href="general-surgery.html" class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot">
             <div class="department-icon">🔪</div>
             <h3>General Surgery</h3>
             <p class="department-location">Ground Floor</p>
             <p>Surgical procedures & operations</p>
-        </div>
-        <div class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment opd">
-    <div class="department-icon">🧴</div>
-    <h3>Dermatology</h3>
-    <p class="department-location">Ground Floor</p>
-    <p>Skin care & treatment</p>
-</div>
+        </a>
     </div>
 
     <!-- Enhanced Hit Counter Section -->
@@ -482,9 +485,6 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
-        // Replace with your actual Google Analytics Measurement ID
-        const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← REPLACE THIS WITH YOUR ACTUAL ID
-
         // Google Analytics Tracking Functions
         function trackPageView(pageTitle) {
             if (typeof gtag !== 'undefined') {
@@ -589,6 +589,7 @@
                     pharmacy: { name: "OP Pharmacy", location: "Ground Floor", description: "Get your medicines here" },
                     radiology: { name: "Radiology", location: "Basement Floor", description: "Xray & Scanning" },
                     lab: { name: "Laboratory", location: "Ground Floor", description: "Blood tests & reports" },
+                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
                     cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
                     ortho: { name: "Orthopedics", location: "Ground Floor", description: "Bone & joint care" },
                     ophthalmology: { name: "Ophthalmology", location: "Ground Floor", description: "Eye care OPD" },
@@ -597,7 +598,6 @@
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" }
-                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" }
                 }
             },
             hi: {
@@ -612,6 +612,7 @@
                     pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
                     radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
                     lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
+                    dermatology: { name: "त्वचा विभाग", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
                     ortho: { name: "ऑर्थोपेडिक्स", location: "ग्राउंड फ्लोर", description: "हड्डी और जोड़ देखभाल" },
                     ophthalmology: { name: "नेत्र विज्ञान", location: "ग्राउंड फ्लोर", description: "आंखों की देखभाल ओपीडी" },
@@ -620,7 +621,6 @@
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
-                    dermatology: { name: "त्वचा विभाग", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" }
                 }
             },
             ml: {
@@ -635,6 +635,7 @@
                     pharmacy: { name: "ഒ പി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
                     radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
                     lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
+                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
                     cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
                     ortho: { name: "ഓർത്തോപീഡിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "അസ്ഥി, സന്ധി പരിചരണം" },
                     ophthalmology: { name: "ഓഫ്താൽമോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കണ്ണ് പരിചരണം ഓപിഡി" },
@@ -643,7 +644,6 @@
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
-                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" }
                 }
             },
             ar: {
@@ -658,6 +658,7 @@
                     pharmacy: { name: "الصيدلية الخارجية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
                     radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
                     lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
+                    dermatology: { name: "العيادة الجلدية", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
                     cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
                     ortho: { name: "العظام", location: "الطابق الأرضي", description: "رعاية العظام والمفاصل" },
                     ophthalmology: { name: "طب العيون", location: "الطابق الأرضي", description: "رعاية العيون والعيادات الخارجية" },
@@ -666,7 +667,6 @@
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" }
-                    dermatology: { name: "العيادة الجلدية", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" }
                 }
             }
         };
@@ -784,41 +784,11 @@
                 }, 300); // 300ms delay to avoid too many events
             });
 
-            // Department click handlers
+            // Add click tracking to department boxes
             departmentBoxes.forEach(box => {
                 box.addEventListener('click', function() {
                     const departmentName = this.getAttribute('data-name');
-                    
-                    // Track department click
                     trackDepartmentClick(departmentName);
-                    
-                    if (departmentName === 'pharmacy') {
-                        window.location.href = 'pharmacy.html';
-                    } else if (departmentName === 'radiology') {
-                        window.location.href = 'radiology.html';
-                    } else if (departmentName === 'cardiology') {
-                        window.location.href = 'cardiology.html';
-                    } else if (departmentName === 'lab') {
-                        window.location.href = 'Lab.html';
-                    } else if (departmentName === 'ortho') {
-                        window.location.href = 'ortho.html';
-                    } else if (departmentName === 'ophthalmology') {
-                        window.location.href = 'ophthal.html';
-                    } else if (departmentName === 'cafeteria') {
-                        window.location.href = 'westend.html';
-                    } else if (departmentName === 'pediatrics') {
-                        window.location.href = 'pediatrics.html';
-                    } else if (departmentName === 'ent') {
-                        window.location.href = 'ent.html';
-                    } else if (departmentName === 'general medicine') {
-                        window.location.href = 'general-medicine.html';
-                    } else if (departmentName === 'general surgery') {
-                        window.location.href = 'general-surgery.html';
-                    } else if (departmentName === 'dermatology') {
-                        window.location.href = 'Dermatology.html';
-                    } else {
-                        alert('Directions for ' + departmentName + ' coming soon!');
-                    }
                 });
             });
         }
@@ -866,4 +836,3 @@
     </script>
 </body>
 </html>
-
