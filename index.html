@@ -462,6 +462,12 @@
             <p class="department-location">Ground Floor</p>
             <p>Surgical procedures & operations</p>
         </div>
+        <div class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment opd">
+    <div class="department-icon">🧴</div>
+    <h3>Dermatology</h3>
+    <p class="department-location">Ground Floor</p>
+    <p>Skin care & treatment</p>
+</div>
     </div>
 
     <!-- Enhanced Hit Counter Section -->
@@ -591,6 +597,7 @@
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" }
+                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" }
                 }
             },
             hi: {
@@ -613,6 +620,7 @@
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
+                    dermatology: { name: "त्वचा विभाग", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" }
                 }
             },
             ml: {
@@ -635,6 +643,7 @@
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
+                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" }
                 }
             },
             ar: {
@@ -657,6 +666,7 @@
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" }
+                    dermatology: { name: "العيادة الجلدية", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" }
                 }
             }
         };
@@ -804,6 +814,8 @@
                         window.location.href = 'general-medicine.html';
                     } else if (departmentName === 'general surgery') {
                         window.location.href = 'general-surgery.html';
+                    } else if (departmentName === 'dermatology') {
+                        window.location.href = 'Dermatology.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
@@ -854,3 +866,4 @@
     </script>
 </body>
 </html>
+
