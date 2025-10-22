@@ -3,6 +3,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HF64PTD7GH');
+    </script>
+    
     <style>
         * {
             box-sizing: border-box;
@@ -466,6 +476,53 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
+        // Replace with your actual Google Analytics Measurement ID
+        const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← REPLACE THIS WITH YOUR ACTUAL ID
+
+        // Google Analytics Tracking Functions
+        function trackPageView(pageTitle) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'page_title': pageTitle,
+                    'page_location': window.location.href
+                });
+                console.log('Tracked page view:', pageTitle);
+            }
+        }
+
+        function trackDepartmentClick(department) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'department_click', {
+                    'event_category': 'Navigation',
+                    'event_label': department,
+                    'value': 1
+                });
+                console.log('Tracked department click:', department);
+            }
+        }
+
+        function trackSearch(searchTerm) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'search', {
+                    'event_category': 'Navigation',
+                    'event_label': searchTerm,
+                    'value': 1
+                });
+                console.log('Tracked search:', searchTerm);
+            }
+        }
+
+        function trackLanguageChange(language) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'language_change', {
+                    'event_category': 'Settings',
+                    'event_label': language,
+                    'value': 1
+                });
+                console.log('Tracked language change:', language);
+            }
+        }
+
         // Enhanced Hit Counter
         function initializeHitCounter() {
             function getCookie(name) {
@@ -639,6 +696,9 @@
             document.querySelector('.hit-counter h3').textContent = t.hitCounterTitle;
             document.querySelector('.counter-label').textContent = t.hitCounterLabel;
             
+            // Track language change
+            trackLanguageChange(lang);
+            
             // Update department names and descriptions
             updateDepartmentTranslations(t.departments);
         }
@@ -682,33 +742,45 @@
             const noResults = document.getElementById('noResults');
             const departmentBoxes = document.querySelectorAll('.department-box');
 
+            let searchTimeout;
             searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
-                let visibleCount = 0;
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const searchTerm = this.value.toLowerCase().trim();
+                    let visibleCount = 0;
 
-                departmentBoxes.forEach(box => {
-                    const departmentName = box.getAttribute('data-name').toLowerCase();
-                    const keywords = box.getAttribute('data-keywords').toLowerCase();
-                    
-                    if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
-                        box.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        box.classList.add('hidden');
+                    // Track search if term is not empty
+                    if (searchTerm.length > 0) {
+                        trackSearch(searchTerm);
                     }
-                });
 
-                if (visibleCount === 0 && searchTerm !== '') {
-                    noResults.style.display = 'block';
-                } else {
-                    noResults.style.display = 'none';
-                }
+                    departmentBoxes.forEach(box => {
+                        const departmentName = box.getAttribute('data-name').toLowerCase();
+                        const keywords = box.getAttribute('data-keywords').toLowerCase();
+                        
+                        if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
+                            box.classList.remove('hidden');
+                            visibleCount++;
+                        } else {
+                            box.classList.add('hidden');
+                        }
+                    });
+
+                    if (visibleCount === 0 && searchTerm !== '') {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                    }
+                }, 300); // 300ms delay to avoid too many events
             });
 
             // Department click handlers
             departmentBoxes.forEach(box => {
                 box.addEventListener('click', function() {
                     const departmentName = this.getAttribute('data-name');
+                    
+                    // Track department click
+                    trackDepartmentClick(departmentName);
                     
                     if (departmentName === 'pharmacy') {
                         window.location.href = 'pharmacy.html';
@@ -762,6 +834,9 @@
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
+            
+            // Track initial page view
+            trackPageView('Hospital Navigation Home');
         });
 
         // Global function for back to top
