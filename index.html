@@ -836,52 +836,59 @@
         }
 
         // Search functionality
-        function initializeSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const noResults = document.getElementById('noResults');
-            const departmentBoxes = document.querySelectorAll('.department-box');
+function initializeSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const noResults = document.getElementById('noResults');
+    const departmentBoxes = document.querySelectorAll('.department-box');
 
-            let searchTimeout;
-            searchInput.addEventListener('input', function() {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    const searchTerm = this.value.toLowerCase().trim();
-                    let visibleCount = 0;
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchTerm = this.value.toLowerCase().trim();
+            let visibleCount = 0;
 
-                    // Track search if term is not empty
-                    if (searchTerm.length > 0) {
-                        trackSearch(searchTerm);
-                    }
+            // Track search if term is not empty
+            if (searchTerm.length > 0) {
+                trackSearch(searchTerm);
+            }
 
-                    departmentBoxes.forEach(box => {
-                        const departmentName = box.getAttribute('data-name').toLowerCase();
-                        const keywords = box.getAttribute('data-keywords').toLowerCase();
-                        
-                        if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
-                            box.classList.remove('hidden');
-                            visibleCount++;
-                        } else {
-                            box.classList.add('hidden');
-                        }
-                    });
-
-                    if (visibleCount === 0 && searchTerm !== '') {
-                        noResults.style.display = 'block';
-                    } else {
-                        noResults.style.display = 'none';
-                    }
-                }, 300); // 300ms delay to avoid too many events
-            });
-
-            // Add click tracking to department boxes
             departmentBoxes.forEach(box => {
-                box.addEventListener('click', function() {
-                    const departmentName = this.getAttribute('data-name');
-                    trackDepartmentClick(departmentName);
-                });
+                const departmentName = box.getAttribute('data-name').toLowerCase();
+                const keywords = box.getAttribute('data-keywords').toLowerCase();
+                
+                // Split keywords into individual words for better matching
+                const keywordArray = keywords.split(' ');
+                
+                // Check if search term matches department name OR any keyword
+                const matchesName = departmentName.includes(searchTerm);
+                const matchesKeyword = keywordArray.some(keyword => keyword.includes(searchTerm));
+                const exactMatch = keywords.includes(searchTerm);
+                
+                if (searchTerm === '' || matchesName || matchesKeyword || exactMatch) {
+                    box.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    box.classList.add('hidden');
+                }
             });
-        }
 
+            if (visibleCount === 0 && searchTerm !== '') {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }, 300);
+    });
+
+    // Add click tracking to department boxes
+    departmentBoxes.forEach(box => {
+        box.addEventListener('click', function() {
+            const departmentName = this.getAttribute('data-name');
+            trackDepartmentClick(departmentName);
+        });
+    });
+}
         // Back to top functionality
         function initializeBackToTop() {
             const backToTopBtn = document.getElementById('backToTop');
@@ -925,3 +932,4 @@
     </script>
 </body>
 </html>
+
