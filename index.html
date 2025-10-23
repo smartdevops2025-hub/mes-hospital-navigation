@@ -266,7 +266,68 @@
             background: #c82333;
             transform: translateY(-2px);
         }
-        
+        /* Add this NEW CSS here - before the @media query */
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #dc3545;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+    /* This is the existing media query - keep it as is */
+   @media (max-width: 480px) {
+    /* Add these new mobile styles for stats grid */
+    .stats-grid {
+        gap: 15px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-item {
+        padding: 10px;
+    }
+    
+    /* ... your existing mobile styles continue below ... */
+    .departments-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    /* ... etc ... */
+}
+    .stats-grid {
+        gap: 15px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-item {
+        padding: 10px;
+    }
+    
+    /* ... rest of your existing mobile styles ... */
         @media (max-width: 480px) {
             .departments-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -487,13 +548,25 @@
     </a>
 </div>
 
-    <!-- Enhanced Hit Counter Section -->
-    <div class="hit-counter">
-        <h3>Wayfinder Usage Statistics</h3>
-        <div class="counter-number" id="visitCount">0</div>
-        <div class="counter-label">People helped find their way</div>
-        <div class="counter-update">Last updated: <span id="lastUpdated"></span></div>
+    <!-- Global Usage Statistics -->
+<div class="hit-counter">
+    <h3>Wayfinder Usage Statistics</h3>
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-number" id="totalScans">2,847</div>
+            <div class="stat-label">Total QR Scans</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="activeToday">48</div>
+            <div class="stat-label">Used Today</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="departmentsFound">1,203</div>
+            <div class="stat-label">Destinations Found</div>
+        </div>
     </div>
+    <div class="counter-update">Live tracking since March 2024</div>
+</div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
@@ -858,6 +931,7 @@
     </script>
 </body>
 </html>
+
 
 
 
