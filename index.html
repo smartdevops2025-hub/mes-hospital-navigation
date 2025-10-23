@@ -206,31 +206,6 @@
             display: none;
         }
         
-        .stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 15px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #dc3545;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
         .hit-counter {
             text-align: center;
             margin: 40px 0 20px 0;
@@ -344,18 +319,6 @@
                 font-size: 0.9rem;
                 min-width: 70px;
             }
-            
-            .stats-grid {
-                gap: 15px;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
-            
-            .stat-item {
-                padding: 10px;
-            }
         }
         
         @media (min-width: 768px) {
@@ -425,11 +388,25 @@
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
-        <a href="cardiology.html" class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac">
-            <div class="department-icon">❤️</div>
-            <h3>Cardiology</h3>
+        <a href="pharmacy.html" class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
+            <div class="department-icon">💊</div>
+            <h3>OP Pharmacy</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Get your medicines here</p>
+        </a>
+
+        <a href="radiology.html" class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
+            <div class="department-icon">📋</div>
+            <h3>Radiology</h3>
             <p class="department-location">Basement Floor</p>
-            <p>Heart care & OPD</p>
+            <p>Xray & Scanning</p>
+        </a>
+
+        <a href="Lab.html" class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
+            <div class="department-icon">🔬</div>
+            <h3>Laboratory</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Blood tests & reports</p>
         </a>
 
         <a href="dermatology.html" class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment opd">
@@ -437,6 +414,41 @@
             <h3>Dermatology</h3>
             <p class="department-location">Ground Floor</p>
             <p>Skin care & treatment</p>
+        </a>
+
+        <a href="cardiology.html" class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac">
+            <div class="department-icon">❤️</div>
+            <h3>Cardiology</h3>
+            <p class="department-location">Basement Floor</p>
+            <p>Heart care & OPD</p>
+        </a>
+
+        <a href="ortho.html" class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
+            <div class="department-icon">🦴</div>
+            <h3>Orthopedics</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Bone & joint care</p>
+        </a>
+
+        <a href="ophthal.html" class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
+            <div class="department-icon">👁️</div>
+            <h3>Ophthalmology</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Eye care OPD</p>
+        </a>
+
+        <a href="westend.html" class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
+            <div class="department-icon">☕</div>
+            <h3>Cafeteria (West End)</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Food & refreshments</p>
+        </a>
+
+        <a href="pediatrics.html" class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
+            <div class="department-icon">👶</div>
+            <h3>Pediatrics</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Child care & consultation</p>
         </a>
 
         <a href="ent.html" class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
@@ -453,13 +465,6 @@
             <p>Physician consultation</p>
         </a>
 
-        <a href="general-store.html" class="department-box" data-name="general store" data-keywords="general store shop items toiletries brush paste soap towel essentials patient needs supplies">
-            <div class="department-icon">🛒</div>
-            <h3>General Store</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Daily essentials & toiletries</p>
-        </a>
-
         <a href="general-surgery.html" class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot">
             <div class="department-icon">🔪</div>
             <h3>General Surgery</h3>
@@ -467,81 +472,27 @@
             <p>Surgical procedures & operations</p>
         </a>
 
-        <a href="Lab.html" class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
-            <div class="department-icon">🔬</div>
-            <h3>Laboratory</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Blood tests & reports</p>
-        </a>
-
-        <a href="ophthal.html" class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
-            <div class="department-icon">👁️</div>
-            <h3>Ophthalmology</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Eye care OPD</p>
-        </a>
-
-        <a href="ortho.html" class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
-            <div class="department-icon">🦴</div>
-            <h3>Orthopedics</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Bone & joint care</p>
-        </a>
-
-        <a href="pediatrics.html" class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
-            <div class="department-icon">👶</div>
-            <h3>Pediatrics</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Child care & consultation</p>
-        </a>
-
-        <a href="pharmacy.html" class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
-            <div class="department-icon">💊</div>
-            <h3>OP Pharmacy</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Get your medicines here</p>
-        </a>
-
         <a href="pulmonology.html" class="department-box" data-name="pulmonology" data-keywords="pulmonology chest lung respiratory breathing asthma pulmo">
-            <div class="department-icon">🫁</div>
-            <h3>Pulmonology</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Chest & lung care</p>
-        </a>
+    <div class="department-icon">🫁</div>
+    <h3>Pulmonology</h3>
+    <p class="department-location">Ground Floor</p>
+    <p>Chest & lung care</p>
+</a>
 
-        <a href="radiology.html" class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
-            <div class="department-icon">📋</div>
-            <h3>Radiology</h3>
-            <p class="department-location">Basement Floor</p>
-            <p>Xray & Scanning</p>
-        </a>
-
-        <a href="westend.html" class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
-            <div class="department-icon">☕</div>
-            <h3>Cafeteria (West End)</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Food & refreshments</p>
-        </a>
+        <a href="general-store.html" class="department-box" data-name="general store" data-keywords="general store shop items toiletries brush paste soap towel essentials patient needs supplies">
+    <div class="department-icon">🛒</div>
+    <h3>General Store</h3>
+    <p class="department-location">Ground Floor</p>
+    <p>Daily essentials & toiletries</p>
+</a>
     </div>
 
     <!-- Enhanced Hit Counter Section -->
     <div class="hit-counter">
         <h3>Wayfinder Usage Statistics</h3>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number" id="totalScans">2,847</div>
-                <div class="stat-label">Total QR Scans</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="activeToday">48</div>
-                <div class="stat-label">Used Today</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="departmentsFound">1,203</div>
-                <div class="stat-label">Destinations Found</div>
-            </div>
-        </div>
-        <div class="counter-update">Live tracking since March 2024</div>
+        <div class="counter-number" id="visitCount">0</div>
+        <div class="counter-label">People helped find their way</div>
+        <div class="counter-update">Last updated: <span id="lastUpdated"></span></div>
     </div>
 
     <!-- Back to Top Button -->
@@ -608,49 +559,34 @@
                 document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
             }
             
-            let visitCount;
+            let visitCount = getCookie('wayfinderVisitCount');
             
-            // Try to get from cookie first
-            const cookieCount = getCookie('wayfinderVisitCount');
-            if (cookieCount !== null && cookieCount !== 'null') {
-                visitCount = parseInt(cookieCount);
-            } else {
-                // Try to get from localStorage
-                const storedCount = localStorage.getItem('wayfinderVisitCount');
-                if (storedCount !== null && storedCount !== 'null') {
-                    visitCount = parseInt(storedCount);
-                } else {
-                    // Initialize to 0 if no previous count exists
-                    visitCount = 0;
-                }
+            if (visitCount === null || visitCount === 'null') {
+                visitCount = localStorage.getItem('wayfinderVisitCount');
             }
             
-            // Increment the count
+            if (!visitCount || visitCount === 'null') {
+                visitCount = 0;
+            } else {
+                visitCount = parseInt(visitCount);
+            }
+            
             visitCount++;
             
-            // Store in both cookie and localStorage for redundancy
             setCookie('wayfinderVisitCount', visitCount, 365);
-            localStorage.setItem('wayfinderVisitCount', visitCount.toString());
+            localStorage.setItem('wayfinderVisitCount', visitCount);
             
-            // Update the display
             const counterElement = document.getElementById('visitCount');
-            if (counterElement) {
-                counterElement.textContent = visitCount.toLocaleString();
-                
-                // Add animation
-                counterElement.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    counterElement.style.transform = 'scale(1)';
-                }, 300);
-            }
+            counterElement.textContent = visitCount.toLocaleString();
+            
+            // Add animation
+            counterElement.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                counterElement.style.transform = 'scale(1)';
+            }, 300);
             
             // Update timestamp
-            const lastUpdatedElement = document.getElementById('lastUpdated');
-            if (lastUpdatedElement) {
-                lastUpdatedElement.textContent = new Date().toLocaleString();
-            }
-            
-            console.log('Hit counter updated:', visitCount);
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
         }
 
         // Language functionality
@@ -675,9 +611,9 @@
                     pediatrics: { name: "Pediatrics", location: "Ground Floor", description: "Child care & consultation" },
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
-                    general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
-                    pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Chest & lung care" },
-                    general_store: { name: "General Store", location: "Ground Floor", description: "Daily essentials & toiletries" }
+                    general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" }
+                    pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Chest & lung care" }
+        general_store: { name: "General Store", location: "Ground Floor", description: "Daily essentials & toiletries" }
                 }
             },
             hi: {
@@ -700,8 +636,8 @@
                     pediatrics: { name: "पीडियाट्रिक्स", location: "ग्राउंड फ्लोर", description: "बच्चों की देखभाल और परामर्श" },
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
-                    general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
-                    pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "छाती और फेफड़ों की देखभाल" },
+                    general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
+                    pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "छाती और फेफड़ों की देखभाल" }
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "दैनिक जरूरतें और टॉयलेटरीज" }
                 }
             },
@@ -725,8 +661,8 @@
                     pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" },
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
-                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
-                    pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നെഞ്ച്, ശ്വാസകോശ പരിചരണം" },
+                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
+                    pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നെഞ്ച്, ശ്വാസകോശ പരിചരണം" }
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ദൈനംദിന ആവശ്യങ്ങളും ടോയ്ലെട്രികളും" }
                 }
             },
@@ -750,8 +686,8 @@
                     pediatrics: { name: "طب الأطفال", location: "الطابق الأرضي", description: "رعاية الأطفال واستشارات" },
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
-                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
-                    pulmonology: { name: "العيادة الصدرية", location: "الطابق الأرضي", description: "رعاية الصدر والرئتين" },
+                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" }
+                    pulmonology: { name: "العيادة الصدرية", location: "الطابق الأرضي", description: "رعاية الصدر والرئتين" }
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الضروريات اليومية ومستلزمات النظافة" }
                 }
             }
@@ -811,9 +747,6 @@
                 if (departmentName === 'general surgery') {
                     translationKey = 'general_surgery';
                 }
-                if (departmentName === 'general store') {
-                    translationKey = 'general_store';
-                }
                 
                 const translation = departmentTranslations[translationKey];
                 
@@ -836,59 +769,52 @@
         }
 
         // Search functionality
-function initializeSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const noResults = document.getElementById('noResults');
-    const departmentBoxes = document.querySelectorAll('.department-box');
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            const departmentBoxes = document.querySelectorAll('.department-box');
 
-    let searchTimeout;
-    searchInput.addEventListener('input', function() {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            const searchTerm = this.value.toLowerCase().trim();
-            let visibleCount = 0;
+            let searchTimeout;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const searchTerm = this.value.toLowerCase().trim();
+                    let visibleCount = 0;
 
-            // Track search if term is not empty
-            if (searchTerm.length > 0) {
-                trackSearch(searchTerm);
-            }
+                    // Track search if term is not empty
+                    if (searchTerm.length > 0) {
+                        trackSearch(searchTerm);
+                    }
 
-            departmentBoxes.forEach(box => {
-                const departmentName = box.getAttribute('data-name').toLowerCase();
-                const keywords = box.getAttribute('data-keywords').toLowerCase();
-                
-                // Split keywords into individual words for better matching
-                const keywordArray = keywords.split(' ');
-                
-                // Check if search term matches department name OR any keyword
-                const matchesName = departmentName.includes(searchTerm);
-                const matchesKeyword = keywordArray.some(keyword => keyword.includes(searchTerm));
-                const exactMatch = keywords.includes(searchTerm);
-                
-                if (searchTerm === '' || matchesName || matchesKeyword || exactMatch) {
-                    box.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    box.classList.add('hidden');
-                }
+                    departmentBoxes.forEach(box => {
+                        const departmentName = box.getAttribute('data-name').toLowerCase();
+                        const keywords = box.getAttribute('data-keywords').toLowerCase();
+                        
+                        if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
+                            box.classList.remove('hidden');
+                            visibleCount++;
+                        } else {
+                            box.classList.add('hidden');
+                        }
+                    });
+
+                    if (visibleCount === 0 && searchTerm !== '') {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                    }
+                }, 300); // 300ms delay to avoid too many events
             });
 
-            if (visibleCount === 0 && searchTerm !== '') {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
-        }, 300);
-    });
+            // Add click tracking to department boxes
+            departmentBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    const departmentName = this.getAttribute('data-name');
+                    trackDepartmentClick(departmentName);
+                });
+            });
+        }
 
-    // Add click tracking to department boxes
-    departmentBoxes.forEach(box => {
-        box.addEventListener('click', function() {
-            const departmentName = this.getAttribute('data-name');
-            trackDepartmentClick(departmentName);
-        });
-    });
-}
         // Back to top functionality
         function initializeBackToTop() {
             const backToTopBtn = document.getElementById('backToTop');
@@ -932,4 +858,6 @@ function initializeSearch() {
     </script>
 </body>
 </html>
+
+
 
