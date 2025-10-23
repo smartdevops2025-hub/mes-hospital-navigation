@@ -462,6 +462,13 @@
             <p class="department-location">Ground Floor</p>
             <p>Surgical procedures & operations</p>
         </div>
+         <div class="department-box" data-name="general store" data-keywords="general store shop items toiletries brush paste soap towel essentials patient needs supplies">
+        <div class="department-icon">🛒</div>
+        <h3>General Store</h3>
+        <p class="department-location">Ground Floor</p>
+        <p>Daily essentials & toiletries</p>
+    </div>
+
     </div>
 
     <!-- Enhanced Hit Counter Section -->
@@ -591,6 +598,7 @@
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" }
+                    general_store: { name: "General Store", location: "Ground Floor", description: "Daily essentials & toiletries" }
                 }
             },
             hi: {
@@ -613,6 +621,7 @@
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
+                    general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "दैनिक जरूरतें और टॉयलेटरीज" }
                 }
             },
             ml: {
@@ -635,6 +644,7 @@
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
+                    general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ദൈനംദിന ആവശ്യങ്ങളും ടോയ്ലെട്രികളും" }
                 }
             },
             ar: {
@@ -657,6 +667,7 @@
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" }
+                    general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الضروريات اليومية ومستلزمات النظافة" }
                 }
             }
         };
@@ -774,41 +785,43 @@
                 }, 300); // 300ms delay to avoid too many events
             });
 
-            // Department click handlers
-            departmentBoxes.forEach(box => {
-                box.addEventListener('click', function() {
-                    const departmentName = this.getAttribute('data-name');
-                    
-                    // Track department click
-                    trackDepartmentClick(departmentName);
-                    
-                    if (departmentName === 'pharmacy') {
-                        window.location.href = 'pharmacy.html';
-                    } else if (departmentName === 'radiology') {
-                        window.location.href = 'radiology.html';
-                    } else if (departmentName === 'cardiology') {
-                        window.location.href = 'cardiology.html';
-                    } else if (departmentName === 'lab') {
-                        window.location.href = 'Lab.html';
-                    } else if (departmentName === 'ortho') {
-                        window.location.href = 'ortho.html';
-                    } else if (departmentName === 'ophthalmology') {
-                        window.location.href = 'ophthal.html';
-                    } else if (departmentName === 'cafeteria') {
-                        window.location.href = 'westend.html';
-                    } else if (departmentName === 'pediatrics') {
-                        window.location.href = 'pediatrics.html';
-                    } else if (departmentName === 'ent') {
-                        window.location.href = 'ent.html';
-                    } else if (departmentName === 'general medicine') {
-                        window.location.href = 'general-medicine.html';
-                    } else if (departmentName === 'general surgery') {
-                        window.location.href = 'general-surgery.html';
-                    } else {
-                        alert('Directions for ' + departmentName + ' coming soon!');
-                    }
-                });
-            });
+           // Department click handlers
+departmentBoxes.forEach(box => {
+    box.addEventListener('click', function() {
+        const departmentName = this.getAttribute('data-name');
+        
+        // Track department click
+        trackDepartmentClick(departmentName);
+        
+        if (departmentName === 'pharmacy') {
+            window.location.href = 'pharmacy.html';
+        } else if (departmentName === 'radiology') {
+            window.location.href = 'radiology.html';
+        } else if (departmentName === 'cardiology') {
+            window.location.href = 'cardiology.html';
+        } else if (departmentName === 'lab') {
+            window.location.href = 'Lab.html';
+        } else if (departmentName === 'ortho') {
+            window.location.href = 'ortho.html';
+        } else if (departmentName === 'ophthalmology') {
+            window.location.href = 'ophthal.html';
+        } else if (departmentName === 'cafeteria') {
+            window.location.href = 'westend.html';
+        } else if (departmentName === 'pediatrics') {
+            window.location.href = 'pediatrics.html';
+        } else if (departmentName === 'ent') {
+            window.location.href = 'ent.html';
+        } else if (departmentName === 'general medicine') {
+            window.location.href = 'general-medicine.html';
+        } else if (departmentName === 'general surgery') {
+            window.location.href = 'general-surgery.html';
+        } else if (departmentName === 'general store') {
+            window.location.href = 'general-store.html';
+        } else {
+            alert('Directions for ' + departmentName + ' coming soon!');
+        }
+    });
+});
         }
 
         // Back to top functionality
@@ -854,3 +867,4 @@
     </script>
 </body>
 </html>
+
