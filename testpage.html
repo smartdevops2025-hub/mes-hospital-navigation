@@ -1,325 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MES Medical College Hospital - Way Finder</title>
-    
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-HF64PTD7GH');
-    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HF64PTD7GH');
     
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+    // Enhanced tracking for Pulmonology page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Track page view for Pulmonology
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'Directions to Pulmonology',
+                'page_location': window.location.href,
+                'department': 'Pulmonology'
+            });
         }
         
+        // Track when users complete the navigation
+        function trackNavigationComplete() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'navigation_complete', {
+                    'event_category': 'Navigation',
+                    'event_label': 'Pulmonology',
+                    'value': 1
+                });
+            }
+        }
+        
+        // Track completion when user clicks "Back to Main Menu"
+        const backButton = document.querySelector('.nav-button');
+        if (backButton) {
+            backButton.addEventListener('click', function() {
+                trackNavigationComplete();
+            });
+        }
+        
+        // Track time spent on page
+        let startTime = new Date();
+        window.addEventListener('beforeunload', function() {
+            let endTime = new Date();
+            let timeSpent = Math.round((endTime - startTime) / 1000);
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'time_spent', {
+                    'event_category': 'Engagement',
+                    'event_label': 'Pulmonology',
+                    'value': timeSpent
+                });
+            }
+        });
+    });
+</script>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="mes-logo-1-1.webp" as="image">
+    <link rel="preload" href="pulmo1-optimized.webp" as="image">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directions to Pulmonology</title>
+    <style>
+    /* Mobile-first responsive design - Same as Dermatology */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+        font-size: 16px;
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        margin: 0 auto 10px;
+        display: block;
+    }
+    
+    .header h1 {
+        color: #dc3545;
+        font-size: 1.4rem;
+        margin: 0;
+    }
+    
+    /* Language Selector */
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .language-btn {
+        padding: 10px 15px;
+        background: white;
+        border: 2px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        min-width: 70px;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
+    }
+    
+    .page-title {
+        color: #2e86ab;
+        text-align: center;
+        font-size: 1.6rem;
+        margin: 20px 0;
+        font-weight: bold;
+        line-height: 1.3;
+        padding: 0 10px;
+    }
+    
+    .step {
+        background-color: white;
+        margin: 20px 0;
+        padding: 20px 15px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .step h2 {
+        color: #2e86ab;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+        line-height: 1.3;
+        padding: 0 5px;
+    }
+    
+    .step p {
+        font-size: 1.1rem;
+        color: #333;
+        margin-top: 12px;
+        line-height: 1.5;
+        font-weight: 500;
+        padding: 0 5px;
+    }
+    
+    /* IMAGE CONTAINER */
+    .image-container {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+        min-height: 200px;
+        position: relative;
+    }
+    
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 3px solid #2e86ab;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Lazy loading styles */
+    .image-container img.lazy {
+        opacity: 0;
+    }
+    
+    .image-container img.loaded {
+        opacity: 1;
+    }
+    
+    .loading-placeholder {
+        width: 100%;
+        height: 200px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 1rem;
+    }
+    
+    .nav-button {
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 16px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 15px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        width: 100%;
+        max-width: 280px;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-button:active {
+        transform: scale(0.98);
+        background: linear-gradient(135deg, #1a536b, #2e86ab);
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px 0;
+    }
+    
+    /* Enhanced mobile adjustments */
+    @media (max-width: 480px) {
         body {
-            font-family: Arial, sans-serif;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 15px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            line-height: 1.6;
-            color: #333333;
+            font-size: 15px;
+            padding: 12px;
         }
         
         .header {
-            text-align: center;
-            background: white;
-            padding: 25px 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
-            border: 2px solid #dc3545;
-        }
-        
-        .logo-container {
-            margin-bottom: 20px;
+            padding: 15px 10px;
+            margin-bottom: 15px;
         }
         
         .hospital-logo {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin: 0 auto;
-            display: block;
+            max-width: 180px;
         }
         
-        .hospital-info {
-            text-align: center;
-        }
-        
-        .hospital-info h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #dc3545;
-            font-weight: bold;
-        }
-        
-        .hospital-subtitle {
+        .header h1 {
             font-size: 1.2rem;
-            color: #666;
-            font-weight: 500;
         }
         
-        .language-selector {
-            text-align: center;
+        .page-title {
+            font-size: 1.4rem;
+            margin: 15px 0;
+        }
+        
+        .step {
+            padding: 15px 12px;
+            margin: 15px 0;
+        }
+        
+        .step h2 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .step p {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .language-btn {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            min-width: 60px;
+        }
+        
+        .nav-button {
+            font-size: 1rem;
+            padding: 14px 25px;
+            max-width: 250px;
+        }
+        
+        .image-container {
+            min-height: 150px;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        body {
+            font-size: 14px;
+            padding: 10px;
+        }
+        
+        .page-title {
+            font-size: 1.3rem;
+        }
+        
+        .step h2 {
+            font-size: 1.1rem;
+        }
+        
+        .step p {
+            font-size: 0.95rem;
+        }
+        
+        .language-btn {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            min-width: 55px;
+        }
+    }
+    
+    /* Tablet and larger screens */
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
+            font-size: 17px;
+        }
+        
+        .header {
+            padding: 25px 20px;
+            margin-bottom: 25px;
+        }
+        
+        .hospital-logo {
+            max-width: 250px;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            margin: 25px 0;
+        }
+        
+        .step {
+            padding: 25px 20px;
+            margin: 25px 0;
+        }
+        
+        .step h2 {
+            font-size: 1.6rem;
             margin-bottom: 20px;
+        }
+        
+        .step p {
+            font-size: 1.3rem;
+            margin-top: 15px;
         }
         
         .language-btn {
             padding: 10px 20px;
-            margin: 0 5px;
-            background: white;
-            border: 2px solid #dc3545;
-            border-radius: 25px;
-            cursor: pointer;
             font-size: 1rem;
-            transition: all 0.3s ease;
             min-width: 80px;
         }
         
-        .language-btn:hover {
-            background: #f8f9fa;
-        }
-        
-        .language-btn.active {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .search-container {
-            margin: 20px 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .search-box {
-            width: 100%;
-            max-width: 400px;
-            padding: 15px 20px;
+        .nav-button {
             font-size: 1.2rem;
-            border: 2px solid #dc3545;
-            border-radius: 25px;
-            outline: none;
-            box-shadow: 0 2px 10px rgba(220, 53, 69, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
+            padding: 18px 35px;
+            max-width: 300px;
         }
         
-        .search-box:focus {
-            border-color: #c82333;
-            box-shadow: 0 2px 15px rgba(220, 53, 69, 0.3);
+        .image-container {
+            min-height: 250px;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        body {
+            max-width: 800px;
+            font-size: 18px;
         }
         
-        .search-hint {
-            color: #666;
-            font-size: 1rem;
-            margin-top: 10px;
-            margin-bottom: 25px;
-            text-align: center;
+        .page-title {
+            font-size: 2.2rem;
         }
         
-        .departments-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+        .step h2 {
+            font-size: 1.8rem;
         }
         
-        .department-box {
-            background: white;
-            padding: 20px 15px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            touch-action: manipulation;
+        .step p {
+            font-size: 1.4rem;
         }
-        
-        .department-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-color: #dc3545;
-        }
-        
-        .department-box:active {
-            transform: scale(0.98);
-        }
-        
-        .department-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .department-box h3 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: #dc3545;
-            font-weight: bold;
-        }
-        
-        .department-location {
-            font-size: 0.8rem;
-            color: #dc3545;
-            font-weight: bold;
-            margin-bottom: 5px;
-            background: rgba(220, 53, 69, 0.1);
-            padding: 3px 8px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        
-        .department-box p {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.3;
-        }
-        
-        .department-box.hidden {
-            display: none;
-        }
-        
-        .no-results {
-            text-align: center;
-            color: #666;
-            font-size: 1.2rem;
-            margin: 40px 0;
-            display: none;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #dc3545;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .back-to-top:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 480px) {
-            .departments-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .department-box {
-                padding: 15px 10px;
-                min-height: 110px;
-            }
-            
-            .department-icon {
-                font-size: 1.8rem;
-            }
-            
-            .department-box h3 {
-                font-size: 0.9rem;
-            }
-            
-            .department-box p {
-                font-size: 0.8rem;
-            }
-            
-            .department-location {
-                font-size: 0.7rem;
-            }
-            
-            .hospital-info h1 {
-                font-size: 1.6rem;
-            }
-            
-            .hospital-subtitle {
-                font-size: 1rem;
-            }
-            
-            .hospital-logo {
-                max-width: 250px;
-            }
-            
-            .language-btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-                min-width: 70px;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .departments-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-            
-            body {
-                max-width: 1200px;
-            }
-            
-            .hospital-logo {
-                max-width: 350px;
-            }
-            
-            .hospital-info h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hospital-subtitle {
-                font-size: 1.3rem;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .hospital-logo {
-                max-width: 400px;
-            }
-            
-            .departments-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+    }
     </style>
 </head>
 <body>
+
     <!-- Header with Hospital Logo -->
     <div class="header">
-        <div class="logo-container">
-            <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
-        </div>
-        
-        <div class="hospital-info">
-            <h1>Way Finder Navigation System</h1>
-            <div class="hospital-subtitle">Find your way easily</div>
-        </div>
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
     </div>
 
     <!-- Language Selector -->
@@ -330,256 +412,219 @@
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
-    <!-- Search Section -->
-    <div class="search-container">
-        <input type="text" class="search-box" id="searchInput" placeholder="🔍 Type department name (e.g., OPD, ICU, Lab)...">
-        <div class="search-hint">Type to filter departments</div>
+    <h1 class="page-title" id="page-title">🫁 Directions to Pulmonology OPD</h1>
+    
+    <div class="step">
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
+        <div class="image-container">
+            <img data-src="pulmo1-optimized.webp" alt="Main entrance view" loading="lazy" class="lazy">
+        </div>
+        <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
-    <div id="noResults" class="no-results">
-        No departments found. Try different keywords.
+    <div class="step">
+        <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
+        <div class="image-container">
+            <img data-src="pulmo2-optimized.webp" alt="Turn left when you see reception counter" loading="lazy" class="lazy">
+        </div>
+        <p id="step2-desc">Turn left when you see the reception counter</p>
     </div>
 
-    <!-- Departments Grid -->
-    <div class="departments-grid" id="departmentsGrid">
-        <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
-            <div class="department-icon">💊</div>
-            <h3>OP Pharmacy</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Get your medicines here</p>
+    <div class="step">
+        <h2 id="step3-title">Step 3: Passage on right near to Lift</h2>
+        <div class="image-container">
+            <img data-src="pulmo3-optimized.webp" alt="Passage near lift" loading="lazy" class="lazy">
         </div>
-
-        <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
-            <div class="department-icon">📋</div>
-            <h3>Radiology</h3>
-            <p class="department-location">Basement Floor</p>
-            <p>Xray & Scanning</p>
-        </div>
-
-        <div class="department-box" data-name="lab" data-keywords="lab laboratory test blood report diagnostic pathology">
-            <div class="department-icon">🔬</div>
-            <h3>Laboratory</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Blood tests & reports</p>
-        </div>
-
-        <div class="department-box" data-name="cardiology" data-keywords="chest cardiology heart cardio cardiac">
-            <div class="department-icon">❤️</div>
-            <h3>Cardiology</h3>
-            <p class="department-location">Basement Floor</p>
-            <p>Heart care & OPD</p>
-        </div>
-
-        <div class="department-box" data-name="ortho" data-keywords="ortho orthopedics bone joint fracture">
-            <div class="department-icon">🦴</div>
-            <h3>Orthopedics</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Bone & joint care</p>
-        </div>
-
-        <div class="department-box" data-name="ophthalmology" data-keywords="ophthalmology eye vision optical">
-            <div class="department-icon">👁️</div>
-            <h3>Ophthalmology</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Eye care OPD</p>
-        </div>
-
-        <div class="department-box" data-name="cafeteria" data-keywords="cafeteria food snack restaurant refreshment coffee tea dining west end">
-            <div class="department-icon">☕</div>
-            <h3>Cafeteria (West End)</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Food & refreshments</p>
-        </div>
-
-        <div class="department-box" data-name="pediatrics" data-keywords="pediatrics pediatric child children kids baby infant opd child care">
-            <div class="department-icon">👶</div>
-            <h3>Pediatrics</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Child care & consultation</p>
-        </div>
-
-        <div class="department-box" data-name="ent" data-keywords="ent ear nose throat otolaryngology">
-            <div class="department-icon">👂</div>
-            <h3>ENT</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Ear, Nose & Throat</p>
-        </div>
-
-        <div class="department-box" data-name="general medicine" data-keywords="general medicine physician internal medicine doctor consultation">
-            <div class="department-icon">🩺</div>
-            <h3>General Medicine</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Physician consultation</p>
-        </div>
-
-        <div class="department-box" data-name="general surgery" data-keywords="general surgery surgical operation surgeon operation theatre ot">
-            <div class="department-icon">🔪</div>
-            <h3>General Surgery</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Surgical procedures & operations</p>
-        </div>
-
-        <!-- General Store Department -->
-        <div class="department-box" data-name="general store" data-keywords="general store shop store shopping supplies medical store">
-            <div class="department-icon">🛒</div>
-            <h3>General Store</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Medical supplies & shopping</p>
-        </div>
-
-        <!-- Pulmonology Department -->
-        <div class="department-box" data-name="pulmonology" data-keywords="pulmonology chest lung respiratory breathing asthma pulmo">
-            <div class="department-icon">🫁</div>
-            <h3>Pulmonology</h3>
-            <p class="department-location">Ground Floor</p>
-            <p>Lung & respiratory care</p>
-        </div>
+        <p id="step3-desc">Take a Quick Right near the lift area</p>
     </div>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+    <div class="step">
+        <h2 id="step4-title">Step 4: Walk Straight</h2>
+        <div class="image-container">
+            <img data-src="pulmo4-optimized.webp" alt="Walk straight towards Pulmonology" loading="lazy" class="lazy">
+        </div>
+        <p id="step4-desc">Take few steps straight without turning anywhere towards Pulmonology OPD</p>
+    </div>
+
+    <div class="step">
+        <h2 id="step5-title">Step 5: Welcome to Pulmonology OPD</h2>
+        <div class="image-container">
+            <img data-src="pulmo5-optimized.webp" alt="Pulmonology OPD destination" loading="lazy" class="lazy">
+        </div>
+        <p id="step5-desc">Your Destination - Pulmonology OPD is in your front</p>
+    </div>
+
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
+    </div>
 
     <script>
-        // Google Analytics Tracking Functions
-        function trackPageView(pageTitle) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'page_view', {
-                    'page_title': pageTitle,
-                    'page_location': window.location.href
-                });
-                console.log('Tracked page view:', pageTitle);
-            }
-        }
+        // Image cache for better performance
+        const imageCache = new Map();
 
-        function trackDepartmentClick(department) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'department_click', {
-                    'event_category': 'Navigation',
-                    'event_label': department,
-                    'value': 1
-                });
-                console.log('Tracked department click:', department);
-            }
-        }
-
-        function trackSearch(searchTerm) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'search', {
-                    'event_category': 'Navigation',
-                    'event_label': searchTerm,
-                    'value': 1
-                });
-                console.log('Tracked search:', searchTerm);
-            }
-        }
-
-        function trackLanguageChange(language) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'language_change', {
-                    'event_category': 'Settings',
-                    'event_label': language,
-                    'value': 1
-                });
-                console.log('Tracked language change:', language);
-            }
-        }
-
-        // Language functionality
-        const translations = {
+        // Language translations for Pulmonology page
+        const pulmoTranslations = {
             en: {
-                title: "Way Finder Navigation System",
-                subtitle: "Find your way easily",
-                searchPlaceholder: "🔍 Type department name (e.g., OPD, ICU, Lab)...",
-                searchHint: "Type to filter departments",
-                noResults: "No departments found. Try different keywords.",
-                departments: {
-                    pharmacy: { name: "OP Pharmacy", location: "Ground Floor", description: "Get your medicines here" },
-                    radiology: { name: "Radiology", location: "Basement Floor", description: "Xray & Scanning" },
-                    lab: { name: "Laboratory", location: "Ground Floor", description: "Blood tests & reports" },
-                    cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
-                    ortho: { name: "Orthopedics", location: "Ground Floor", description: "Bone & joint care" },
-                    ophthalmology: { name: "Ophthalmology", location: "Ground Floor", description: "Eye care OPD" },
-                    cafeteria: { name: "Cafeteria (West End)", location: "Ground Floor", description: "Food & refreshments" },
-                    pediatrics: { name: "Pediatrics", location: "Ground Floor", description: "Child care & consultation" },
-                    ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
-                    general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
-                    general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
-                    general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
-                    pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" }
-                }
+                pageTitle: "🫁 Directions to Pulmonology OPD",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the main reception, keep right and walk straight",
+                step2Title: "Step 2: Turn Left after Reception",
+                step2Desc: "Turn left when you see the reception counter",
+                step3Title: "Step 3: Passage on right near to Lift",
+                step3Desc: "Take a Quick Right near the lift area",
+                step4Title: "Step 4: Walk Straight",
+                step4Desc: "Take few steps straight without turning anywhere towards Pulmonology OPD",
+                step5Title: "Step 5: Welcome to Pulmonology OPD",
+                step5Desc: "Your Destination - Pulmonology OPD is in your front",
+                backButton: "← Back to Main Menu"
             },
             hi: {
-                title: "वे फाइंडर नेविगेशन सिस्टम",
-                subtitle: "आसानी से अपना रास्ता खोजें",
-                searchPlaceholder: "🔍 विभाग का नाम टाइप करें (जैसे, OPD, ICU, लैब)...",
-                searchHint: "विभागों को फिल्टर करने के लिए टाइप करें",
-                noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
-                departments: {
-                    pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
-                    radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
-                    lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
-                    cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
-                    ortho: { name: "ऑर्थोपेडिक्स", location: "ग्राउंड फ्लोर", description: "हड्डी और जोड़ देखभाल" },
-                    ophthalmology: { name: "नेत्र विज्ञान", location: "ग्राउंड फ्लोर", description: "आंखों की देखभाल ओपीडी" },
-                    cafeteria: { name: "कैफेटेरिया (वेस्ट एंड)", location: "ग्राउंड फ्लोर", description: "भोजन और ताज़गी" },
-                    pediatrics: { name: "पीडियाट्रिक्स", location: "ग्राउंड फ्लोर", description: "बच्चों की देखभाल और परामर्श" },
-                    ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
-                    general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
-                    general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
-                    general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
-                    pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" }
-                }
+                pageTitle: "🫁 पल्मोनोलॉजी ओपीडी का रास्ता",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: रिसेप्शन के बाद बाएं मुड़ें",
+                step2Desc: "रिसेप्शन काउंटर देखने पर बाएं मुड़ें",
+                step3Title: "चरण 3: लिफ्ट के पास दायीं ओर का रास्ता",
+                step3Desc: "लिफ्ट क्षेत्र के पास तुरंत दायीं ओर मुड़ें",
+                step4Title: "चरण 4: सीधे चलें",
+                step4Desc: "पल्मोनोलॉजी ओपीडी की ओर बिना कहीं मुड़े कुछ कदम सीधे चलें",
+                step5Title: "चरण 5: पल्मोनोलॉजी ओपीडी में आपका स्वागत है",
+                step5Desc: "आपकी मंजिल - पल्मोनोलॉजी ओपीडी आपके सामने है",
+                backButton: "← मुख्य मेनू पर वापस"
             },
             ml: {
-                title: "വേ ഫൈൻഡർ നാവിഗേഷൻ സിസ്റ്റം",
-                subtitle: "എളുപ്പത്തിൽ നിങ്ങളുടെ വഴി കണ്ടെത്തുക",
-                searchPlaceholder: "🔍 വകുപ്പ് പേര് ടൈപ്പ് ചെയ്യുക (ഉദാ: OPD, ICU, ലാബ്)...",
-                searchHint: "വകുപ്പുകൾ ഫിൽട്ടർ ചെയ്യാൻ ടൈപ്പ് ചെയ്യുക",
-                noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
-                departments: {
-                    pharmacy: { name: "ഒ പി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
-                    radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
-                    lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
-                    cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
-                    ortho: { name: "ഓർത്തോപീഡിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "അസ്ഥി, സന്ധി പരിചരണം" },
-                    ophthalmology: { name: "ഓഫ്താൽമോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കണ്ണ് പരിചരണം ഓപിഡി" },
-                    cafeteria: { name: "കഫേറ്റീരിയ (വെസ്റ്റ് എൻഡ്)", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഭക്ഷണവും ഉന്മേഷവും" },
-                    pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" },
-                    ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
-                    general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
-                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
-                    general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
-                    pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" }
-                }
+                pageTitle: "🫁 പൾമോനോളജി ഓപിഡിയിലേക്കുള്ള വഴി",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് നിരന്തരം നടക്കുക",
+                step2Title: "ഘട്ടം 2: റിസപ്ഷന് ശേഷം ഇടത്തോട്ട് തിരിയുക",
+                step2Desc: "റിസപ്ഷൻ ക counter ണ്ടർ കണ്ടാൽ ഇടത്തോട്ട് തിരിയുക",
+                step3Title: "ഘട്ടം 3: ലിഫ്റ്റിന് സമീപം വലതുവശത്തുള്ള പാസേജ്",
+                step3Desc: "ലിഫ്റ്റ് പ്രദേശത്തിനടുത്ത് വേഗത്തിൽ വലത്തോട്ട് തിരിയുക",
+                step4Title: "ഘട്ടം 4: നേരെ നടക്കുക",
+                step4Desc: "പൾമോനോളജി ഓപിഡിയിലേക്ക് എവിടെയും തിരിയാതെ കുറച്ച് ഘട്ടങ്ങൾ നേരെ നടക്കുക",
+                step5Title: "ഘട്ടം 5: പൾമോനോളജി ഓപിഡിയിലേക്ക് സ്വാഗതം",
+                step5Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം - പൾമോനോളജി ഓപിഡി നിങ്ങളുടെ മുന്നിലാണ്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
             },
             ar: {
-                title: "نظام الملاحة للعثور على الطريق",
-                subtitle: "ابحث عن طريقك بسهولة",
-                searchPlaceholder: "🔍 اكتب اسم القسم (مثل: OPD، ICU، المختبر)...",
-                searchHint: "اكتب لتصفية الأقسام",
-                noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
-                departments: {
-                    pharmacy: { name: "الصيدلية الخارجية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
-                    radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
-                    lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
-                    cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
-                    ortho: { name: "العظام", location: "الطابق الأرضي", description: "رعاية العظام والمفاصل" },
-                    ophthalmology: { name: "طب العيون", location: "الطابق الأرضي", description: "رعاية العيون والعيادات الخارجية" },
-                    cafeteria: { name: "الكافيتيريا (الطرف الغربي)", location: "الطابق الأرضي", description: "الطعام والمرطبات" },
-                    pediatrics: { name: "طب الأطفال", location: "الطابق الأرضي", description: "رعاية الأطفال واستشارات" },
-                    ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
-                    general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
-                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
-                    general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
-                    pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" }
-                }
+                pageTitle: "🫁 اتجاهات إلى العيادة الصدرية",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
+                step2Title: "الخطوة 2: انعطف يسارًا بعد الاستقبال",
+                step2Desc: "انعطف يسارًا عندما ترى مكتب الاستقبال",
+                step3Title: "الخطوة 3: ممر على اليمين بالقرب من المصعد",
+                step3Desc: "اتخذ منعطفًا سريعًا إلى اليمين بالقرب من منطقة المصعد",
+                step4Title: "الخطوة 4: امشِ مباشرة",
+                step4Desc: "اتخذ بضع خطوات مباشرة دون الانعطاف في أي مكان نحو العيادة الصدرية",
+                step5Title: "الخطوة 5: مرحبًا بك في العيادة الصدرية",
+                step5Desc: "وجهتك - العيادة الصدرية أمامك",
+                backButton: "← العودة إلى القائمة الرئيسية"
             }
         };
 
-        function initializeLanguage() {
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePulmoLanguage();
+            initializeLazyLoading();
+            
+            // Preload next likely department
+            setTimeout(() => preloadNextDepartment(), 1000);
+        });
+
+        // Lazy loading for images
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        loadImage(img);
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // Load first image immediately (above the fold)
+            if (lazyImages.length > 0) {
+                loadImage(lazyImages[0]);
+            }
+        }
+
+        function loadImage(img) {
+            const src = img.getAttribute('data-src');
+            
+            // Check cache first
+            if (imageCache.has(src)) {
+                img.src = src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                return;
+            }
+
+            // Load image
+            const image = new Image();
+            image.src = src;
+            
+            image.onload = function() {
+                img.src = src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                imageCache.set(src, true);
+            };
+            
+            image.onerror = function() {
+                console.warn('Failed to load image:', src);
+                // You can set a placeholder image here if needed
+            };
+        }
+
+        // Preload next likely department images
+        function preloadNextDepartment() {
+            const likelyNext = 'cardiology'; // Based on common user flow
+            preloadDepartmentImages(likelyNext);
+        }
+
+        function preloadDepartmentImages(department) {
+            const imageUrls = getDepartmentImageUrls(department);
+            imageUrls.forEach(url => {
+                if (!imageCache.has(url)) {
+                    const img = new Image();
+                    img.src = url;
+                    imageCache.set(url, true);
+                }
+            });
+        }
+
+        function getDepartmentImageUrls(department) {
+            const departmentImages = {
+                'cardiology': [
+                    'cardio1-optimized.webp', 
+                    'cardio2-optimized.webp', 
+                    'cardio3-optimized.webp'
+                ],
+                'ent': [
+                    'ent1-optimized.webp',
+                    'ent2-optimized.webp',
+                    'ent3-optimized.webp'
+                ]
+                // Add other departments as needed
+            };
+            return departmentImages[department] || [];
+        }
+
+        // Language functions
+        function initializePulmoLanguage() {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
+            // Set active button
             languageBtns.forEach(btn => {
                 if (btn.getAttribute('data-lang') === savedLanguage) {
                     btn.classList.add('active');
@@ -589,177 +634,37 @@
                 
                 btn.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
-                    changeLanguage(lang);
+                    changePulmoLanguage(lang);
                     
                     languageBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
             
-            changeLanguage(savedLanguage);
+            // Apply saved language
+            changePulmoLanguage(savedLanguage);
         }
 
-        function changeLanguage(lang) {
+        function changePulmoLanguage(lang) {
             localStorage.setItem('selectedLanguage', lang);
-            const t = translations[lang];
+            const t = pulmoTranslations[lang];
             
-            document.querySelector('.hospital-info h1').textContent = t.title;
-            document.querySelector('.hospital-subtitle').textContent = t.subtitle;
-            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
-            document.querySelector('.search-hint').textContent = t.searchHint;
-            document.getElementById('noResults').textContent = t.noResults;
+            // Update all text elements
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            document.getElementById('step4-title').textContent = t.step4Title;
+            document.getElementById('step4-desc').textContent = t.step4Desc;
+            document.getElementById('step5-title').textContent = t.step5Title;
+            document.getElementById('step5-desc').textContent = t.step5Desc;
             
-            // Track language change
-            trackLanguageChange(lang);
-            
-            // Update department names and descriptions
-            updateDepartmentTranslations(t.departments);
+            // Update button text
+            document.querySelector('.nav-button').textContent = t.backButton;
         }
-
-        function updateDepartmentTranslations(departmentTranslations) {
-            const departmentBoxes = document.querySelectorAll('.department-box');
-            
-            departmentBoxes.forEach(box => {
-                const departmentName = box.getAttribute('data-name');
-                let translationKey = departmentName;
-                if (departmentName === 'general medicine') {
-                    translationKey = 'general_medicine';
-                }
-                if (departmentName === 'general surgery') {
-                    translationKey = 'general_surgery';
-                }
-                if (departmentName === 'general store') {
-                    translationKey = 'general_store';
-                }
-                
-                const translation = departmentTranslations[translationKey];
-                
-                if (translation) {
-                    const titleElement = box.querySelector('h3');
-                    const locationElement = box.querySelector('.department-location');
-                    const descriptionElement = box.querySelector('p:last-child');
-                    
-                    if (titleElement) {
-                        titleElement.textContent = translation.name;
-                    }
-                    if (locationElement) {
-                        locationElement.textContent = translation.location;
-                    }
-                    if (descriptionElement) {
-                        descriptionElement.textContent = translation.description;
-                    }
-                }
-            });
-        }
-
-        // Search functionality
-        function initializeSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const noResults = document.getElementById('noResults');
-            const departmentBoxes = document.querySelectorAll('.department-box');
-
-            let searchTimeout;
-            searchInput.addEventListener('input', function() {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    const searchTerm = this.value.toLowerCase().trim();
-                    let visibleCount = 0;
-
-                    // Track search if term is not empty
-                    if (searchTerm.length > 0) {
-                        trackSearch(searchTerm);
-                    }
-
-                    departmentBoxes.forEach(box => {
-                        const departmentName = box.getAttribute('data-name').toLowerCase();
-                        const keywords = box.getAttribute('data-keywords').toLowerCase();
-                        
-                        if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
-                            box.classList.remove('hidden');
-                            visibleCount++;
-                        } else {
-                            box.classList.add('hidden');
-                        }
-                    });
-
-                    if (visibleCount === 0 && searchTerm !== '') {
-                        noResults.style.display = 'block';
-                    } else {
-                        noResults.style.display = 'none';
-                    }
-                }, 300); // 300ms delay to avoid too many events
-            });
-
-            // Department click handlers
-            departmentBoxes.forEach(box => {
-                box.addEventListener('click', function() {
-                    const departmentName = this.getAttribute('data-name');
-                    
-                    // Track department click
-                    trackDepartmentClick(departmentName);
-                    
-                    if (departmentName === 'pharmacy') {
-                        window.location.href = 'pharmacy.html';
-                    } else if (departmentName === 'radiology') {
-                        window.location.href = 'radiology.html';
-                    } else if (departmentName === 'cardiology') {
-                        window.location.href = 'cardiology.html';
-                    } else if (departmentName === 'lab') {
-                        window.location.href = 'Lab.html';
-                    } else if (departmentName === 'ortho') {
-                        window.location.href = 'ortho.html';
-                    } else if (departmentName === 'ophthalmology') {
-                        window.location.href = 'ophthal.html';
-                    } else if (departmentName === 'cafeteria') {
-                        window.location.href = 'westend.html';
-                    } else if (departmentName === 'pediatrics') {
-                        window.location.href = 'pediatrics.html';
-                    } else if (departmentName === 'ent') {
-                        window.location.href = 'ent.html';
-                    } else if (departmentName === 'general medicine') {
-                        window.location.href = 'general-medicine.html';
-                    } else if (departmentName === 'general surgery') {
-                        window.location.href = 'general-surgery.html';
-                    } else if (departmentName === 'general store') {
-                        window.location.href = 'general-store.html';
-                    } else if (departmentName === 'pulmonology') {
-                        window.location.href = 'pulmonology.html';
-                    } else {
-                        alert('Directions for ' + departmentName + ' coming soon!');
-                    }
-                });
-            });
-        }
-
-        // Back to top functionality
-        function initializeBackToTop() {
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.style.display = 'flex';
-                } else {
-                    backToTopBtn.style.display = 'none';
-                }
-            });
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeLanguage();
-            initializeSearch();
-            initializeBackToTop();
-            
-            // Track initial page view
-            trackPageView('Hospital Navigation Home');
-        });
-
-        // Global function for back to top
-        window.scrollToTop = scrollToTop;
     </script>
 </body>
 </html>
