@@ -13,6 +13,10 @@
         gtag('config', 'G-HF64PTD7GH');
     </script>
     
+    <!-- Preload critical resources -->
+    <link rel="preload" href="mes-logo-1-1.webp" as="image">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
     <style>
         * {
             box-sizing: border-box;
@@ -419,7 +423,6 @@
             <p>Surgical procedures & operations</p>
         </div>
 
-        <!-- General Store Department -->
         <div class="department-box" data-name="general store" data-keywords="general store shop store shopping supplies medical store">
             <div class="department-icon">🛒</div>
             <h3>General Store</h3>
@@ -427,12 +430,19 @@
             <p>Medical supplies & shopping</p>
         </div>
 
-        <!-- Pulmonology Department -->
         <div class="department-box" data-name="pulmonology" data-keywords="pulmonology chest lung respiratory breathing asthma pulmo">
             <div class="department-icon">🫁</div>
             <h3>Pulmonology</h3>
             <p class="department-location">Ground Floor</p>
             <p>Lung & respiratory care</p>
+        </div>
+
+        <!-- Dermatology Department - ADDED -->
+        <div class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment derma">
+            <div class="department-icon">🧴</div>
+            <h3>Dermatology</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Skin care & treatment</p>
         </div>
     </div>
 
@@ -505,7 +515,8 @@
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
-                    pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" }
+                    pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
+                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" } // ADDED
                 }
             },
             hi: {
@@ -527,7 +538,8 @@
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
-                    pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" }
+                    pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
+                    dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" } // ADDED
                 }
             },
             ml: {
@@ -549,7 +561,8 @@
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
-                    pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" }
+                    pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
+                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" } // ADDED
                 }
             },
             ar: {
@@ -571,7 +584,8 @@
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
-                    pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" }
+                    pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
+                    dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" } // ADDED
                 }
             }
         };
@@ -724,6 +738,8 @@
                         window.location.href = 'general-store.html';
                     } else if (departmentName === 'pulmonology') {
                         window.location.href = 'pulmonology.html';
+                    } else if (departmentName === 'dermatology') {
+                        window.location.href = 'dermatology.html'; // ADDED
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
