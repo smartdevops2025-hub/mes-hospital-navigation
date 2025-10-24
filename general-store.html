@@ -2,59 +2,64 @@
 <html>
 <head>
     <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HF64PTD7GH');
-    
-    // Enhanced tracking for General Store page
-    document.addEventListener('DOMContentLoaded', function() {
-        // Track page view for General Store
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'page_view', {
-                'page_title': 'Directions to General Store',
-                'page_location': window.location.href,
-                'department': 'General Store'
-            });
-        }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HF64PTD7GH');
         
-        // Track when users complete the navigation
-        function trackNavigationComplete() {
+        // Enhanced tracking for General Store page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track page view for General Store
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'navigation_complete', {
-                    'event_category': 'Navigation',
-                    'event_label': 'General Store',
-                    'value': 1
+                gtag('event', 'page_view', {
+                    'page_title': 'Directions to General Store',
+                    'page_location': window.location.href,
+                    'department': 'General Store'
                 });
             }
-        }
-        
-        // Track completion when user clicks "Back to Main Menu"
-        const backButton = document.querySelector('.nav-button');
-        if (backButton) {
-            backButton.addEventListener('click', function() {
-                trackNavigationComplete();
-            });
-        }
-        
-        // Track time spent on page
-        let startTime = new Date();
-        window.addEventListener('beforeunload', function() {
-            let endTime = new Date();
-            let timeSpent = Math.round((endTime - startTime) / 1000);
             
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'time_spent', {
-                    'event_category': 'Engagement',
-                    'event_label': 'General Store',
-                    'value': timeSpent
+            // Track when users complete the navigation
+            function trackNavigationComplete() {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'navigation_complete', {
+                        'event_category': 'Navigation',
+                        'event_label': 'General Store',
+                        'value': 1
+                    });
+                }
+            }
+            
+            // Track completion when user clicks "Back to Main Menu"
+            const backButton = document.querySelector('.nav-button');
+            if (backButton) {
+                backButton.addEventListener('click', function() {
+                    trackNavigationComplete();
                 });
             }
+            
+            // Track time spent on page
+            let startTime = new Date();
+            window.addEventListener('beforeunload', function() {
+                let endTime = new Date();
+                let timeSpent = Math.round((endTime - startTime) / 1000);
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'time_spent', {
+                        'event_category': 'Engagement',
+                        'event_label': 'General Store',
+                        'value': timeSpent
+                    });
+                }
+            });
         });
-    });
-</script>
+    </script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="mes-logo-1-1.webp" as="image">
+    <link rel="preload" href="gstore1-optimized.webp" as="image">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directions to General Store</title>
     <style>
@@ -172,6 +177,8 @@
         justify-content: center;
         align-items: center;
         background: #f8f9fa;
+        min-height: 200px;
+        position: relative;
     }
     
     .image-container img {
@@ -181,6 +188,27 @@
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: block;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Lazy loading styles */
+    .image-container img.lazy {
+        opacity: 0;
+    }
+    
+    .image-container img.loaded {
+        opacity: 1;
+    }
+    
+    .loading-placeholder {
+        width: 100%;
+        height: 200px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 1rem;
     }
     
     .nav-button {
@@ -261,6 +289,10 @@
             padding: 14px 25px;
             max-width: 250px;
         }
+        
+        .image-container {
+            min-height: 150px;
+        }
     }
     
     @media (max-width: 360px) {
@@ -339,6 +371,10 @@
             padding: 18px 35px;
             max-width: 300px;
         }
+        
+        .image-container {
+            min-height: 250px;
+        }
     }
     
     @media (min-width: 1024px) {
@@ -382,7 +418,7 @@
     <div class="step">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
         <div class="image-container">
-            <img src="gstore1.png" alt="Main entrance view">
+            <img data-src="gstore1-optimized.webp" alt="Main entrance view" loading="lazy" class="lazy">
         </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
@@ -390,7 +426,7 @@
     <div class="step">
         <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
         <div class="image-container">
-            <img src="gstore2.png" alt="Turn slight left after reception">
+            <img data-src="gstore2-optimized.webp" alt="Turn slight left after reception" loading="lazy" class="lazy">
         </div>
         <p id="step2-desc">Turn slight left after crossing the reception counter</p>
     </div>
@@ -398,7 +434,7 @@
     <div class="step">
         <h2 id="step3-title">Step 3: Passage on left near to Lift</h2>
         <div class="image-container">
-            <img src="gstore3.png" alt="Passage near lift">
+            <img data-src="gstore3-optimized.webp" alt="Passage near lift" loading="lazy" class="lazy">
         </div>
         <p id="step3-desc">Take a Quick Right near the lift area</p>
     </div>
@@ -406,7 +442,7 @@
     <div class="step">
         <h2 id="step4-title">Step 4: Pharmacy Lobby Area</h2>
         <div class="image-container">
-            <img src="gstore4.png" alt="Pharmacy lobby view">
+            <img data-src="gstore4-optimized.webp" alt="Pharmacy lobby view" loading="lazy" class="lazy">
         </div>
         <p id="step4-desc">Can you see Pharmacy Lobby? Then take a small left turn near Gynaecology Dept</p>
     </div>
@@ -414,7 +450,7 @@
     <div class="step">
         <h2 id="step5-title">Step 5: Cross the Lobby to exit outside</h2>
         <div class="image-container">
-            <img src="gstore5.png" alt="Cross pharmacy lobby">
+            <img data-src="gstore5-optimized.webp" alt="Cross pharmacy lobby" loading="lazy" class="lazy">
         </div>
         <p id="step5-desc">Walk Straight following the arrow after taking short left onto the Pharmacy Lobby</p>
     </div>
@@ -422,7 +458,7 @@
     <div class="step">
         <h2 id="step6-title">Step 6: Straight to outside</h2>
         <div class="image-container">
-            <img src="gstore6.png" alt="Walk straight to outside">
+            <img data-src="gstore6-optimized.webp" alt="Walk straight to outside" loading="lazy" class="lazy">
         </div>
         <p id="step6-desc">Walk Straight where you see the Fire Exit Board</p>
     </div>
@@ -430,7 +466,7 @@
     <div class="step">
         <h2 id="step7-title">Step 7: Take a look at the Right side</h2>
         <div class="image-container">
-            <img src="gstore7.png" alt="Look at right side">
+            <img data-src="gstore7-optimized.webp" alt="Look at right side" loading="lazy" class="lazy">
         </div>
         <p id="step7-desc">Take few steps and a quick right turn which is before the Cafeteria</p>
     </div>
@@ -438,7 +474,7 @@
     <div class="step">
         <h2 id="step8-title">Step 8: Welcome to General Store</h2>
         <div class="image-container">
-            <img src="gstore8.png" alt="General Store destination">
+            <img data-src="gstore8-optimized.webp" alt="General Store destination" loading="lazy" class="lazy">
         </div>
         <p id="step8-desc">Your Destination - General Store is in your Right</p>
     </div>
@@ -450,6 +486,9 @@
     </div>
 
     <script>
+        // Image cache for better performance
+        const imageCache = new Map();
+
         // Language translations for General Store page
         const gstoreTranslations = {
             en: {
@@ -534,11 +573,102 @@
             }
         };
 
-        // Initialize language
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeGstoreLanguage();
+            initializeLazyLoading();
+            
+            // Preload next likely department
+            setTimeout(() => preloadNextDepartment(), 1000);
         });
 
+        // Lazy loading for images
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        loadImage(img);
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // Load first image immediately (above the fold)
+            if (lazyImages.length > 0) {
+                loadImage(lazyImages[0]);
+            }
+        }
+
+        function loadImage(img) {
+            const src = img.getAttribute('data-src');
+            
+            // Check cache first
+            if (imageCache.has(src)) {
+                img.src = src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                return;
+            }
+
+            // Load image
+            const image = new Image();
+            image.src = src;
+            
+            image.onload = function() {
+                img.src = src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                imageCache.set(src, true);
+            };
+            
+            image.onerror = function() {
+                console.warn('Failed to load image:', src);
+                // You can set a placeholder image here if needed
+            };
+        }
+
+        // Preload next likely department images
+        function preloadNextDepartment() {
+            const likelyNext = 'pharmacy'; // Based on common user flow
+            preloadDepartmentImages(likelyNext);
+        }
+
+        function preloadDepartmentImages(department) {
+            const imageUrls = getDepartmentImageUrls(department);
+            imageUrls.forEach(url => {
+                if (!imageCache.has(url)) {
+                    const img = new Image();
+                    img.src = url;
+                    imageCache.set(url, true);
+                }
+            });
+        }
+
+        function getDepartmentImageUrls(department) {
+            const departmentImages = {
+                'pharmacy': [
+                    'pharmacy1-optimized.webp', 
+                    'pharmacy2-optimized.webp', 
+                    'pharmacy3-optimized.webp'
+                ],
+                'lab': [
+                    'lab1-optimized.webp',
+                    'lab2-optimized.webp',
+                    'lab3-optimized.webp'
+                ]
+                // Add other departments as needed
+            };
+            return departmentImages[department] || [];
+        }
+
+        // Language functions
         function initializeGstoreLanguage() {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
