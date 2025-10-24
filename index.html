@@ -462,6 +462,14 @@
             <p class="department-location">Ground Floor</p>
             <p>Surgical procedures & operations</p>
         </div>
+
+        <!-- Add General Store Department -->
+        <div class="department-box" data-name="general store" data-keywords="general store shop store shopping supplies medical store">
+            <div class="department-icon">🛒</div>
+            <h3>General Store</h3>
+            <p class="department-location">Ground Floor</p>
+            <p>Medical supplies & shopping</p>
+        </div>
     </div>
 
     <!-- Enhanced Hit Counter Section -->
@@ -590,7 +598,8 @@
                     pediatrics: { name: "Pediatrics", location: "Ground Floor", description: "Child care & consultation" },
                     ent: { name: "ENT", location: "Ground Floor", description: "Ear, Nose & Throat" },
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
-                    general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" }
+                    general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
+                    general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" }
                 }
             },
             hi: {
@@ -612,7 +621,8 @@
                     pediatrics: { name: "पीडियाट्रिक्स", location: "ग्राउंड फ्लोर", description: "बच्चों की देखभाल और परामर्श" },
                     ent: { name: "ईएनटी", location: "ग्राउंड फ्लोर", description: "कान, नाक और गला" },
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
-                    general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" }
+                    general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
+                    general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" }
                 }
             },
             ml: {
@@ -634,7 +644,8 @@
                     pediatrics: { name: "പീഡിയാട്രിക്സ്", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "കുട്ടികളുടെ പരിചരണവും കൺസൾട്ടേഷനും" },
                     ent: { name: "ഇഎൻടി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ചെവി, മൂക്ക്, തൊണ്ട" },
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
-                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" }
+                    general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
+                    general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" }
                 }
             },
             ar: {
@@ -656,7 +667,8 @@
                     pediatrics: { name: "طب الأطفال", location: "الطابق الأرضي", description: "رعاية الأطفال واستشارات" },
                     ent: { name: "الأنف والأذن والحنجرة", location: "الطابق الأرضي", description: "الأذن والأنف والحنجرة" },
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
-                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" }
+                    general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
+                    general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" }
                 }
             }
         };
@@ -715,6 +727,9 @@
                 if (departmentName === 'general surgery') {
                     translationKey = 'general_surgery';
                 }
+                if (departmentName === 'general store') {
+                    translationKey = 'general_store';
+                }
                 
                 const translation = departmentTranslations[translationKey];
                 
@@ -739,42 +754,41 @@
         // Search functionality
         function initializeSearch() {
             const searchInput = document.getElementById('searchInput');
-            const noResults = document.getElementById('noResults');
             const departmentBoxes = document.querySelectorAll('.department-box');
-
-            let searchTimeout;
+            const noResults = document.getElementById('noResults');
+            
             searchInput.addEventListener('input', function() {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    const searchTerm = this.value.toLowerCase().trim();
-                    let visibleCount = 0;
-
-                    // Track search if term is not empty
-                    if (searchTerm.length > 0) {
-                        trackSearch(searchTerm);
-                    }
-
-                    departmentBoxes.forEach(box => {
-                        const departmentName = box.getAttribute('data-name').toLowerCase();
-                        const keywords = box.getAttribute('data-keywords').toLowerCase();
-                        
-                        if (searchTerm === '' || departmentName.includes(searchTerm) || keywords.includes(searchTerm)) {
-                            box.classList.remove('hidden');
-                            visibleCount++;
-                        } else {
-                            box.classList.add('hidden');
-                        }
-                    });
-
-                    if (visibleCount === 0 && searchTerm !== '') {
-                        noResults.style.display = 'block';
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                if (searchTerm) {
+                    trackSearch(searchTerm);
+                }
+                
+                departmentBoxes.forEach(box => {
+                    const name = box.getAttribute('data-name').toLowerCase();
+                    const keywords = box.getAttribute('data-keywords').toLowerCase();
+                    
+                    if (name.includes(searchTerm) || keywords.includes(searchTerm)) {
+                        box.classList.remove('hidden');
+                        visibleCount++;
                     } else {
-                        noResults.style.display = 'none';
+                        box.classList.add('hidden');
                     }
-                }, 300); // 300ms delay to avoid too many events
+                });
+                
+                if (visibleCount === 0 && searchTerm.length > 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
             });
+        }
 
-            // Department click handlers
+        // Department click handlers
+        function initializeDepartmentClicks() {
+            const departmentBoxes = document.querySelectorAll('.department-box');
+            
             departmentBoxes.forEach(box => {
                 box.addEventListener('click', function() {
                     const departmentName = this.getAttribute('data-name');
@@ -782,20 +796,21 @@
                     // Track department click
                     trackDepartmentClick(departmentName);
                     
+                    // Navigate to department page
                     if (departmentName === 'pharmacy') {
                         window.location.href = 'pharmacy.html';
                     } else if (departmentName === 'radiology') {
                         window.location.href = 'radiology.html';
+                    } else if (departmentName === 'lab') {
+                        window.location.href = 'lab.html';
                     } else if (departmentName === 'cardiology') {
                         window.location.href = 'cardiology.html';
-                    } else if (departmentName === 'lab') {
-                        window.location.href = 'Lab.html';
                     } else if (departmentName === 'ortho') {
                         window.location.href = 'ortho.html';
                     } else if (departmentName === 'ophthalmology') {
-                        window.location.href = 'ophthal.html';
+                        window.location.href = 'ophthalmology.html';
                     } else if (departmentName === 'cafeteria') {
-                        window.location.href = 'westend.html';
+                        window.location.href = 'cafeteria.html';
                     } else if (departmentName === 'pediatrics') {
                         window.location.href = 'pediatrics.html';
                     } else if (departmentName === 'ent') {
@@ -804,8 +819,8 @@
                         window.location.href = 'general-medicine.html';
                     } else if (departmentName === 'general surgery') {
                         window.location.href = 'general-surgery.html';
-                    } else {
-                        alert('Directions for ' + departmentName + ' coming soon!');
+                    } else if (departmentName === 'general store') {
+                        window.location.href = 'general-store.html';
                     }
                 });
             });
@@ -825,32 +840,23 @@
         }
 
         function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
-        // Initialize everything
+        // Initialize everything when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeHitCounter();
             initializeLanguage();
             initializeSearch();
+            initializeDepartmentClicks();
             initializeBackToTop();
             
             // Track initial page view
-            trackPageView('Hospital Navigation Home');
+            trackPageView('Home Page');
         });
-
-        // Global function for back to top
-        window.scrollToTop = scrollToTop;
-
-        // Manual reset function
-        function resetHitCounter() {
-            if (confirm('Are you sure you want to reset the hit counter to 0?')) {
-                localStorage.removeItem('wayfinderVisitCount');
-                document.cookie = 'wayfinderVisitCount=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                document.getElementById('visitCount').textContent = '0';
-                document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
-            }
-        }
     </script>
 </body>
 </html>
