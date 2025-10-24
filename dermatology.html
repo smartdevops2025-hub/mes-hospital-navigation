@@ -55,10 +55,14 @@
         });
     });
 </script>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="mes-logo-1-1.webp" as="image">
+    <link rel="preload" href="derma1-optimized.webp" as="image">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directions to Dermatology</title>
     <style>
-    /* Mobile-first responsive design - Same as Lab */
+    /* Mobile-first responsive design - Enhanced with smooth transitions */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -83,6 +87,7 @@
         margin-bottom: 20px;
         box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
         border: 2px solid #dc3545;
+        transition: all 0.3s ease;
     }
     
     .hospital-logo {
@@ -91,6 +96,11 @@
         height: auto;
         margin: 0 auto 10px;
         display: block;
+        transition: transform 0.3s ease;
+    }
+    
+    .hospital-logo:hover {
+        transform: scale(1.02);
     }
     
     .header h1 {
@@ -117,11 +127,18 @@
         cursor: pointer;
         font-size: 0.9rem;
         min-width: 70px;
+        transition: all 0.3s ease;
+    }
+    
+    .language-btn:hover {
+        background: #f8f9fa;
+        transform: translateY(-2px);
     }
     
     .language-btn.active {
         background: #dc3545;
         color: white;
+        transform: scale(1.05);
     }
     
     .page-title {
@@ -132,6 +149,7 @@
         font-weight: bold;
         line-height: 1.3;
         padding: 0 10px;
+        transition: all 0.3s ease;
     }
     
     .step {
@@ -142,6 +160,32 @@
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         overflow: hidden;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.2s; }
+    .step:nth-child(3) { animation-delay: 0.3s; }
+    .step:nth-child(4) { animation-delay: 0.4s; }
+    .step:nth-child(5) { animation-delay: 0.5s; }
+    .step:nth-child(6) { animation-delay: 0.6s; }
+    .step:nth-child(7) { animation-delay: 0.7s; }
+    .step:nth-child(8) { animation-delay: 0.8s; }
+    .step:nth-child(9) { animation-delay: 0.9s; }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
     .step h2 {
@@ -151,6 +195,7 @@
         font-weight: bold;
         line-height: 1.3;
         padding: 0 5px;
+        transition: color 0.3s ease;
     }
     
     .step p {
@@ -160,9 +205,10 @@
         line-height: 1.5;
         font-weight: 500;
         padding: 0 5px;
+        transition: color 0.3s ease;
     }
     
-    /* IMAGE CONTAINER */
+    /* IMAGE CONTAINER - Enhanced with lazy loading styles */
     .image-container {
         width: 100%;
         overflow: hidden;
@@ -172,6 +218,13 @@
         justify-content: center;
         align-items: center;
         background: #f8f9fa;
+        min-height: 200px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .image-container:hover {
+        transform: scale(1.02);
     }
     
     .image-container img {
@@ -181,6 +234,46 @@
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: block;
+        transition: all 0.5s ease;
+    }
+    
+    /* Lazy loading styles */
+    .image-container img.lazy {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    
+    .image-container img.loaded {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .loading-placeholder {
+        width: 100%;
+        height: 200px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: 2px dashed #2e86ab;
+    }
+    
+    .loading-spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #2e86ab;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
     
     .nav-button {
@@ -197,11 +290,47 @@
         max-width: 280px;
         touch-action: manipulation;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
     }
     
     .nav-button:active {
         transform: scale(0.98);
         background: linear-gradient(135deg, #1a536b, #2e86ab);
+    }
+    
+    .nav-button::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%);
+        transform-origin: 50% 50%;
+    }
+    
+    .nav-button:focus:not(:active)::after {
+        animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+        0% {
+            transform: scale(0, 0);
+            opacity: 0.5;
+        }
+        100% {
+            transform: scale(20, 20);
+            opacity: 0;
+        }
     }
     
     .button-container {
@@ -260,6 +389,10 @@
             font-size: 1rem;
             padding: 14px 25px;
             max-width: 250px;
+        }
+        
+        .image-container {
+            min-height: 150px;
         }
     }
     
@@ -339,6 +472,10 @@
             padding: 18px 35px;
             max-width: 300px;
         }
+        
+        .image-container {
+            min-height: 250px;
+        }
     }
     
     @media (min-width: 1024px) {
@@ -382,7 +519,7 @@
     <div class="step">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
         <div class="image-container">
-            <img src="Derma1.png" alt="Main entrance view">
+            <img data-src="derma1-optimized.webp" alt="Main entrance of MES Hospital showing reception area" loading="lazy" class="lazy">
         </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
@@ -390,7 +527,7 @@
     <div class="step">
         <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
         <div class="image-container">
-            <img src="Derma2.png" alt="Turn left when you see reception counter">
+            <img data-src="derma2-optimized.webp" alt="Turn left when you see reception counter at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step2-desc">Turn left when you see the reception counter</p>
     </div>
@@ -398,7 +535,7 @@
     <div class="step">
         <h2 id="step3-title">Step 3: Passage on right near to Lift</h2>
         <div class="image-container">
-            <img src="Derma3.png" alt="Passage near lift">
+            <img data-src="derma3-optimized.webp" alt="Passage near lift area in MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step3-desc">Take a Quick Right near the lift area</p>
     </div>
@@ -406,7 +543,7 @@
     <div class="step">
         <h2 id="step4-title">Step 4: Pharmacy Lobby Area</h2>
         <div class="image-container">
-            <img src="Derma4.png" alt="Pharmacy lobby near Gynaecology">
+            <img data-src="derma4-optimized.webp" alt="Pharmacy lobby near Gynaecology department at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step4-desc">Then take a small left turn near Gynaecology Dept</p>
     </div>
@@ -414,7 +551,7 @@
     <div class="step">
         <h2 id="step5-title">Step 5: Pharmacy Lobby</h2>
         <div class="image-container">
-            <img src="Derma5.png" alt="Pharmacy lobby turn left">
+            <img data-src="derma5-optimized.webp" alt="Pharmacy lobby turn left direction at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step5-desc">Turn Left when you see Pharmacy Lobby</p>
     </div>
@@ -422,7 +559,7 @@
     <div class="step">
         <h2 id="step6-title">Step 6: Narrow passage to Dermatology OPD</h2>
         <div class="image-container">
-            <img src="Derma6.png" alt="Narrow passage to Dermatology">
+            <img data-src="derma6-optimized.webp" alt="Narrow passage leading to Dermatology OPD at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step6-desc">After turning Left, you can see the Dermatology OPD Board, walk straight towards it and take a Right turn</p>
     </div>
@@ -430,7 +567,7 @@
     <div class="step">
         <h2 id="step7-title">Step 7: Straight to Dermatology OPD</h2>
         <div class="image-container">
-            <img src="Derma7.png" alt="Straight to Dermatology">
+            <img data-src="derma7-optimized.webp" alt="Straight path to Dermatology OPD at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step7-desc">Walk Straight and you can see the Dermatology OPD</p>
     </div>
@@ -438,7 +575,7 @@
     <div class="step">
         <h2 id="step8-title">Step 8: Walk Straight with few more steps</h2>
         <div class="image-container">
-            <img src="Derma8.png" alt="Few more steps to Dermatology">
+            <img data-src="derma8-optimized.webp" alt="Few more steps to reach Dermatology OPD at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step8-desc">Just take few more steps to reach Dermatology</p>
     </div>
@@ -446,18 +583,21 @@
     <div class="step">
         <h2 id="step9-title">Step 9: Welcome to Dermatology OPD</h2>
         <div class="image-container">
-            <img src="Derma9.png" alt="Dermatology OPD destination">
+            <img data-src="derma9-optimized.webp" alt="Dermatology OPD destination at MES Hospital" loading="lazy" class="lazy">
         </div>
         <p id="step9-desc">Your Destination - Dermatology OPD is in your front</p>
     </div>
 
     <div class="button-container">
-        <button class="nav-button" onclick="window.location.href='index.html'">
+        <button class="nav-button" onclick="window.location.href='testpage.html'">
             ← Back to Main Menu
         </button>
     </div>
 
     <script>
+        // Image cache for better performance
+        const imageCache = new Map();
+
         // Language translations for Dermatology page
         const dermTranslations = {
             en: {
@@ -550,11 +690,118 @@
             }
         };
 
-        // Initialize language
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeDermLanguage();
+            initializeLazyLoading();
+            
+            // Preload next likely department
+            setTimeout(() => preloadNextDepartment(), 1000);
         });
 
+        // Lazy loading for images
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        loadImage(img);
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // Load first image immediately (above the fold)
+            if (lazyImages.length > 0) {
+                loadImage(lazyImages[0]);
+            }
+        }
+
+        function loadImage(img) {
+            const src = img.getAttribute('data-src');
+            
+            // Show loading placeholder
+            const container = img.parentElement;
+            const placeholder = document.createElement('div');
+            placeholder.className = 'loading-placeholder';
+            placeholder.innerHTML = '<div class="loading-spinner"></div><span>Loading image...</span>';
+            container.appendChild(placeholder);
+            img.style.display = 'none';
+            
+            // Check cache first
+            if (imageCache.has(src)) {
+                img.src = src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                img.style.display = 'block';
+                container.removeChild(placeholder);
+                return;
+            }
+
+            // Load image
+            const image = new Image();
+            image.src = src;
+            
+            image.onload = function() {
+                img.src = src;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                img.style.display = 'block';
+                container.removeChild(placeholder);
+                imageCache.set(src, true);
+            };
+            
+            image.onerror = function() {
+                console.warn('Failed to load image:', src);
+                placeholder.innerHTML = 'Image not available';
+                setTimeout(() => {
+                    container.removeChild(placeholder);
+                    img.style.display = 'block';
+                }, 2000);
+            };
+        }
+
+        // Preload next likely department images
+        function preloadNextDepartment() {
+            const likelyNext = 'ortho'; // Based on common user flow
+            preloadDepartmentImages(likelyNext);
+        }
+
+        function preloadDepartmentImages(department) {
+            const imageUrls = getDepartmentImageUrls(department);
+            imageUrls.forEach(url => {
+                if (!imageCache.has(url)) {
+                    const img = new Image();
+                    img.src = url;
+                    imageCache.set(url, true);
+                }
+            });
+        }
+
+        function getDepartmentImageUrls(department) {
+            const departmentImages = {
+                'ortho': [
+                    'ortho1-optimized.webp', 
+                    'ortho2-optimized.webp', 
+                    'ortho3-optimized.webp'
+                ],
+                'ent': [
+                    'ent1-optimized.webp',
+                    'ent2-optimized.webp',
+                    'ent3-optimized.webp'
+                ]
+                // Add other departments as needed
+            };
+            return departmentImages[department] || [];
+        }
+
+        // Language functions
         function initializeDermLanguage() {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
