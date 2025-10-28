@@ -2,67 +2,103 @@
 <html>
 <head>
     <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HF64PTD7GH');
-    
-    // Enhanced tracking for general medicine page
-    document.addEventListener('DOMContentLoaded', function() {
-        // Track page view for general medicine
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'page_view', {
-                'page_title': 'Directions to General Medicine',
-                'page_location': window.location.href,
-                'department': 'General Medicine'
-            });
-        }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HF64PTD7GH');
+    </script>
+
+    <!-- 🔒 SECURITY PROTECTION - SEPARATE SCRIPT TAG -->
+    <script>
+    // Enhanced security protection for General Medicine page
+    (function() {
+        'use strict';
         
-        // Track when users complete the navigation
-        function trackNavigationComplete() {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'navigation_complete', {
-                    'event_category': 'Navigation',
-                    'event_label': 'General Medicine',
-                    'value': 1
-                });
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable keyboard shortcuts for dev tools
+        const disabledKeys = ['F12', 'F11', 'PrintScreen'];
+        const disabledCombos = [
+            { ctrl: true, shift: true, key: 'I' },
+            { ctrl: true, shift: true, key: 'J' },
+            { ctrl: true, shift: true, key: 'C' },
+            { ctrl: true, key: 'U' },
+            { metaKey: true, altKey: true, key: 'I' }, // Mac
+            { metaKey: true, altKey: true, key: 'J' }, // Mac
+            { metaKey: true, shift: true, key: 'C' }   // Mac
+        ];
+        
+        document.addEventListener('keydown', function(e) {
+            // Single keys
+            if (disabledKeys.includes(e.key)) {
+                e.preventDefault();
+                return false;
             }
-        }
-        
-        // Track completion when user clicks "Back to Main Menu"
-        const backButton = document.querySelector('.nav-button');
-        if (backButton) {
-            backButton.addEventListener('click', function() {
-                trackNavigationComplete();
-            });
-        }
-        
-        // Track time spent on page
-        let startTime = new Date();
-        window.addEventListener('beforeunload', function() {
-            let endTime = new Date();
-            let timeSpent = Math.round((endTime - startTime) / 1000);
             
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'time_spent', {
-                    'event_category': 'Engagement',
-                    'event_label': 'General Medicine',
-                    'value': timeSpent
-                });
+            // Key combinations
+            for (let i = 0; i < disabledCombos.length; i++) {
+                const combo = disabledCombos[i];
+                if (
+                    (combo.ctrl === e.ctrlKey || combo.ctrl === undefined) &&
+                    (combo.shift === e.shiftKey || combo.shift === undefined) &&
+                    (combo.metaKey === e.metaKey || combo.metaKey === undefined) &&
+                    (combo.altKey === e.altKey || combo.altKey === undefined) &&
+                    combo.key === e.key
+                ) {
+                    e.preventDefault();
+                    return false;
+                }
             }
         });
-    });
-</script>
+        
+        // Additional protection: Detect dev tools by checking window dimensions
+        let devToolsOpen = false;
+        function checkDevTools() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            
+            if ((widthThreshold || heightThreshold) && !devToolsOpen) {
+                devToolsOpen = true;
+                // Redirect to main page if dev tools detected
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Check periodically
+        setInterval(checkDevTools, 1000);
+    })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directions to General Medicine</title>
     <style>
-    /* Mobile-first responsive design */
+    /* Mobile-first responsive design - Same as OP Pharmacy */
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
     }
     
     body {
@@ -141,7 +177,7 @@
         border-radius: 15px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        overflow: hidden; /* Prevent content overflow */
+        overflow: hidden;
     }
     
     .step h2 {
@@ -162,13 +198,24 @@
         padding: 0 5px;
     }
     
-    .step-image {
+    /* IMAGE CONTAINER - FIXED VERSION */
+    .image-container {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+    }
+    
+    .image-container img {
         max-width: 100%;
         height: auto;
-        border-radius: 12px;
+        border-radius: 10px;
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        margin: 10px 0;
         display: block;
     }
     
@@ -199,7 +246,7 @@
         padding: 20px 0;
     }
     
-    /* Enhanced mobile adjustments */
+    /* Enhanced mobile adjustments - Same as OP Pharmacy */
     @media (max-width: 480px) {
         body {
             font-size: 15px;
