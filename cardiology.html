@@ -19,7 +19,94 @@
                 'department': 'Cardiology'
             });
         }
+        <!-- Security Protection for Department Pages -->
+<script>
+// Enhanced security protection for all department pages
+(function() {
+    'use strict';
+    
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable text selection
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable drag and drop
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable keyboard shortcuts for dev tools
+    const disabledKeys = ['F12', 'F11', 'PrintScreen'];
+    const disabledCombos = [
+        { ctrl: true, shift: true, key: 'I' },
+        { ctrl: true, shift: true, key: 'J' },
+        { ctrl: true, shift: true, key: 'C' },
+        { ctrl: true, key: 'U' },
+        { metaKey: true, altKey: true, key: 'I' }, // Mac
+        { metaKey: true, altKey: true, key: 'J' }, // Mac
+        { metaKey: true, shift: true, key: 'C' }   // Mac
+    ];
+    
+    document.addEventListener('keydown', function(e) {
+        // Single keys
+        if (disabledKeys.includes(e.key)) {
+            e.preventDefault();
+            return false;
+        }
         
+        // Key combinations
+        for (let i = 0; i < disabledCombos.length; i++) {
+            const combo = disabledCombos[i];
+            if (
+                (combo.ctrl === e.ctrlKey || combo.ctrl === undefined) &&
+                (combo.shift === e.shiftKey || combo.shift === undefined) &&
+                (combo.metaKey === e.metaKey || combo.metaKey === undefined) &&
+                (combo.altKey === e.altKey || combo.altKey === undefined) &&
+                combo.key === e.key
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
+    
+    // Additional protection: Detect dev tools by checking window dimensions
+    let devToolsOpen = false;
+    function checkDevTools() {
+        const widthThreshold = window.outerWidth - window.innerWidth > 160;
+        const heightThreshold = window.outerHeight - window.innerHeight > 160;
+        
+        if ((widthThreshold || heightThreshold) && !devToolsOpen) {
+            devToolsOpen = true;
+            // Redirect to main page if dev tools detected
+            window.location.href = 'testpage.html';
+        }
+    }
+    
+    // Check periodically
+    setInterval(checkDevTools, 1000);
+    
+    // Also add CSS to prevent text selection
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+})();
+</script>
         // Track when users complete the navigation
         function trackNavigationComplete() {
             if (typeof gtag !== 'undefined') {
