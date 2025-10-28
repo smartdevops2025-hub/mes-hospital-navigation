@@ -4,6 +4,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     
+    <!-- Security Protection -->
+    <script>
+    // Prevent right-click, text selection, and dev tools
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) || 
+            (e.ctrlKey && e.key === 'u')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    </script>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
     <script>
@@ -32,6 +55,10 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             line-height: 1.6;
             color: #333333;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .header {
@@ -450,6 +477,44 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
+        // Enhanced security protection
+        (function() {
+            'use strict';
+            
+            // Additional keyboard shortcuts to block
+            const disabledKeys = ['F12', 'F11', 'PrintScreen'];
+            const disabledCombos = [
+                { ctrl: true, shift: true, key: 'I' },
+                { ctrl: true, shift: true, key: 'J' },
+                { ctrl: true, shift: true, key: 'C' },
+                { ctrl: true, key: 'U' },
+                { metaKey: true, altKey: true, key: 'I' } // Mac
+            ];
+            
+            document.addEventListener('keydown', function(e) {
+                // Single keys
+                if (disabledKeys.includes(e.key)) {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Key combinations
+                for (let i = 0; i < disabledCombos.length; i++) {
+                    const combo = disabledCombos[i];
+                    if (
+                        (combo.ctrl === e.ctrlKey || combo.ctrl === undefined) &&
+                        (combo.shift === e.shiftKey || combo.shift === undefined) &&
+                        (combo.metaKey === e.metaKey || combo.metaKey === undefined) &&
+                        (combo.altKey === e.altKey || combo.altKey === undefined) &&
+                        combo.key === e.key
+                    ) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            });
+        })();
+
         // Google Analytics Tracking Functions
         function trackPageView(pageTitle) {
             if (typeof gtag !== 'undefined') {
@@ -457,7 +522,6 @@
                     'page_title': pageTitle,
                     'page_location': window.location.href
                 });
-                console.log('Tracked page view:', pageTitle);
             }
         }
 
@@ -468,7 +532,6 @@
                     'event_label': department,
                     'value': 1
                 });
-                console.log('Tracked department click:', department);
             }
         }
 
@@ -479,7 +542,6 @@
                     'event_label': searchTerm,
                     'value': 1
                 });
-                console.log('Tracked search:', searchTerm);
             }
         }
 
@@ -490,7 +552,6 @@
                     'event_label': language,
                     'value': 1
                 });
-                console.log('Tracked language change:', language);
             }
         }
 
@@ -516,7 +577,7 @@
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
-                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" } // ADDED
+                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" }
                 }
             },
             hi: {
@@ -539,7 +600,7 @@
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
                     pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
-                    dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" } // ADDED
+                    dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" }
                 }
             },
             ml: {
@@ -562,7 +623,7 @@
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
                     pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
-                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" } // ADDED
+                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" }
                 }
             },
             ar: {
@@ -585,7 +646,7 @@
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
                     pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
-                    dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" } // ADDED
+                    dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" }
                 }
             }
         };
@@ -594,7 +655,7 @@
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             const languageBtns = document.querySelectorAll('.language-btn');
             
-            languageBtns.forEach(btn => {
+            languageBtns.forEach(function(btn) {
                 if (btn.getAttribute('data-lang') === savedLanguage) {
                     btn.classList.add('active');
                 } else {
@@ -605,7 +666,9 @@
                     const lang = this.getAttribute('data-lang');
                     changeLanguage(lang);
                     
-                    languageBtns.forEach(b => b.classList.remove('active'));
+                    languageBtns.forEach(function(b) {
+                        b.classList.remove('active');
+                    });
                     this.classList.add('active');
                 });
             });
@@ -633,7 +696,7 @@
         function updateDepartmentTranslations(departmentTranslations) {
             const departmentBoxes = document.querySelectorAll('.department-box');
             
-            departmentBoxes.forEach(box => {
+            departmentBoxes.forEach(function(box) {
                 const departmentName = box.getAttribute('data-name');
                 let translationKey = departmentName;
                 if (departmentName === 'general medicine') {
@@ -675,7 +738,7 @@
             let searchTimeout;
             searchInput.addEventListener('input', function() {
                 clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
+                searchTimeout = setTimeout(function() {
                     const searchTerm = this.value.toLowerCase().trim();
                     let visibleCount = 0;
 
@@ -684,7 +747,7 @@
                         trackSearch(searchTerm);
                     }
 
-                    departmentBoxes.forEach(box => {
+                    departmentBoxes.forEach(function(box) {
                         const departmentName = box.getAttribute('data-name').toLowerCase();
                         const keywords = box.getAttribute('data-keywords').toLowerCase();
                         
@@ -701,11 +764,11 @@
                     } else {
                         noResults.style.display = 'none';
                     }
-                }, 300); // 300ms delay to avoid too many events
+                }.bind(this), 300); // 300ms delay to avoid too many events
             });
 
             // Department click handlers
-            departmentBoxes.forEach(box => {
+            departmentBoxes.forEach(function(box) {
                 box.addEventListener('click', function() {
                     const departmentName = this.getAttribute('data-name');
                     
@@ -739,7 +802,7 @@
                     } else if (departmentName === 'pulmonology') {
                         window.location.href = 'pulmonology.html';
                     } else if (departmentName === 'dermatology') {
-                        window.location.href = 'dermatology.html'; // ADDED
+                        window.location.href = 'dermatology.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
