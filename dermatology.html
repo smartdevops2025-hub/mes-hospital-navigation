@@ -2,71 +2,103 @@
 <html>
 <head>
     <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HF64PTD7GH');
-    
-    // Enhanced tracking for Dermatology page
-    document.addEventListener('DOMContentLoaded', function() {
-        // Track page view for Dermatology
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'page_view', {
-                'page_title': 'Directions to Dermatology',
-                'page_location': window.location.href,
-                'department': 'Dermatology'
-            });
-        }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HF64PTD7GH');
+    </script>
+
+    <!-- 🔒 SECURITY PROTECTION - SEPARATE SCRIPT TAG -->
+    <script>
+    // Enhanced security protection for Dermatology page
+    (function() {
+        'use strict';
         
-        // Track when users complete the navigation
-        function trackNavigationComplete() {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'navigation_complete', {
-                    'event_category': 'Navigation',
-                    'event_label': 'Dermatology',
-                    'value': 1
-                });
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable keyboard shortcuts for dev tools
+        const disabledKeys = ['F12', 'F11', 'PrintScreen'];
+        const disabledCombos = [
+            { ctrl: true, shift: true, key: 'I' },
+            { ctrl: true, shift: true, key: 'J' },
+            { ctrl: true, shift: true, key: 'C' },
+            { ctrl: true, key: 'U' },
+            { metaKey: true, altKey: true, key: 'I' }, // Mac
+            { metaKey: true, altKey: true, key: 'J' }, // Mac
+            { metaKey: true, shift: true, key: 'C' }   // Mac
+        ];
+        
+        document.addEventListener('keydown', function(e) {
+            // Single keys
+            if (disabledKeys.includes(e.key)) {
+                e.preventDefault();
+                return false;
             }
-        }
-        
-        // Track completion when user clicks "Back to Main Menu"
-        const backButton = document.querySelector('.nav-button');
-        if (backButton) {
-            backButton.addEventListener('click', function() {
-                trackNavigationComplete();
-            });
-        }
-        
-        // Track time spent on page
-        let startTime = new Date();
-        window.addEventListener('beforeunload', function() {
-            let endTime = new Date();
-            let timeSpent = Math.round((endTime - startTime) / 1000);
             
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'time_spent', {
-                    'event_category': 'Engagement',
-                    'event_label': 'Dermatology',
-                    'value': timeSpent
-                });
+            // Key combinations
+            for (let i = 0; i < disabledCombos.length; i++) {
+                const combo = disabledCombos[i];
+                if (
+                    (combo.ctrl === e.ctrlKey || combo.ctrl === undefined) &&
+                    (combo.shift === e.shiftKey || combo.shift === undefined) &&
+                    (combo.metaKey === e.metaKey || combo.metaKey === undefined) &&
+                    (combo.altKey === e.altKey || combo.altKey === undefined) &&
+                    combo.key === e.key
+                ) {
+                    e.preventDefault();
+                    return false;
+                }
             }
         });
-    });
-</script>
-    <!-- Preload critical resources -->
-    <link rel="preload" href="mes-logo-1-1.webp" as="image">
-    <link rel="preload" href="derma1-optimized.webp" as="image">
-    
+        
+        // Additional protection: Detect dev tools by checking window dimensions
+        let devToolsOpen = false;
+        function checkDevTools() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            
+            if ((widthThreshold || heightThreshold) && !devToolsOpen) {
+                devToolsOpen = true;
+                // Redirect to main page if dev tools detected
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Check periodically
+        setInterval(checkDevTools, 1000);
+    })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directions to Dermatology</title>
     <style>
-    /* Mobile-first responsive design - Enhanced with smooth transitions */
+    /* Mobile-first responsive design - Same as OP Pharmacy */
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
     }
     
     body {
@@ -76,7 +108,7 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 16px;
+        font-size: 16px; /* Better base font size for mobile */
     }
     
     .header {
@@ -87,25 +119,19 @@
         margin-bottom: 20px;
         box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
         border: 2px solid #dc3545;
-        transition: all 0.3s ease;
     }
     
     .hospital-logo {
         width: 100%;
-        max-width: 200px;
+        max-width: 200px; /* Smaller logo for mobile */
         height: auto;
         margin: 0 auto 10px;
         display: block;
-        transition: transform 0.3s ease;
-    }
-    
-    .hospital-logo:hover {
-        transform: scale(1.02);
     }
     
     .header h1 {
         color: #dc3545;
-        font-size: 1.4rem;
+        font-size: 1.4rem; /* Smaller header for mobile */
         margin: 0;
     }
     
@@ -127,29 +153,21 @@
         cursor: pointer;
         font-size: 0.9rem;
         min-width: 70px;
-        transition: all 0.3s ease;
-    }
-    
-    .language-btn:hover {
-        background: #f8f9fa;
-        transform: translateY(-2px);
     }
     
     .language-btn.active {
         background: #dc3545;
         color: white;
-        transform: scale(1.05);
     }
     
     .page-title {
         color: #2e86ab;
         text-align: center;
-        font-size: 1.6rem;
+        font-size: 1.6rem; /* Better mobile size */
         margin: 20px 0;
         font-weight: bold;
         line-height: 1.3;
         padding: 0 10px;
-        transition: all 0.3s ease;
     }
     
     .step {
@@ -160,55 +178,27 @@
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         overflow: hidden;
-        transition: all 0.3s ease;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.6s ease forwards;
-    }
-    
-    .step:nth-child(1) { animation-delay: 0.1s; }
-    .step:nth-child(2) { animation-delay: 0.2s; }
-    .step:nth-child(3) { animation-delay: 0.3s; }
-    .step:nth-child(4) { animation-delay: 0.4s; }
-    .step:nth-child(5) { animation-delay: 0.5s; }
-    .step:nth-child(6) { animation-delay: 0.6s; }
-    .step:nth-child(7) { animation-delay: 0.7s; }
-    .step:nth-child(8) { animation-delay: 0.8s; }
-    .step:nth-child(9) { animation-delay: 0.9s; }
-    
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .step:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.3rem;
+        font-size: 1.3rem; /* Better mobile size */
         margin-bottom: 15px;
         font-weight: bold;
         line-height: 1.3;
         padding: 0 5px;
-        transition: color 0.3s ease;
     }
     
     .step p {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Better mobile size */
         color: #333;
         margin-top: 12px;
         line-height: 1.5;
         font-weight: 500;
         padding: 0 5px;
-        transition: color 0.3s ease;
     }
     
-    /* IMAGE CONTAINER - Enhanced with lazy loading styles */
+    /* IMAGE CONTAINER - FIXED VERSION */
     .image-container {
         width: 100%;
         overflow: hidden;
@@ -218,13 +208,6 @@
         justify-content: center;
         align-items: center;
         background: #f8f9fa;
-        min-height: 200px;
-        position: relative;
-        transition: all 0.3s ease;
-    }
-    
-    .image-container:hover {
-        transform: scale(1.02);
     }
     
     .image-container img {
@@ -234,46 +217,6 @@
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: block;
-        transition: all 0.5s ease;
-    }
-    
-    /* Lazy loading styles */
-    .image-container img.lazy {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    
-    .image-container img.loaded {
-        opacity: 1;
-        transform: scale(1);
-    }
-    
-    .loading-placeholder {
-        width: 100%;
-        height: 200px;
-        background: #f8f9fa;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        font-size: 1rem;
-        border-radius: 10px;
-        border: 2px dashed #2e86ab;
-    }
-    
-    .loading-spinner {
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #2e86ab;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        animation: spin 1s linear infinite;
-        margin-right: 10px;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
     }
     
     .nav-button {
@@ -290,47 +233,11 @@
         max-width: 280px;
         touch-action: manipulation;
         transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .nav-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
     }
     
     .nav-button:active {
         transform: scale(0.98);
         background: linear-gradient(135deg, #1a536b, #2e86ab);
-    }
-    
-    .nav-button::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 5px;
-        height: 5px;
-        background: rgba(255, 255, 255, 0.5);
-        opacity: 0;
-        border-radius: 100%;
-        transform: scale(1, 1) translate(-50%);
-        transform-origin: 50% 50%;
-    }
-    
-    .nav-button:focus:not(:active)::after {
-        animation: ripple 1s ease-out;
-    }
-    
-    @keyframes ripple {
-        0% {
-            transform: scale(0, 0);
-            opacity: 0.5;
-        }
-        100% {
-            transform: scale(20, 20);
-            opacity: 0;
-        }
     }
     
     .button-container {
@@ -339,7 +246,7 @@
         padding: 20px 0;
     }
     
-    /* Enhanced mobile adjustments */
+    /* Enhanced mobile adjustments - Same as OP Pharmacy */
     @media (max-width: 480px) {
         body {
             font-size: 15px;
@@ -389,10 +296,6 @@
             font-size: 1rem;
             padding: 14px 25px;
             max-width: 250px;
-        }
-        
-        .image-container {
-            min-height: 150px;
         }
     }
     
@@ -471,10 +374,6 @@
             font-size: 1.2rem;
             padding: 18px 35px;
             max-width: 300px;
-        }
-        
-        .image-container {
-            min-height: 250px;
         }
     }
     
