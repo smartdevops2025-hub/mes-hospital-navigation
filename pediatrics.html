@@ -160,6 +160,36 @@
         color: white;
     }
     
+    /* Progress Tracker */
+    .progress-container {
+        margin: 20px 0;
+        padding: 0 10px;
+    }
+    
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #2e86ab, #1a536b);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    
+    .step-counter {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
     .page-title {
         color: #2e86ab;
         text-align: center;
@@ -412,47 +442,72 @@
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
+    <!-- Progress indicator -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="step-counter">
+            <span>Step <span id="current-step">1</span> of 7</span>
+            <span id="progress-percentage">14%</span>
+        </div>
+    </div>
+
     <h1 class="page-title" id="page-title">👶 Directions to Pediatrics OPD</h1>
     
-    <div class="step">
+    <div class="step" id="step1">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
-        <img src="ped1.png" alt="Main entrance to Pediatrics OPD" class="step-image">
+        <div class="image-container">
+            <img src="ped1.png" alt="Main entrance to Pediatrics OPD">
+        </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step2">
         <h2 id="step2-title">Step 2: Turn Left after Reception</h2>
-        <img src="ped2.png" alt="Ground floor" class="step-image">
+        <div class="image-container">
+            <img src="ped2.png" alt="Ground floor">
+        </div>
         <p id="step2-desc">Turn left when you see the reception counter</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step3">
         <h2 id="step3-title">Step 3: Right Side of the Light</h2>
-        <img src="ped3.png" alt="Turn right on first floor" class="step-image">
+        <div class="image-container">
+            <img src="ped3.png" alt="Turn right on first floor">
+        </div>
         <p id="step3-desc">Take a Quick Right</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step4">
         <h2 id="step4-title">Step 4: Walk Straight towards where you see Pulmonology board</h2>
-        <img src="ped4.png" alt="Follow Pediatrics signage" class="step-image">
+        <div class="image-container">
+            <img src="ped4.png" alt="Follow Pediatrics signage">
+        </div>
         <p id="step4-desc">Go Straight Following the Arrow mark</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step5">
         <h2 id="step5-title">Step 5: Cross Pulmonology Dept</h2>
-        <img src="ped5.png" alt="Pediatrics OPD entrance" class="step-image">
+        <div class="image-container">
+            <img src="ped5.png" alt="Pediatrics OPD entrance">
+        </div>
         <p id="step5-desc">Walk straight crossing Pulmonology Department and follow the arrows</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step6">
         <h2 id="step6-title">Step 6: Your are about to reach</h2>
-        <img src="ped6.png" alt="Pediatrics OPD entrance" class="step-image">
+        <div class="image-container">
+            <img src="ped6.png" alt="Pediatrics OPD entrance">
+        </div>
         <p id="step6-desc">Walk straight a few more steps ahead</p>
     </div>
 
-    <div class="step">
+    <div class="step" id="step7">
         <h2 id="step7-title">Step 7: Welcome to Pediatrics</h2>
-        <img src="ped7.png" alt="Pediatrics OPD entrance" class="step-image">
+        <div class="image-container">
+            <img src="ped7.png" alt="Pediatrics OPD entrance">
+        </div>
         <p id="step7-desc">Your destination - Pediatrics OPD for child healthcare has arrived</p>
     </div>
     
@@ -539,9 +594,10 @@
             }
         };
 
-        // Initialize language
+        // Initialize language and progress tracking
         document.addEventListener('DOMContentLoaded', function() {
             initializePediatricsLanguage();
+            initializeProgressTracker();
         });
 
         function initializePediatricsLanguage() {
@@ -592,6 +648,39 @@
             
             // Update button text
             document.querySelector('.nav-button').textContent = t.backButton;
+        }
+
+        // Progress tracking for long pages
+        function initializeProgressTracker() {
+            const progressFill = document.getElementById('progress-fill');
+            const currentStep = document.getElementById('current-step');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const steps = document.querySelectorAll('.step');
+            const totalSteps = steps.length;
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                
+                progressFill.style.width = scrollPercent + '%';
+                progressPercentage.textContent = Math.round(scrollPercent) + '%';
+                
+                // Determine current step based on scroll position
+                let currentStepIndex = 0;
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2) {
+                        currentStepIndex = index + 1;
+                    }
+                });
+                
+                currentStep.textContent = currentStepIndex;
+            }
+            
+            window.addEventListener('scroll', updateProgress);
+            window.addEventListener('resize', updateProgress);
+            updateProgress(); // Initial call
         }
     </script>
 </body>
