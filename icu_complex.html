@@ -228,7 +228,7 @@
         padding: 0 5px;
     }
     
-    /* IMAGE CONTAINER - FIXED VERSION */
+    /* IMAGE CONTAINER - UPDATED FOR LAZY LOADING */
     .image-container {
         width: 100%;
         overflow: hidden;
@@ -238,6 +238,7 @@
         justify-content: center;
         align-items: center;
         background: #f8f9fa;
+        min-height: 200px; /* Prevent layout shift */
     }
     
     .image-container img {
@@ -247,6 +248,29 @@
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: block;
+    }
+    
+    /* Lazy Loading Styles */
+    .lazy-load {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        background: #f8f9fa;
+    }
+    
+    .lazy-load.loaded {
+        opacity: 1;
+    }
+    
+    /* Loading animation for images not yet loaded */
+    .lazy-load:not(.loaded) {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
     }
     
     .nav-button {
@@ -327,6 +351,10 @@
             padding: 14px 25px;
             max-width: 250px;
         }
+        
+        .image-container {
+            min-height: 150px;
+        }
     }
     
     @media (max-width: 360px) {
@@ -351,6 +379,10 @@
             padding: 6px 10px;
             font-size: 0.8rem;
             min-width: 55px;
+        }
+        
+        .image-container {
+            min-height: 120px;
         }
     }
     
@@ -405,6 +437,10 @@
             padding: 18px 35px;
             max-width: 300px;
         }
+        
+        .image-container {
+            min-height: 250px;
+        }
     }
     
     @media (min-width: 1024px) {
@@ -423,6 +459,10 @@
         
         .step p {
             font-size: 1.4rem;
+        }
+        
+        .image-container {
+            min-height: 300px;
         }
     }
     </style>
@@ -458,7 +498,14 @@
     <div class="step" id="step1">
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
         <div class="image-container">
-            <img src="icu1.png" alt="Main entrance view">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu1.webp" 
+                class="lazy-load" 
+                alt="Main entrance view"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step1-desc">Enter through the main reception, keep right and walk straight</p>
     </div>
@@ -466,7 +513,14 @@
     <div class="step" id="step2">
         <h2 id="step2-title">Step 2: Take Few steps ahead</h2>
         <div class="image-container">
-            <img src="icu2.png" alt="Walk further after reception">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu2.webp" 
+                class="lazy-load" 
+                alt="Walk further after reception"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step2-desc">Walk a little further after the reception counter passing Lab Counter and take a left following the arrow</p>
     </div>
@@ -474,7 +528,14 @@
     <div class="step" id="step3">
         <h2 id="step3-title">Step 3: Walk Straight</h2>
         <div class="image-container">
-            <img src="icu3.png" alt="Walk straight">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu3.webp" 
+                class="lazy-load" 
+                alt="Walk straight"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step3-desc">Walk a little further</p>
     </div>
@@ -482,7 +543,14 @@
     <div class="step" id="step4">
         <h2 id="step4-title">Step 4: Another Left turn</h2>
         <div class="image-container">
-            <img src="icu4.png" alt="Left turn near lifts">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu4.webp" 
+                class="lazy-load" 
+                alt="Left turn near lifts"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step4-desc">After passing the stair corridor, take a left turn where you can see the Lifts</p>
     </div>
@@ -490,7 +558,14 @@
     <div class="step" id="step5">
         <h2 id="step5-title">Step 5: Another Left turn</h2>
         <div class="image-container">
-            <img src="icu5.png" alt="Left turn near lifts">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu5.webp" 
+                class="lazy-load" 
+                alt="Left turn near lifts"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step5-desc">After passing the stair corridor, take a left turn where you can see the Lifts</p>
     </div>
@@ -498,7 +573,14 @@
     <div class="step" id="step6">
         <h2 id="step6-title">Step 6: Lift to 2nd Floor</h2>
         <div class="image-container">
-            <img src="icu6.png" alt="Take lift to 2nd floor">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu6.webp" 
+                class="lazy-load" 
+                alt="Take lift to 2nd floor"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step6-desc">Take the Lift and get down at 2nd Floor and take left</p>
     </div>
@@ -506,7 +588,14 @@
     <div class="step" id="step7">
         <h2 id="step7-title">Step 7: Walk further to turn left</h2>
         <div class="image-container">
-            <img src="icu7.png" alt="Walk further and turn left">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu7.webp" 
+                class="lazy-load" 
+                alt="Walk further and turn left"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step7-desc">Take few more steps and turn left following the arrow mark</p>
     </div>
@@ -514,7 +603,14 @@
     <div class="step" id="step8">
         <h2 id="step8-title">Step 8: Walk straight to reach ICU Complex</h2>
         <div class="image-container">
-            <img src="icu8.png" alt="Walk straight to ICU">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu8.webp" 
+                class="lazy-load" 
+                alt="Walk straight to ICU"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step8-desc">Take few more steps straight ahead to see ICU Complex</p>
     </div>
@@ -522,7 +618,14 @@
     <div class="step" id="step9">
         <h2 id="step9-title">Step 9: Welcome to ICU Complex</h2>
         <div class="image-container">
-            <img src="icu9.png" alt="ICU Complex entrance">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/icu9.webp" 
+                class="lazy-load" 
+                alt="ICU Complex entrance"
+                loading="lazy"
+                width="800" 
+                height="400">
         </div>
         <p id="step9-desc">Your destination is in your front</p>
     </div>
@@ -544,6 +647,9 @@
                     'department': 'ICU Complex'
                 });
             }
+            
+            // Initialize lazy loading
+            initializeLazyLoading();
             
             // Track when users complete the navigation
             function trackNavigationComplete() {
@@ -579,6 +685,41 @@
                 }
             });
         });
+
+        // Lazy Loading Implementation
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                            
+                            // Track image load for analytics
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'image_load', {
+                                    'event_category': 'Performance',
+                                    'event_label': img.alt || 'ICU Image',
+                                    'value': 1
+                                });
+                            }
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback for older browsers - load all images immediately
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                });
+            }
+        }
 
         // Language translations for ICU Complex page
         const icuTranslations = {
