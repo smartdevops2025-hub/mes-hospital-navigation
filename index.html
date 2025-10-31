@@ -585,7 +585,7 @@
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
-                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" }
+                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
                     icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" }
                 }
             },
@@ -780,46 +780,49 @@
             });
 
             // Department click handlers
-            departmentBoxes.forEach(function(box) {
-                box.addEventListener('click', function() {
-                    const departmentName = this.getAttribute('data-name');
-                    
-                    // Track department click
-                    trackDepartmentClick(departmentName);
-                    
-                    if (departmentName === 'pharmacy') {
-                        window.location.href = 'pharmacy.html';
-                    } else if (departmentName === 'radiology') {
-                        window.location.href = 'radiology.html';
-                    } else if (departmentName === 'cardiology') {
-                        window.location.href = 'cardiology.html';
-                    } else if (departmentName === 'lab') {
-                        window.location.href = 'Lab.html';
-                    } else if (departmentName === 'ortho') {
-                        window.location.href = 'ortho.html';
-                    } else if (departmentName === 'ophthalmology') {
-                        window.location.href = 'ophthal.html';
-                    } else if (departmentName === 'cafeteria') {
-                        window.location.href = 'westend.html';
-                    } else if (departmentName === 'pediatrics') {
-                        window.location.href = 'pediatrics.html';
-                    } else if (departmentName === 'ent') {
-                        window.location.href = 'ent.html';
-                    } else if (departmentName === 'general medicine') {
-                        window.location.href = 'general-medicine.html';
-                    } else if (departmentName === 'general surgery') {
-                        window.location.href = 'general-surgery.html';
-                    } else if (departmentName === 'general store') {
-                        window.location.href = 'general-store.html';
-                    } else if (departmentName === 'pulmonology') {
-                        window.location.href = 'pulmonology.html';
-                    } else if (departmentName === 'dermatology') {
-                        window.location.href = 'dermatology.html';
-                    } else {
-                        alert('Directions for ' + departmentName + ' coming soon!');
-                    }
-                });
-            });
+departmentBoxes.forEach(function(box) {
+    box.addEventListener('click', function() {
+        const departmentName = this.getAttribute('data-name');
+        
+        // Track department click
+        trackDepartmentClick(departmentName);
+        
+        if (departmentName === 'pharmacy') {
+            window.location.href = 'pharmacy.html';
+        } else if (departmentName === 'radiology') {
+            window.location.href = 'radiology.html';
+        } else if (departmentName === 'cardiology') {
+            window.location.href = 'cardiology.html';
+        } else if (departmentName === 'lab') {
+            window.location.href = 'Lab.html';
+        } else if (departmentName === 'ortho') {
+            window.location.href = 'ortho.html';
+        } else if (departmentName === 'ophthalmology') {
+            window.location.href = 'ophthal.html';
+        } else if (departmentName === 'cafeteria') {
+            window.location.href = 'westend.html';
+        } else if (departmentName === 'pediatrics') {
+            window.location.href = 'pediatrics.html';
+        } else if (departmentName === 'ent') {
+            window.location.href = 'ent.html';
+        } else if (departmentName === 'general medicine') {
+            window.location.href = 'general-medicine.html';
+        } else if (departmentName === 'general surgery') {
+            window.location.href = 'general-surgery.html';
+        } else if (departmentName === 'general store') {
+            window.location.href = 'general-store.html';
+        } else if (departmentName === 'pulmonology') {
+            window.location.href = 'pulmonology.html';
+        } else if (departmentName === 'dermatology') {
+            window.location.href = 'dermatology.html';
+        } else if (departmentName === 'icu complex') {
+            window.location.href = 'icu-complex.html';
+        } else {
+            alert('Directions for ' + departmentName + ' coming soon!');
+        }
+    });
+});
+            
         }
 
         // Back to top functionality
@@ -854,4 +857,5 @@
     </script>
 </body>
 </html>
+
 
