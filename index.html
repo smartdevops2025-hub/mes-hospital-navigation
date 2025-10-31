@@ -705,41 +705,44 @@
             updateDepartmentTranslations(t.departments);
         }
 
-        function updateDepartmentTranslations(departmentTranslations) {
-            const departmentBoxes = document.querySelectorAll('.department-box');
-            
-            departmentBoxes.forEach(function(box) {
-                const departmentName = box.getAttribute('data-name');
-                let translationKey = departmentName;
-                if (departmentName === 'general medicine') {
-                    translationKey = 'general_medicine';
-                }
-                if (departmentName === 'general surgery') {
-                    translationKey = 'general_surgery';
-                }
-                if (departmentName === 'general store') {
-                    translationKey = 'general_store';
-                }
-                
-                const translation = departmentTranslations[translationKey];
-                
-                if (translation) {
-                    const titleElement = box.querySelector('h3');
-                    const locationElement = box.querySelector('.department-location');
-                    const descriptionElement = box.querySelector('p:last-child');
-                    
-                    if (titleElement) {
-                        titleElement.textContent = translation.name;
-                    }
-                    if (locationElement) {
-                        locationElement.textContent = translation.location;
-                    }
-                    if (descriptionElement) {
-                        descriptionElement.textContent = translation.description;
-                    }
-                }
-            });
+       function updateDepartmentTranslations(departmentTranslations) {
+    const departmentBoxes = document.querySelectorAll('.department-box');
+    
+    departmentBoxes.forEach(function(box) {
+        const departmentName = box.getAttribute('data-name');
+        let translationKey = departmentName;
+        if (departmentName === 'general medicine') {
+            translationKey = 'general_medicine';
         }
+        if (departmentName === 'general surgery') {
+            translationKey = 'general_surgery';
+        }
+        if (departmentName === 'general store') {
+            translationKey = 'general_store';
+        }
+        if (departmentName === 'icu complex') { // ADD THIS
+            translationKey = 'icu_complex'; // ADD THIS
+        } // ADD THIS
+        
+        const translation = departmentTranslations[translationKey];
+        
+        if (translation) {
+            const titleElement = box.querySelector('h3');
+            const locationElement = box.querySelector('.department-location');
+            const descriptionElement = box.querySelector('p:last-child');
+            
+            if (titleElement) {
+                titleElement.textContent = translation.name;
+            }
+            if (locationElement) {
+                locationElement.textContent = translation.location;
+            }
+            if (descriptionElement) {
+                descriptionElement.textContent = translation.description;
+            }
+        }
+    });
+}
 
         // Search functionality
         function initializeSearch() {
@@ -857,6 +860,7 @@ departmentBoxes.forEach(function(box) {
     </script>
 </body>
 </html>
+
 
 
 
