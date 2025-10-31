@@ -109,6 +109,7 @@
         background-color: #f0f8ff;
         line-height: 1.6;
         font-size: 16px; /* Better base font size for mobile */
+        padding-top: 120px; /* Space for fixed header */
     }
     
     .header {
@@ -160,10 +161,17 @@
         color: white;
     }
     
-    /* Progress Tracker */
-    .progress-container {
-        margin: 20px 0;
-        padding: 0 10px;
+    /* FLOATING PROGRESS TRACKER - STICKY/FIXED */
+    .floating-progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 10px 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-bottom: 2px solid #2e86ab;
     }
     
     .progress-bar {
@@ -190,6 +198,11 @@
         font-weight: 500;
     }
     
+    .current-step-info {
+        font-weight: bold;
+        color: #2e86ab;
+    }
+    
     .page-title {
         color: #2e86ab;
         text-align: center;
@@ -208,6 +221,7 @@
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         overflow: hidden;
+        scroll-margin-top: 100px; /* For smooth scrolling to steps */
     }
     
     .step h2 {
@@ -305,6 +319,7 @@
         body {
             font-size: 15px;
             padding: 12px;
+            padding-top: 100px; /* Less space for mobile */
         }
         
         .header {
@@ -320,6 +335,10 @@
             font-size: 1.2rem;
         }
         
+        .floating-progress-container {
+            padding: 8px 12px;
+        }
+        
         .page-title {
             font-size: 1.4rem;
             margin: 15px 0;
@@ -328,6 +347,7 @@
         .step {
             padding: 15px 12px;
             margin: 15px 0;
+            scroll-margin-top: 80px;
         }
         
         .step h2 {
@@ -355,12 +375,17 @@
         .image-container {
             min-height: 150px;
         }
+        
+        .step-counter {
+            font-size: 0.8rem;
+        }
     }
     
     @media (max-width: 360px) {
         body {
             font-size: 14px;
             padding: 10px;
+            padding-top: 90px;
         }
         
         .page-title {
@@ -384,6 +409,10 @@
         .image-container {
             min-height: 120px;
         }
+        
+        .floating-progress-container {
+            padding: 6px 10px;
+        }
     }
     
     /* Tablet and larger screens */
@@ -391,6 +420,7 @@
         body {
             max-width: 700px;
             font-size: 17px;
+            padding-top: 130px;
         }
         
         .header {
@@ -406,6 +436,10 @@
             font-size: 1.8rem;
         }
         
+        .floating-progress-container {
+            padding: 12px 20px;
+        }
+        
         .page-title {
             font-size: 2rem;
             margin: 25px 0;
@@ -414,6 +448,7 @@
         .step {
             padding: 25px 20px;
             margin: 25px 0;
+            scroll-margin-top: 120px;
         }
         
         .step h2 {
@@ -447,6 +482,7 @@
         body {
             max-width: 800px;
             font-size: 18px;
+            padding-top: 140px;
         }
         
         .page-title {
@@ -464,10 +500,25 @@
         .image-container {
             min-height: 300px;
         }
+        
+        .floating-progress-container {
+            padding: 15px 25px;
+        }
     }
     </style>
 </head>
 <body>
+    <!-- FLOATING PROGRESS BAR - STAYS ON TOP -->
+    <div class="floating-progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="step-counter">
+            <span class="current-step-info">Step <span id="current-step">1</span> of 9</span>
+            <span id="progress-percentage">11%</span>
+        </div>
+    </div>
+
     <!-- Header with Hospital Logo -->
     <div class="header">
         <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
@@ -480,17 +531,6 @@
         <button class="language-btn" data-lang="hi">हिंदी </button>
         <button class="language-btn" data-lang="ml">മലയാളം</button>
         <button class="language-btn" data-lang="ar">العربية </button>
-    </div>
-
-    <!-- Progress indicator -->
-    <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <div class="step-counter">
-            <span>Step <span id="current-step">1</span> of 9</span>
-            <span id="progress-percentage">11%</span>
-        </div>
     </div>
 
     <h1 class="page-title" id="page-title">🏥 Directions to ICU Complex</h1>
@@ -651,6 +691,9 @@
             // Initialize lazy loading
             initializeLazyLoading();
             
+            // Initialize progress tracker
+            initializeProgressTracker();
+            
             // Track when users complete the navigation
             function trackNavigationComplete() {
                 if (typeof gtag !== 'undefined') {
@@ -719,6 +762,57 @@
                     img.classList.add('loaded');
                 });
             }
+        }
+
+        // Enhanced Progress tracking with floating bar
+        function initializeProgressTracker() {
+            const progressFill = document.getElementById('progress-fill');
+            const currentStep = document.getElementById('current-step');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const steps = document.querySelectorAll('.step');
+            const totalSteps = steps.length;
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = Math.min(100, (scrollTop / docHeight) * 100);
+                
+                progressFill.style.width = scrollPercent + '%';
+                progressPercentage.textContent = Math.round(scrollPercent) + '%';
+                
+                // Determine current step based on scroll position
+                let currentStepIndex = 1;
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2) {
+                        currentStepIndex = index + 1;
+                    }
+                });
+                
+                currentStep.textContent = currentStepIndex;
+                
+                // Add visual feedback when reaching important milestones
+                if (scrollPercent >= 90) {
+                    progressFill.style.background = 'linear-gradient(90deg, #28a745, #20c997)';
+                } else if (scrollPercent >= 50) {
+                    progressFill.style.background = 'linear-gradient(90deg, #2e86ab, #1a536b)';
+                }
+            }
+            
+            // Throttle scroll events for better performance
+            let scrollTimeout;
+            function throttledUpdate() {
+                if (!scrollTimeout) {
+                    scrollTimeout = setTimeout(function() {
+                        scrollTimeout = null;
+                        updateProgress();
+                    }, 100);
+                }
+            }
+            
+            window.addEventListener('scroll', throttledUpdate);
+            window.addEventListener('resize', throttledUpdate);
+            updateProgress(); // Initial call
         }
 
         // Language translations for ICU Complex page
@@ -813,10 +907,9 @@
             }
         };
 
-        // Initialize language and progress tracking
+        // Initialize language
         document.addEventListener('DOMContentLoaded', function() {
             initializeIcuLanguage();
-            initializeProgressTracker();
         });
 
         function initializeIcuLanguage() {
@@ -871,39 +964,6 @@
             
             // Update button text
             document.querySelector('.nav-button').textContent = t.backButton;
-        }
-
-        // Progress tracking for long pages
-        function initializeProgressTracker() {
-            const progressFill = document.getElementById('progress-fill');
-            const currentStep = document.getElementById('current-step');
-            const progressPercentage = document.getElementById('progress-percentage');
-            const steps = document.querySelectorAll('.step');
-            const totalSteps = steps.length;
-            
-            function updateProgress() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPercent = (scrollTop / docHeight) * 100;
-                
-                progressFill.style.width = scrollPercent + '%';
-                progressPercentage.textContent = Math.round(scrollPercent) + '%';
-                
-                // Determine current step based on scroll position
-                let currentStepIndex = 0;
-                steps.forEach((step, index) => {
-                    const rect = step.getBoundingClientRect();
-                    if (rect.top <= window.innerHeight / 2) {
-                        currentStepIndex = index + 1;
-                    }
-                });
-                
-                currentStep.textContent = currentStepIndex;
-            }
-            
-            window.addEventListener('scroll', updateProgress);
-            window.addEventListener('resize', updateProgress);
-            updateProgress(); // Initial call
         }
     </script>
 </body>
