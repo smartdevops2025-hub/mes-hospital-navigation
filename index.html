@@ -380,6 +380,13 @@
             <p>Get your medicines here</p>
         </div>
 
+        <div class="department-box" data-name="ip pharmacy" data-keywords="ip pharmacy inpatient pharmacy medicine drug store ip">
+            <div class="department-icon">💊</div>
+            <h3>IP Pharmacy</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Inpatient pharmacy services</p>
+        </div>
+
         <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
             <div class="department-icon">📋</div>
             <h3>Radiology</h3>
@@ -472,20 +479,11 @@
             <p>Skin care & treatment</p>
         </div>
 
-        <!-- ICU Complex -->
         <div class="department-box" data-name="icu complex" data-keywords="icu intensive care unit critical care emergency icu complex">
             <div class="department-icon">🏥</div>
             <h3>ICU Complex</h3>
             <p class="department-location">2nd Floor</p>
             <p>Intensive Care Unit</p>
-        </div>
-
-        <!-- O T Complex - UPDATED -->
-        <div class="department-box" data-name="o t complex" data-keywords="o t operation theatre complex surgery surgical operation o t complex">
-            <div class="department-icon">🚪</div>
-            <h3>O T Complex</h3>
-            <p class="department-location">First Floor</p>
-            <p>Operation Theatre Complex</p>
         </div>
     </div>
 
@@ -581,6 +579,7 @@
                 noResults: "No departments found. Try different keywords.",
                 departments: {
                     pharmacy: { name: "OP Pharmacy", location: "Ground Floor", description: "Get your medicines here" },
+                    ip_pharmacy: { name: "IP Pharmacy", location: "2nd Floor", description: "Inpatient pharmacy services" },
                     radiology: { name: "Radiology", location: "Basement Floor", description: "Xray & Scanning" },
                     lab: { name: "Laboratory", location: "Ground Floor", description: "Blood tests & reports" },
                     cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
@@ -594,8 +593,7 @@
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
                     dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
-                    icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
-                    o_t_complex: { name: "O T Complex", location: "First Floor", description: "Operation Theatre Complex" }
+                    icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" }
                 }
             },
             hi: {
@@ -606,6 +604,7 @@
                 noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
                 departments: {
                     pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
+                    ip_pharmacy: { name: "आई पी फार्मेसी", location: "दूसरी मंजिल", description: "इनपेशेंट फार्मेसी सेवाएं" },
                     radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
                     lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
@@ -619,8 +618,7 @@
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
                     pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
                     dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
-                    icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
-                    o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "पहली मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" }
+                    icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" }
                 }
             },
             ml: {
@@ -631,6 +629,7 @@
                 noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
                 departments: {
                     pharmacy: { name: "ഒ പി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
+                    ip_pharmacy: { name: "ഐ പി ഫാർമസി", location: "രണ്ടാം നില", description: "ഇൻപേഷ്യന്റ് ഫാർമസി സേവനങ്ങൾ" },
                     radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
                     lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
                     cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
@@ -644,8 +643,7 @@
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
                     pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
                     dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
-                    icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
-                    o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "ഒന്നാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" }
+                    icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" }
                 }
             },
             ar: {
@@ -656,6 +654,7 @@
                 noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
                 departments: {
                     pharmacy: { name: "الصيدلية الخارجية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
+                    ip_pharmacy: { name: "صيدلية المرضى الداخليين", location: "الطابق الثاني", description: "خدمات صيدلية المرضى الداخليين" },
                     radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
                     lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
                     cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
@@ -669,8 +668,7 @@
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
                     pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
                     dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
-                    icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
-                    o_t_complex: { name: "مجمع غرف العمليات", location: "الطابق الأول", description: "مجمع غرف العمليات" }
+                    icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" }
                 }
             }
         };
@@ -732,11 +730,11 @@
                 if (departmentName === 'general store') {
                     translationKey = 'general_store';
                 }
+                if (departmentName === 'ip pharmacy') {
+                    translationKey = 'ip_pharmacy';
+                }
                 if (departmentName === 'icu complex') {
                     translationKey = 'icu_complex';
-                }
-                if (departmentName === 'o t complex') {
-                    translationKey = 'o_t_complex';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -807,6 +805,8 @@
                     
                     if (departmentName === 'pharmacy') {
                         window.location.href = 'pharmacy.html';
+                    } else if (departmentName === 'ip pharmacy') {
+                        window.location.href = 'ip-pharmacy.html';
                     } else if (departmentName === 'radiology') {
                         window.location.href = 'radiology.html';
                     } else if (departmentName === 'cardiology') {
@@ -835,14 +835,11 @@
                         window.location.href = 'dermatology.html';
                     } else if (departmentName === 'icu complex') {
                         window.location.href = 'icu_complex.html';
-                    } else if (departmentName === 'o t complex') {
-                        window.location.href = 'o_t_complex.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
                 });
             });
-            
         }
 
         // Back to top functionality
