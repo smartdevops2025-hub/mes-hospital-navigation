@@ -387,6 +387,13 @@
             <p>Inpatient pharmacy services</p>
         </div>
 
+        <div class="department-box" data-name="ip pharmacy 4th floor" data-keywords="ip pharmacy inpatient pharmacy medicine drug store ip 4th fourth floor">
+            <div class="department-icon">💊</div>
+            <h3>IP Pharmacy (4th Floor)</h3>
+            <p class="department-location">4th Floor</p>
+            <p>Inpatient pharmacy services</p>
+        </div>
+
         <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
             <div class="department-icon">📋</div>
             <h3>Radiology</h3>
@@ -580,6 +587,7 @@
                 departments: {
                     pharmacy: { name: "OP Pharmacy", location: "Ground Floor", description: "Get your medicines here" },
                     ip_pharmacy: { name: "IP Pharmacy", location: "2nd Floor", description: "Inpatient pharmacy services" },
+                    ip_pharmacy_4th: { name: "IP Pharmacy (4th Floor)", location: "4th Floor", description: "Inpatient pharmacy services" },
                     radiology: { name: "Radiology", location: "Basement Floor", description: "Xray & Scanning" },
                     lab: { name: "Laboratory", location: "Ground Floor", description: "Blood tests & reports" },
                     cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
@@ -605,6 +613,7 @@
                 departments: {
                     pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
                     ip_pharmacy: { name: "आई पी फार्मेसी", location: "दूसरी मंजिल", description: "इनपेशेंट फार्मेसी सेवाएं" },
+                    ip_pharmacy_4th: { name: "आई पी फार्मेसी (चौथी मंजिल)", location: "चौथी मंजिल", description: "इनपेशेंट फार्मेसी सेवाएं" },
                     radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
                     lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
@@ -630,6 +639,7 @@
                 departments: {
                     pharmacy: { name: "ഒ പി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
                     ip_pharmacy: { name: "ഐ പി ഫാർമസി", location: "രണ്ടാം നില", description: "ഇൻപേഷ്യന്റ് ഫാർമസി സേവനങ്ങൾ" },
+                    ip_pharmacy_4th: { name: "ഐ പി ഫാർമസി (നാലാം നില)", location: "നാലാം നില", description: "ഇൻപേഷ്യന്റ് ഫാർമസി സേവനങ്ങൾ" },
                     radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
                     lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
                     cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
@@ -655,6 +665,7 @@
                 departments: {
                     pharmacy: { name: "الصيدلية الخارجية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
                     ip_pharmacy: { name: "صيدلية المرضى الداخليين", location: "الطابق الثاني", description: "خدمات صيدلية المرضى الداخليين" },
+                    ip_pharmacy_4th: { name: "صيدلية المرضى الداخليين (الطابق الرابع)", location: "الطابق الرابع", description: "خدمات صيدلية المرضى الداخليين" },
                     radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
                     lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
                     cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
@@ -733,6 +744,9 @@
                 if (departmentName === 'ip pharmacy') {
                     translationKey = 'ip_pharmacy';
                 }
+                if (departmentName === 'ip pharmacy 4th floor') {
+                    translationKey = 'ip_pharmacy_4th';
+                }
                 if (departmentName === 'icu complex') {
                     translationKey = 'icu_complex';
                 }
@@ -807,6 +821,8 @@
                         window.location.href = 'pharmacy.html';
                     } else if (departmentName === 'ip pharmacy') {
                         window.location.href = 'ip-pharmacy.html';
+                    } else if (departmentName === 'ip pharmacy 4th floor') {
+                        window.location.href = 'ip-pharmacy-4th.html';
                     } else if (departmentName === 'radiology') {
                         window.location.href = 'radiology.html';
                     } else if (departmentName === 'cardiology') {
