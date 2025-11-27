@@ -464,7 +464,7 @@
             <p>Lung & respiratory care</p>
         </div>
 
-        <!-- Dermatology Department - ADDED -->
+        <!-- Dermatology Department -->
         <div class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment derma">
             <div class="department-icon">🧴</div>
             <h3>Dermatology</h3>
@@ -472,13 +472,21 @@
             <p>Skin care & treatment</p>
         </div>
 
+        <!-- ICU Complex -->
         <div class="department-box" data-name="icu complex" data-keywords="icu intensive care unit critical care emergency icu complex">
-    <div class="department-icon">🏥</div>
-    <h3>ICU Complex</h3>
-    <p class="department-location">2nd Floor</p>
-    <p>Intensive Care Unit</p>
-</div>
-        
+            <div class="department-icon">🏥</div>
+            <h3>ICU Complex</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Intensive Care Unit</p>
+        </div>
+
+        <!-- OT Complex - ADDED -->
+        <div class="department-box" data-name="ot complex" data-keywords="ot operation theatre complex surgery surgical operation ot complex">
+            <div class="department-icon">🚪</div>
+            <h3>OT Complex</h3>
+            <p class="department-location">First Floor</p>
+            <p>Operation Theatre Complex</p>
+        </div>
     </div>
 
     <!-- Back to Top Button -->
@@ -586,7 +594,8 @@
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
                     dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
-                    icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" }
+                    icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
+                    ot_complex: { name: "OT Complex", location: "First Floor", description: "Operation Theatre Complex" }
                 }
             },
             hi: {
@@ -610,7 +619,8 @@
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
                     pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
                     dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
-                    icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" }
+                    icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
+                    ot_complex: { name: "ओटी कॉम्प्लेक्स", location: "पहली मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" }
                 }
             },
             ml: {
@@ -634,7 +644,8 @@
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
                     pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
                     dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
-                    icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" }
+                    icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
+                    ot_complex: { name: "ഒടി കോംപ്ലക്സ്", location: "ഒന്നാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" }
                 }
             },
             ar: {
@@ -658,7 +669,8 @@
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
                     pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
                     dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
-                    icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" }
+                    icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
+                    ot_complex: { name: "مجمع غرف العمليات", location: "الطابق الأول", description: "مجمع غرف العمليات" }
                 }
             }
         };
@@ -705,44 +717,47 @@
             updateDepartmentTranslations(t.departments);
         }
 
-       function updateDepartmentTranslations(departmentTranslations) {
-    const departmentBoxes = document.querySelectorAll('.department-box');
-    
-    departmentBoxes.forEach(function(box) {
-        const departmentName = box.getAttribute('data-name');
-        let translationKey = departmentName;
-        if (departmentName === 'general medicine') {
-            translationKey = 'general_medicine';
-        }
-        if (departmentName === 'general surgery') {
-            translationKey = 'general_surgery';
-        }
-        if (departmentName === 'general store') {
-            translationKey = 'general_store';
-        }
-        if (departmentName === 'icu complex') { // ADD THIS
-            translationKey = 'icu_complex'; // ADD THIS
-        } // ADD THIS
-        
-        const translation = departmentTranslations[translationKey];
-        
-        if (translation) {
-            const titleElement = box.querySelector('h3');
-            const locationElement = box.querySelector('.department-location');
-            const descriptionElement = box.querySelector('p:last-child');
+        function updateDepartmentTranslations(departmentTranslations) {
+            const departmentBoxes = document.querySelectorAll('.department-box');
             
-            if (titleElement) {
-                titleElement.textContent = translation.name;
-            }
-            if (locationElement) {
-                locationElement.textContent = translation.location;
-            }
-            if (descriptionElement) {
-                descriptionElement.textContent = translation.description;
-            }
+            departmentBoxes.forEach(function(box) {
+                const departmentName = box.getAttribute('data-name');
+                let translationKey = departmentName;
+                if (departmentName === 'general medicine') {
+                    translationKey = 'general_medicine';
+                }
+                if (departmentName === 'general surgery') {
+                    translationKey = 'general_surgery';
+                }
+                if (departmentName === 'general store') {
+                    translationKey = 'general_store';
+                }
+                if (departmentName === 'icu complex') {
+                    translationKey = 'icu_complex';
+                }
+                if (departmentName === 'ot complex') {
+                    translationKey = 'ot_complex';
+                }
+                
+                const translation = departmentTranslations[translationKey];
+                
+                if (translation) {
+                    const titleElement = box.querySelector('h3');
+                    const locationElement = box.querySelector('.department-location');
+                    const descriptionElement = box.querySelector('p:last-child');
+                    
+                    if (titleElement) {
+                        titleElement.textContent = translation.name;
+                    }
+                    if (locationElement) {
+                        locationElement.textContent = translation.location;
+                    }
+                    if (descriptionElement) {
+                        descriptionElement.textContent = translation.description;
+                    }
+                }
+            });
         }
-    });
-}
 
         // Search functionality
         function initializeSearch() {
@@ -783,48 +798,50 @@
             });
 
             // Department click handlers
-departmentBoxes.forEach(function(box) {
-    box.addEventListener('click', function() {
-        const departmentName = this.getAttribute('data-name');
-        
-        // Track department click
-        trackDepartmentClick(departmentName);
-        
-        if (departmentName === 'pharmacy') {
-            window.location.href = 'pharmacy.html';
-        } else if (departmentName === 'radiology') {
-            window.location.href = 'radiology.html';
-        } else if (departmentName === 'cardiology') {
-            window.location.href = 'cardiology.html';
-        } else if (departmentName === 'lab') {
-            window.location.href = 'lab.html';
-        } else if (departmentName === 'ortho') {
-            window.location.href = 'ortho.html';
-        } else if (departmentName === 'ophthalmology') {
-            window.location.href = 'ophthal.html';
-        } else if (departmentName === 'cafeteria') {
-            window.location.href = 'westend.html';
-        } else if (departmentName === 'pediatrics') {
-            window.location.href = 'pediatrics.html';
-        } else if (departmentName === 'ent') {
-            window.location.href = 'ent.html';
-        } else if (departmentName === 'general medicine') {
-            window.location.href = 'general-medicine.html';
-        } else if (departmentName === 'general surgery') {
-            window.location.href = 'general-surgery.html';
-        } else if (departmentName === 'general store') {
-            window.location.href = 'general-store.html';
-        } else if (departmentName === 'pulmonology') {
-            window.location.href = 'pulmonology.html';
-        } else if (departmentName === 'dermatology') {
-            window.location.href = 'dermatology.html';
-        } else if (departmentName === 'icu complex') {
-            window.location.href = 'icu_complex.html';
-        } else {
-            alert('Directions for ' + departmentName + ' coming soon!');
-        }
-    });
-});
+            departmentBoxes.forEach(function(box) {
+                box.addEventListener('click', function() {
+                    const departmentName = this.getAttribute('data-name');
+                    
+                    // Track department click
+                    trackDepartmentClick(departmentName);
+                    
+                    if (departmentName === 'pharmacy') {
+                        window.location.href = 'pharmacy.html';
+                    } else if (departmentName === 'radiology') {
+                        window.location.href = 'radiology.html';
+                    } else if (departmentName === 'cardiology') {
+                        window.location.href = 'cardiology.html';
+                    } else if (departmentName === 'lab') {
+                        window.location.href = 'lab.html';
+                    } else if (departmentName === 'ortho') {
+                        window.location.href = 'ortho.html';
+                    } else if (departmentName === 'ophthalmology') {
+                        window.location.href = 'ophthal.html';
+                    } else if (departmentName === 'cafeteria') {
+                        window.location.href = 'westend.html';
+                    } else if (departmentName === 'pediatrics') {
+                        window.location.href = 'pediatrics.html';
+                    } else if (departmentName === 'ent') {
+                        window.location.href = 'ent.html';
+                    } else if (departmentName === 'general medicine') {
+                        window.location.href = 'general-medicine.html';
+                    } else if (departmentName === 'general surgery') {
+                        window.location.href = 'general-surgery.html';
+                    } else if (departmentName === 'general store') {
+                        window.location.href = 'general-store.html';
+                    } else if (departmentName === 'pulmonology') {
+                        window.location.href = 'pulmonology.html';
+                    } else if (departmentName === 'dermatology') {
+                        window.location.href = 'dermatology.html';
+                    } else if (departmentName === 'icu complex') {
+                        window.location.href = 'icu_complex.html';
+                    } else if (departmentName === 'ot complex') {
+                        window.location.href = 'ot_complex.html';
+                    } else {
+                        alert('Directions for ' + departmentName + ' coming soon!');
+                    }
+                });
+            });
             
         }
 
@@ -860,9 +877,3 @@ departmentBoxes.forEach(function(box) {
     </script>
 </body>
 </html>
-
-
-
-
-
-
