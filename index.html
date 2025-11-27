@@ -480,10 +480,10 @@
             <p>Intensive Care Unit</p>
         </div>
 
-        <!-- OT Complex - ADDED -->
-        <div class="department-box" data-name="ot complex" data-keywords="ot operation theatre complex surgery surgical operation ot complex">
+        <!-- O T Complex - UPDATED -->
+        <div class="department-box" data-name="o t complex" data-keywords="o t operation theatre complex surgery surgical operation o t complex">
             <div class="department-icon">🚪</div>
-            <h3>OT Complex</h3>
+            <h3>O T Complex</h3>
             <p class="department-location">First Floor</p>
             <p>Operation Theatre Complex</p>
         </div>
@@ -595,7 +595,7 @@
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
                     dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
                     icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
-                    ot_complex: { name: "OT Complex", location: "First Floor", description: "Operation Theatre Complex" }
+                    o_t_complex: { name: "O T Complex", location: "First Floor", description: "Operation Theatre Complex" }
                 }
             },
             hi: {
@@ -620,7 +620,7 @@
                     pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
                     dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
                     icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
-                    ot_complex: { name: "ओटी कॉम्प्लेक्स", location: "पहली मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" }
+                    o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "पहली मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" }
                 }
             },
             ml: {
@@ -645,7 +645,7 @@
                     pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
                     dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
                     icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
-                    ot_complex: { name: "ഒടി കോംപ്ലക്സ്", location: "ഒന്നാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" }
+                    o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "ഒന്നാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" }
                 }
             },
             ar: {
@@ -670,7 +670,7 @@
                     pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
                     dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
                     icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
-                    ot_complex: { name: "مجمع غرف العمليات", location: "الطابق الأول", description: "مجمع غرف العمليات" }
+                    o_t_complex: { name: "مجمع غرف العمليات", location: "الطابق الأول", description: "مجمع غرف العمليات" }
                 }
             }
         };
@@ -735,8 +735,8 @@
                 if (departmentName === 'icu complex') {
                     translationKey = 'icu_complex';
                 }
-                if (departmentName === 'ot complex') {
-                    translationKey = 'ot_complex';
+                if (departmentName === 'o t complex') {
+                    translationKey = 'o_t_complex';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -835,8 +835,8 @@
                         window.location.href = 'dermatology.html';
                     } else if (departmentName === 'icu complex') {
                         window.location.href = 'icu_complex.html';
-                    } else if (departmentName === 'ot complex') {
-                        window.location.href = 'ot_complex.html';
+                    } else if (departmentName === 'o t complex') {
+                        window.location.href = 'o_t_complex.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
