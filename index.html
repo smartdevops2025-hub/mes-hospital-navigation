@@ -493,12 +493,20 @@
             <p>Intensive Care Unit</p>
         </div>
 
-        <!-- O T Complex Department - ADDED HERE -->
+        <!-- O T Complex Department -->
         <div class="department-box" data-name="o t complex" data-keywords="o t complex ot operation theatre surgery surgical operating room theatre">
             <div class="department-icon">🏥</div>
             <h3>O T Complex</h3>
             <p class="department-location">2nd Floor</p>
             <p>Operation Theatre Complex</p>
+        </div>
+
+        <!-- Semi Private Ward Department - ADDED HERE -->
+        <div class="department-box" data-name="semi private ward" data-keywords="semi private ward private ward patient room accommodation stay 4th fourth floor spw">
+            <div class="department-icon">🏥</div>
+            <h3>Semi Private Ward</h3>
+            <p class="department-location">4th Floor</p>
+            <p>Patient accommodation & stay</p>
         </div>
     </div>
 
@@ -610,7 +618,8 @@
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
                     dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
                     icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
-                    o_t_complex: { name: "O T Complex", location: "2nd Floor", description: "Operation Theatre Complex" } // ADDED O T COMPLEX TRANSLATION
+                    o_t_complex: { name: "O T Complex", location: "2nd Floor", description: "Operation Theatre Complex" },
+                    semi_private_ward: { name: "Semi Private Ward", location: "4th Floor", description: "Patient accommodation & stay" } // ADDED SEMI PRIVATE WARD
                 }
             },
             hi: {
@@ -637,7 +646,8 @@
                     pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
                     dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
                     icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
-                    o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" } // ADDED O T COMPLEX TRANSLATION
+                    o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" },
+                    semi_private_ward: { name: "सेमी प्राइवेट वार्ड", location: "चौथी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" } // ADDED SEMI PRIVATE WARD
                 }
             },
             ml: {
@@ -664,7 +674,8 @@
                     pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
                     dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
                     icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
-                    o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" } // ADDED O T COMPLEX TRANSLATION
+                    o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" },
+                    semi_private_ward: { name: "സെമി പ്രൈവറ്റ് വാർഡ്", location: "നാലാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" } // ADDED SEMI PRIVATE WARD
                 }
             },
             ar: {
@@ -691,7 +702,8 @@
                     pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
                     dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
                     icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
-                    o_t_complex: { name: "مجمع غرفة العمليات", location: "الطابق الثاني", description: "مجمع غرفة العمليات" } // ADDED O T COMPLEX TRANSLATION
+                    o_t_complex: { name: "مجمع غرفة العمليات", location: "الطابق الثاني", description: "مجمع غرفة العمليات" },
+                    semi_private_ward: { name: "جناح شبه خاص", location: "الطابق الرابع", description: "إقامة المرضى والإقامة" } // ADDED SEMI PRIVATE WARD
                 }
             }
         };
@@ -764,6 +776,9 @@
                 }
                 if (departmentName === 'o t complex') {
                     translationKey = 'o_t_complex';
+                }
+                if (departmentName === 'semi private ward') {
+                    translationKey = 'semi_private_ward';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -868,6 +883,8 @@
                         window.location.href = 'icu_complex.html';
                     } else if (departmentName === 'o t complex') {
                         window.location.href = 'o_t_complex.html';
+                    } else if (departmentName === 'semi private ward') {
+                        window.location.href = 'semi-private-ward.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
