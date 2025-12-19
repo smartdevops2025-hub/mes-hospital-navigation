@@ -509,10 +509,18 @@
             <p>Patient accommodation & stay</p>
         </div>
 
-        <!-- G Ward Department - ADDED HERE -->
+        <!-- G Ward Department -->
         <div class="department-box" data-name="g ward" data-keywords="g ward ward g 4th fourth floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>G Ward</h3>
+            <p class="department-location">4th Floor</p>
+            <p>Patient accommodation & stay</p>
+        </div>
+
+        <!-- D Ward Department - ADDED HERE -->
+        <div class="department-box" data-name="d ward" data-keywords="d ward ward d 4th fourth floor patient accommodation stay">
+            <div class="department-icon">🏥</div>
+            <h3>D Ward</h3>
             <p class="department-location">4th Floor</p>
             <p>Patient accommodation & stay</p>
         </div>
@@ -628,7 +636,8 @@
                     icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
                     o_t_complex: { name: "O T Complex", location: "2nd Floor", description: "Operation Theatre Complex" },
                     semi_private_ward: { name: "Semi Private Ward", location: "4th Floor", description: "Patient accommodation & stay" },
-                    g_ward: { name: "G Ward", location: "4th Floor", description: "Patient accommodation & stay" } // ADDED G WARD
+                    g_ward: { name: "G Ward", location: "4th Floor", description: "Patient accommodation & stay" },
+                    d_ward: { name: "D Ward", location: "4th Floor", description: "Patient accommodation & stay" } // ADDED D WARD
                 }
             },
             hi: {
@@ -657,7 +666,8 @@
                     icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
                     o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" },
                     semi_private_ward: { name: "सेमी प्राइवेट वार्ड", location: "चौथी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
-                    g_ward: { name: "जी वार्ड", location: "चौथी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" } // ADDED G WARD
+                    g_ward: { name: "जी वार्ड", location: "चौथी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
+                    d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" } // ADDED D WARD
                 }
             },
             ml: {
@@ -686,7 +696,8 @@
                     icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
                     o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" },
                     semi_private_ward: { name: "സെമി പ്രൈവറ്റ് വാർഡ്", location: "നാലാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
-                    g_ward: { name: "ജി വാർഡ്", location: "നാലാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" } // ADDED G WARD
+                    g_ward: { name: "ജി വാർഡ്", location: "നാലാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
+                    d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" } // ADDED D WARD
                 }
             },
             ar: {
@@ -715,7 +726,8 @@
                     icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
                     o_t_complex: { name: "مجمع غرفة العمليات", location: "الطابق الثاني", description: "مجمع غرفة العمليات" },
                     semi_private_ward: { name: "جناح شبه خاص", location: "الطابق الرابع", description: "إقامة المرضى والإقامة" },
-                    g_ward: { name: "جناح G", location: "الطابق الرابع", description: "إقامة المرضى والإقامة" } // ADDED G WARD
+                    g_ward: { name: "جناح G", location: "الطابق الرابع", description: "إقامة المرضى والإقامة" },
+                    d_ward: { name: "جناح D", location: "الطابق الرابع", description: "إقامة المرضى والإقامة" } // ADDED D WARD
                 }
             }
         };
@@ -794,6 +806,9 @@
                 }
                 if (departmentName === 'g ward') {
                     translationKey = 'g_ward';
+                }
+                if (departmentName === 'd ward') {
+                    translationKey = 'd_ward';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -902,6 +917,8 @@
                         window.location.href = 'semi-private-ward.html';
                     } else if (departmentName === 'g ward') {
                         window.location.href = 'g_ward.html';
+                    } else if (departmentName === 'd ward') {
+                        window.location.href = 'd_ward.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
