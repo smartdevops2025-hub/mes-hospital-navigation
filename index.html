@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     
+    <!-- Firebase SDK (using CDN version since you can't use imports in regular HTML) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+    
     <!-- Security Protection -->
     <script>
     // Prevent right-click, text selection, and dev tools
@@ -369,6 +373,32 @@
             }
         }
     </style>
+    
+    <!-- Initialize Firebase -->
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpWKrSnQMWtgx1r_OxWtrE7CktyVcb5m0",
+            authDomain: "hospital-wayfinder-counter.firebaseapp.com",
+            databaseURL: "https://hospital-wayfinder-counter-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "hospital-wayfinder-counter",
+            storageBucket: "hospital-wayfinder-counter.firebasestorage.app",
+            messagingSenderId: "347732984976",
+            appId: "1:347732984976:web:a0705df763fc0c6e248415"
+        };
+        
+        // Initialize Firebase
+        let app;
+        let database;
+        
+        try {
+            app = firebase.initializeApp(firebaseConfig);
+            database = firebase.database();
+            console.log("✅ Firebase initialized successfully");
+        } catch (error) {
+            console.error("❌ Firebase initialization error:", error);
+        }
+    </script>
 </head>
 <body>
     <!-- Header with Hospital Logo -->
@@ -409,7 +439,6 @@
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
-        <!-- ... (all department boxes remain exactly as they were) ... -->
         <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
             <div class="department-icon">💊</div>
             <h3>OP Pharmacy</h3>
@@ -567,51 +596,118 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
-        // HIT COUNTER FUNCTIONALITY
-        function initializeHitCounter() {
-            // Check if this is the first visit in this session
-            if (!sessionStorage.getItem('visitCounted')) {
-                // Get current count from localStorage
-                let count = localStorage.getItem('wayfinderVisits');
+        // HIT COUNTER FUNCTIONALITY WITH FIREBASE
+        async function initializeHitCounter() {
+            console.log("Initializing hit counter...");
+            
+            // First, try Firebase (global counter)
+            if (database) {
+                await updateFirebaseCounter();
+            } else {
+                console.log("Firebase not available, using fallback");
+                // Fallback to localStorage
+                fallbackLocalCounter();
+            }
+        }
+        
+        async function updateFirebaseCounter() {
+            try {
+                console.log("Attempting to update Firebase counter...");
                 
-                // If no count exists, start at 0
-                if (count === null) {
-                    count = 0;
+                // Check if we've already counted this session
+                if (!sessionStorage.getItem('visitCounted')) {
+                    console.log("New visit detected, updating counter...");
+                    
+                    // Get current count from Firebase
+                    const counterRef = database.ref('visitCounter');
+                    const snapshot = await counterRef.once('value');
+                    let currentCount = snapshot.val();
+                    
+                    // If no count exists, start at 0
+                    if (currentCount === null || currentCount === undefined) {
+                        currentCount = 0;
+                    }
+                    
+                    console.log("Current count from Firebase:", currentCount);
+                    
+                    // Increment count
+                    currentCount++;
+                    
+                    // Update Firebase
+                    await counterRef.set(currentCount);
+                    
+                    console.log("✅ Updated Firebase count to:", currentCount);
+                    
+                    // Mark session as counted
+                    sessionStorage.setItem('visitCounted', 'true');
+                    localStorage.setItem('lastFirebaseCount', currentCount.toString());
+                    
+                    // Update display
+                    document.getElementById('counterValue').textContent = formatNumber(currentCount);
+                    
+                    // Track in Google Analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'qr_access', {
+                            'event_category': 'Usage',
+                            'event_label': 'QR Code Access - Firebase',
+                            'value': currentCount
+                        });
+                    }
+                    
                 } else {
-                    count = parseInt(count);
+                    console.log("Already counted this session, fetching latest count...");
+                    
+                    // Get latest count for display
+                    try {
+                        const counterRef = database.ref('visitCounter');
+                        const snapshot = await counterRef.once('value');
+                        let currentCount = snapshot.val() || 0;
+                        
+                        document.getElementById('counterValue').textContent = formatNumber(currentCount);
+                        localStorage.setItem('lastFirebaseCount', currentCount.toString());
+                        
+                    } catch (error) {
+                        console.log("Failed to fetch from Firebase, using cached value");
+                        // Use cached value if Firebase fails
+                        let cachedCount = localStorage.getItem('lastFirebaseCount') || 0;
+                        document.getElementById('counterValue').textContent = formatNumber(parseInt(cachedCount));
+                    }
                 }
                 
-                // Increment count
-                count++;
+            } catch (error) {
+                console.error("❌ Firebase error:", error);
+                console.log("Falling back to local counter...");
+                fallbackLocalCounter();
                 
-                // Save updated count to localStorage
+                // Add error info to tooltip
+                const counterElement = document.getElementById('hitCounter');
+                counterElement.title = 'Using local counter. Firebase error: ' + error.message;
+                counterElement.style.backgroundColor = '#ffc107'; // Yellow to indicate fallback
+            }
+        }
+        
+        function fallbackLocalCounter() {
+            console.log("Using fallback local counter");
+            if (!sessionStorage.getItem('visitCounted')) {
+                let count = localStorage.getItem('wayfinderVisits') || 0;
+                count = parseInt(count) + 1;
                 localStorage.setItem('wayfinderVisits', count);
-                
-                // Mark this session as counted
                 sessionStorage.setItem('visitCounted', 'true');
-                
-                // Update display
                 document.getElementById('counterValue').textContent = formatNumber(count);
                 
-                // Also track in Google Analytics
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'qr_access', {
-                        'event_category': 'Usage',
-                        'event_label': 'QR Code Access',
-                        'value': count
-                    });
-                }
+                // Change color to indicate local counter
+                document.getElementById('hitCounter').style.backgroundColor = '#6c757d'; // Gray
             } else {
-                // Display existing count without incrementing
-                let count = localStorage.getItem('wayfinderVisits');
-                if (count === null) {
-                    count = 0;
-                }
+                let count = localStorage.getItem('wayfinderVisits') || 0;
                 document.getElementById('counterValue').textContent = formatNumber(parseInt(count));
             }
         }
         
         function formatNumber(num) {
+            num = parseInt(num);
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            }
             if (num >= 1000) {
                 return (num / 1000).toFixed(1) + 'k';
             }
@@ -725,7 +821,7 @@
                     o_t_complex: { name: "O T Complex", location: "2nd Floor", description: "Operation Theatre Complex" },
                     semi_private_ward: { name: "Semi Private Ward", location: "4th Floor", description: "InPatient Ward" },
                     g_ward: { name: "G Ward", location: "4th Floor", description: "OBG / Gynaec Ward" },
-                    d_ward: { name: "D Ward", location: "4th Floor", description: "Pediatrics Ward" } // ADDED D WARD
+                    d_ward: { name: "D Ward", location: "4th Floor", description: "Pediatrics Ward" }
                 }
             },
             hi: {
@@ -755,7 +851,7 @@
                     o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" },
                     semi_private_ward: { name: "सेमी प्राइवेट वार्ड", location: "चौथी मंजिल", description: "इनपेशेंट वार्डा" },
                     g_ward: { name: "जी वार्ड", location: "चौथी मंजिल", description: "ओबीजी / गाइनेक वार्डा" },
-                    d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "पीडियाट्रिक्स वार्ड" } // ADDED D WARD
+                    d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "पीडियाट्रिक्स वार्ड" }
                 }
             },
             ml: {
@@ -785,7 +881,7 @@
                     o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" },
                     semi_private_ward: { name: "സെമി പ്രൈവറ്റ് വാർഡ്", location: "നാലാം നില", description: "ഇൻപേഷ്യന്റ് വാർഡ്യം" },
                     g_ward: { name: "ജി വാർഡ്", location: "നാലാം നില", description: "ഒ.ബി.ജി / ഗൈനെക്ക് വാർഡ്യം" },
-                    d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "പീഡിയാട്രിക്സ് വാർഡ്യം" } // ADDED D WARD
+                    d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "പീഡിയാട്രിക്സ് വാർഡ്യം" }
                 }
             },
             ar: {
@@ -815,7 +911,7 @@
                     o_t_complex: { name: "مجمع غرفة العمليات", location: "الطابق الثاني", description: "مجمع غرفة العمليات" },
                     semi_private_ward: { name: "جناح شبه خاص", location: "الطابق الرابع", description: "جناح المرضى الداخليين" },
                     g_ward: { name: "جناح G", location: "الطابق الرابع", description: "جناح التوليد وأمراض النساء" },
-                    d_ward: { name: "جناح D", location: "الطابق الرابع", description: "جناح طب الأطفال" } // ADDED D WARD
+                    d_ward: { name: "جناح D", location: "الطابق الرابع", description: "جناح طب الأطفال" }
                 }
             }
         };
@@ -1033,6 +1129,8 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded, initializing...");
+            
             // Initialize hit counter first
             initializeHitCounter();
             
