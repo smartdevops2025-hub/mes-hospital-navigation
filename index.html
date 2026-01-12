@@ -69,6 +69,7 @@
             margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
             border: 2px solid #dc3545;
+            position: relative;
         }
         
         .logo-container {
@@ -98,6 +99,27 @@
             font-size: 1.2rem;
             color: #666;
             font-weight: 500;
+        }
+        
+        .hit-counter {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #dc3545;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .hit-counter-icon {
+            font-size: 1rem;
         }
         
         .language-selector {
@@ -304,6 +326,14 @@
                 font-size: 0.9rem;
                 min-width: 70px;
             }
+            
+            .hit-counter {
+                position: static;
+                margin: 10px auto;
+                width: fit-content;
+                top: auto;
+                right: auto;
+            }
         }
         
         @media (min-width: 768px) {
@@ -343,6 +373,12 @@
 <body>
     <!-- Header with Hospital Logo -->
     <div class="header">
+        <!-- Hit Counter -->
+        <div class="hit-counter" id="hitCounter">
+            <span class="hit-counter-icon">👥</span>
+            <span id="counterValue">0</span>
+        </div>
+        
         <div class="logo-container">
             <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
         </div>
@@ -373,6 +409,7 @@
 
     <!-- Departments Grid -->
     <div class="departments-grid" id="departmentsGrid">
+        <!-- ... (all department boxes remain exactly as they were) ... -->
         <div class="department-box" data-name="pharmacy" data-keywords="pharmacy medicine drug store op">
             <div class="department-icon">💊</div>
             <h3>OP Pharmacy</h3>
@@ -530,6 +567,57 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
+        // HIT COUNTER FUNCTIONALITY
+        function initializeHitCounter() {
+            // Check if this is the first visit in this session
+            if (!sessionStorage.getItem('visitCounted')) {
+                // Get current count from localStorage
+                let count = localStorage.getItem('wayfinderVisits');
+                
+                // If no count exists, start at 0
+                if (count === null) {
+                    count = 0;
+                } else {
+                    count = parseInt(count);
+                }
+                
+                // Increment count
+                count++;
+                
+                // Save updated count to localStorage
+                localStorage.setItem('wayfinderVisits', count);
+                
+                // Mark this session as counted
+                sessionStorage.setItem('visitCounted', 'true');
+                
+                // Update display
+                document.getElementById('counterValue').textContent = formatNumber(count);
+                
+                // Also track in Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'qr_access', {
+                        'event_category': 'Usage',
+                        'event_label': 'QR Code Access',
+                        'value': count
+                    });
+                }
+            } else {
+                // Display existing count without incrementing
+                let count = localStorage.getItem('wayfinderVisits');
+                if (count === null) {
+                    count = 0;
+                }
+                document.getElementById('counterValue').textContent = formatNumber(parseInt(count));
+            }
+        }
+        
+        function formatNumber(num) {
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'k';
+            }
+            return num.toString();
+        }
+
         // Enhanced security protection
         (function() {
             'use strict';
@@ -945,6 +1033,10 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize hit counter first
+            initializeHitCounter();
+            
+            // Initialize other components
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
@@ -958,6 +1050,3 @@
     </script>
 </body>
 </html>
-
-
-
