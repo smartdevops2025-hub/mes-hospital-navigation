@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MES Medical College Hospital - Way Finder</title>
     
+    <!-- Firebase SDK (using CDN version since you can't use imports in regular HTML) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+    
     <!-- Security Protection -->
     <script>
     // Prevent right-click, text selection, and dev tools
@@ -69,6 +73,7 @@
             margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
             border: 2px solid #dc3545;
+            position: relative;
         }
         
         .logo-container {
@@ -98,6 +103,27 @@
             font-size: 1.2rem;
             color: #666;
             font-weight: 500;
+        }
+        
+        .hit-counter {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #dc3545;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .hit-counter-icon {
+            font-size: 1rem;
         }
         
         .language-selector {
@@ -304,6 +330,14 @@
                 font-size: 0.9rem;
                 min-width: 70px;
             }
+            
+            .hit-counter {
+                position: static;
+                margin: 10px auto;
+                width: fit-content;
+                top: auto;
+                right: auto;
+            }
         }
         
         @media (min-width: 768px) {
@@ -339,10 +373,42 @@
             }
         }
     </style>
+    
+    <!-- Initialize Firebase -->
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCpWKrSnQMWtgx1r_OxWtrE7CktyVcb5m0",
+            authDomain: "hospital-wayfinder-counter.firebaseapp.com",
+            databaseURL: "https://hospital-wayfinder-counter-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "hospital-wayfinder-counter",
+            storageBucket: "hospital-wayfinder-counter.firebasestorage.app",
+            messagingSenderId: "347732984976",
+            appId: "1:347732984976:web:a0705df763fc0c6e248415"
+        };
+        
+        // Initialize Firebase
+        let app;
+        let database;
+        
+        try {
+            app = firebase.initializeApp(firebaseConfig);
+            database = firebase.database();
+            console.log("✅ Firebase initialized successfully");
+        } catch (error) {
+            console.error("❌ Firebase initialization error:", error);
+        }
+    </script>
 </head>
 <body>
     <!-- Header with Hospital Logo -->
     <div class="header">
+        <!-- Hit Counter -->
+        <div class="hit-counter" id="hitCounter">
+            <span class="hit-counter-icon">👥</span>
+            <span id="counterValue">0</span>
+        </div>
+        
         <div class="logo-container">
             <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
         </div>
@@ -378,6 +444,20 @@
             <h3>OP Pharmacy</h3>
             <p class="department-location">Ground Floor</p>
             <p>Get your medicines here</p>
+        </div>
+
+        <div class="department-box" data-name="ip pharmacy" data-keywords="ip pharmacy inpatient pharmacy medicine drug store ip">
+            <div class="department-icon">💊</div>
+            <h3>IP Pharmacy</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Inpatient pharmacy services</p>
+        </div>
+
+        <div class="department-box" data-name="ip pharmacy 4th floor" data-keywords="ip pharmacy inpatient pharmacy medicine drug store ip 4th fourth floor">
+            <div class="department-icon">💊</div>
+            <h3>IP Pharmacy</h3>
+            <p class="department-location">4th Floor</p>
+            <p>Inpatient pharmacy services</p>
         </div>
 
         <div class="department-box" data-name="radiology" data-keywords="radiology xray x-ray scan mri ct scanning">
@@ -464,19 +544,184 @@
             <p>Lung & respiratory care</p>
         </div>
 
-        <!-- Dermatology Department - ADDED -->
+        <!-- Dermatology Department -->
         <div class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment derma">
             <div class="department-icon">🧴</div>
             <h3>Dermatology</h3>
             <p class="department-location">Ground Floor</p>
             <p>Skin care & treatment</p>
         </div>
+
+        <div class="department-box" data-name="icu complex" data-keywords="icu intensive care unit critical care emergency icu complex">
+            <div class="department-icon">🏥</div>
+            <h3>ICU Complex</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Intensive Care Unit</p>
+        </div>
+
+        <!-- O T Complex Department -->
+        <div class="department-box" data-name="o t complex" data-keywords="o t complex ot operation theatre surgery surgical operating room theatre">
+            <div class="department-icon">🏥</div>
+            <h3>O T Complex</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Operation Theatre Complex</p>
+        </div>
+
+        <!-- Semi Private Ward Department -->
+        <div class="department-box" data-name="semi private ward" data-keywords="semi private ward private ward patient room accommodation stay 4th fourth floor spw">
+            <div class="department-icon">🏥</div>
+            <h3>Semi Private Ward</h3>
+            <p class="department-location">4th Floor</p>
+            <p>IP Ward</p>
+        </div>
+
+        <!-- G Ward Department -->
+        <div class="department-box" data-name="g ward" data-keywords="g ward ward g 4th fourth floor patient accommodation stay">
+            <div class="department-icon">🏥</div>
+            <h3>G Ward</h3>
+            <p class="department-location">4th Floor</p>
+            <p>OBG / Gynaec Ward</p>
+        </div>
+
+        <!-- D Ward Department - ADDED HERE -->
+        <div class="department-box" data-name="d ward" data-keywords="d ward ward d 4th fourth floor patient accommodation stay">
+            <div class="department-icon">🏥</div>
+            <h3>D Ward</h3>
+            <p class="department-location">4th Floor</p>
+            <p>Pediatrics Ward</p>
+        </div>
+
+        <!-- C Ward Department - ADDED HERE -->
+        <div class="department-box" data-name="c ward" data-keywords="c ward ward d 2nd second floor patient accommodation stay">
+            <div class="department-icon">🏥</div>
+            <h3>C Ward</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Surgery Ward</p>
+        </div>        
     </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
+        // HIT COUNTER FUNCTIONALITY WITH FIREBASE
+        async function initializeHitCounter() {
+            console.log("Initializing hit counter...");
+            
+            // First, try Firebase (global counter)
+            if (database) {
+                await updateFirebaseCounter();
+            } else {
+                console.log("Firebase not available, using fallback");
+                // Fallback to localStorage
+                fallbackLocalCounter();
+            }
+        }
+        
+        async function updateFirebaseCounter() {
+            try {
+                console.log("Attempting to update Firebase counter...");
+                
+                // Check if we've already counted this session
+                if (!sessionStorage.getItem('visitCounted')) {
+                    console.log("New visit detected, updating counter...");
+                    
+                    // Get current count from Firebase
+                    const counterRef = database.ref('visitCounter');
+                    const snapshot = await counterRef.once('value');
+                    let currentCount = snapshot.val();
+                    
+                    // If no count exists, start at 0
+                    if (currentCount === null || currentCount === undefined) {
+                        currentCount = 0;
+                    }
+                    
+                    console.log("Current count from Firebase:", currentCount);
+                    
+                    // Increment count
+                    currentCount++;
+                    
+                    // Update Firebase
+                    await counterRef.set(currentCount);
+                    
+                    console.log("✅ Updated Firebase count to:", currentCount);
+                    
+                    // Mark session as counted
+                    sessionStorage.setItem('visitCounted', 'true');
+                    localStorage.setItem('lastFirebaseCount', currentCount.toString());
+                    
+                    // Update display
+                    document.getElementById('counterValue').textContent = formatNumber(currentCount);
+                    
+                    // Track in Google Analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'qr_access', {
+                            'event_category': 'Usage',
+                            'event_label': 'QR Code Access - Firebase',
+                            'value': currentCount
+                        });
+                    }
+                    
+                } else {
+                    console.log("Already counted this session, fetching latest count...");
+                    
+                    // Get latest count for display
+                    try {
+                        const counterRef = database.ref('visitCounter');
+                        const snapshot = await counterRef.once('value');
+                        let currentCount = snapshot.val() || 0;
+                        
+                        document.getElementById('counterValue').textContent = formatNumber(currentCount);
+                        localStorage.setItem('lastFirebaseCount', currentCount.toString());
+                        
+                    } catch (error) {
+                        console.log("Failed to fetch from Firebase, using cached value");
+                        // Use cached value if Firebase fails
+                        let cachedCount = localStorage.getItem('lastFirebaseCount') || 0;
+                        document.getElementById('counterValue').textContent = formatNumber(parseInt(cachedCount));
+                    }
+                }
+                
+            } catch (error) {
+                console.error("❌ Firebase error:", error);
+                console.log("Falling back to local counter...");
+                fallbackLocalCounter();
+                
+                // Add error info to tooltip
+                const counterElement = document.getElementById('hitCounter');
+                counterElement.title = 'Using local counter. Firebase error: ' + error.message;
+                counterElement.style.backgroundColor = '#ffc107'; // Yellow to indicate fallback
+            }
+        }
+        
+        function fallbackLocalCounter() {
+            console.log("Using fallback local counter");
+            if (!sessionStorage.getItem('visitCounted')) {
+                let count = localStorage.getItem('wayfinderVisits') || 0;
+                count = parseInt(count) + 1;
+                localStorage.setItem('wayfinderVisits', count);
+                sessionStorage.setItem('visitCounted', 'true');
+                document.getElementById('counterValue').textContent = formatNumber(count);
+                
+                // Change color to indicate local counter
+                document.getElementById('hitCounter').style.backgroundColor = '#6c757d'; // Gray
+            } else {
+                let count = localStorage.getItem('wayfinderVisits') || 0;
+                document.getElementById('counterValue').textContent = formatNumber(parseInt(count));
+            }
+        }
+        
+        function formatNumber(num) {
+            num = parseInt(num);
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'k';
+            }
+            return num.toString();
+        }
+
         // Enhanced security protection
         (function() {
             'use strict';
@@ -565,6 +810,8 @@
                 noResults: "No departments found. Try different keywords.",
                 departments: {
                     pharmacy: { name: "OP Pharmacy", location: "Ground Floor", description: "Get your medicines here" },
+                    ip_pharmacy: { name: "IP Pharmacy", location: "2nd Floor", description: "Inpatient pharmacy services" },
+                    ip_pharmacy_4th: { name: "IP Pharmacy", location: "4th Floor", description: "Inpatient pharmacy services" },
                     radiology: { name: "Radiology", location: "Basement Floor", description: "Xray & Scanning" },
                     lab: { name: "Laboratory", location: "Ground Floor", description: "Blood tests & reports" },
                     cardiology: { name: "Cardiology", location: "Basement Floor", description: "Heart care & OPD" },
@@ -577,7 +824,13 @@
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
                     pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
-                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" }
+                    dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
+                    icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
+                    o_t_complex: { name: "O T Complex", location: "2nd Floor", description: "Operation Theatre Complex" },
+                    semi_private_ward: { name: "Semi Private Ward", location: "4th Floor", description: "InPatient Ward" },
+                    g_ward: { name: "G Ward", location: "4th Floor", description: "OBG / Gynaec Ward" },
+                    d_ward: { name: "D Ward", location: "4th Floor", description: "Pediatrics Ward" }
+                    cward: { name: "C Ward", location: "2nd Floor", description: "Surgery Ward" }
                 }
             },
             hi: {
@@ -588,6 +841,8 @@
                 noResults: "कोई विभाग नहीं मिला। विभिन्न कीवर्ड आज़माएं।",
                 departments: {
                     pharmacy: { name: "ओ पी फार्मेसी", location: "ग्राउंड फ्लोर", description: "यहां से दवाएं प्राप्त करें" },
+                    ip_pharmacy: { name: "आई पी फार्मेसी", location: "दूसरी मंजिल", description: "इनपेशेंट फार्मेसी सेवाएं" },
+                    ip_pharmacy_4th: { name: "आई पी फार्मेसी", location: "चौथी मंजिल", description: "इनपेशेंट फार्मेसी सेवाएं" },
                     radiology: { name: "रेडियोलॉजी", location: "बेसमेंट फ्लोर", description: "एक्सरे और स्कैनिंग" },
                     lab: { name: "प्रयोगशाला", location: "ग्राउंड फ्लोर", description: "रक्त परीक्षण और रिपोर्ट" },
                     cardiology: { name: "कार्डियोलॉजी", location: "बेसमेंट फ्लोर", description: "हृदय देखभाल और ओपीडी" },
@@ -600,7 +855,13 @@
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
                     pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
-                    dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" }
+                    dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
+                    icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
+                    o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" },
+                    semi_private_ward: { name: "सेमी प्राइवेट वार्ड", location: "चौथी मंजिल", description: "इनपेशेंट वार्डा" },
+                    g_ward: { name: "जी वार्ड", location: "चौथी मंजिल", description: "ओबीजी / गाइनेक वार्डा" },
+                    d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "पीडियाट्रिक्स वार्ड" }
+                    cward: { name: "सी वार्ड", location: "दूसरी मंजिल", description: "शल्य चिकित्सा वार्ड" }
                 }
             },
             ml: {
@@ -611,6 +872,8 @@
                 noResults: "വകുപ്പുകൾ കണ്ടെത്തിയില്ല. വ്യത്യസ്ത കീവേഡുകൾ പരീക്ഷിക്കുക.",
                 departments: {
                     pharmacy: { name: "ഒ പി ഫാർമസി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "നിങ്ങളുടെ മരുന്നുകൾ ഇവിടെ നിന്ന് ലഭിക്കും" },
+                    ip_pharmacy: { name: "ഐ പി ഫാർമസി", location: "രണ്ടാം നില", description: "ഇൻപേഷ്യന്റ് ഫാർമസി സേവനങ്ങൾ" },
+                    ip_pharmacy_4th: { name: "ഐ പി ഫാർമസി", location: "നാലാം നില", description: "ഇൻപേഷ്യന്റ് ഫാർമസി സേവനങ്ങൾ" },
                     radiology: { name: "റേഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "എക്സ്-റേയും സ്കാനിങ്ങും" },
                     lab: { name: "ലബോറട്ടറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "രക്ത പരിശോധനകളും റിപ്പോർട്ടുകളും" },
                     cardiology: { name: "കാർഡിയോളജി", location: "ബേസ്മെന്റ് ഫ്ലോർ", description: "ഹൃദയ പരിചരണം ഒപ്പം ഓപിഡി" },
@@ -623,7 +886,13 @@
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
                     pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
-                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" }
+                    dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
+                    icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
+                    o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" },
+                    semi_private_ward: { name: "സെമി പ്രൈവറ്റ് വാർഡ്", location: "നാലാം നില", description: "ഇൻപേഷ്യന്റ് വാർഡ്യം" },
+                    g_ward: { name: "ജി വാർഡ്", location: "നാലാം നില", description: "ഒ.ബി.ജി / ഗൈനെക്ക് വാർഡ്യം" },
+                    d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "പീഡിയാട്രിക്സ് വാർഡ്യം" }
+                    cward: { name: "സി വാർഡ്", location: "രണ്ടാം നില", description: "ശസ്ത്രക്രിയ വാർഡ്" }
                 }
             },
             ar: {
@@ -634,6 +903,8 @@
                 noResults: "لم يتم العثور على أقسام. جرب كلمات رئيسية مختلفة.",
                 departments: {
                     pharmacy: { name: "الصيدلية الخارجية", location: "الطابق الأرضي", description: "احصل على أدويتك هنا" },
+                    ip_pharmacy: { name: "صيدلية المرضى الداخليين", location: "الطابق الثاني", description: "خدمات صيدلية المرضى الداخليين" },
+                    ip_pharmacy_4th: { name: "صيدلية المرضى الداخليين ", location: "الطابق الرابع", description: "خدمات صيدلية المرضى الداخليين" },
                     radiology: { name: "الأشعة", location: "الطابق السفلي", description: "الأشعة السينية والمسح" },
                     lab: { name: "المختبر", location: "الطابق الأرضي", description: "اختبارات الدم والتقارير" },
                     cardiology: { name: "طب القلب", location: "الطابق السفلي", description: "رعاية القلب والعيادات الخارجية" },
@@ -646,7 +917,13 @@
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
                     pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
-                    dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" }
+                    dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
+                    icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
+                    o_t_complex: { name: "مجمع غرفة العمليات", location: "الطابق الثاني", description: "مجمع غرفة العمليات" },
+                    semi_private_ward: { name: "جناح شبه خاص", location: "الطابق الرابع", description: "جناح المرضى الداخليين" },
+                    g_ward: { name: "جناح G", location: "الطابق الرابع", description: "جناح التوليد وأمراض النساء" },
+                    d_ward: { name: "جناح D", location: "الطابق الرابع", description: "جناح طب الأطفال" }
+                    cward: { name: "جناح C", location: "الطابق الثاني", description: "جناح الجراحة" }
                 }
             }
         };
@@ -707,6 +984,30 @@
                 }
                 if (departmentName === 'general store') {
                     translationKey = 'general_store';
+                }
+                if (departmentName === 'ip pharmacy') {
+                    translationKey = 'ip_pharmacy';
+                }
+                if (departmentName === 'ip pharmacy 4th floor') {
+                    translationKey = 'ip_pharmacy_4th';
+                }
+                if (departmentName === 'icu complex') {
+                    translationKey = 'icu_complex';
+                }
+                if (departmentName === 'o t complex') {
+                    translationKey = 'o_t_complex';
+                }
+                if (departmentName === 'semi private ward') {
+                    translationKey = 'semi_private_ward';
+                }
+                if (departmentName === 'g ward') {
+                    translationKey = 'g_ward';
+                }
+                if (departmentName === 'd ward') {
+                    translationKey = 'd_ward';
+                }
+                if (departmentName === 'c ward') {
+                    translationKey = 'cward';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -777,12 +1078,16 @@
                     
                     if (departmentName === 'pharmacy') {
                         window.location.href = 'pharmacy.html';
+                    } else if (departmentName === 'ip pharmacy') {
+                        window.location.href = 'ip-pharmacy.html';
+                    } else if (departmentName === 'ip pharmacy 4th floor') {
+                        window.location.href = 'ip-pharmacy-4th.html';
                     } else if (departmentName === 'radiology') {
                         window.location.href = 'radiology.html';
                     } else if (departmentName === 'cardiology') {
                         window.location.href = 'cardiology.html';
                     } else if (departmentName === 'lab') {
-                        window.location.href = 'Lab.html';
+                        window.location.href = 'lab.html';
                     } else if (departmentName === 'ortho') {
                         window.location.href = 'ortho.html';
                     } else if (departmentName === 'ophthalmology') {
@@ -803,6 +1108,18 @@
                         window.location.href = 'pulmonology.html';
                     } else if (departmentName === 'dermatology') {
                         window.location.href = 'dermatology.html';
+                    } else if (departmentName === 'icu complex') {
+                        window.location.href = 'icu_complex.html';
+                    } else if (departmentName === 'o t complex') {
+                        window.location.href = 'o_t_complex.html';
+                    } else if (departmentName === 'semi private ward') {
+                        window.location.href = 'semi-private-ward.html';
+                    } else if (departmentName === 'g ward') {
+                        window.location.href = 'g_ward.html';
+                    } else if (departmentName === 'd ward') {
+                        window.location.href = 'd_ward.html';
+                    } else if (departmentName === 'c ward') {
+                        window.location.href = 'cward.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
@@ -829,6 +1146,12 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded, initializing...");
+            
+            // Initialize hit counter first
+            initializeHitCounter();
+            
+            // Initialize other components
             initializeLanguage();
             initializeSearch();
             initializeBackToTop();
