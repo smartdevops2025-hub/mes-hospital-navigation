@@ -590,14 +590,6 @@
             <p class="department-location">4th Floor</p>
             <p>Pediatrics Ward</p>
         </div>
-
-        <!-- C Ward Department - ADDED HERE -->
-        <div class="department-box" data-name="c ward" data-keywords="c ward ward d 2nd second floor patient accommodation stay">
-            <div class="department-icon">🏥</div>
-            <h3>C Ward</h3>
-            <p class="department-location">2nd Floor</p>
-            <p>Surgery Ward</p>
-        </div>        
     </div>
 
     <!-- Back to Top Button -->
@@ -830,7 +822,6 @@
                     semi_private_ward: { name: "Semi Private Ward", location: "4th Floor", description: "InPatient Ward" },
                     g_ward: { name: "G Ward", location: "4th Floor", description: "OBG / Gynaec Ward" },
                     d_ward: { name: "D Ward", location: "4th Floor", description: "Pediatrics Ward" }
-                    c_ward: { name: "C Ward", location: "2nd Floor", description: "Surgery Ward" }
                 }
             },
             hi: {
@@ -861,7 +852,6 @@
                     semi_private_ward: { name: "सेमी प्राइवेट वार्ड", location: "चौथी मंजिल", description: "इनपेशेंट वार्डा" },
                     g_ward: { name: "जी वार्ड", location: "चौथी मंजिल", description: "ओबीजी / गाइनेक वार्डा" },
                     d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "पीडियाट्रिक्स वार्ड" }
-                    c_ward: { name: "सी वार्ड", location: "दूसरी मंजिल", description: "शल्य चिकित्सा वार्ड" }
                 }
             },
             ml: {
@@ -892,7 +882,6 @@
                     semi_private_ward: { name: "സെമി പ്രൈവറ്റ് വാർഡ്", location: "നാലാം നില", description: "ഇൻപേഷ്യന്റ് വാർഡ്യം" },
                     g_ward: { name: "ജി വാർഡ്", location: "നാലാം നില", description: "ഒ.ബി.ജി / ഗൈനെക്ക് വാർഡ്യം" },
                     d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "പീഡിയാട്രിക്സ് വാർഡ്യം" }
-                    c_ward: { name: "സി വാർഡ്", location: "രണ്ടാം നില", description: "ശസ്ത്രക്രിയ വാർഡ്" }
                 }
             },
             ar: {
@@ -923,7 +912,6 @@
                     semi_private_ward: { name: "جناح شبه خاص", location: "الطابق الرابع", description: "جناح المرضى الداخليين" },
                     g_ward: { name: "جناح G", location: "الطابق الرابع", description: "جناح التوليد وأمراض النساء" },
                     d_ward: { name: "جناح D", location: "الطابق الرابع", description: "جناح طب الأطفال" }
-                    c_ward: { name: "جناح C", location: "الطابق الثاني", description: "جناح الجراحة" }
                 }
             }
         };
@@ -1005,9 +993,6 @@
                 }
                 if (departmentName === 'd ward') {
                     translationKey = 'd_ward';
-                }
-                if (departmentName === 'c ward') {
-                    translationKey = 'cward';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1118,8 +1103,6 @@
                         window.location.href = 'g_ward.html';
                     } else if (departmentName === 'd ward') {
                         window.location.href = 'd_ward.html';
-                    } else if (departmentName === 'c ward') {
-                        window.location.href = 'cward.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
