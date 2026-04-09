@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directions to C Ward (2nd Floor)</title>
+
+<style>
+/* KEEP SAME STYLE FROM D_WARD (unchanged for consistency) */
+body {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    background-color: #f0f8ff;
+}
+.step {
+    background: white;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="page-title">Directions to C Ward (2nd Floor)</h1>
+
+<div class="step">
+<h2 id="step1-title">Step 1: From Main Entrance</h2>
+<img src="images/cward1.jpg">
+<p id="step1-desc">Enter through the Main Reception, keep right and walk straight</p>
+</div>
+
+<div class="step">
+<h2 id="step2-title">Step 2: Take few Steps ahead</h2>
+<img src="images/cward2.jpg">
+<p id="step2-desc">Walk a little further after the reception counter passing Lab Counter and take a left</p>
+</div>
+
+<div class="step">
+<h2 id="step3-title">Step 3: Walk Straight</h2>
+<img src="images/cward3.jpg">
+<p id="step3-desc">Walk a little further</p>
+</div>
+
+<div class="step">
+<h2 id="step4-title">Step 4: Another Left Turn</h2>
+<img src="images/cward4.jpg">
+<p id="step4-desc">After passing the stair corridor, take a left turn where you can see the Lifts</p>
+</div>
+
+<div class="step">
+<h2 id="step5-title">Step 5: Another Left Turn</h2>
+<img src="images/cward5.jpg">
+<p id="step5-desc">After passing the stair corridor, you can see the Lifts to 2nd Floor</p>
+</div>
+
+<div class="step">
+<h2 id="step6-title">Step 6: Lift To 2nd Floor</h2>
+<img src="images/cward6.jpg">
+<p id="step6-desc">Take the Lift and get down at 2nd Floor and then take the left turn</p>
+</div>
+
+<div class="step">
+<h2 id="step7-title">Step 7: Walk a little further and turn</h2>
+<img src="images/cward7.jpg">
+<p id="step7-desc">Take Right following the arrow mark</p>
+</div>
+
+<div class="step">
+<h2 id="step8-title">Step 8: Walk straight</h2>
+<img src="images/cward8.jpg">
+<p id="step8-desc">Follow the arrow mark, Walk straight following the arrow mark</p>
+</div>
+
+<div class="step">
+<h2 id="step9-title">Step 9: You have reached your destination</h2>
+<img src="images/cward9.jpg">
+<p id="step9-desc">Your Destination is on your right</p>
+</div>
+
+<button onclick="window.location.href='index.html'">Back</button>
+
+<script>
+const translations = {
+en: {
+pageTitle: "Directions to C Ward (2nd Floor)",
+step1Title: "Step 1: From Main Entrance",
+step1Desc: "Enter through the Main Reception, keep right and walk straight",
+
+step2Title: "Step 2: Take few Steps ahead",
+step2Desc: "Walk a little further after the reception counter passing Lab Counter and take a left",
+
+step3Title: "Step 3: Walk Straight",
+step3Desc: "Walk a little further",
+
+step4Title: "Step 4: Another Left Turn",
+step4Desc: "After passing the stair corridor, take a left turn where you can see the Lifts",
+
+step5Title: "Step 5: Another Left Turn",
+step5Desc: "After passing the stair corridor, you can see the Lifts to 2nd Floor",
+
+step6Title: "Step 6: Lift To 2nd Floor",
+step6Desc: "Take the Lift and get down at 2nd Floor and then take the left turn",
+
+step7Title: "Step 7: Walk a little further",
+step7Desc: "Take Right following the arrow mark",
+
+step8Title: "Step 8: Walk straight",
+step8Desc: "Follow the arrow mark, Walk straight following the arrow mark",
+
+step9Title: "Step 9: Destination reached",
+step9Desc: "Your Destination is on your right"
+}
+};
+
+function changeLanguage(lang){
+const t = translations[lang];
+
+document.getElementById('page-title').textContent = t.pageTitle;
+document.getElementById('step1-title').textContent = t.step1Title;
+document.getElementById('step1-desc').textContent = t.step1Desc;
+document.getElementById('step2-title').textContent = t.step2Title;
+document.getElementById('step2-desc').textContent = t.step2Desc;
+document.getElementById('step3-title').textContent = t.step3Title;
+document.getElementById('step3-desc').textContent = t.step3Desc;
+document.getElementById('step4-title').textContent = t.step4Title;
+document.getElementById('step4-desc').textContent = t.step4Desc;
+document.getElementById('step5-title').textContent = t.step5Title;
+document.getElementById('step5-desc').textContent = t.step5Desc;
+document.getElementById('step6-title').textContent = t.step6Title;
+document.getElementById('step6-desc').textContent = t.step6Desc;
+document.getElementById('step7-title').textContent = t.step7Title;
+document.getElementById('step7-desc').textContent = t.step7Desc;
+document.getElementById('step8-title').textContent = t.step8Title;
+document.getElementById('step8-desc').textContent = t.step8Desc;
+document.getElementById('step9-title').textContent = t.step9Title;
+document.getElementById('step9-desc').textContent = t.step9Desc;
+}
+</script>
+
+</body>
+</html>
