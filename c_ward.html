@@ -12,7 +12,7 @@
 
     <!-- 🔒 SECURITY PROTECTION - SEPARATE SCRIPT TAG -->
     <script>
-    // Enhanced security protection for D Ward page
+    // Enhanced security protection for C Ward page
     (function() {
         'use strict';
         
@@ -88,9 +88,9 @@
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Directions to D Ward (4th Floor)</title>
+    <title>Directions to C Ward (4th Floor)</title>
     <style>
-    /* Mobile-first responsive design - Enhanced with ICU Complex features */
+    /* Mobile-first responsive design */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -108,8 +108,8 @@
         padding: 15px;
         background-color: #f0f8ff;
         line-height: 1.6;
-        font-size: 16px; /* Better base font size for mobile */
-        padding-top: 120px; /* Space for fixed header */
+        font-size: 16px;
+        padding-top: 120px;
     }
     
     .header {
@@ -124,7 +124,7 @@
     
     .hospital-logo {
         width: 100%;
-        max-width: 200px; /* Smaller logo for mobile */
+        max-width: 200px;
         height: auto;
         margin: 0 auto 10px;
         display: block;
@@ -132,7 +132,7 @@
     
     .header h1 {
         color: #dc3545;
-        font-size: 1.4rem; /* Smaller header for mobile */
+        font-size: 1.4rem;
         margin: 0;
     }
     
@@ -206,7 +206,7 @@
     .page-title {
         color: #2e86ab;
         text-align: center;
-        font-size: 1.6rem; /* Better mobile size */
+        font-size: 1.6rem;
         margin: 20px 0;
         font-weight: bold;
         line-height: 1.3;
@@ -221,12 +221,12 @@
         text-align: center;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         overflow: hidden;
-        scroll-margin-top: 100px; /* For smooth scrolling to steps */
+        scroll-margin-top: 100px;
     }
     
     .step h2 {
         color: #2e86ab;
-        font-size: 1.3rem; /* Better mobile size */
+        font-size: 1.3rem;
         margin-bottom: 15px;
         font-weight: bold;
         line-height: 1.3;
@@ -234,7 +234,7 @@
     }
     
     .step p {
-        font-size: 1.1rem; /* Better mobile size */
+        font-size: 1.1rem;
         color: #333;
         margin-top: 12px;
         line-height: 1.5;
@@ -242,7 +242,7 @@
         padding: 0 5px;
     }
     
-    /* IMAGE CONTAINER - UPDATED FOR LAZY LOADING */
+    /* IMAGE CONTAINER */
     .image-container {
         width: 100%;
         overflow: hidden;
@@ -252,7 +252,7 @@
         justify-content: center;
         align-items: center;
         background: #f8f9fa;
-        min-height: 200px; /* Prevent layout shift */
+        min-height: 200px;
     }
     
     .image-container img {
@@ -275,7 +275,6 @@
         opacity: 1;
     }
     
-    /* Loading animation for images not yet loaded */
     .lazy-load:not(.loaded) {
         background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
         background-size: 200% 100%;
@@ -314,12 +313,11 @@
         padding: 20px 0;
     }
     
-    /* Enhanced mobile adjustments - Same as ICU Complex */
     @media (max-width: 480px) {
         body {
             font-size: 15px;
             padding: 12px;
-            padding-top: 100px; /* Less space for mobile */
+            padding-top: 100px;
         }
         
         .header {
@@ -415,7 +413,6 @@
         }
     }
     
-    /* Tablet and larger screens */
     @media (min-width: 768px) {
         body {
             max-width: 700px;
@@ -514,8 +511,8 @@
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="step-counter">
-            <span class="current-step-info">Step <span id="current-step">1</span> of 10</span>
-            <span id="progress-percentage">10%</span>
+            <span class="current-step-info">Step <span id="current-step">1</span> of 9</span>
+            <span id="progress-percentage">11%</span>
         </div>
     </div>
 
@@ -533,134 +530,410 @@
         <button class="language-btn" data-lang="ar">العربية </button>
     </div>
 
-<h1 class="page-title" id="page-title">Directions to C Ward (2nd Floor)</h1>
+    <h1 class="page-title" id="page-title">🏥 Directions to C Ward (2nd Floor)</h1>
+    
+    <div class="step" id="step1">
+        <h2 id="step1-title">Step 1: From Main Entrance</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward1.jpg" 
+                class="lazy-load" 
+                alt="Main entrance view"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step1-desc">Enter through the Main Reception, keep right and walk straight</p>
+    </div>
 
-<!-- STEPS -->
+    <div class="step" id="step2">
+        <h2 id="step2-title">Step 2: Take few Steps ahead</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward2.jpg" 
+                class="lazy-load" 
+                alt="Walk a little further after the reception counter"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step2-desc">Walk a little further after the reception counter passing Lab Counter and take a left following the arrow</p>
+    </div>
 
-<div class="step">
-<h2 id="step1-title">Step 1</h2>
-<div class="image-container"><img src="images/cward1.jpg"></div>
-<p id="step1-desc">Enter through the Main Reception, keep right and walk straight</p>
-</div>
+    <div class="step" id="step3">
+        <h2 id="step3-title">Step 3: Walk Straight</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward3.jpg" 
+                class="lazy-load" 
+                alt="Walk a little further"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step3-desc">Walk a little further</p>
+    </div>
 
-<div class="step">
-<h2 id="step2-title">Step 2</h2>
-<div class="image-container"><img src="images/cward2.jpg"></div>
-<p id="step2-desc">Walk a little further after the reception counter passing Lab Counter and take a left</p>
-</div>
+    <div class="step" id="step4">
+        <h2 id="step4-title">Step 4: Another Left Turn</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward4.jpg" 
+                class="lazy-load" 
+                alt="After passing the stair corridor, take a left turn where you can see the Lifts"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step4-desc">After passing the stair corridor, take a left turn where you can see the Lifts</p>
+    </div>
 
-<div class="step">
-<h2 id="step3-title">Step 3</h2>
-<div class="image-container"><img src="images/cward3.jpg"></div>
-<p id="step3-desc">Walk a little further</p>
-</div>
+    <div class="step" id="step5">
+        <h2 id="step5-title">Step 5: Another Left Turn</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward5.jpg" 
+                class="lazy-load" 
+                alt="After passing the stair corridor, you can see the Lifts to 2nd Floor"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step5-desc">After passing the stair corridor, you can see the Lifts to 2nd Floor</p>
+    </div>
 
-<div class="step">
-<h2 id="step4-title">Step 4</h2>
-<div class="image-container"><img src="images/cward4.jpg"></div>
-<p id="step4-desc">Take left near lift corridor</p>
-</div>
+    <div class="step" id="step6">
+        <h2 id="step6-title">Step 6: Lift To 2nd Floor</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward6.jpg" 
+                class="lazy-load" 
+                alt="Take the Lift and get down at 2nd Floor and then take the left turn"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step6-desc">Take the Lift and get down at 2nd Floor and then take the left turn</p>
+    </div>
 
-<div class="step">
-<h2 id="step5-title">Step 5</h2>
-<div class="image-container"><img src="images/cward5.jpg"></div>
-<p id="step5-desc">Proceed towards lift</p>
-</div>
+    <div class="step" id="step7">
+        <h2 id="step7-title">Step 7: Walk a little further and turn left</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward7.jpg" 
+                class="lazy-load" 
+                alt="Take Right following the arrow mark"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step7-desc">Take Right following the arrow mark</p>
+    </div>
 
-<div class="step">
-<h2 id="step6-title">Step 6</h2>
-<div class="image-container"><img src="images/cward6.jpg"></div>
-<p id="step6-desc">Take lift to 2nd Floor</p>
-</div>
+    <div class="step" id="step8">
+        <h2 id="step8-title">Step 8: Walk straight</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward8.jpg" 
+                class="lazy-load" 
+                alt="Follow the arrow mark, Walk straight following the arrow mark"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step8-desc">Follow the arrow mark, Walk straight following the arrow mark</p>
+    </div>
 
-<div class="step">
-<h2 id="step7-title">Step 7</h2>
-<div class="image-container"><img src="images/cward7.jpg"></div>
-<p id="step7-desc">Turn right</p>
-</div>
+    <div class="step" id="step9">
+        <h2 id="step9-title">Step 9: You have reached your destination</h2>
+        <div class="image-container">
+            <img 
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
+                data-src="images/cward9.jpg" 
+                class="lazy-load" 
+                alt="Your Destination is on your right"
+                loading="lazy"
+                width="800" 
+                height="400">
+        </div>
+        <p id="step9-desc">Your Destination is on your right</p>
+    </div>
+    
+    <div class="button-container">
+        <button class="nav-button" onclick="window.location.href='index.html'">
+            ← Back to Main Menu
+        </button>
+    </div>
 
-<div class="step">
-<h2 id="step8-title">Step 8</h2>
-<div class="image-container"><img src="images/cward8.jpg"></div>
-<p id="step8-desc">Walk straight</p>
-</div>
+    <script>
+        // Enhanced tracking for C Ward page
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'page_title': 'Directions to C Ward (2nd Floor)',
+                    'page_location': window.location.href,
+                    'department': 'C Ward 2nd Floor'
+                });
+            }
+            
+            initializeLazyLoading();
+            initializeProgressTracker();
+            initializeCWardLanguage();
+            
+            const backButton = document.querySelector('.nav-button');
+            if (backButton) {
+                backButton.addEventListener('click', function() {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'navigation_complete', {
+                            'event_category': 'Navigation',
+                            'event_label': 'C Ward 2nd Floor',
+                            'value': 1
+                        });
+                    }
+                });
+            }
+            
+            let startTime = new Date();
+            window.addEventListener('beforeunload', function() {
+                let endTime = new Date();
+                let timeSpent = Math.round((endTime - startTime) / 1000);
+                
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'time_spent', {
+                        'event_category': 'Engagement',
+                        'event_label': 'C Ward 2nd Floor',
+                        'value': timeSpent
+                    });
+                }
+            });
+        });
 
-<div class="step">
-<h2 id="step9-title">Step 9</h2>
-<div class="image-container"><img src="images/cward9.jpg"></div>
-<p id="step9-desc">Destination on right</p>
-</div>
+        function initializeLazyLoading() {
+            const lazyImages = document.querySelectorAll('img.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                            
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'image_load', {
+                                    'event_category': 'Performance',
+                                    'event_label': img.alt || 'C Ward Image',
+                                    'value': 1
+                                });
+                            }
+                        }
+                    });
+                });
 
-<div style="text-align:center">
-<button onclick="window.location.href='index.html'">← Back</button>
-</div>
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                });
+            }
+        }
 
-<script>
+        function initializeProgressTracker() {
+            const progressFill = document.getElementById('progress-fill');
+            const currentStep = document.getElementById('current-step');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const steps = document.querySelectorAll('.step');
+            
+            function updateProgress() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = Math.min(100, (scrollTop / docHeight) * 100);
+                
+                progressFill.style.width = scrollPercent + '%';
+                progressPercentage.textContent = Math.round(scrollPercent) + '%';
+                
+                let currentStepIndex = 1;
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2) {
+                        currentStepIndex = index + 1;
+                    }
+                });
+                
+                currentStep.textContent = currentStepIndex;
+                
+                if (scrollPercent >= 90) {
+                    progressFill.style.background = 'linear-gradient(90deg, #28a745, #20c997)';
+                } else if (scrollPercent >= 50) {
+                    progressFill.style.background = 'linear-gradient(90deg, #2e86ab, #1a536b)';
+                }
+            }
+            
+            let scrollTimeout;
+            function throttledUpdate() {
+                if (!scrollTimeout) {
+                    scrollTimeout = setTimeout(function() {
+                        scrollTimeout = null;
+                        updateProgress();
+                    }, 100);
+                }
+            }
+            
+            window.addEventListener('scroll', throttledUpdate);
+            window.addEventListener('resize', throttledUpdate);
+            updateProgress();
+        }
 
-const translations = {
-en:{
-pageTitle:"Directions to C Ward (2nd Floor)",
-step1Desc:"Enter through the Main Reception, keep right and walk straight",
-step2Desc:"Walk a little further and take a left",
-step3Desc:"Walk straight",
-step4Desc:"Take left near lift corridor",
-step5Desc:"Proceed towards lift",
-step6Desc:"Take lift to 2nd Floor",
-step7Desc:"Turn right",
-step8Desc:"Walk straight",
-step9Desc:"Destination on right"
-},
-hi:{
-pageTitle:"सी वार्ड का रास्ता (दूसरी मंजिल)",
-step1Desc:"मुख्य प्रवेश से अंदर आएं और सीधे चलें",
-step2Desc:"थोड़ा आगे चलकर बाएं मुड़ें",
-step3Desc:"सीधे चलें",
-step4Desc:"लिफ्ट के पास बाएं मुड़ें",
-step5Desc:"लिफ्ट की ओर बढ़ें",
-step6Desc:"दूसरी मंजिल तक लिफ्ट लें",
-step7Desc:"दाएं मुड़ें",
-step8Desc:"सीधे चलें",
-step9Desc:"आपका गंतव्य दाईं ओर है"
-},
-ml:{
-pageTitle:"സി വാർഡിലേക്കുള്ള വഴി (രണ്ടാം നില)",
-step1Desc:"പ്രധാന പ്രവേശനത്തിലൂടെ കയറുക",
-step2Desc:"കുറച്ച് മുന്നോട്ട് പോയി ഇടത്തേക്ക് തിരിയുക",
-step3Desc:"നേരെ നടക്കുക",
-step4Desc:"ലിഫ്റ്റ് ഭാഗത്ത് ഇടത്തേക്ക് തിരിയുക",
-step5Desc:"ലിഫ്റ്റിലേക്ക് പോകുക",
-step6Desc:"രണ്ടാം നിലയിലേക്ക് ലിഫ്റ്റ് എടുക്കുക",
-step7Desc:"വലത്തേക്ക് തിരിയുക",
-step8Desc:"നേരെ നടക്കുക",
-step9Desc:"ലക്ഷ്യം വലത് വശത്ത്"
-},
-ar:{
-pageTitle:"اتجاهات إلى جناح C (الطابق الثاني)",
-step1Desc:"ادخل من المدخل الرئيسي وامشِ مباشرة",
-step2Desc:"تقدم قليلاً ثم انعطف يسارًا",
-step3Desc:"امشِ مباشرة",
-step4Desc:"انعطف يسارًا قرب المصعد",
-step5Desc:"اتجه نحو المصعد",
-step6Desc:"خذ المصعد إلى الطابق الثاني",
-step7Desc:"انعطف يمينًا",
-step8Desc:"امشِ مباشرة",
-step9Desc:"وجهتك على اليمين"
-}
-};
+        const cWardTranslations = {
+            en: {
+                pageTitle: "🏥 Directions to C Ward (2nd Floor)",
+                step1Title: "Step 1: From Main Entrance",
+                step1Desc: "Enter through the Main Reception, keep right and walk straight",
+                step2Title: "Step 2: Take few Steps ahead",
+                step2Desc: "Walk a little further after the reception counter passing Lab Counter and take a left following the arrow",
+                step3Title: "Step 3: Walk Straight",
+                step3Desc: "Walk a little further",
+                step4Title: "Step 4: Another Left Turn",
+                step4Desc: "After passing the stair corridor, take a left turn where you can see the Lifts",
+                step5Title: "Step 5: Another Left Turn",
+                step5Desc: "After passing the stair corridor, you can see the Lifts to 2nd Floor",
+                step6Title: "Step 6: Lift To 2nd Floor",
+                step6Desc: "Take the Lift and get down at 2nd Floor and then take the left turn",
+                step7Title: "Step 7: Walk a little further and turn left",
+                step7Desc: "Take Right following the arrow mark",
+                step8Title: "Step 8: Walk straight",
+                step8Desc: "Follow the arrow mark, Walk straight following the arrow mark",
+                step9Title: "Step 9: You have reached your destination",
+                step9Desc: "Your Destination is on your right",
+                backButton: "← Back to Main Menu"
+            },
+            hi: {
+                pageTitle: "🏥 सी वार्ड का रास्ता (दूसरी मंजिल)",
+                step1Title: "चरण 1: मुख्य प्रवेश द्वार से",
+                step1Desc: "मुख्य रिसेप्शन से अंदर आएं, दायीं ओर रहें और सीधे चलें",
+                step2Title: "चरण 2: कुछ कदम आगे बढ़ें",
+                step2Desc: "रिसेप्शन काउंटर के बाद लैब काउंटर को पार करते हुए थोड़ा और आगे चलें और तीर का पालन करते हुए बायीं ओर मुड़ें",
+                step3Title: "चरण 3: सीधे चलें",
+                step3Desc: "थोड़ा और आगे चलें",
+                step4Title: "चरण 4: एक और बायाँ मोड़",
+                step4Desc: "सीढ़ी गलियारा पार करने के बाद, बायीं ओर मुड़ें जहाँ आप लिफ्ट देख सकते हैं",
+                step5Title: "चरण 5: एक और बायाँ मोड़",
+                step5Desc: "सीढ़ी गलियारा पार करने के बाद, आप दूसरी मंजिल की लिफ्ट देख सकते हैं",
+                step6Title: "चरण 6: दूसरी मंजिल की लिफ्ट",
+                step6Desc: "लिफ्ट लें और दूसरी मंजिल पर उतरें और फिर बायीं ओर मुड़ें",
+                step7Title: "चरण 7: थोड़ा और आगे चलें और बायीं ओर मुड़ें",
+                step7Desc: "तीर के निशान का पालन करते हुए दायीं ओर मुड़ें",
+                step8Title: "चरण 8: सीधे चलें",
+                step8Desc: "तीर के निशान का पालन करें, तीर के निशान का पालन करते हुए सीधे चलें",
+                step9Title: "चरण 9: आप अपने गंतव्य पर पहुँच गए हैं",
+                step9Desc: "आपका गंतव्य आपके दायीं ओर है",
+                backButton: "← मुख्य मेनू पर वापस"
+            },
+            ml: {
+                pageTitle: "🏥 സി വാർഡിലേക്കുള്ള വഴി (രണ്ടാം നില)",
+                step1Title: "ഘട്ടം 1: പ്രധാന പ്രവേശനകവാടത്തിൽ നിന്ന്",
+                step1Desc: "പ്രധാന റിസപ്ഷൻ വഴി അകത്തേക്ക് പ്രവേശിച്ച് വലതുവശത്ത് തുടരുക, നേരെ നടക്കുക",
+                step2Title: "ഘട്ടം 2: കുറച്ച് ചുവടുകൾ മുന്നോട്ട് നടക്കുക",
+                step2Desc: "റിസപ്ഷൻ കൗണ്ടറിന് ശേഷം ലാബ് കൗണ്ടർ കടന്ന് കുറച്ച് കൂടി മുന്നോട്ട് നടന്ന് അമ്പടയാളം പിന്തുടർന്ന് ഇടതുവശത്ത് തിരിയുക",
+                step3Title: "ഘട്ടം 3: നേരെ നടക്കുക",
+                step3Desc: "കുറച്ച് കൂടി മുന്നോട്ട് നടക്കുക",
+                step4Title: "ഘട്ടം 4: മറ്റൊരു ഇടതുവശത്ത് തിരിയുക",
+                step4Desc: "ഏണി കോറിഡോർ കടന്നുപോയ ശേഷം, ലിഫ്റ്റുകൾ കാണാവുന്ന ഇടത്തേക്ക് തിരിയുക",
+                step5Title: "ഘട്ടം 5: മറ്റൊരു ഇടതുവശത്ത് തിരിയുക",
+                step5Desc: "ഏണി കോറിഡോർ കടന്നുപോയ ശേഷം, രണ്ടാം നിലയിലേക്കുള്ള ലിഫ്റ്റുകൾ നിങ്ങൾക്ക് കാണാം",
+                step6Title: "ഘട്ടം 6: രണ്ടാം നിലയിലേക്കുള്ള ലിഫ്റ്റ്",
+                step6Desc: "ലിഫ്റ്റ് എടുത്ത് രണ്ടാം നിലയിൽ ഇറങ്ങി ഇടതുവശത്ത് തിരിയുക",
+                step7Title: "ഘട്ടം 7: കുറച്ച് കൂടി മുന്നോട്ട് നടന്ന് ഇടതുവശത്ത് തിരിയുക",
+                step7Desc: "അമ്പടയാളം പിന്തുടർന്ന് വലതുവശത്ത് തിരിയുക",
+                step8Title: "ഘട്ടം 8: നേരെ നടക്കുക",
+                step8Desc: "അമ്പടയാളം പിന്തുടരുക, അമ്പടയാളം പിന്തുടർന്ന് നേരെ നടക്കുക",
+                step9Title: "ഘട്ടം 9: നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനത്ത് എത്തിച്ചേർന്നു",
+                step9Desc: "നിങ്ങളുടെ ലക്ഷ്യസ്ഥാനം നിങ്ങളുടെ വലതുവശത്ത് ഉണ്ട്",
+                backButton: "← പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+            },
+            ar: {
+                pageTitle: "🏥 اتجاهات إلى جناح C (الطابق الثاني)",
+                step1Title: "الخطوة 1: من المدخل الرئيسي",
+                step1Desc: "ادخل من خلال الاستقبال الرئيسي، حافظ على اليمين وامشِ مباشرة",
+                step2Title: "الخطوة 2: خذ بضع خطوات للأمام",
+                step2Desc: "امشِ قليلاً إلى الأمام بعد مكتب الاستقبال متجاوزًا عداد المختبر واتبع السهم إلى اليسار",
+                step3Title: "الخطوة 3: امشِ مباشرة",
+                step3Desc: "امشِ قليلاً إلى الأمام",
+                step4Title: "الخطوة 4: منعطف يسار آخر",
+                step4Desc: "بعد عبور ممر السلالم، خذ منعطفًا يسارًا حيث يمكنك رؤية المصاعد",
+                step5Title: "الخطوة 5: منعطف يسار آخر",
+                step5Desc: "بعد عبور ممر السلالم، يمكنك رؤية المصاعد إلى الطابق الثاني",
+                step6Title: "الخطوة 6: المصعد إلى الطابق الثاني",
+                step6Desc: "خذ المصعد وانزل في الطابق الثاني ثم خذ منعطفًا يسارًا",
+                step7Title: "الخطوة 7: امشِ قليلاً إلى الأمام وانعطف يسارًا",
+                step7Desc: "انعطف يمينًا متبعًا علامة السهم",
+                step8Title: "الخطوة 8: امشِ مباشرة",
+                step8Desc: "اتبع علامة السهم، امشِ مباشرة متبعًا علامة السهم",
+                step9Title: "الخطوة 9: لقد وصلت إلى وجهتك",
+                step9Desc: "وجهتك على يمينك",
+                backButton: "← العودة إلى القائمة الرئيسية"
+            }
+        };
 
-document.querySelectorAll('.language-btn').forEach(btn=>{
-btn.onclick=function(){
-const lang=this.dataset.lang;
-const t=translations[lang];
+        function initializeCWardLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            const languageBtns = document.querySelectorAll('.language-btn');
+            
+            languageBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === savedLanguage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeCWardLanguage(lang);
+                    
+                    languageBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            changeCWardLanguage(savedLanguage);
+        }
 
-document.getElementById('page-title').innerText=t.pageTitle;
-for(let i=1;i<=9;i++){
-document.getElementById(`step${i}-desc`).innerText=t[`step${i}Desc`];
-}
-};
-});
-
-</script>
-
+        function changeCWardLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            const t = cWardTranslations[lang];
+            
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-desc').textContent = t.step1Desc;
+            document.getElementById('step2-title').textContent = t.step2Title;
+            document.getElementById('step2-desc').textContent = t.step2Desc;
+            document.getElementById('step3-title').textContent = t.step3Title;
+            document.getElementById('step3-desc').textContent = t.step3Desc;
+            document.getElementById('step4-title').textContent = t.step4Title;
+            document.getElementById('step4-desc').textContent = t.step4Desc;
+            document.getElementById('step5-title').textContent = t.step5Title;
+            document.getElementById('step5-desc').textContent = t.step5Desc;
+            document.getElementById('step6-title').textContent = t.step6Title;
+            document.getElementById('step6-desc').textContent = t.step6Desc;
+            document.getElementById('step7-title').textContent = t.step7Title;
+            document.getElementById('step7-desc').textContent = t.step7Desc;
+            document.getElementById('step8-title').textContent = t.step8Title;
+            document.getElementById('step8-desc').textContent = t.step8Desc;
+            document.getElementById('step9-title').textContent = t.step9Title;
+            document.getElementById('step9-desc').textContent = t.step9Desc;
+            
+            document.querySelector('.nav-button').textContent = t.backButton;
+        }
+    </script>
 </body>
 </html>
