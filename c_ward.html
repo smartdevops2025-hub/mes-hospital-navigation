@@ -1,102 +1,537 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HF64PTD7GH');
+    </script>
 
-<!-- Google Analytics (same as D Ward) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HF64PTD7GH"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-HF64PTD7GH');
-</script>
+    <!-- 🔒 SECURITY PROTECTION - SEPARATE SCRIPT TAG -->
+    <script>
+    // Enhanced security protection for D Ward page
+    (function() {
+        'use strict';
+        
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable keyboard shortcuts for dev tools
+        const disabledKeys = ['F12', 'F11', 'PrintScreen'];
+        const disabledCombos = [
+            { ctrl: true, shift: true, key: 'I' },
+            { ctrl: true, shift: true, key: 'J' },
+            { ctrl: true, shift: true, key: 'C' },
+            { ctrl: true, key: 'U' },
+            { metaKey: true, altKey: true, key: 'I' }, // Mac
+            { metaKey: true, altKey: true, key: 'J' }, // Mac
+            { metaKey: true, shift: true, key: 'C' }   // Mac
+        ];
+        
+        document.addEventListener('keydown', function(e) {
+            // Single keys
+            if (disabledKeys.includes(e.key)) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Key combinations
+            for (let i = 0; i < disabledCombos.length; i++) {
+                const combo = disabledCombos[i];
+                if (
+                    (combo.ctrl === e.ctrlKey || combo.ctrl === undefined) &&
+                    (combo.shift === e.shiftKey || combo.shift === undefined) &&
+                    (combo.metaKey === e.metaKey || combo.metaKey === undefined) &&
+                    (combo.altKey === e.altKey || combo.altKey === undefined) &&
+                    combo.key === e.key
+                ) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        });
+        
+        // Additional protection: Detect dev tools by checking window dimensions
+        let devToolsOpen = false;
+        function checkDevTools() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            
+            if ((widthThreshold || heightThreshold) && !devToolsOpen) {
+                devToolsOpen = true;
+                // Redirect to main page if dev tools detected
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Check periodically
+        setInterval(checkDevTools, 1000);
+    })();
+    </script>
 
-<!-- SECURITY (same as D Ward) -->
-<script>
-(function() {
-'use strict';
-
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
-
-document.addEventListener('keydown', function(e) {
-if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key))) {
-e.preventDefault();
-}
-});
-
-setInterval(function(){
-if (window.outerWidth - window.innerWidth > 160) {
-window.location.href = 'index.html';
-}
-}, 1000);
-})();
-</script>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Directions to C Ward (2nd Floor)</title>
-
-<style>
-/* SAME CSS AS D WARD (UNCHANGED) */
-body {
-font-family: Arial, sans-serif;
-padding: 15px;
-background-color: #f0f8ff;
-padding-top:120px;
-}
-.header {
-text-align:center;
-background:white;
-padding:20px;
-border-radius:15px;
-border:2px solid #dc3545;
-}
-.page-title {
-color:#2e86ab;
-text-align:center;
-font-size:1.6rem;
-margin:20px 0;
-}
-.step {
-background:white;
-margin:20px 0;
-padding:20px;
-border-radius:15px;
-text-align:center;
-}
-.step h2 {color:#2e86ab;}
-.image-container img {
-max-width:100%;
-border-radius:10px;
-border:3px solid #2e86ab;
-}
-.language-btn {
-padding:10px;
-border-radius:20px;
-border:2px solid #dc3545;
-}
-.language-btn.active {
-background:#dc3545;
-color:white;
-}
-</style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directions to D Ward (4th Floor)</title>
+    <style>
+    /* Mobile-first responsive design - Enhanced with ICU Complex features */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #f0f8ff;
+        line-height: 1.6;
+        font-size: 16px; /* Better base font size for mobile */
+        padding-top: 120px; /* Space for fixed header */
+    }
+    
+    .header {
+        text-align: center;
+        background: white;
+        padding: 20px 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+    }
+    
+    .hospital-logo {
+        width: 100%;
+        max-width: 200px; /* Smaller logo for mobile */
+        height: auto;
+        margin: 0 auto 10px;
+        display: block;
+    }
+    
+    .header h1 {
+        color: #dc3545;
+        font-size: 1.4rem; /* Smaller header for mobile */
+        margin: 0;
+    }
+    
+    /* Language Selector */
+    .language-selector {
+        text-align: center;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .language-btn {
+        padding: 10px 15px;
+        background: white;
+        border: 2px solid #dc3545;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        min-width: 70px;
+    }
+    
+    .language-btn.active {
+        background: #dc3545;
+        color: white;
+    }
+    
+    /* FLOATING PROGRESS TRACKER - STICKY/FIXED */
+    .floating-progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 10px 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-bottom: 2px solid #2e86ab;
+    }
+    
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #2e86ab, #1a536b);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    
+    .step-counter {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    .current-step-info {
+        font-weight: bold;
+        color: #2e86ab;
+    }
+    
+    .page-title {
+        color: #2e86ab;
+        text-align: center;
+        font-size: 1.6rem; /* Better mobile size */
+        margin: 20px 0;
+        font-weight: bold;
+        line-height: 1.3;
+        padding: 0 10px;
+    }
+    
+    .step {
+        background-color: white;
+        margin: 20px 0;
+        padding: 20px 15px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        scroll-margin-top: 100px; /* For smooth scrolling to steps */
+    }
+    
+    .step h2 {
+        color: #2e86ab;
+        font-size: 1.3rem; /* Better mobile size */
+        margin-bottom: 15px;
+        font-weight: bold;
+        line-height: 1.3;
+        padding: 0 5px;
+    }
+    
+    .step p {
+        font-size: 1.1rem; /* Better mobile size */
+        color: #333;
+        margin-top: 12px;
+        line-height: 1.5;
+        font-weight: 500;
+        padding: 0 5px;
+    }
+    
+    /* IMAGE CONTAINER - UPDATED FOR LAZY LOADING */
+    .image-container {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+        min-height: 200px; /* Prevent layout shift */
+    }
+    
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 3px solid #2e86ab;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: block;
+    }
+    
+    /* Lazy Loading Styles */
+    .lazy-load {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        background: #f8f9fa;
+    }
+    
+    .lazy-load.loaded {
+        opacity: 1;
+    }
+    
+    /* Loading animation for images not yet loaded */
+    .lazy-load:not(.loaded) {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+    
+    .nav-button {
+        background: linear-gradient(135deg, #2e86ab, #1a536b);
+        color: white;
+        padding: 16px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 15px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        width: 100%;
+        max-width: 280px;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-button:active {
+        transform: scale(0.98);
+        background: linear-gradient(135deg, #1a536b, #2e86ab);
+    }
+    
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px 0;
+    }
+    
+    /* Enhanced mobile adjustments - Same as ICU Complex */
+    @media (max-width: 480px) {
+        body {
+            font-size: 15px;
+            padding: 12px;
+            padding-top: 100px; /* Less space for mobile */
+        }
+        
+        .header {
+            padding: 15px 10px;
+            margin-bottom: 15px;
+        }
+        
+        .hospital-logo {
+            max-width: 180px;
+        }
+        
+        .header h1 {
+            font-size: 1.2rem;
+        }
+        
+        .floating-progress-container {
+            padding: 8px 12px;
+        }
+        
+        .page-title {
+            font-size: 1.4rem;
+            margin: 15px 0;
+        }
+        
+        .step {
+            padding: 15px 12px;
+            margin: 15px 0;
+            scroll-margin-top: 80px;
+        }
+        
+        .step h2 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .step p {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .language-btn {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            min-width: 60px;
+        }
+        
+        .nav-button {
+            font-size: 1rem;
+            padding: 14px 25px;
+            max-width: 250px;
+        }
+        
+        .image-container {
+            min-height: 150px;
+        }
+        
+        .step-counter {
+            font-size: 0.8rem;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        body {
+            font-size: 14px;
+            padding: 10px;
+            padding-top: 90px;
+        }
+        
+        .page-title {
+            font-size: 1.3rem;
+        }
+        
+        .step h2 {
+            font-size: 1.1rem;
+        }
+        
+        .step p {
+            font-size: 0.95rem;
+        }
+        
+        .language-btn {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            min-width: 55px;
+        }
+        
+        .image-container {
+            min-height: 120px;
+        }
+        
+        .floating-progress-container {
+            padding: 6px 10px;
+        }
+    }
+    
+    /* Tablet and larger screens */
+    @media (min-width: 768px) {
+        body {
+            max-width: 700px;
+            font-size: 17px;
+            padding-top: 130px;
+        }
+        
+        .header {
+            padding: 25px 20px;
+            margin-bottom: 25px;
+        }
+        
+        .hospital-logo {
+            max-width: 250px;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .floating-progress-container {
+            padding: 12px 20px;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            margin: 25px 0;
+        }
+        
+        .step {
+            padding: 25px 20px;
+            margin: 25px 0;
+            scroll-margin-top: 120px;
+        }
+        
+        .step h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        
+        .step p {
+            font-size: 1.3rem;
+            margin-top: 15px;
+        }
+        
+        .language-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            min-width: 80px;
+        }
+        
+        .nav-button {
+            font-size: 1.2rem;
+            padding: 18px 35px;
+            max-width: 300px;
+        }
+        
+        .image-container {
+            min-height: 250px;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        body {
+            max-width: 800px;
+            font-size: 18px;
+            padding-top: 140px;
+        }
+        
+        .page-title {
+            font-size: 2.2rem;
+        }
+        
+        .step h2 {
+            font-size: 1.8rem;
+        }
+        
+        .step p {
+            font-size: 1.4rem;
+        }
+        
+        .image-container {
+            min-height: 300px;
+        }
+        
+        .floating-progress-container {
+            padding: 15px 25px;
+        }
+    }
+    </style>
 </head>
-
 <body>
+    <!-- FLOATING PROGRESS BAR - STAYS ON TOP -->
+    <div class="floating-progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="step-counter">
+            <span class="current-step-info">Step <span id="current-step">1</span> of 10</span>
+            <span id="progress-percentage">10%</span>
+        </div>
+    </div>
 
-<div class="header">
-<img src="mes-logo-1-1.webp" style="max-width:200px;">
-<h1>Way Finder Navigation System</h1>
-</div>
+    <!-- Header with Hospital Logo -->
+    <div class="header">
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <h1>Way Finder Navigation System</h1>
+    </div>
 
-<div class="language-selector">
-<button class="language-btn active" data-lang="en">English</button>
-<button class="language-btn" data-lang="hi">हिंदी</button>
-<button class="language-btn" data-lang="ml">മലയാളം</button>
-<button class="language-btn" data-lang="ar">العربية</button>
-</div>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="language-btn active" data-lang="en">English</button>
+        <button class="language-btn" data-lang="hi">हिंदी </button>
+        <button class="language-btn" data-lang="ml">മലയാളം</button>
+        <button class="language-btn" data-lang="ar">العربية </button>
+    </div>
 
 <h1 class="page-title" id="page-title">Directions to C Ward (2nd Floor)</h1>
 
