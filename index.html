@@ -591,12 +591,20 @@
             <p>Pediatrics Ward</p>
         </div>
 
-        <!-- C Ward Department - ADDED HERE -->
+        <!-- C Ward Department -->
         <div class="department-box" data-name="c ward" data-keywords="c ward ward c 4th fourth floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>C Ward</h3>
-            <p class="department-location">4th Floor</p>
+            <p class="department-location">2nd Floor</p>
             <p>Patient accommodation & stay</p>
+        </div>
+
+        <!-- Private Ward 1 Department - ADDED HERE -->
+        <div class="department-box" data-name="private ward 1" data-keywords="private ward 1 private ward patient room accommodation stay 1st first floor">
+            <div class="department-icon">🏥</div>
+            <h3>Private Ward 1</h3>
+            <p class="department-location">1st Floor</p>
+            <p>Private patient accommodation</p>
         </div>
     </div>
 
@@ -830,7 +838,8 @@
                     semi_private_ward: { name: "Semi Private Ward", location: "4th Floor", description: "InPatient Ward" },
                     g_ward: { name: "G Ward", location: "4th Floor", description: "OBG / Gynaec Ward" },
                     d_ward: { name: "D Ward", location: "4th Floor", description: "Pediatrics Ward" },
-                    c_ward: { name: "C Ward", location: "4th Floor", description: "Patient accommodation & stay" }
+                    c_ward: { name: "C Ward", location: "2nd Floor", description: "Patient accommodation & stay" },
+                    private_ward_1: { name: "Private Ward 1", location: "1st Floor", description: "Private patient accommodation" }
                 }
             },
             hi: {
@@ -861,7 +870,8 @@
                     semi_private_ward: { name: "सेमी प्राइवेट वार्ड", location: "चौथी मंजिल", description: "इनपेशेंट वार्ड" },
                     g_ward: { name: "जी वार्ड", location: "चौथी मंजिल", description: "ओबीजी / गाइनेक वार्ड" },
                     d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "पीडियाट्रिक्स वार्ड" },
-                    c_ward: { name: "सी वार्ड", location: "चौथी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" }
+                    c_ward: { name: "सी वार्ड", location: "दूसरी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
+                    private_ward_1: { name: "प्राइवेट वार्ड 1", location: "पहली मंजिल", description: "निजी रोगी आवास" }
                 }
             },
             ml: {
@@ -892,7 +902,8 @@
                     semi_private_ward: { name: "സെമി പ്രൈവറ്റ് വാർഡ്", location: "നാലാം നില", description: "ഇൻപേഷ്യന്റ് വാർഡ്" },
                     g_ward: { name: "ജി വാർഡ്", location: "നാലാം നില", description: "ഒ.ബി.ജി / ഗൈനെക്ക് വാർഡ്" },
                     d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "പീഡിയാട്രിക്സ് വാർഡ്" },
-                    c_ward: { name: "സി വാർഡ്", location: "നാലാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" }
+                    c_ward: { name: "സി വാർഡ്", location: "രണ്ടാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
+                    private_ward_1: { name: "പ്രൈവറ്റ് വാർഡ് 1", location: "ഒന്നാം നില", description: "സ്വകാര്യ രോഗി താമസം" }
                 }
             },
             ar: {
@@ -923,7 +934,8 @@
                     semi_private_ward: { name: "جناح شبه خاص", location: "الطابق الرابع", description: "جناح المرضى الداخليين" },
                     g_ward: { name: "جناح G", location: "الطابق الرابع", description: "جناح التوليد وأمراض النساء" },
                     d_ward: { name: "جناح D", location: "الطابق الرابع", description: "جناح طب الأطفال" },
-                    c_ward: { name: "جناح C", location: "الطابق الرابع", description: "إقامة المرضى والإقامة" }
+                    c_ward: { name: "جناح C", location: "الطابق الثاني", description: "إقامة المرضى والإقامة" },
+                    private_ward_1: { name: "جناح خاص 1", location: "الطابق الأول", description: "إقامة المرضى الخاصة" }
                 }
             }
         };
@@ -1008,6 +1020,9 @@
                 }
                 if (departmentName === 'c ward') {
                     translationKey = 'c_ward';
+                }
+                if (departmentName === 'private ward 1') {
+                    translationKey = 'private_ward_1';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1120,6 +1135,8 @@
                         window.location.href = 'd_ward.html';
                     } else if (departmentName === 'c ward') {
                         window.location.href = 'c_ward.html';
+                    } else if (departmentName === 'private ward 1') {
+                        window.location.href = 'private-ward-1.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
