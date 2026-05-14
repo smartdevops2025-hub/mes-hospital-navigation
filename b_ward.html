@@ -41,19 +41,17 @@
             { ctrl: true, shift: true, key: 'J' },
             { ctrl: true, shift: true, key: 'C' },
             { ctrl: true, key: 'U' },
-            { metaKey: true, altKey: true, key: 'I' }, // Mac
-            { metaKey: true, altKey: true, key: 'J' }, // Mac
-            { metaKey: true, shift: true, key: 'C' }   // Mac
+            { metaKey: true, altKey: true, key: 'I' },
+            { metaKey: true, altKey: true, key: 'J' },
+            { metaKey: true, shift: true, key: 'C' }
         ];
         
         document.addEventListener('keydown', function(e) {
-            // Single keys
             if (disabledKeys.includes(e.key)) {
                 e.preventDefault();
                 return false;
             }
             
-            // Key combinations
             for (let i = 0; i < disabledCombos.length; i++) {
                 const combo = disabledCombos[i];
                 if (
@@ -69,7 +67,6 @@
             }
         });
         
-        // Additional protection: Detect dev tools by checking window dimensions
         let devToolsOpen = false;
         function checkDevTools() {
             const widthThreshold = window.outerWidth - window.innerWidth > 160;
@@ -77,12 +74,10 @@
             
             if ((widthThreshold || heightThreshold) && !devToolsOpen) {
                 devToolsOpen = true;
-                // Redirect to main page if dev tools detected
                 window.location.href = 'index.html';
             }
         }
         
-        // Check periodically
         setInterval(checkDevTools, 1000);
     })();
     </script>
@@ -90,7 +85,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directions to B Ward (2nd Floor)</title>
     <style>
-    /* Mobile-first responsive design - Enhanced with ICU Complex features */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -136,7 +130,6 @@
         margin: 0;
     }
     
-    /* Language Selector */
     .language-selector {
         text-align: center;
         margin-bottom: 20px;
@@ -161,7 +154,6 @@
         color: white;
     }
     
-    /* FLOATING PROGRESS TRACKER - STICKY/FIXED */
     .floating-progress-container {
         position: fixed;
         top: 0;
@@ -242,7 +234,6 @@
         padding: 0 5px;
     }
     
-    /* IMAGE CONTAINER - UPDATED FOR LAZY LOADING */
     .image-container {
         width: 100%;
         overflow: hidden;
@@ -262,28 +253,6 @@
         border: 3px solid #2e86ab;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: block;
-    }
-    
-    /* Lazy Loading Styles */
-    .lazy-load {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        background: #f8f9fa;
-    }
-    
-    .lazy-load.loaded {
-        opacity: 1;
-    }
-    
-    .lazy-load:not(.loaded) {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-    }
-    
-    @keyframes loading {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
     }
     
     .nav-button {
@@ -505,7 +474,6 @@
     </style>
 </head>
 <body>
-    <!-- FLOATING PROGRESS BAR - STAYS ON TOP -->
     <div class="floating-progress-container">
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -516,18 +484,16 @@
         </div>
     </div>
 
-    <!-- Header with Hospital Logo -->
     <div class="header">
-        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo">
+        <img src="mes-logo-1-1.webp" alt="MES Medical College Hospital Logo" class="hospital-logo" onerror="this.src='https://placehold.co/400x150?text=MES+Hospital'">
         <h1>Way Finder Navigation System</h1>
     </div>
 
-    <!-- Language Selector -->
     <div class="language-selector">
         <button class="language-btn active" data-lang="en">English</button>
-        <button class="language-btn" data-lang="hi">हिंदी </button>
+        <button class="language-btn" data-lang="hi">हिंदी</button>
         <button class="language-btn" data-lang="ml">മലയാളം</button>
-        <button class="language-btn" data-lang="ar">العربية </button>
+        <button class="language-btn" data-lang="ar">العربية</button>
     </div>
 
     <h1 class="page-title" id="page-title">🏥 Directions to B Ward (2nd Floor)</h1>
@@ -536,8 +502,8 @@
         <h2 id="step1-title">Step 1: From Main Entrance</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward1.jpg" 
+                src="images/bward1.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+1:+Main+Entrance'"
                 class="lazy-load" 
                 alt="Main entrance view"
                 loading="lazy"
@@ -551,8 +517,8 @@
         <h2 id="step2-title">Step 2: Take few Steps ahead</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward2.jpg" 
+                src="images/bward2.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+2:+Take+Few+Steps+Ahead'"
                 class="lazy-load" 
                 alt="Walk a little further after the reception counter"
                 loading="lazy"
@@ -566,8 +532,8 @@
         <h2 id="step3-title">Step 3: Walk Straight</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward3.jpg" 
+                src="images/bward3.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+3:+Walk+Straight'"
                 class="lazy-load" 
                 alt="Walk a little further"
                 loading="lazy"
@@ -581,8 +547,8 @@
         <h2 id="step4-title">Step 4: Another Left Turn</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward4.jpg" 
+                src="images/bward4.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+4:+Another+Left+Turn'"
                 class="lazy-load" 
                 alt="After passing the stair corridor, take a left turn where you can see the Lifts"
                 loading="lazy"
@@ -596,8 +562,8 @@
         <h2 id="step5-title">Step 5: Another Left Turn</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward5.jpg" 
+                src="images/bward5.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+5:+Another+Left+Turn'"
                 class="lazy-load" 
                 alt="After passing the stair corridor, you can see the Lifts to 2nd Floor"
                 loading="lazy"
@@ -611,8 +577,8 @@
         <h2 id="step6-title">Step 6: Lift to 2nd Floor</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward6.jpg" 
+                src="images/bward6.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+6:+Lift+to+2nd+Floor'"
                 class="lazy-load" 
                 alt="Take the Lift and get down at 2nd Floor and then take the left turn"
                 loading="lazy"
@@ -626,8 +592,8 @@
         <h2 id="step7-title">Step 7: After turning left, Walk Straight</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward7.jpg" 
+                src="images/bward7.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+7:+Walk+Straight'"
                 class="lazy-load" 
                 alt="Walk Straight following the arrow mark"
                 loading="lazy"
@@ -641,8 +607,8 @@
         <h2 id="step8-title">Step 8: Walk straight again through the passage</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward8.jpg" 
+                src="images/bward8.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+8:+Walk+Straight+Again'"
                 class="lazy-load" 
                 alt="Follow the arrow mark, walk straight following the arrow"
                 loading="lazy"
@@ -656,8 +622,8 @@
         <h2 id="step9-title">Step 9: You have now reached</h2>
         <div class="image-container">
             <img 
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhjYWM5Ii8+PC9zdmc+" 
-                data-src="images/bward9.jpg" 
+                src="images/bward9.jpg" 
+                onerror="this.src='https://placehold.co/800x400/2e86ab/white?text=Step+9:+Destination'"
                 class="lazy-load" 
                 alt="Destination is on your front"
                 loading="lazy"
@@ -674,7 +640,6 @@
     </div>
 
     <script>
-        // Enhanced tracking for B Ward page
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'page_view', {
@@ -684,7 +649,7 @@
                 });
             }
             
-            initializeLazyLoading();
+            initializeImages();
             initializeProgressTracker();
             initializeBWardLanguage();
             
@@ -716,36 +681,19 @@
             });
         });
 
-        function initializeLazyLoading() {
-            const lazyImages = document.querySelectorAll('img.lazy-load');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.classList.add('loaded');
-                            imageObserver.unobserve(img);
-                            
-                            if (typeof gtag !== 'undefined') {
-                                gtag('event', 'image_load', {
-                                    'event_category': 'Performance',
-                                    'event_label': img.alt || 'B Ward Image',
-                                    'value': 1
-                                });
-                            }
-                        }
-                    });
+        function initializeImages() {
+            // Simple image loader - just ensure images are displayed
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
                 });
-
-                lazyImages.forEach(img => imageObserver.observe(img));
-            } else {
-                lazyImages.forEach(img => {
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                });
-            }
+                if (img.complete) {
+                    img.style.opacity = '1';
+                }
+                // Remove lazy-load class to show images
+                img.classList.remove('lazy-load');
+            });
         }
 
         function initializeProgressTracker() {
@@ -775,7 +723,7 @@
                 if (scrollPercent >= 90) {
                     progressFill.style.background = 'linear-gradient(90deg, #28a745, #20c997)';
                 } else if (scrollPercent >= 50) {
-                    progressFill.style.background = 'linear-gradient(90deg, #2e86ab, #1a536b);
+                    progressFill.style.background = 'linear-gradient(90deg, #2e86ab, #1a536b)';
                 }
             }
             
