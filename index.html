@@ -607,12 +607,20 @@
             <p>Private patient accommodation</p>
         </div>
 
-        <!-- B Ward Department - ADDED HERE -->
+        <!-- B Ward Department -->
         <div class="department-box" data-name="b ward" data-keywords="b ward ward b 2nd second floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>B Ward</h3>
             <p class="department-location">2nd Floor</p>
             <p>Patient accommodation & stay</p>
+        </div>
+
+        <!-- Neurosurgery (2nd Floor) Department - NEWLY ADDED -->
+        <div class="department-box" data-name="neurosurgery" data-keywords="neurosurgery neuro brain spine surgery ns neurosurgery 2nd floor">
+            <div class="department-icon">🧠</div>
+            <h3>Neurosurgery</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Brain & spine care</p>
         </div>
     </div>
 
@@ -848,7 +856,8 @@
                     d_ward: { name: "D Ward", location: "4th Floor", description: "Pediatrics Ward" },
                     c_ward: { name: "C Ward", location: "2nd Floor", description: "Patient accommodation & stay" },
                     private_ward_1: { name: "Private Ward 1", location: "1st Floor", description: "Private patient accommodation" },
-                    b_ward: { name: "B Ward", location: "2nd Floor", description: "Patient accommodation & stay" }
+                    b_ward: { name: "B Ward", location: "2nd Floor", description: "Patient accommodation & stay" },
+                    neurosurgery: { name: "Neurosurgery", location: "2nd Floor", description: "Brain & spine care" }
                 }
             },
             hi: {
@@ -881,7 +890,8 @@
                     d_ward: { name: "डी वार्ड", location: "चौथी मंजिल", description: "पीडियाट्रिक्स वार्ड" },
                     c_ward: { name: "सी वार्ड", location: "दूसरी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
                     private_ward_1: { name: "प्राइवेट वार्ड 1", location: "पहली मंजिल", description: "निजी रोगी आवास" },
-                    b_ward: { name: "बी वार्ड", location: "दूसरी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" }
+                    b_ward: { name: "बी वार्ड", location: "दूसरी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
+                    neurosurgery: { name: "न्यूरोसर्जरी", location: "दूसरी मंजिल", description: "मस्तिष्क और रीढ़ की देखभाल" }
                 }
             },
             ml: {
@@ -914,7 +924,8 @@
                     d_ward: { name: "ഡി വാർഡ്", location: "നാലാം നില", description: "പീഡിയാട്രിക്സ് വാർഡ്" },
                     c_ward: { name: "സി വാർഡ്", location: "രണ്ടാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
                     private_ward_1: { name: "പ്രൈവറ്റ് വാർഡ് 1", location: "ഒന്നാം നില", description: "സ്വകാര്യ രോഗി താമസം" },
-                    b_ward: { name: "ബി വാർഡ്", location: "രണ്ടാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" }
+                    b_ward: { name: "ബി വാർഡ്", location: "രണ്ടാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
+                    neurosurgery: { name: "ന്യൂറോസർജറി", location: "രണ്ടാം നില", description: "മസ്തിഷ്ക, നട്ടെല്ല് പരിചരണം" }
                 }
             },
             ar: {
@@ -947,7 +958,8 @@
                     d_ward: { name: "جناح D", location: "الطابق الرابع", description: "جناح طب الأطفال" },
                     c_ward: { name: "جناح C", location: "الطابق الثاني", description: "إقامة المرضى والإقامة" },
                     private_ward_1: { name: "جناح خاص 1", location: "الطابق الأول", description: "إقامة المرضى الخاصة" },
-                    b_ward: { name: "جناح B", location: "الطابق الثاني", description: "إقامة المرضى والإقامة" }
+                    b_ward: { name: "جناح B", location: "الطابق الثاني", description: "إقامة المرضى والإقامة" },
+                    neurosurgery: { name: "جراحة المخ والأعصاب", location: "الطابق الثاني", description: "رعاية الدماغ والعمود الفقري" }
                 }
             }
         };
@@ -1038,6 +1050,9 @@
                 }
                 if (departmentName === 'b ward') {
                     translationKey = 'b_ward';
+                }
+                if (departmentName === 'neurosurgery') {
+                    translationKey = 'neurosurgery';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1154,6 +1169,8 @@
                         window.location.href = 'private-ward-1.html';
                     } else if (departmentName === 'b ward') {
                         window.location.href = 'b_ward.html';
+                    } else if (departmentName === 'neurosurgery') {
+                        window.location.href = 'neurosurgery.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
