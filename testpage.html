@@ -615,12 +615,12 @@
             <p>Patient accommodation & stay</p>
         </div>
 
-        <!-- Neurosurgery (2nd Floor) Department - NEWLY ADDED -->
-        <div class="department-box" data-name="neurosurgery" data-keywords="neurosurgery neuro brain spine surgery ns neurosurgery 2nd floor">
-            <div class="department-icon">🧠</div>
-            <h3>Neurosurgery</h3>
-            <p class="department-location">2nd Floor</p>
-            <p>Brain & spine care</p>
+        <!-- PreOP Department - NEW -->
+        <div class="department-box" data-name="preop" data-keywords="preop pre-operative preoperative surgery preparation 1st first floor">
+            <div class="department-icon">🏥</div>
+            <h3>PreOP</h3>
+            <p class="department-location">1st Floor</p>
+            <p>Pre-Operative preparation</p>
         </div>
     </div>
 
@@ -857,7 +857,7 @@
                     c_ward: { name: "C Ward", location: "2nd Floor", description: "Patient accommodation & stay" },
                     private_ward_1: { name: "Private Ward 1", location: "1st Floor", description: "Private patient accommodation" },
                     b_ward: { name: "B Ward", location: "2nd Floor", description: "Patient accommodation & stay" },
-                    neurosurgery: { name: "Neurosurgery", location: "2nd Floor", description: "Brain & spine care" }
+                    preop: { name: "PreOP", location: "1st Floor", description: "Pre-Operative preparation" }
                 }
             },
             hi: {
@@ -891,7 +891,7 @@
                     c_ward: { name: "सी वार्ड", location: "दूसरी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
                     private_ward_1: { name: "प्राइवेट वार्ड 1", location: "पहली मंजिल", description: "निजी रोगी आवास" },
                     b_ward: { name: "बी वार्ड", location: "दूसरी मंजिल", description: "रोगी आवास और ठहरने की सुविधा" },
-                    neurosurgery: { name: "न्यूरोसर्जरी", location: "दूसरी मंजिल", description: "मस्तिष्क और रीढ़ की देखभाल" }
+                    preop: { name: "प्रीओपी", location: "पहली मंजिल", description: "प्री-ऑपरेटिव तैयारी" }
                 }
             },
             ml: {
@@ -925,7 +925,7 @@
                     c_ward: { name: "സി വാർഡ്", location: "രണ്ടാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
                     private_ward_1: { name: "പ്രൈവറ്റ് വാർഡ് 1", location: "ഒന്നാം നില", description: "സ്വകാര്യ രോഗി താമസം" },
                     b_ward: { name: "ബി വാർഡ്", location: "രണ്ടാം നില", description: "രോഗി താമസം താമസ സൗകര്യം" },
-                    neurosurgery: { name: "ന്യൂറോസർജറി", location: "രണ്ടാം നില", description: "മസ്തിഷ്ക, നട്ടെല്ല് പരിചരണം" }
+                    preop: { name: "പ്രീഓപി", location: "ഒന്നാം നില", description: "ശസ്ത്രക്രിയയ്ക്ക് മുമ്പുള്ള തയ്യാറെടുപ്പ്" }
                 }
             },
             ar: {
@@ -959,7 +959,7 @@
                     c_ward: { name: "جناح C", location: "الطابق الثاني", description: "إقامة المرضى والإقامة" },
                     private_ward_1: { name: "جناح خاص 1", location: "الطابق الأول", description: "إقامة المرضى الخاصة" },
                     b_ward: { name: "جناح B", location: "الطابق الثاني", description: "إقامة المرضى والإقامة" },
-                    neurosurgery: { name: "جراحة المخ والأعصاب", location: "الطابق الثاني", description: "رعاية الدماغ والعمود الفقري" }
+                    preop: { name: "ما قبل العملية", location: "الطابق الأول", description: "التحضير قبل العملية" }
                 }
             }
         };
@@ -1051,8 +1051,8 @@
                 if (departmentName === 'b ward') {
                     translationKey = 'b_ward';
                 }
-                if (departmentName === 'neurosurgery') {
-                    translationKey = 'neurosurgery';
+                if (departmentName === 'preop') {
+                    translationKey = 'preop';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1169,8 +1169,8 @@
                         window.location.href = 'private-ward-1.html';
                     } else if (departmentName === 'b ward') {
                         window.location.href = 'b_ward.html';
-                    } else if (departmentName === 'neurosurgery') {
-                        window.location.href = 'neurosurgery.html';
+                    } else if (departmentName === 'preop') {
+                        window.location.href = 'preop.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
