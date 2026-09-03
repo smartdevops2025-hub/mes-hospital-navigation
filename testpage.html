@@ -646,6 +646,14 @@
             <p class="department-location">2nd Floor</p>
             <p>Dialysis & kidney care</p>
         </div>
+
+        <!-- Labour Room (1st Floor) Department - NEW -->
+        <div class="department-box" data-name="labour room" data-keywords="labour room labor delivery birth maternity childbirth mother delivery room 1st first floor">
+            <div class="department-icon">👶</div>
+            <h3>Labour Room</h3>
+            <p class="department-location">1st Floor</p>
+            <p>Delivery & maternity care</p>
+        </div>
     </div>
 
     <!-- Back to Top Button -->
@@ -884,7 +892,8 @@
                     neurosurgery: { name: "Neurosurgery", location: "Ground Floor", description: "Brain & spine surgery" },
                     preop: { name: "PreOP", location: "1st Floor", description: "Pre-Operative preparation" },
                     coffee_shop: { name: "Coffee Shop", location: "2nd Floor", description: "Refreshments & snacks" },
-                    dialysis: { name: "Dialysis", location: "2nd Floor", description: "Dialysis & kidney care" }
+                    dialysis: { name: "Dialysis", location: "2nd Floor", description: "Dialysis & kidney care" },
+                    labour_room: { name: "Labour Room", location: "1st Floor", description: "Delivery & maternity care" }
                 }
             },
             hi: {
@@ -921,7 +930,8 @@
                     neurosurgery: { name: "न्यूरोसर्जरी", location: "ग्राउंड फ्लोर", description: "मस्तिष्क और रीढ़ की सर्जरी" },
                     preop: { name: "प्रीओपी", location: "पहली मंजिल", description: "प्री-ऑपरेटिव तैयारी" },
                     coffee_shop: { name: "कॉफी शॉप", location: "दूसरी मंजिल", description: "जलपान और स्नैक्स" },
-                    dialysis: { name: "डायलिसिस", location: "दूसरी मंजिल", description: "डायलिसिस और गुर्दे की देखभाल" }
+                    dialysis: { name: "डायलिसिस", location: "दूसरी मंजिल", description: "डायलिसिस और गुर्दे की देखभाल" },
+                    labour_room: { name: "लेबर रूम", location: "पहली मंजिल", description: "प्रसव और मातृत्व देखभाल" }
                 }
             },
             ml: {
@@ -958,7 +968,8 @@
                     neurosurgery: { name: "ന്യൂറോ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മസ്തിഷ്ക, നട്ടെല്ല് ശസ്ത്രക്രിയ" },
                     preop: { name: "പ്രീഓപി", location: "ഒന്നാം നില", description: "ശസ്ത്രക്രിയയ്ക്ക് മുമ്പുള്ള തയ്യാറെടുപ്പ്" },
                     coffee_shop: { name: "കോഫി ഷോപ്പ്", location: "രണ്ടാം നില", description: "ലഘുഭക്ഷണങ്ങളും പാനീയങ്ങളും" },
-                    dialysis: { name: "ഡയാലിസിസ്", location: "രണ്ടാം നില", description: "ഡയാലിസിസും വൃക്ക സംരക്ഷണവും" }
+                    dialysis: { name: "ഡയാലിസിസ്", location: "രണ്ടാം നില", description: "ഡയാലിസിസും വൃക്ക സംരക്ഷണവും" },
+                    labour_room: { name: "ലേബർ റൂം", location: "ഒന്നാം നില", description: "പ്രസവ, മാതൃ പരിചരണം" }
                 }
             },
             ar: {
@@ -995,7 +1006,8 @@
                     neurosurgery: { name: "جراحة الأعصاب", location: "الطابق الأرضي", description: "جراحة الدماغ والعمود الفقري" },
                     preop: { name: "ما قبل العملية", location: "الطابق الأول", description: "التحضير قبل العملية" },
                     coffee_shop: { name: "مقهى", location: "الطابق الثاني", description: "مرطبات ووجبات خفيفة" },
-                    dialysis: { name: "غسيل الكلى", location: "الطابق الثاني", description: "غسيل الكلى ورعاية الكلى" }
+                    dialysis: { name: "غسيل الكلى", location: "الطابق الثاني", description: "غسيل الكلى ورعاية الكلى" },
+                    labour_room: { name: "غرفة الولادة", location: "الطابق الأول", description: "رعاية الولادة والأمومة" }
                 }
             }
         };
@@ -1098,6 +1110,9 @@
                 }
                 if (departmentName === 'dialysis') {
                     translationKey = 'dialysis';
+                }
+                if (departmentName === 'labour room') {
+                    translationKey = 'labour_room';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1222,6 +1237,8 @@
                         window.location.href = 'coffeeshop.html';
                     } else if (departmentName === 'dialysis') {
                         window.location.href = 'dialysis.html';
+                    } else if (departmentName === 'labour room') {
+                        window.location.href = 'labour-room.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
