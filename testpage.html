@@ -642,6 +642,14 @@
             <p class="department-location">2nd Floor</p>
             <p>Neurology & brain care</p>
         </div>
+
+        <!-- NEW: Gastroenterology -->
+        <div class="department-box" data-name="gastroenterology" data-keywords="gastroenterology gastro stomach liver digestive gi gastrointestinal 2nd second floor">
+            <div class="department-icon">🫀</div>
+            <h3>Gastroenterology</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>GI & liver care</p>
+        </div>
     </div>
 
     <!-- Back to Top Button -->
@@ -881,7 +889,8 @@
                     coffee_shop: { name: "Coffee Shop", location: "2nd Floor", description: "Refreshments & snacks" },
                     dialysis: { name: "Dialysis", location: "2nd Floor", description: "Dialysis & kidney care" },
                     labour_room: { name: "Labour Room", location: "1st Floor", description: "Delivery & maternity care" },
-                    neuro_medicine_ward: { name: "Neuro Medicine Ward", location: "2nd Floor", description: "Neurology & brain care" }
+                    neuro_medicine_ward: { name: "Neuro Medicine Ward", location: "2nd Floor", description: "Neurology & brain care" },
+                    gastroenterology: { name: "Gastroenterology", location: "2nd Floor", description: "GI & liver care" }
                 }
             },
             hi: {
@@ -919,7 +928,8 @@
                     coffee_shop: { name: "कॉफी शॉप", location: "दूसरी मंजिल", description: "जलपान और स्नैक्स" },
                     dialysis: { name: "डायलिसिस", location: "दूसरी मंजिल", description: "डायलिसिस और गुर्दे की देखभाल" },
                     labour_room: { name: "लेबर रूम", location: "पहली मंजिल", description: "प्रसव और मातृत्व देखभाल" },
-                    neuro_medicine_ward: { name: "न्यूरो मेडिसिन वार्ड", location: "दूसरी मंजिल", description: "न्यूरोलॉजी और मस्तिष्क देखभाल" }
+                    neuro_medicine_ward: { name: "न्यूरो मेडिसिन वार्ड", location: "दूसरी मंजिल", description: "न्यूरोलॉजी और मस्तिष्क देखभाल" },
+                    gastroenterology: { name: "गैस्ट्रोएंटरोलॉजी", location: "दूसरी मंजिल", description: "जीआई और यकृत देखभाल" }
                 }
             },
             ml: {
@@ -957,7 +967,8 @@
                     coffee_shop: { name: "കോഫി ഷോപ്പ്", location: "രണ്ടാം നില", description: "ലഘുഭക്ഷണങ്ങളും പാനീയങ്ങളും" },
                     dialysis: { name: "ഡയാലിസിസ്", location: "രണ്ടാം നില", description: "ഡയാലിസിസും വൃക്ക സംരക്ഷണവും" },
                     labour_room: { name: "ലേബർ റൂം", location: "ഒന്നാം നില", description: "പ്രസവ, മാതൃ പരിചരണം" },
-                    neuro_medicine_ward: { name: "ന്യൂറോ മെഡിസിൻ വാർഡ്", location: "രണ്ടാം നില", description: "ന്യൂറോളജിയും മസ്തിഷ്ക പരിചരണവും" }
+                    neuro_medicine_ward: { name: "ന്യൂറോ മെഡിസിൻ വാർഡ്", location: "രണ്ടാം നില", description: "ന്യൂറോളജിയും മസ്തിഷ്ക പരിചരണവും" },
+                    gastroenterology: { name: "ഗ്യാസ്ട്രോഎൻട്രോളജി", location: "രണ്ടാം നില", description: "ജി.ഐ., കരൾ പരിചരണം" }
                 }
             },
             ar: {
@@ -995,7 +1006,8 @@
                     coffee_shop: { name: "مقهى", location: "الطابق الثاني", description: "مرطبات ووجبات خفيفة" },
                     dialysis: { name: "غسيل الكلى", location: "الطابق الثاني", description: "غسيل الكلى ورعاية الكلى" },
                     labour_room: { name: "غرفة الولادة", location: "الطابق الأول", description: "رعاية الولادة والأمومة" },
-                    neuro_medicine_ward: { name: "جناح الطب العصبي", location: "الطابق الثاني", description: "رعاية الأعصاب والدماغ" }
+                    neuro_medicine_ward: { name: "جناح الطب العصبي", location: "الطابق الثاني", description: "رعاية الأعصاب والدماغ" },
+                    gastroenterology: { name: "أمراض الجهاز الهضمي", location: "الطابق الثاني", description: "رعاية الجهاز الهضمي والكبد" }
                 }
             }
         };
@@ -1104,6 +1116,9 @@
                 }
                 if (departmentName === 'neuro medicine ward') {
                     translationKey = 'neuro_medicine_ward';
+                }
+                if (departmentName === 'gastroenterology') {
+                    translationKey = 'gastroenterology';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1230,6 +1245,8 @@
                         window.location.href = 'labour-room.html';
                     } else if (departmentName === 'neuro medicine ward') {
                         window.location.href = 'neuro-medicine-ward.html';
+                    } else if (departmentName === 'gastroenterology') {
+                        window.location.href = 'gastroenterology.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
