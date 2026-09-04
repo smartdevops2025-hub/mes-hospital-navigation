@@ -537,8 +537,6 @@
             <p>Medical supplies & shopping</p>
         </div>
 
-
-        <!-- Dermatology Department -->
         <div class="department-box" data-name="dermatology" data-keywords="dermatology skin skin care dermatologist skin treatment derma">
             <div class="department-icon">🧴</div>
             <h3>Dermatology</h3>
@@ -553,7 +551,6 @@
             <p>Intensive Care Unit</p>
         </div>
 
-        <!-- O T Complex Department -->
         <div class="department-box" data-name="o t complex" data-keywords="o t complex ot operation theatre surgery surgical operating room theatre">
             <div class="department-icon">🏥</div>
             <h3>O T Complex</h3>
@@ -561,7 +558,6 @@
             <p>Operation Theatre Complex</p>
         </div>
 
-        <!-- Semi Private Ward Department -->
         <div class="department-box" data-name="semi private ward" data-keywords="semi private ward private ward patient room accommodation stay 4th fourth floor spw">
             <div class="department-icon">🏥</div>
             <h3>Semi Private Ward</h3>
@@ -569,7 +565,6 @@
             <p>IP Ward</p>
         </div>
 
-        <!-- G Ward Department -->
         <div class="department-box" data-name="g ward" data-keywords="g ward ward g 4th fourth floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>G Ward</h3>
@@ -577,7 +572,6 @@
             <p>OBG / Gynaec Ward</p>
         </div>
 
-        <!-- D Ward Department -->
         <div class="department-box" data-name="d ward" data-keywords="d ward ward d 4th fourth floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>D Ward</h3>
@@ -585,7 +579,6 @@
             <p>Pediatrics Ward</p>
         </div>
 
-        <!-- C Ward Department -->
         <div class="department-box" data-name="c ward" data-keywords="c ward ward c 2nd second floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>C Ward</h3>
@@ -593,7 +586,6 @@
             <p>Patient accommodation & stay</p>
         </div>
 
-        <!-- Private Ward 1 Department -->
         <div class="department-box" data-name="private ward 1" data-keywords="private ward 1 private ward patient room accommodation stay 1st first floor">
             <div class="department-icon">🏥</div>
             <h3>Private Ward 1</h3>
@@ -601,7 +593,6 @@
             <p>Private patient accommodation</p>
         </div>
 
-        <!-- B Ward Department -->
         <div class="department-box" data-name="b ward" data-keywords="b ward ward b 2nd second floor patient accommodation stay">
             <div class="department-icon">🏥</div>
             <h3>B Ward</h3>
@@ -609,7 +600,6 @@
             <p>Patient accommodation & stay</p>
         </div>
 
-        <!-- Neurosurgery Department -->
         <div class="department-box" data-name="neurosurgery" data-keywords="neurosurgery neuro brain spine nervous system neurology surgeon">
             <div class="department-icon">🧠</div>
             <h3>Neurosurgery</h3>
@@ -617,7 +607,6 @@
             <p>Brain & spine surgery</p>
         </div>
 
-        <!-- PreOP Department -->
         <div class="department-box" data-name="preop" data-keywords="preop pre-operative preoperative surgery preparation 1st first floor">
             <div class="department-icon">🏥</div>
             <h3>PreOP</h3>
@@ -625,7 +614,6 @@
             <p>Pre-Operative preparation</p>
         </div>
 
-        <!-- Coffee Shop (2nd Floor) Department -->
         <div class="department-box" data-name="coffee shop" data-keywords="coffee shop cafe cafeteria food snack drink refreshment 2nd second floor">
             <div class="department-icon">☕</div>
             <h3>Coffee Shop</h3>
@@ -633,7 +621,6 @@
             <p>Refreshments & snacks</p>
         </div>
 
-        <!-- Dialysis (2nd Floor) Department - NEW -->
         <div class="department-box" data-name="dialysis" data-keywords="dialysis kidney renal hemodialysis dialysis unit 2nd second floor">
             <div class="department-icon">🩸</div>
             <h3>Dialysis</h3>
@@ -641,12 +628,19 @@
             <p>Dialysis & kidney care</p>
         </div>
 
-        <!-- Labour Room (1st Floor) Department - NEW -->
         <div class="department-box" data-name="labour room" data-keywords="labour room labor delivery birth maternity childbirth mother delivery room 1st first floor">
             <div class="department-icon">👶</div>
             <h3>Labour Room</h3>
             <p class="department-location">1st Floor</p>
             <p>Delivery & maternity care</p>
+        </div>
+
+        <!-- NEW: Neuro Medicine Ward -->
+        <div class="department-box" data-name="neuro medicine ward" data-keywords="neuro medicine ward neurology brain nervous system neuro 2nd second floor">
+            <div class="department-icon">🧠</div>
+            <h3>Neuro Medicine Ward</h3>
+            <p class="department-location">2nd Floor</p>
+            <p>Neurology & brain care</p>
         </div>
     </div>
 
@@ -873,7 +867,6 @@
                     general_medicine: { name: "General Medicine", location: "Ground Floor", description: "Physician consultation" },
                     general_surgery: { name: "General Surgery", location: "Ground Floor", description: "Surgical procedures & operations" },
                     general_store: { name: "General Store", location: "Ground Floor", description: "Medical supplies & shopping" },
-                    pulmonology: { name: "Pulmonology", location: "Ground Floor", description: "Lung & respiratory care" },
                     dermatology: { name: "Dermatology", location: "Ground Floor", description: "Skin care & treatment" },
                     icu_complex: { name: "ICU Complex", location: "2nd Floor", description: "Intensive Care Unit" },
                     o_t_complex: { name: "O T Complex", location: "2nd Floor", description: "Operation Theatre Complex" },
@@ -887,7 +880,8 @@
                     preop: { name: "PreOP", location: "1st Floor", description: "Pre-Operative preparation" },
                     coffee_shop: { name: "Coffee Shop", location: "2nd Floor", description: "Refreshments & snacks" },
                     dialysis: { name: "Dialysis", location: "2nd Floor", description: "Dialysis & kidney care" },
-                    labour_room: { name: "Labour Room", location: "1st Floor", description: "Delivery & maternity care" }
+                    labour_room: { name: "Labour Room", location: "1st Floor", description: "Delivery & maternity care" },
+                    neuro_medicine_ward: { name: "Neuro Medicine Ward", location: "2nd Floor", description: "Neurology & brain care" }
                 }
             },
             hi: {
@@ -911,7 +905,6 @@
                     general_medicine: { name: "जनरल मेडिसिन", location: "ग्राउंड फ्लोर", description: "फिजिशियन परामर्श" },
                     general_surgery: { name: "जनरल सर्जरी", location: "ग्राउंड फ्लोर", description: "सर्जिकल प्रक्रियाएं और ऑपरेशन" },
                     general_store: { name: "जनरल स्टोर", location: "ग्राउंड फ्लोर", description: "चिकित्सा आपूर्ति और खरीदारी" },
-                    pulmonology: { name: "पल्मोनोलॉजी", location: "ग्राउंड फ्लोर", description: "फेफड़े और श्वसन देखभाल" },
                     dermatology: { name: "त्वचा विज्ञान", location: "ग्राउंड फ्लोर", description: "त्वचा देखभाल और उपचार" },
                     icu_complex: { name: "आईसीयू कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "इंटेंसिव केयर यूनिट" },
                     o_t_complex: { name: "ओ टी कॉम्प्लेक्स", location: "दूसरी मंजिल", description: "ऑपरेशन थिएटर कॉम्प्लेक्स" },
@@ -925,7 +918,8 @@
                     preop: { name: "प्रीओपी", location: "पहली मंजिल", description: "प्री-ऑपरेटिव तैयारी" },
                     coffee_shop: { name: "कॉफी शॉप", location: "दूसरी मंजिल", description: "जलपान और स्नैक्स" },
                     dialysis: { name: "डायलिसिस", location: "दूसरी मंजिल", description: "डायलिसिस और गुर्दे की देखभाल" },
-                    labour_room: { name: "लेबर रूम", location: "पहली मंजिल", description: "प्रसव और मातृत्व देखभाल" }
+                    labour_room: { name: "लेबर रूम", location: "पहली मंजिल", description: "प्रसव और मातृत्व देखभाल" },
+                    neuro_medicine_ward: { name: "न्यूरो मेडिसिन वार्ड", location: "दूसरी मंजिल", description: "न्यूरोलॉजी और मस्तिष्क देखभाल" }
                 }
             },
             ml: {
@@ -949,7 +943,6 @@
                     general_medicine: { name: "ജനറൽ മെഡിസിൻ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ഫിസിഷ്യൻ കൺസൾട്ടേഷൻ" },
                     general_surgery: { name: "ജനറൽ സർജറി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "സർജിക്കൽ നടപടിക്രമങ്ങളും ഓപറേഷനുകളും" },
                     general_store: { name: "ജനറൽ സ്റ്റോർ", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "മെഡിക്കൽ സപ്ലൈസും ഷോപ്പിംഗും" },
-                    pulmonology: { name: "പൾമോനോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ശ്വാസകോശ, ശ്വസന പരിചരണം" },
                     dermatology: { name: "ഡെർമറ്റോളജി", location: "ഗ്രൗണ്ട് ഫ്ലോർ", description: "ത്വക്ക് പരിചരണവും ചികിത്സയും" },
                     icu_complex: { name: "ഐസിയു കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഇൻറെൻസീവ് കെയർ യൂണിറ്റ്" },
                     o_t_complex: { name: "ഒ ടി കോംപ്ലക്സ്", location: "രണ്ടാം നില", description: "ഓപ്പറേഷൻ തിയേറ്റർ കോംപ്ലക്സ്" },
@@ -963,7 +956,8 @@
                     preop: { name: "പ്രീഓപി", location: "ഒന്നാം നില", description: "ശസ്ത്രക്രിയയ്ക്ക് മുമ്പുള്ള തയ്യാറെടുപ്പ്" },
                     coffee_shop: { name: "കോഫി ഷോപ്പ്", location: "രണ്ടാം നില", description: "ലഘുഭക്ഷണങ്ങളും പാനീയങ്ങളും" },
                     dialysis: { name: "ഡയാലിസിസ്", location: "രണ്ടാം നില", description: "ഡയാലിസിസും വൃക്ക സംരക്ഷണവും" },
-                    labour_room: { name: "ലേബർ റൂം", location: "ഒന്നാം നില", description: "പ്രസവ, മാതൃ പരിചരണം" }
+                    labour_room: { name: "ലേബർ റൂം", location: "ഒന്നാം നില", description: "പ്രസവ, മാതൃ പരിചരണം" },
+                    neuro_medicine_ward: { name: "ന്യൂറോ മെഡിസിൻ വാർഡ്", location: "രണ്ടാം നില", description: "ന്യൂറോളജിയും മസ്തിഷ്ക പരിചരണവും" }
                 }
             },
             ar: {
@@ -987,7 +981,6 @@
                     general_medicine: { name: "الطب العام", location: "الطابق الأرضي", description: "استشارات الطبيب" },
                     general_surgery: { name: "الجراحة العامة", location: "الطابق الأرضي", description: "الإجراءات الجراحية والعمليات" },
                     general_store: { name: "المتجر العام", location: "الطابق الأرضي", description: "الإمدادات الطبية والتسوق" },
-                    pulmonology: { name: "طب الرئة", location: "الطابق الأرضي", description: "رعاية الرئة والجهاز التنفسي" },
                     dermatology: { name: "طب الجلد", location: "الطابق الأرضي", description: "رعاية وعلاج البشرة" },
                     icu_complex: { name: "مجمع العناية المركزة", location: "الطابق الثاني", description: "وحدة العناية المركزة" },
                     o_t_complex: { name: "مجمع غرفة العمليات", location: "الطابق الثاني", description: "مجمع غرفة العمليات" },
@@ -1001,7 +994,8 @@
                     preop: { name: "ما قبل العملية", location: "الطابق الأول", description: "التحضير قبل العملية" },
                     coffee_shop: { name: "مقهى", location: "الطابق الثاني", description: "مرطبات ووجبات خفيفة" },
                     dialysis: { name: "غسيل الكلى", location: "الطابق الثاني", description: "غسيل الكلى ورعاية الكلى" },
-                    labour_room: { name: "غرفة الولادة", location: "الطابق الأول", description: "رعاية الولادة والأمومة" }
+                    labour_room: { name: "غرفة الولادة", location: "الطابق الأول", description: "رعاية الولادة والأمومة" },
+                    neuro_medicine_ward: { name: "جناح الطب العصبي", location: "الطابق الثاني", description: "رعاية الأعصاب والدماغ" }
                 }
             }
         };
@@ -1107,6 +1101,9 @@
                 }
                 if (departmentName === 'labour room') {
                     translationKey = 'labour_room';
+                }
+                if (departmentName === 'neuro medicine ward') {
+                    translationKey = 'neuro_medicine_ward';
                 }
                 
                 const translation = departmentTranslations[translationKey];
@@ -1231,6 +1228,8 @@
                         window.location.href = 'dialysis.html';
                     } else if (departmentName === 'labour room') {
                         window.location.href = 'labour-room.html';
+                    } else if (departmentName === 'neuro medicine ward') {
+                        window.location.href = 'neuro-medicine-ward.html';
                     } else {
                         alert('Directions for ' + departmentName + ' coming soon!');
                     }
